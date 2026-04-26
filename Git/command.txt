@@ -3,6 +3,7 @@
 - git clone git@github.com:.../...
 - git status
 - git add .
+- git commit -am " "  # a for add # skips git add (only for modified files)
 - git commit -m " "
 - git remote -v
 - git push -u origin main
@@ -14,3 +15,9 @@
 - git checkout nameofBranchtoSwitchTo
 - git diff nameOfBranch
 - git push -u origin exampleName
+- git branch -d exampleName # to delete
+- git merge exampleName # when on main
+
+# pull
+- git pull origin main
+- git pull # if already origin main
