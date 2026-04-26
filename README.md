@@ -3,7 +3,7 @@ documentation of the devops journey
 
 ## Step-1 Automate the Boring Stuff with Python Book:
 - Added practiced scripts to repo.
-- Skipped:
+##### Skipped:
 ###### Chapter 13 - Web Scraping
 ###### Chapter 14 - Excel Spreadsheets
 ###### Chapter 15 - Google Sheets
