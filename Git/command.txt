@@ -9,6 +9,12 @@
 - git push -u origin main
 - git push
 
+# reset (undo)
+- git reset
+- git reset file
+- git reset HEAD # undo to last (1 step back)
+- git reset HEAD~1 # undo to last + 1 (2 steps back)
+
 # branch
 - git branch
 - git checkout -b exampleName
