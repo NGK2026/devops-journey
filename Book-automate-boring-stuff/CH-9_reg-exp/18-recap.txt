@@ -1,0 +1,18 @@
+This chapter has covered a lot of notation so far, so here’s a quick review of what you’ve learned about basic regular expression syntax:
+
+    .The ? matches zero or one instance of the preceding qualifier.
+    .The * matches zero or more instances of the preceding qualifier.
+    .The + matches one or more instances of the preceding qualifier.
+    .The {n} matches exactly n instances of the preceding qualifier.
+    .The {n,} matches n or more instances of the preceding qualifier.
+    .The {,m} matches 0 to m instances of the preceding qualifier.
+    .The {n,m} matches at least n and at most m instances of the preceding qualifier.
+    .{n,m}? or *? or +? performs a non-greedy match of the preceding qualifier.
+    .^spam means the string must begin with spam.
+    .spam$ means the string must end with spam.
+    .The . matches any character, except newline characters.
+    .The \d, \w, and \s match a digit, word, or space character, respectively.
+    .The \D, \W, and \S match anything except a digit, word, or space character, respectively. [abc] matches any character between the square brackets (such as a, b, or c).
+    .[^abc] matches any character that isn’t between the square brackets.
+    .(Hello) groups 'Hello' together as a single qualifier.
+
