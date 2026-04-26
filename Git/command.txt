@@ -7,3 +7,7 @@
 - git remote -v
 - git push -u origin main
 - git push
+##### branch
+- git branch
+- git checkout -b exampleName
+- git checkout nameofBranchtoSwitchTo
