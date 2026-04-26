@@ -8,12 +8,16 @@
 - git remote -v
 - git push -u origin main
 - git push
+- git log (log of all commits)
 
 # reset (undo)
 - git reset
 - git reset file
 - git reset HEAD # undo to last (1 step back)
 - git reset HEAD~1 # undo to last + 1 (2 steps back)
+- git reset hash (hash found in git log)
+- git reset --hard hash (hard change of all since hash)
+
 
 # branch
 - git branch
