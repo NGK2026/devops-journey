@@ -1,4 +1,5 @@
 ##### Bash fundamentals
+youtube:  Bash Scripting Tutorial for Beginners - TechWorld with Nana
 
 #### Projects
 - Backs up a directory to another location with a timestamp
