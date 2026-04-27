@@ -15,9 +15,8 @@ documentation of the devops journey
 ###### Chapter 24 - Text-to-Speech and Speech Recognition Engines
 
 ## Step-2 Git:
-youtube: Git and GitHub for Beginners - Crash Course - freeCodeCamp.org.
-link:
-https://www.youtube.com/watch?v=RGOj5yH7evk
+youtube: Git and GitHub for Beginners - Crash Course - freeCodeCamp.org
+- https://www.youtube.com/watch?v=RGOj5yH7evk
 
 ## Step-3 Bash:
 youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
