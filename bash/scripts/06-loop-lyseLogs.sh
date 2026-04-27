@@ -16,24 +16,14 @@ echo $LOG_FILES
 
 # loop
 for LOG_FILE in $LOG_FILES; do
+    # expand array variable with {arrVar[@]} NB:({[*]} combines)
+    for PATTERN in ${ERROR_PATTERNS[@]}; do
+        echo -e "\n* Searching $PATTERN logs in $LOG_FILE file..."
+        grep "$PATTERN" "$LOG_FILE"
 
-    echo -e "\n* Searching ${ERROR_PATTERNS[0]} logs in $LOG_FILE file..."
-    grep "${ERROR_PATTERNS[0]}" "$LOG_FILE"
-
-    echo -e "\n* Searching ${ERROR_PATTERNS[2]} logs in $LOG_FILE file..."
-    grep "${ERROR_PATTERNS[2]}" "$LOG_FILE"
-
-    echo -e "\n* Number of ${ERROR_PATTERNS[0]} logs found in $LOG_FILE"
-    grep -c "${ERROR_PATTERNS[0]}" "$LOG_FILE"
-
-    echo -e "\n* Number of ${ERROR_PATTERNS[1]} logs found in $LOG_FILE"
-    grep -c "${ERROR_PATTERNS[1]}" "$LOG_FILE"
-
-    echo -e "\n* Number of ${ERROR_PATTERNS[2]} logs found in $LOG_FILE"
-    grep -c "${ERROR_PATTERNS[2]}" "$LOG_FILE"
-
-
-
+        echo -e "\n* Number of $PATTERN logs found in $LOG_FILE"
+        grep -c "$PATTERN" "$LOG_FILE"
+    done
 done
 
 : ' 
@@ -52,15 +42,19 @@ analysing log files
 [2025-06-01 09:12:17] [ERROR] Analytics processing failed - Missing data for region EU-WEST
 [2025-06-01 09:30:45] [ERROR] Health check failed for service: message-queue
 
-* Searching CRITICAL logs in /home/student/projects/git/devops-journey/bash/logs/application.log file...
-[2025-06-01 08:32:13] [CRITICAL] Database connection lost during backup
-[2025-06-01 09:17:22] [CRITICAL] Security alert: Multiple failed login attempts for admin account
-
 * Number of ERROR logs found in /home/student/projects/git/devops-journey/bash/logs/application.log
 6
 
+* Searching FATAL logs in /home/student/projects/git/devops-journey/bash/logs/application.log file...
+[2025-06-01 08:47:22] [FATAL] Out of memory error in recommendation engine
+[2025-06-01 09:25:33] [FATAL] Kernel panic on worker node worker-03
+
 * Number of FATAL logs found in /home/student/projects/git/devops-journey/bash/logs/application.log
 2
+
+* Searching CRITICAL logs in /home/student/projects/git/devops-journey/bash/logs/application.log file...
+[2025-06-01 08:32:13] [CRITICAL] Database connection lost during backup
+[2025-06-01 09:17:22] [CRITICAL] Security alert: Multiple failed login attempts for admin account
 
 * Number of CRITICAL logs found in /home/student/projects/git/devops-journey/bash/logs/application.log
 2
@@ -80,6 +74,16 @@ Jun  1 04:40:12 server-prod-01 kernel: [59412.345678] [ERROR] Memory failure: 0x
 Jun  1 04:40:13 server-prod-01 kernel: [59413.456789] [ERROR] EDAC MC0: 1 CE memory read error on CPU_SrcID#0_MC#0_Chan#0_DIMM#0 (channel:0 slot:0 page:0x0 offset:0x0 grain:8 syndrome:0x0 - area:DRAM err_code:0001:0091 socket:0 channel_mask:1)
 Jun  1 04:40:16 server-prod-01 kernel: [59416.789012] [ERROR] EDAC MC0: 1 CE memory read error on CPU_SrcID#0_MC#0_Chan#0_DIMM#0 (channel:0 slot:0 page:0x0 offset:0x0 grain:8 syndrome:0x0 - area:DRAM err_code:0001:0091 socket:0 channel_mask:1)
 
+* Number of ERROR logs found in /home/student/projects/git/devops-journey/bash/logs/system.log
+13
+
+* Searching FATAL logs in /home/student/projects/git/devops-journey/bash/logs/system.log file...
+Jun  1 01:45:01 server-prod-01 kernel: [49411.123456] [FATAL] EXT4-fs error (device sda1): ext4_journal_check_start:56: Detected aborted journal
+Jun  1 01:45:02 server-prod-01 kernel: [49412.234567] [FATAL] EXT4-fs (sda1): Remounting filesystem read-only
+
+* Number of FATAL logs found in /home/student/projects/git/devops-journey/bash/logs/system.log
+2
+
 * Searching CRITICAL logs in /home/student/projects/git/devops-journey/bash/logs/system.log file...
 Jun  1 01:20:21 server-prod-01 sshd[23954]: [CRITICAL] Disconnecting: Too many authentication failures for root from 198.51.100.23 port 63122 ssh2 [preauth]
 Jun  1 01:45:06 server-prod-01 smartd[1234]: [CRITICAL] Device: /dev/sda [SAT], failed SMART usage Attribute: Reallocated_Sector_Ct.
@@ -87,13 +91,6 @@ Jun  1 03:46:01 server-prod-01 smartd[1234]: [CRITICAL] Device: /dev/sdc [SAT], 
 Jun  1 04:40:14 server-prod-01 kernel: [59414.567890] [CRITICAL] Hardware event. This is not a software error.
 Jun  1 04:40:15 server-prod-01 kernel: [59415.678901] [CRITICAL] MCE: [Hardware Error]: CPU 0: Machine Check: 0 Bank 6: ee00000000800400
 
-* Number of ERROR logs found in /home/student/projects/git/devops-journey/bash/logs/system.log
-13
-
-* Number of FATAL logs found in /home/student/projects/git/devops-journey/bash/logs/system.log
-2
-
 * Number of CRITICAL logs found in /home/student/projects/git/devops-journey/bash/logs/system.log
 5
-
 '
