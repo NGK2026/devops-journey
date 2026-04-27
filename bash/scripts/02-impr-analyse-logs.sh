@@ -5,31 +5,25 @@ echo "==================="
 
 echo "* List of log files updated in last 24 hours"
 find ../logs/. -name "*.log" -mtime -1
-echo
 
-echo "* Number of ERROR logs found in application.log"
+echo -e "\n* Number of ERROR logs found in application.log"
 grep -c "ERROR" ../logs/application.log
-echo
 
-echo "* Number of FATAL logs found in application.log"
+echo -e "\n* Number of FATAL logs found in application.log"
 grep -c "FATAL" ../logs/application.log
-echo
 
-echo "* Searching ERROR logs in application.log file..."
+echo -e "\n* Searching ERROR logs in application.log file..."
 grep "ERROR" ../logs/application.log
-echo
 
-echo "* Number of FATAL logs found in system.log"
+echo -e "\n* Number of FATAL logs found in system.log"
 grep -c "FATAL" ../logs/system.log
-echo
 
-echo "* Number of CRITICAL logs found in system.log"
+echo -e "\n* Number of CRITICAL logs found in system.log"
 grep -c "CRITICAL" ../logs/system.log
-echo
 
-echo "* Searching CRITICAL logs in application.log file..."
+echo -e "\n* Searching CRITICAL logs in application.log file..."
 grep "CRITICAL" ../logs/system.log
-echo
+
 
 : ' 
 output:
@@ -66,5 +60,4 @@ Jun  1 01:45:06 server-prod-01 smartd[1234]: [CRITICAL] Device: /dev/sda [SAT], 
 Jun  1 03:46:01 server-prod-01 smartd[1234]: [CRITICAL] Device: /dev/sdc [SAT], failed SMART usage Attribute: Raw_Read_Error_Rate.
 Jun  1 04:40:14 server-prod-01 kernel: [59414.567890] [CRITICAL] Hardware event. This is not a software error.
 Jun  1 04:40:15 server-prod-01 kernel: [59415.678901] [CRITICAL] MCE: [Hardware Error]: CPU 0: Machine Check: 0 Bank 6: ee00000000800400
-
 '
