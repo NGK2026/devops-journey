@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # use abolute path instead of relative path
-#!/bin/bash
 
 echo "analysing log files"
 echo "==================="
