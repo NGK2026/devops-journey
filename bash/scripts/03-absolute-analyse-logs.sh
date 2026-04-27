@@ -33,8 +33,8 @@ output:
 analysing log files
 ===================
 * List of log files updated in last 24 hours
-../logs/./application.log
-../logs/./system.log
+/home/student/projects/git/devops-journey/bash/logs/application.log
+/home/student/projects/git/devops-journey/bash/logs/system.log
 
 * Number of ERROR logs found in application.log
 6
