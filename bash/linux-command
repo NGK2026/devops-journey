@@ -1,6 +1,0 @@
-- grep "ERROR" application.log
-#
-- grep -c "ERROR" application.log
-# -c count
-- find . -name "*.log" -mtime -1
-# find name ending with .log, modified time less than a day ago
