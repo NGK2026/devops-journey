@@ -9,3 +9,4 @@ mkdir -p "$TARGET_FOLDER"
 EXT_ARRAY=()
 for FILE in $TARGET_FOLDER/*; do
     echo "$(FILE | tr -d '.' | awk '{print $2}')"
+done
