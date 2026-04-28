@@ -41,10 +41,13 @@ done
 # move files in folders respectively 
 for FILE in ${FULL_NAME_ARRAY[@]}; do
     FILE_EXT=$(echo $FILE | awk -F. '{print $NF}')
+    FILE_N=$(echo $FILE | awl -F/ 'print $(NF-1)')
     for TARGET in ${NEW_TARGET[@]}; do
         TARGET_EXT=$(echo $TARGET | awk -F/ '{print $NF}')
+        TARGET_N=$(echo $TARGET | awk -F/ '{print $(NF-1) "/" $NF}')
         if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
             mv "$FILE" "$TARGET"
+            echo "{}{}{}moved '$FILE_N' to '$TARGET_N'"
         fi
     done
 done
