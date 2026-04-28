@@ -4,22 +4,22 @@ documentation of the devops journey
 ## Step-1 Automate the Boring Stuff with Python Book:
 - Add practiced scripts to repo.
 ##### Skipped:
-###### Chapter 13 - Web Scraping
-###### Chapter 14 - Excel Spreadsheets
-###### Chapter 15 - Google Sheets
-###### Chapter 17 - PDF and Word Documents
-###### Chapter 20 - Sending Email, Texts, and Push Notifications
-###### Chapter 21 - Making Graphs and Manipulating Images
-###### Chapter 22 - Recognizing Text in Images
-###### Chapter 23 - Controlling the Keyboard and Mouse
-###### Chapter 24 - Text-to-Speech and Speech Recognition Engines
+1. Chapter 13 - Web Scraping
+2. Chapter 14 - Excel Spreadsheets
+3. Chapter 15 - Google Sheets
+4. Chapter 17 - PDF and Word Documents
+5. Chapter 20 - Sending Email, Texts, and Push Notifications
+6. Chapter 21 - Making Graphs and Manipulating Images
+7. Chapter 22 - Recognizing Text in Images
+8. Chapter 23 - Controlling the Keyboard and Mouse
+9. Chapter 24 - Text-to-Speech and Speech Recognition Engines
 
 ## Step-2 Git:
-youtube: Git and GitHub for Beginners - Crash Course - freeCodeCamp.org
+#### youtube: Git and GitHub for Beginners - Crash Course - freeCodeCamp.org
 - https://www.youtube.com/watch?v=RGOj5yH7evk
 
 ## Step-3 Bash:
-youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
+#### youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
 - https://www.youtube.com/watch?v=PNhq_4d-5ek
 
 ## Step-4 Cloud Concepts:
