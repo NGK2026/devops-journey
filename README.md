@@ -27,9 +27,28 @@ documentation of the devops journey
 - https://www.youtube.com/watch?v=M988_fsOSWo
 #### youtube: AWS Certified Cloud Practitioner Training 2020 - Full Course - freeCodeCamp.org
 - https://www.youtube.com/watch?v=3hLmDS179YE
-1. What is Cloud Computing
-2. Regions / Availability Zones
-3. EC2
-4. S3
-5. IAM
-6. AWS Networking
+###### Cloud Concepts
+1. 0:09:57 — What is Cloud Computing
+2. 0:12:10 — Six Advantages
+3. 0:14:42 — Types of Cloud Computing
+4. 0:16:48 — Deployment Models
+###### AWS Global Infrastructure
+5. 0:19:27 — Introduction and Map
+6. 0:20:30 — Regions
+7. 0:24:30 — Availability Zones
+###### Getting Started
+8. 0:29:20 — Creating an AWS Account
+9. 0:32:43 — Billing Preferences and Budgets (so you don't get charged accidentally)
+10. 0:40:09 — IAM Users
+11. 0:41:14 — MFA on Root Account
+12. 0:43:40 — Create IAM User
+###### Hands On
+13. 0:49:50 — Intro and Regions
+14. 0:51:03 — EC2
+15. 1:12:47 — S3
+16. 1:22:00 — Lambda
+###### Technology Overview
+17. 2:44:13 — AWS Networking
+###### Security
+18. 3:13:49 — Shared Responsibility Model
+19. 3:35:06 — Security Groups vs NACLs
