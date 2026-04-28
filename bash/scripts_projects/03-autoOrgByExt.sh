@@ -30,8 +30,10 @@ for FILE in "$TARGET_FOLDER"/*; do
     fi
 
     # echo "File: $FILE | File Name: $FILE_NAME | Extension: $EXT"
-    echo "--- FILES DETECTED ---"
 done
+
+echo "--- FILES DETECTED ---"
+
 
 # create folders
 for EXT in ${EXT_ARRAY[@]}; do
@@ -41,8 +43,11 @@ for EXT in ${EXT_ARRAY[@]}; do
     NEW_TARGET+=("$TARGET_FOLDER/$EXT")
     # FOLDER=$(echo "$TARGET_FOLDER/$EXT" | awk -F/ '{print $(NF-1) "/" $NF}')
     # echo "$FOLDER"
-    echo "=== NEW FOLDERS CREATED ==="
 done
+
+echo "=== NEW FOLDERS CREATED ==="
+
+echo "*** MOVING FILES ***"
 
 # move files in folders respectively 
 for FILE_AR in ${FULL_NAME_ARRAY[@]}; do
@@ -58,7 +63,6 @@ for FILE_AR in ${FULL_NAME_ARRAY[@]}; do
         # echo "$TARGET"
         if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
             mv $FILE_AR $TARGET
-            echo "*** MOVING FILES ***"
         fi
     done
 done
