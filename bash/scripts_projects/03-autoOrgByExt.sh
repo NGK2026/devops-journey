@@ -41,7 +41,7 @@ done
 # move files in folders respectively 
 for FILE in ${FULL_NAME_ARRAY[@]}; do
     FILE_EXT=$(echo $FILE | awk -F. '{print $NF}')
-    FILE_N=$(echo $FILE | awk -F/ '{print $(NF-1)}')
+    FILE_N=$(echo $FILE | awk -F. '{print $(NF-1)}')
     for TARGET in ${NEW_TARGET[@]}; do
         TARGET_EXT=$(echo $TARGET | awk -F/ '{print $NF}')
         TARGET_N=$(echo $TARGET | awk -F/ '{print $(NF-1) "/" $NF}')
@@ -52,7 +52,7 @@ for FILE in ${FULL_NAME_ARRAY[@]}; do
     done
 done
 
-echo -e "\n\n ==================================="
+echo -e "\n\n==================================="
 echo -e "=========== DONE ==========="
 echo -e "==================================="
 
