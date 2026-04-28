@@ -13,3 +13,4 @@ echo "===**-    $(df -h | grep -w '/' | awk '{print $5}')     -**==="
 
 if [ "$(df -h | grep -w '/' | awk '{print $5}' | tr -d '%')" -gt 80]; then
     echo -e "\n ⚠️⚠️⚠️ WARNING, DISK OVER 80% FULL ⚠️⚠️⚠️"
+fi
