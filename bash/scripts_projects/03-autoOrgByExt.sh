@@ -13,5 +13,5 @@ for FILE in "$TARGET_FOLDER"/*; do
     EXT=$(echo "$FILE" | awk -F. '{print $2}')
     # echo "$EXT"
     EXT_ARRAY+=("$EXT")
-    echo "File: $FULL_NAME | File Name: $File_NAME | Extension: $EXT"
+    echo "File: $FULL_NAME | File Name: $FILE_NAME | Extension: $EXT"
 done
