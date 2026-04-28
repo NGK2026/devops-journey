@@ -47,7 +47,7 @@ done
 
 echo "=== NEW FOLDERS CREATED ==="
 
-echo "*** MOVING FILES ***"
+echo -e "\n*** MOVING FILES ***"
 
 # move files in folders respectively 
 for FILE_AR in ${FULL_NAME_ARRAY[@]}; do
