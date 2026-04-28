@@ -7,6 +7,7 @@ mkdir -p "$TARGET_FOLDER"
 
 # create files
 touch "$TARGET_FOLDER"/{1.sh,2.sh,3.sh,4.txt,5.txt,6.html,7.py,8.py,9.html,10.txt,11.docx,12.csv,13.csv,14.docx,15.pdf}
+echo "Created files"
 
 # save file data in array
 FULL_NAME_ARRAY=()
