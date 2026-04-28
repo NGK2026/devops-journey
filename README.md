@@ -60,6 +60,7 @@ Documentation of my devops path
 ## Step-5 AWS Hands On (Core Services)
 #### youtube: AWS Tutorial for Beginners – Kevin Stratvert
 - https://www.youtube.com/watch?v=Nzv-tzU-UAw
+##### TODO:
 1. Launch an EC2 instance, SSH into it from terminal
 2. Create an S3 bucket, upload a file via CLI (not console)
 3. Create an IAM user with limited permissions
