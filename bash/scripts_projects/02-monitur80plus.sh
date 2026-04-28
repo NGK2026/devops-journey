@@ -8,7 +8,8 @@ grep -w : whole word
 tr -d : delete
 '
 
-
-
 echo "===**- Disk space -**==="
-echo "===**- $(df -h | grep -w '/' | awk '{print $5}') -**==="
+echo "===**-    $(df -h | grep -w '/' | awk '{print $5}')     -**==="
+
+if [ "$(df -h | grep -w '/' | awk '{print $5}' | tr -d '%')" -gt 80]; then
+    echo -e "\n ⚠️⚠️⚠️ WARNING, DISK OVER 80% FULL ⚠️⚠️⚠️"
