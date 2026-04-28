@@ -1,8 +1,8 @@
 # Purpose
-documentation of the devops journey
+Documentation of my devops path
 
 ## Step-1 Automate the Boring Stuff with Python Book
-- Add practiced scripts to repo.
+- Add practiced scripts to repo
 ###### Skipped
 1. Chapter 13 - Web Scraping
 2. Chapter 14 - Excel Spreadsheets
