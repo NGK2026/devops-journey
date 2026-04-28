@@ -7,6 +7,7 @@ mkdir -p "$TARGET_FOLDER"
 
 # save extensions in array
 EXT_ARRAY=()
-for FILE in $TARGET_FOLDER/*; do
-    echo "$(FILE | tr -d '.' | awk '{print $2}')"
+for FILE in "$TARGET_FOLDER"/*; do
+    EXT=$(echo "$FILE" | awk -F. '{print $2}')
+    echo "$EXT"
 done
