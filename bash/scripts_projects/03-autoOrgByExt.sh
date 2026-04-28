@@ -9,5 +9,7 @@ mkdir -p "$TARGET_FOLDER"
 EXT_ARRAY=()
 for FILE in "$TARGET_FOLDER"/*; do
     EXT=$(echo "$FILE" | awk -F. '{print $2}')
-    echo "$EXT"
+    # echo "$EXT"
+    EXT_ARRAY+=("$EXT")
+    echo "File: $FILE | Extension: $EXT"
 done
