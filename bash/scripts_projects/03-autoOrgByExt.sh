@@ -8,8 +8,10 @@ mkdir -p "$TARGET_FOLDER"
 # save extensions in array
 EXT_ARRAY=()
 for FILE in "$TARGET_FOLDER"/*; do
+    FULL_NAME=$(echo "$FILE" | awk -F/ '{print $NF}')
+    FILE_NAME=$(echo "$FILE" | awk -F/ '{print $NF}' | awk -F. '{print $1}')
     EXT=$(echo "$FILE" | awk -F. '{print $2}')
     # echo "$EXT"
     EXT_ARRAY+=("$EXT")
-    echo "File: $FILE | Extension: $EXT"
+    echo "File: $FULL_NAME | File Name: $File_NAME | Extension: $EXT"
 done
