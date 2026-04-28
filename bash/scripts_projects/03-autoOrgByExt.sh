@@ -33,7 +33,7 @@ for EXT in ${EXT_ARRAY[@]}; do
     # echo "$EXT"
     mkdir -p "$TARGET_FOLDER"/"$EXT"
     echo "** created '$TARGET_FOLDER/$EXT'"
-    NEW_TARGET+='$TARGET_FOLDER/$EXT'
+    NEW_TARGET+=("$TARGET_FOLDER/$EXT")
     # FOLDER=$(echo "$TARGET_FOLDER/$EXT" | awk -F/ '{print $(NF-1) "/" $NF}')
     # echo "$FOLDER"
 done
@@ -43,13 +43,14 @@ for FILE in ${FULL_NAME_ARRAY[@]}; do
     FILE_EXT=$(echo $FILE | awk -F. '{print $NF}')
     FILE_N=$(echo $FILE | awk -F. '{print $(NF-1)}')
     for TARGET in ${NEW_TARGET[@]}; do
+        echo "$TARGET"
         TARGET_EXT=$(echo $TARGET | awk -F/ '{print $NF}')
         TARGET_N=$(echo $TARGET | awk -F/ '{print $(NF-1) "/" $NF}')
         echo "()()() COMPARE: '$FILE_EXT' vs '$TARGET_EXT'"
-        if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
-            mv "$FILE" "$TARGET"
-            echo "{}{}{}moved '$FILE_N' to '$TARGET_N'"
-        fi
+        # if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
+        #     mv "$FILE" "$TARGET"
+        #     echo "{}{}{}moved '$FILE_N' to '$TARGET_N'"
+        # fi
     done
 done
 
