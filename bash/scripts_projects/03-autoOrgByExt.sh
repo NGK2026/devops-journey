@@ -45,6 +45,7 @@ for FILE in ${FULL_NAME_ARRAY[@]}; do
     for TARGET in ${NEW_TARGET[@]}; do
         TARGET_EXT=$(echo $TARGET | awk -F/ '{print $NF}')
         TARGET_N=$(echo $TARGET | awk -F/ '{print $(NF-1) "/" $NF}')
+        echo "()()() COMPARE: '$FILE_EXT' vs '$TARGET_EXT'"
         if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
             mv "$FILE" "$TARGET"
             echo "{}{}{}moved '$FILE_N' to '$TARGET_N'"
