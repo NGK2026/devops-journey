@@ -27,9 +27,9 @@ youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
 - https://www.youtube.com/watch?v=M988_fsOSWo
 #### youtube: AWS Certified Cloud Practitioner Training 2020 - Full Course - freeCodeCamp.org
 - https://www.youtube.com/watch?v=3hLmDS179YE
-- What is Cloud Computing
-- Regions / Availability Zones
-- EC2
-- S3
-- IAM
-- AWS Networking
+1- What is Cloud Computing
+2- Regions / Availability Zones
+3- EC2
+4- S3
+5- IAM
+6- AWS Networking
