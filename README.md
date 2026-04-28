@@ -65,5 +65,5 @@ Documentation of my devops path
 2. Create an S3 bucket, upload a file via CLI (not console)
 3. Create an IAM user with limited permissions
 4. Create an /aws folder in repo with:
-4. a- /aws/commands.md — every CLI command used, with a one line explanation.
-4. b- /aws/setup.md — steps taken to launch EC2, create S3 bucket, set up IAM user.
+  * /aws/commands.md — every CLI command used, with a one line explanation.
+  * /aws/setup.md — steps taken to launch EC2, create S3 bucket, set up IAM user.
