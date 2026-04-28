@@ -21,6 +21,10 @@ documentation of the devops journey
 ## Step-3 Bash:
 #### youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
 - https://www.youtube.com/watch?v=PNhq_4d-5ek
+###### Projects
+1. Backup a directory to another location with a timestamp
+2. Monitors disk usage and prints a warning if above 80%
+3. Auto-organizes files in a folder by extension into subfolders
 
 ## Step-4 Cloud Concepts:
 #### youtube: Cloud Computing In 6 Minutes - Simplilearn
