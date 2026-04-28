@@ -15,3 +15,8 @@ for FILE in "$TARGET_FOLDER"/*; do
     EXT_ARRAY+=("$EXT")
     echo "File: $FULL_NAME | File Name: $FILE_NAME | Extension: $EXT"
 done
+
+for EXT in ${EXT_ARRAY[@]}; do
+    echo "$EXT"
+    echo "$(pwd)"
+done
