@@ -9,6 +9,7 @@ mkdir -p "$TARGET_FOLDER"
 FULL_NAME_ARRAY=()
 NAME_ARRAY=()
 EXT_ARRAY=()
+NEW_TARGET=()
 
 for FILE in "$TARGET_FOLDER"/*; do
     FULL_NAME=$(echo "$FILE" | awk -F/ '{print $NF}')
@@ -32,11 +33,24 @@ for EXT in ${EXT_ARRAY[@]}; do
     # echo "$EXT"
     mkdir -p "$TARGET_FOLDER"/"$EXT"
     echo "** created '$TARGET_FOLDER/$EXT'"
+    NEW_TARGET+='$TARGET_FOLDER/$EXT'
     # FOLDER=$(echo "$TARGET_FOLDER/$EXT" | awk -F/ '{print $(NF-1) "/" $NF}')
     # echo "$FOLDER"
 done
 
 # move files in folders respectively 
-# for FILE in ${FULL_NAME_ARRAY[@]}; do
-    
+for FILE in ${FULL_NAME_ARRAY[@]}; do
+    FILE_EXT=$(echo $FILE | awk -F. '{print $NF}')
+    for TARGET in ${NEW_TARGET[@]}; do
+        TARGET_EXT=$(echo $TARGET | awk -F/ '{print $NF}')
+        if [[ "$FILE_EXT" == "$TARGET_EXT" ]]; then
+            mv "$FILE" "$TARGET"
+        fi
+    done
+done
+
+echo -e "\n\n ==================================="
+echo -e "=========== DONE ==========="
+echo -e "==================================="
+
     
