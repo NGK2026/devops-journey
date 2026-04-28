@@ -18,7 +18,12 @@ for FILE in "$TARGET_FOLDER"/*; do
     # echo "$EXT"
     FULL_NAME_ARRAY+=("$FULL_NAME")
     NAME_ARRAY+=("$FILE_NAME")
-    EXT_ARRAY+=("$EXT")
+    
+    # check if ext is array, if not then add.
+    if [[ ! " ${EXT_ARRAY[*]} " =~ " $EXT " ]]; then
+        EXT_ARRAY+=("$EXT")
+    fi
+
     echo "File: $FULL_NAME | File Name: $FILE_NAME | Extension: $EXT"
 done
 
@@ -26,8 +31,9 @@ done
 for EXT in ${EXT_ARRAY[@]}; do
     # echo "$EXT"
     mkdir -p "$TARGET_FOLDER"/"$EXT"
-    FOLDER=$(echo "$TARGET_FOLDER/$EXT" | awk -F/ '{print $(NF-1) "/" $NF}')
-    echo "$FOLDER"
+    echo "** created "$TARGET_FOLDER/$EXT"
+    # FOLDER=$(echo "$TARGET_FOLDER/$EXT" | awk -F/ '{print $(NF-1) "/" $NF}')
+    # echo "$FOLDER"
 done
 
 # move files in folders respectively 
