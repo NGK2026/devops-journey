@@ -18,6 +18,6 @@ done
 
 for EXT in ${EXT_ARRAY[@]}; do
     echo "$EXT"
-    # mkdir -p "$TARGET_FOLDER"/"$EXT"
-    echo "created "$TARGET_FOLDER"/"$EXT"
+    mkdir -p "$TARGET_FOLDER"/"$EXT"
+    echo "created $TARGET_FOLDER/$EXT"
 done
