@@ -23,9 +23,9 @@ youtube: Bash Scripting Tutorial for Beginners - TechWorld with Nana
 - https://www.youtube.com/watch?v=PNhq_4d-5ek
 
 ## Step-4 Cloud Concepts:
-youtube: Cloud Computing In 6 Minutes - Simplilearn
+#### youtube: Cloud Computing In 6 Minutes - Simplilearn
 - https://www.youtube.com/watch?v=M988_fsOSWo
-youtube: AWS Certified Cloud Practitioner Training 2020 - Full Course - freeCodeCamp.org
+#### youtube: AWS Certified Cloud Practitioner Training 2020 - Full Course - freeCodeCamp.org
 - https://www.youtube.com/watch?v=3hLmDS179YE
 - What is Cloud Computing
 - Regions / Availability Zones
