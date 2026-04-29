@@ -68,6 +68,9 @@ Documentation of my devops path
   * /commands.md — every CLI command used, with a one line explanation
   * /setup.md — steps taken to launch EC2, create S3 bucket, set up IAM user
 
+##### Website hosted with S3
+- http://onyx-core-system.s3-website-us-east-1.amazonaws.com/
+
 ## Step-6 Terraform
 #### youtube: Terraform explained in 15 mins - TechWorld with Nana
 - https://www.youtube.com/watch?v=l5k1ai_GBDE
