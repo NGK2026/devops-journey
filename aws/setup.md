@@ -85,4 +85,8 @@
 6. Scroll to *Static website hosting*
 7. **Edit** > *Enable*
 8. Set *Index document* to homepage .html file
+9. **Save changes**
+10. Scroll to bottom of *Properties* tab again
+11. Use *Bucket website endpoint*
+12. http://onyx-core-system.s3-website-us-east-1.amazonaws.com/
 
