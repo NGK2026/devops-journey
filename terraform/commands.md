@@ -142,5 +142,46 @@ aws_instance.my-server: Modifying... [id=i-0e5bde8f0645ec361]
 aws_instance.my-server: Modifications complete after 2s [id=i-0e5bde8f0645ec361]
 
 Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+```
+6. Destroy myserver instance
+```sh
+terraform destroy
 
+aws_instance.my-server: Refreshing state... [id=i-0e5bde8f0645ec361]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be destroyed
+  - resource "aws_instance" "my-server" {
+      - ami                                  = "ami-0a0823e4ea064404d" -> null
+      - arn                                  = "arn:aws:ec2:eu-north-1:825386256642:instance/i-0e5bde8f0645ec361" -> null
+      --snip--
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+      --snip--
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_instance.my-server: Destroying... [id=i-0e5bde8f0645ec361]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m10s elapsed]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m20s elapsed]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m30s elapsed]
+aws_instance.my-server: Destruction complete after 30s
+
+Destroy complete! Resources: 1 destroyed.
 ```
