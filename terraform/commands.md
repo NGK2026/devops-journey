@@ -1,4 +1,4 @@
-1. 
+1. provider, resource added to main.tf
 ```sh
 # initialize terraform main.tf
 terraform init
@@ -95,5 +95,9 @@ aws_instance.my-server: Still creating... [00m10s elapsed]
 aws_instance.my-server: Creation complete after 14s [id=i-0e5bde8f0645ec361]
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+```
+4. Tags were added to the resource
+```sh
 
 ```

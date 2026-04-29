@@ -32,11 +32,21 @@ resource "<provider>_<resource_type>" "name" {
   key2 = "another value"
 }
 ```
-8. EC2 instance: Create, update, delete
+8. Create EC2 instance:
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
 ```tf
 resource "aws_instance" "my-server" {
   ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
   instance_type = "t3.micro"
+}
+```
+9. Add Tags!
+```tf
+resource "aws_instance" "my-server" {
+  ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
+  instance_type = "t3.micro"
+  tags = {
+    Name = "HelloWorld"
+  }
 }
 ```
