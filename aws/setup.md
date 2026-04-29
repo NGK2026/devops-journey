@@ -76,4 +76,13 @@
 7. **Connect** again
 8. *Terminal* launches in new web browser tab
 
+## Static website hosting
+1. AWS *Dashboard*
+2. View all services
+3. **S3**
+4. Click to open bucket
+5. Navigate to *Properties*
+6. Scroll to *Static website hosting*
+7. **Edit** > *Enable*
+8. Set *Index document* to homepage .html file
 
