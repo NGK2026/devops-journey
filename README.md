@@ -32,39 +32,39 @@ Documentation of my devops path
 #### youtube: AWS Certified Cloud Practitioner Training 2020 - Full Course - freeCodeCamp.org
 - https://www.youtube.com/watch?v=3hLmDS179YE
 ###### Cloud Concepts
-1. 0:09:57 — What is Cloud Computing
-2. 0:12:10 — Six Advantages
-3. 0:14:42 — Types of Cloud Computing
-4. 0:16:48 — Deployment Models
+1. (0:09:57) — What is Cloud Computing
+2. (0:12:10) — Six Advantages
+3. (0:14:42) — Types of Cloud Computing
+4. (0:16:48) — Deployment Models
 ###### AWS Global Infrastructure
-5. 0:19:27 — Introduction and Map
-6. 0:20:30 — Regions
-7. 0:24:30 — Availability Zones
+5. (0:19:27) — Introduction and Map
+6. (0:20:30) — Regions
+7. (0:24:30) — Availability Zones
 ###### Getting Started
-8. 0:29:20 — Creating an AWS Account
-9. 0:32:43 — Billing Preferences and Budgets (so you don't get charged accidentally)
-10. 0:40:09 — IAM Users
-11. 0:41:14 — MFA on Root Account
-12. 0:43:40 — Create IAM User
+8. (0:29:20) — Creating an AWS Account
+9. (0:32:43) — Billing Preferences and Budgets (so you don't get charged accidentally)
+10. (0:40:09) — IAM Users
+11. (0:41:14) — MFA on Root Account
+12. (0:43:40) — Create IAM User
 ###### Hands On
-13. 0:49:50 — Intro and Regions
-14. 0:51:03 — EC2
-15. 1:12:47 — S3
-16. 1:22:00 — Lambda
+13. (0:49:50) — Intro and Regions
+14. (0:51:03) — EC2
+15. (1:12:47) — S3
+16. (1:22:00) — Lambda
 ###### Technology Overview
-17. 2:44:13 — AWS Networking
+17. (2:44:13) — AWS Networking
 ###### Security
-18. 3:13:49 — Shared Responsibility Model
-19. 3:35:06 — Security Groups vs NACLs
+18. (3:13:49) — Shared Responsibility Model
+19. (3:35:06) — Security Groups vs NACLs
 
 ## Step-5 AWS Hands On (Core Services)
 #### youtube: AWS Tutorial for Beginners – Kevin Stratvert
 - https://www.youtube.com/watch?v=Nzv-tzU-UAw
 ##### TODO:
-1. Launch an EC2 instance, SSH into it from terminal
-2. Create an S3 bucket, upload a file via CLI (not console)
-3. Create an IAM user with limited permissions
-4. Create an /aws folder in repo with:
+- Launch an EC2 instance, SSH into it from terminal
+- Create an S3 bucket, upload a file via CLI (not console)
+- Create an IAM user with limited permissions
+- Create an /aws folder in repo with:
   * /commands.md — every CLI command used, with a one line explanation
   * /setup.md — steps taken to launch EC2, create S3 bucket, set up IAM user
 
@@ -80,6 +80,7 @@ Documentation of my devops path
 5. (1:04:47) Terraform Files
 6. (1:09:45) Practice Project
 7. (2:03:46) Terraform Variables
+##### TODO:
 - Create a /terraform folder in repo with:
   * /commands.md — every CLI command used, with a one line explanation
   * /setup.md — steps to install Terraform, configure AWS provider, init/plan/apply/destroy
