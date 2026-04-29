@@ -24,3 +24,11 @@ provider "aws" {
   secret_key = "--snip--" # this is not safe !
 }
 ```
+7. Basic syntax to create resource for provider eg:
+```tf
+resource "<provider>_<resource_type>" "name" {
+  config options...connection 
+  key = "value"
+  key2 = "another value"
+}
+```
