@@ -1,3 +1,5 @@
+##### NB. The following steps were created with IAM User account
+
 ## Create EC2 instance - (Virtual Servers in the Cloud)
 1. AWS *Dashboard*
 2. View all services
@@ -26,7 +28,7 @@
 4. **Create bucket**
 5. Keep *default*
 6. Enter *Bucket name*
-7. Uncheck *Block all public access* - Check *I Aknowledge ....*
+7. Uncheck *Block all public access* - Check *"I Aknowledge ...."*
 8. **Tags**: Help organize for grouping and searching between projects with same **tags**
 9. Add 2 tags: 
 - (Key: application, Value: onyxcoresystem)
@@ -48,4 +50,21 @@
   ]
 }
 ```
+14. **Save changes**
+
+## Create Access Key (For instance permission to connect to bucket)
+1. Click *Account menu* (username) at top right of page
+2. Select **Security credentials**
+3. *Access keys* section > **Create access key**
+4. Select *Application running on an AWS compute service*
+5. Check *"I understand the above recommendation ..."*
+6. **Next**
+7. Enter *Description tag value - Optional*
+8. **Create access key** 
+9. Copy / Save *Access key & Secret access key* somewhere safe, or *download .csv*
+10. **Done**
+
+#### Skip RDS Database 'for now'
+
+
 
