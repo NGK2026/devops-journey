@@ -20,7 +20,7 @@ provider "aws" {
 ```tf
 provider "aws" {
   region = "eu-north-1"
-  access_key = "--snip--"
-  secret_key = "--snip--"
+  access_key = "--snip--" # not recommended !
+  secret_key = "--snip--" # this is not safe !
 }
 ```
