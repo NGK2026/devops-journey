@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx Core System | AI-Powered Business Intelligence</title>
+    <meta name="description" content="Onyx Core System builds AI-powered automation and trade intelligence infrastructure for international businesses. Cairo, Egypt.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0f0f0f;
+            --ink-light: #3a3a3a;
+            --ink-muted: #8a8a8a;
+            --paper: #fafaf8;
+            --paper-warm: #f4f3ef;
+            --gold: #c9a84c;
+            --gold-light: #e8d5a3;
+            --blue: #1a3a5c;
+            --blue-mid: #2a5298;
+            --rule: rgba(15,15,15,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        /* ── NOISE TEXTURE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.4;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        .serif { font-family: 'Cormorant Garamond', serif; }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1.5rem 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(250, 250, 248, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-logo span { color: var(--gold); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--ink); }
+
+        .nav-cta {
+            background: var(--ink) !important;
+            color: var(--paper) !important;
+            padding: 0.6rem 1.4rem !important;
+            letter-spacing: 0.1em !important;
+            transition: background 0.2s !important;
+        }
+
+        .nav-cta:hover { background: var(--blue) !important; color: white !important; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-line {
+            position: absolute;
+            right: -5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55%;
+            height: 55%;
+            border: 1px solid var(--rule);
+            border-radius: 50%;
+            animation: slowRotate 40s linear infinite;
+        }
+
+        .hero-bg-line:nth-child(2) {
+            width: 40%;
+            height: 40%;
+            animation-duration: 28s;
+            animation-direction: reverse;
+            border-color: rgba(201, 168, 76, 0.1);
+        }
+
+        @keyframes slowRotate {
+            from { transform: translateY(-50%) rotate(0deg); }
+            to { transform: translateY(-50%) rotate(360deg); }
+        }
+
+        .hero-label {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 8vw, 7.5rem);
+            font-weight: 300;
+            line-height: 1.0;
+            letter-spacing: -0.02em;
+            max-width: 14ch;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--ink-muted);
+            max-width: 45ch;
+            line-height: 1.75;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .hero-actions {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.8s;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--paper);
+            padding: 1rem 2.5rem;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.25s;
+            border: 1px solid var(--ink);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        .btn-secondary {
+            color: var(--ink-muted);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .btn-secondary:hover { color: var(--ink); }
+        .btn-secondary::after { content: '→'; transition: transform 0.2s; }
+        .btn-secondary:hover::after { transform: translateX(4px); }
+
+        .hero-stats {
+            margin-top: 5rem;
+            display: flex;
+            gap: 4rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 1s;
+        }
+
+        .stat-item {}
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.68rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--ink-muted);
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── DIVIDER ── */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--rule);
+            margin: 0 4rem;
+            width: calc(100% - 8rem);
+        }
+
+        /* ── MARQUEE ── */
+        .marquee-wrap {
+            overflow: hidden;
+            border-top: 1px solid var(--rule);
+            border-bottom: 1px solid var(--rule);
+            padding: 1.2rem 0;
+            background: var(--paper-warm);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 3rem;
+            animation: marquee 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            flex-shrink: 0;
+        }
+
+        .marquee-dot {
+            color: var(--gold);
+            margin-right: 3rem;
+        }
+
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ── SECTIONS ── */
+        section { padding: 8rem 4rem; }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            max-width: 18ch;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--ink-muted);
+            line-height: 1.8;
+            max-width: 50ch;
+        }
+
+        /* ── ABOUT SPLIT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 480px;
+        }
+
+        .about-box {
+            position: absolute;
+            background: var(--paper-warm);
+            border: 1px solid var(--rule);
+        }
+
+        .about-box-main {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-box-accent {
+            width: 40%;
+            height: 40%;
+            bottom: -5%;
+            right: -5%;
+            background: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .about-box-accent p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--paper);
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .big-letter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 12rem;
+            font-weight: 300;
+            color: var(--rule);
+            line-height: 1;
+            user-select: none;
+        }
+
+        /* ── SERVICES ── */
+        .services-section { background: var(--ink); color: var(--paper); }
+        .services-section .section-label { color: var(--gold); }
+        .services-section .section-title { color: var(--paper); }
+        .services-section .section-body { color: rgba(255,255,255,0.5); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin-top: 5rem;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .service-card {
+            padding: 3rem;
+            border-right: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s;
+            cursor: default;
+        }
+
+        .service-card:hover { background: rgba(255,255,255,0.03); }
+        .service-card:last-child { border-right: none; }
+
+        .service-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            display: block;
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .service-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.45);
+            line-height: 1.75;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            transition: gap 0.2s;
+        }
+
+        .service-link:hover { gap: 0.8rem; }
+
+        /* ── TECH STACK ── */
+        .tech-section { background: var(--paper-warm); }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--rule);
+            margin-top: 4rem;
+            border: 1px solid var(--rule);
+        }
+
+        .tech-item {
+            background: var(--paper-warm);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .tech-item:hover { background: white; }
+
+        .tech-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+
+        .tech-desc {
+            font-size: 0.72rem;
+            color: var(--ink-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* ── CONTACT ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+        }
+
+        .form-input, .form-textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--rule);
+            padding: 0.75rem 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.2s;
+            width: 100%;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-bottom-color: var(--ink);
+        }
+
+        .form-textarea { resize: none; height: 100px; }
+
+        .contact-info { padding-top: 1rem; }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .contact-detail-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .contact-detail-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--ink);
+        }
+
+        .contact-detail-value a {
+            color: var(--ink);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-detail-value a:hover { color: var(--blue-mid); }
+
+        /* ── NETWORK LINKS ── */
+        .domain-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .domain-pill {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--rule);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--ink-muted);
+            text-decoration: none;
+            transition: all 0.2s;
+            background: var(--paper-warm);
+        }
+
+        .domain-pill:hover {
+            border-color: var(--ink);
+            color: var(--ink);
+            background: white;
+        }
+
+        .domain-pill.active {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.3);
+            padding: 3rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-logo span { color: var(--gold); }
+
+        .footer-right {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: right;
+            line-height: 1.8;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 1.2rem 1.5rem; }
+            .nav-links { display: none; }
+            .hero { padding: 7rem 1.5rem 3rem; }
+            section { padding: 5rem 1.5rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-visual { display: none; }
+            .hero-stats { gap: 2rem; flex-wrap: wrap; }
+            footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .footer-right { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="https://onyxcoresystem.com" class="nav-logo">Onyx <span>Core</span> System</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#technology">Technology</a></li>
+            <li><a href="https://onyxcoretrade.com">Trade Desk</a></li>
+            <li><a href="https://onyxcore.app">App</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg-line"></div>
+        <div class="hero-bg-line"></div>
+
+        <p class="hero-label">Cairo, Egypt — Est. 2026</p>
+
+        <h1 class="hero-title serif">
+            Intelligence That <em>Moves</em> Business
+        </h1>
+
+        <p class="hero-subtitle">
+            Onyx Core System builds AI-powered automation and trade intelligence infrastructure. We connect businesses to global markets and drive operational excellence through autonomous technology.
+        </p>
+
+        <div class="hero-actions">
+            <a href="#services" class="btn-primary">Explore Services</a>
+            <a href="#contact" class="btn-secondary">Get in Touch</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-number serif">3+</div>
+                <div class="stat-label">AI Systems Live</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number serif">Global</div>
+                <div class="stat-label">Market Reach</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number serif">24/7</div>
+                <div class="stat-label">Autonomous Operations</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
+        <div class="marquee-track">
+            <span class="marquee-item">Trade Intelligence <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">AI Automation <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">International Commodities <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Business Intelligence <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">WhatsApp Commerce <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Market Analytics <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Autonomous Systems <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Global B2B Networks <span class="marquee-dot">◆</span></span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee-item">Trade Intelligence <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">AI Automation <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">International Commodities <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Business Intelligence <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">WhatsApp Commerce <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Market Analytics <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Autonomous Systems <span class="marquee-dot">◆</span></span>
+            <span class="marquee-item">Global B2B Networks <span class="marquee-dot">◆</span></span>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-grid">
+            <div class="about-visual">
+                <div class="about-box about-box-main">
+                    <div class="big-letter serif">O</div>
+                </div>
+                <div class="about-box about-box-accent">
+                    <p>"Precision intelligence for a borderless economy."</p>
+                </div>
+            </div>
+            <div>
+                <p class="section-label">About Onyx Core</p>
+                <h2 class="section-title serif">AI Infrastructure Built for the Real World</h2>
+                <p class="section-body">
+                    Founded in Cairo, Onyx Core System is an AI infrastructure company. We develop autonomous AI systems that turn data into decisions — across commerce, trade, logistics, and beyond. Our infrastructure is built to adapt to any industry where intelligence creates operational advantage.
+                </p>
+                <p class="section-body" style="margin-top:1.5rem;">
+                    Our platform is built on Google Cloud's Vertex AI, enabling machine learning models that continuously learn from global market data, price movements, and trade patterns to give our operations a decisive analytical edge.
+                </p>
+                <div class="domain-links" style="margin-top:2.5rem;">
+                    <a href="https://onyxcoresystem.com" class="domain-pill active">onyxcoresystem.com</a>
+                    <a href="https://onyxcoretrade.com" class="domain-pill">onyxcoretrade.com</a>
+                    <a href="https://onyxcore.app" class="domain-pill">onyxcore.app</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services-section">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title serif" style="color:white;">Three Pillars of Intelligence</h2>
+        <p class="section-body">
+            Every system we build serves a single purpose: turning data into decisive action — faster, smarter, and at global scale.
+        </p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-num">01</span>
+                <h3 class="service-title">Trade Intelligence Platform</h3>
+                <p class="service-desc">
+                    An autonomous market scanning engine that monitors global commodity prices, identifies arbitrage opportunities, qualifies international buyers, and manages the full trade pipeline from lead to shipment. Operating across physical commodities worldwide.
+                </p>
+                <a href="https://onyxcoretrade.com" class="service-link">Explore Trade Desk →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-num">02</span>
+                <h3 class="service-title">AI Commerce Automation</h3>
+                <p class="service-desc">
+                    Intelligent WhatsApp-based commerce bots powered by Google Vertex AI. Handles customer interaction, order qualification, lead scoring, multilingual communication, and CRM integration — autonomously, around the clock.
+                </p>
+                <a href="https://onyxcore.app" class="service-link">View Platform →</a>
+            </div>
+            <div class="service-card">
+                <span class="service-num">03</span>
+                <h3 class="service-title">Business Intelligence & Analytics</h3>
+                <p class="service-desc">
+                    Real-time decision dashboards that synthesize market data, deal pipelines, pricing analytics, logistics intelligence, and performance metrics into a single command interface for operational clarity at every level.
+                </p>
+                <a href="#contact" class="service-link">Request Demo →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY -->
+    <section id="technology" class="tech-section">
+        <p class="section-label">Infrastructure</p>
+        <h2 class="section-title serif">Built on World-Class Technology</h2>
+        <p class="section-body">
+            Every component of the Onyx Core System is engineered for reliability, scalability, and performance — deployed on Google Cloud infrastructure with enterprise-grade security.
+        </p>
+
+        <div class="tech-grid">
+            <div class="tech-item">
+                <div class="tech-name serif">Google Vertex AI</div>
+                <div class="tech-desc">Machine Learning Core</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">Cloud Run</div>
+                <div class="tech-desc">Serverless Deployment</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">PostgreSQL</div>
+                <div class="tech-desc">Enterprise Database</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">Redis</div>
+                <div class="tech-desc">Real-Time Cache</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">OpenClaw Engine</div>
+                <div class="tech-desc">Automation Framework</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">WhatsApp Business API</div>
+                <div class="tech-desc">Commerce Interface</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">BigQuery</div>
+                <div class="tech-desc">Market Data Analytics</div>
+            </div>
+            <div class="tech-item">
+                <div class="tech-name serif">Nginx + Gunicorn</div>
+                <div class="tech-desc">Production Server</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-grid">
+            <div>
+                <p class="section-label">Get In Touch</p>
+                <h2 class="section-title serif">Let's Build Something Significant</h2>
+                <p class="section-body">
+                    Whether you are a business seeking AI automation, a commodity buyer or seller looking for a reliable international partner, or an investor — we welcome the conversation.
+                </p>
+
+                <div class="contact-info" style="margin-top:3rem;">
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">General Inquiries</span>
+                        <div class="contact-detail-value">
+                            <a href="mailto:contact@onyxcoresystem.com">contact@onyxcoresystem.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Trade & Commodities</span>
+                        <div class="contact-detail-value">
+                            <a href="mailto:contact@onyxcoretrade.com">contact@onyxcoretrade.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-detail-label">Support</span>
+                        <div class="contact-detail-value">
+                            <a href="mailto:support@onyxcoresystem.com">support@onyxcoresystem.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-detail" style="border:none; margin:0; padding:0;">
+                        <span class="contact-detail-label">Location</span>
+                        <div class="contact-detail-value">Cairo, Egypt — Operating Globally</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Company</label>
+                    <input type="text" class="form-input" placeholder="Your company or organization">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Inquiry Type</label>
+                    <select class="form-input" style="cursor:pointer;">
+                        <option value="">Select a topic</option>
+                        <option>Trade & Commodity Inquiry</option>
+                        <option>AI Automation Services</option>
+                        <option>Partnership Opportunity</option>
+                        <option>General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" placeholder="Tell us about your needs..."></textarea>
+                </div>
+                <a href="mailto:contact@onyxcoresystem.com" class="btn-primary" style="text-align:center; margin-top:0.5rem;">Send Message</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo serif">Onyx <span>Core</span> System</div>
+        <div class="footer-right">
+            <div>© 2026 Onyx Core System — Cairo, Egypt</div>
+            <div style="margin-top:0.3rem;">
+                <a href="https://onyxcoretrade.com" style="color:rgba(255,255,255,0.3); text-decoration:none; margin-right:1.5rem;">Trade Desk</a>
+                <a href="https://onyxcore.app" style="color:rgba(255,255,255,0.3); text-decoration:none; margin-right:1.5rem;">App Platform</a>
+                <a href="mailto:legal@onyxcoresystem.com" style="color:rgba(255,255,255,0.3); text-decoration:none;">Legal</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
