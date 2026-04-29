@@ -1,3 +1,4 @@
+1. 
 ```sh
 # initialize terraform main.tf
 terraform init
@@ -7,10 +8,8 @@ Initializing provider plugins...
 - Finding latest version of hashicorp/aws...
 - Installing hashicorp/aws v6.42.0...
 - Installed hashicorp/aws v6.42.0 (signed by HashiCorp)
-Terraform has created a lock file .terraform.lock.hcl to record the provider
-selections it made above. Include this file in your version control repository
-so that Terraform can guarantee to make the same selections by default when
-you run "terraform init" in the future.
+
+--snip--
 
 Terraform has been successfully initialized!
 
@@ -18,7 +17,83 @@ You may now begin working with Terraform. Try running "terraform plan" to see
 any changes that are required for your infrastructure. All Terraform commands
 should now work.
 
-If you ever set or change modules or backend configuration for Terraform,
-rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.
+--snip--
+```
+
+2. 
+```sh
+# check the execution plan for main.tf
+terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be created
+  + resource "aws_instance" "my-server" {
+      + ami                                  = "ami-0a0823e4ea064404d"
+      + arn                                  = (known after apply)
+      --snip--
+      + instance_type                        = "t3.micro"
+      --snip--
+      + public_ip                            = (known after apply)
+      + region                               = "eu-north-1"
+      + secondary_private_ips                = (known after apply)
+      --snip--
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+      --snip--
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions
+if you run "terraform apply" now.
+
+```
+
+3. 
+```sh
+# apply the plan proposed for main.tf
+terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be created
+  + resource "aws_instance" "my-server" {
+      + ami                                  = "ami-0a0823e4ea064404d"
+     --snip--
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+      --snip--
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_instance.my-server: Creating...
+aws_instance.my-server: Still creating... [00m10s elapsed]
+aws_instance.my-server: Creation complete after 14s [id=i-0e5bde8f0645ec361]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
 ```
