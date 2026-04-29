@@ -66,5 +66,14 @@
 
 ### Skip RDS Database *for now*
 
+## Connect to EC2 instance
+1. AWS *Dashboard*
+2. View all services
+3. **EC2**
+4. **View dashboard**
+5. **Instances (running)**
+6. Select instance and click **Connect**
+7. **Connect** again
+8. *Terminal* launches in new web browser tab
 
 
