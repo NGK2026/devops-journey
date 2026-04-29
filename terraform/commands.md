@@ -134,3 +134,13 @@ Saved the plan to: myserver.tfplan
 To perform exactly these actions, run the following command to apply:
     terraform apply "myserver.tfplan"
 ```
+5. Apply tags from saved file
+```sh
+terraform apply "myserver.tfplan"
+
+aws_instance.my-server: Modifying... [id=i-0e5bde8f0645ec361]
+aws_instance.my-server: Modifications complete after 2s [id=i-0e5bde8f0645ec361]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+
+```
