@@ -97,7 +97,40 @@ aws_instance.my-server: Creation complete after 14s [id=i-0e5bde8f0645ec361]
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 ```
-4. Tags were added to the resource
+4. Tags were added to the resource, and used -out to save plan
 ```sh
+# plan again after adding tag to resource
+# and save plan to a file -out=myserver.tfplan
+terraform plan -out=myserver.tfplan
 
+aws_instance.my-server: Refreshing state... [id=i-0e5bde8f0645ec361]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be updated in-place
+  ~ resource "aws_instance" "my-server" {
+        id                                   = "i-0e5bde8f0645ec361"
+      ~ tags                                 = {
+          + "Name" = "HelloWorld"
+        }
+      ~ tags_all                             = {
+          + "Name" = "HelloWorld"
+        }
+        # (39 unchanged attributes hidden)
+
+        # (9 unchanged blocks hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: myserver.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "myserver.tfplan"
 ```
