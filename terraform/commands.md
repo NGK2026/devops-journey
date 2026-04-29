@@ -1,6 +1,10 @@
-1. use provider AWS, region us-east-1
 ```tf
+# set provider
 provider "aws" {
   region = "eu-north-1"
+  access_key = "--snip--"
+  secret_key = "--snip--"
 }
+
+
 ```

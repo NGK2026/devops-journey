@@ -32,3 +32,4 @@ resource "<provider>_<resource_type>" "name" {
   key2 = "another value"
 }
 ```
+8. Deploy EC2 instance
