@@ -2,7 +2,7 @@
 1. AWS *Dashboard*
 2. View all services
 3. **EC2**
-4. *Launch* instance
+4. **Launch instance**
 5. Launch without walkthrough
 6. Enter instance *Name*
 7. Select Application and OS Image: default **'Amazon Linux'** - *(Free tier eligible)*
@@ -20,3 +20,32 @@
 19. **Save rules**
 
 ## Create S3 - (Scalable Storage in the Cloud)
+1. AWS *Dashboard*
+2. View all services
+3. **S3**
+4. **Create bucket**
+5. Keep *default*
+6. Enter *Bucket name*
+7. Uncheck *Block all public access* - Check *I Aknowledge ....*
+8. **Tags**: Help organize for grouping and searching between projects with same **tags**
+9. Add 2 tags: 
+- (Key: application, Value: onyxcoresystem)
+- (Key: environment, Value: service)
+10. Everything else leave as *default*
+11. **Create bucket**
+12. Open bucket > Open *Permissions* tab > *Bucket policy* > Click **Edit**
+13. To allow *read* public access, add:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::onyx-core-system/*"
+    }
+  ]
+}
+```
+
