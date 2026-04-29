@@ -64,7 +64,7 @@
 9. Copy / Save *Access key & Secret access key* somewhere safe, or *download .csv*
 10. **Done**
 
-## Skip RDS Database 'for now'
+## Skip RDS Database *for now*
 
 
 
