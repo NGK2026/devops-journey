@@ -123,3 +123,12 @@ Zone 1 - eu-north-1a
 Zone 2 - eu-north-1b
 Zone 3 - eu-north-1c
 ```
+## Create Route table association
+- https://registry.terraform.io/providers/-/aws/latest/docs/resources/route_table_association
+```tf
+# to connect route table with subnet
+resource "aws_route_table_association" "example" {
+  subnet_id      = aws_subnet.example.id
+  route_table_id = aws_route_table.example.id
+}
+```
