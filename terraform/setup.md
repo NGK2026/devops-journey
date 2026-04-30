@@ -211,6 +211,7 @@ resource "aws_eip" "one" {
 }
 ```
 # Terraform Variables
+- https://developer.hashicorp.com/terraform/language/values/variables
 ## Create Variable
 ```tf
 variable "subnet_prefix" {
