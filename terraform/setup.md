@@ -206,3 +206,7 @@ aws_subnet.subnet-1: Creation complete after 1s [id=subnet-0c31b72d21c7a330c]
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
+### Use Auto approve to skip 'yes' confirmation
+```sh
+terraform apply --auto-approve
+```
