@@ -42,7 +42,7 @@ resource "aws_subnet" "subnet-1" {
   cidr_block = "10.0.1.0/24"
   availability_zone = "eu-north-1a"
   tags = {
-    Name = "Main"
+    Name = "prod-subnet"
   }
 }
 # 5- Associate subnet with Route Table
