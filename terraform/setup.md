@@ -44,19 +44,36 @@ resource "<provider>_<resource_type>" "name" {
 ```
 ## Create EC2 instance:
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
+##### Basic
 ```tf
 resource "aws_instance" "my-server" {
   ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
   instance_type = "t3.micro"
 }
 ```
-## Add Tags!
+##### Less Basic
+- Availability Zone, Key Name, Primary Network Interface, User Data
 ```tf
-resource "aws_instance" "my-server" {
+resource "aws_instance" "example" {
   ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
   instance_type = "t3.micro"
+  availability_zone = " "
+  key_name = " "
+
+  # network interface inside instance is depreciated 
+  # reference with primary_netowrk_interface instead
+  primary_network_interface {
+    network_interface_id = aws_network_interface-example.id
+  }
+
+  # runs script when launching instance
+  user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update -y
+                # add more bash commands
+                EOF
   tags = {
-    Name = "HelloWorld"
+    Name = ""
   }
 }
 ```
