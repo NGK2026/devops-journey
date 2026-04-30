@@ -27,7 +27,7 @@ resource "aws_route_table" "prod-route-table" {
   }
 
   route {
-    ipv6_cidr_block        = "::/0" # default gateway route
+    ipv6_cidr_block = "::/0" # default gateway route
     gateway_id = aws_internet_gateway.gw.id
   }
 
@@ -134,9 +134,12 @@ resource "aws_instance" "web-server-instance" {
   # the echo is optional, it should appear when index is accessed
   user_data = <<-EOF
                 #!/bin/bash
-                sudo apt update -y
-                sudo apt install apache2 -y
-                sudo systemctl start apache2
+                sudo dnf update -y
+                sudo dnf install httpd -y
+                sudo systemctl start httpd
+                sudo dnf install git
+                git clone https://github.com/NGK2026/onyxcore-website.git
+                cp onyxcore-website/*.html /var/www/html/
                 sudo bash -c 'echo your webserver > /var/www/html/index.html'
                 EOF
   tags = {
