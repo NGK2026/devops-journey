@@ -59,7 +59,7 @@ resource "aws_instance" "my-server" {
   }
 }
 ```
-## Create VPC (Isolated cloud resource): 
+## Create VPC (Isolated cloud resource):
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
 ```tf
 resource "aws_vpc" "main" {
