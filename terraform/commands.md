@@ -214,3 +214,9 @@ Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```sh
 terraform apply --auto-approve
 ```
+### Connect with SSH
+```sh
+# change directory to where the example.pem is located
+chmod 400 "example.pem"
+ssh -i "example.pem" ec2-user@13.61.210.62
+```
