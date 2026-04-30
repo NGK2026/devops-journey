@@ -85,6 +85,6 @@ Documentation of my devops path
 7. (2:03:46) Terraform Variables
 ##### TODO:
 - Create a /terraform folder in repo with:
-  * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
-  * /setup.md — steps to install Terraform, configure AWS provider
+  * /commands.md — every CLI command used, with a one line explanation
+  * /setup.md — steps to install Terraform, configure AWS provider, init/plan/apply/destroy
   * /main.tf - Terraform file that provisions EC2 and S3
