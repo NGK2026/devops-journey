@@ -130,8 +130,16 @@ resource "aws_instance" "web-server-instance" {
   primary_network_interface {
     network_interface_id = aws_network_interface-web-server-nic.id
   }
-
+  # run this bash after instance created
+  # the echo is optional, it should appear when index is accessed
+  user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update -y
+                sudo apt install apache2 -y
+                sudo systemctl start apache2
+                sudo bash -c 'echo your webserver > /var/www/html/index.html'
+                EOF
   tags = {
-    Name = "HelloWorld"
+    Name = "web-server"
   }
 }
