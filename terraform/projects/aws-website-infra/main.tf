@@ -99,5 +99,16 @@ resource "aws_security_group" "allow_web" {
 }
 
 # 7- Create a network interface with an ip in the subnet that was created in step 4
+resource "aws_network_interface" "test" {
+  subnet_id       = aws_subnet.public_a.id
+  private_ips     = ["10.0.0.50"]
+  security_groups = [aws_security_group.web.id]
+
+  attachment {
+    instance     = aws_instance.test.id
+    device_index = 1
+  }
+}
+
 # 8- Assign an elastic IP to the network interface created in step 7
 # 9- Create Amazon Linux server and install/enable apache2
