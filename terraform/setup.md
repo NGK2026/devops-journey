@@ -1,7 +1,9 @@
 1. provider, resource added to main.tf
 ```sh
 # initialize terraform main.tf
-# creates .terraform folder/ with licence.txt and necessary provider plugins
+# creates:
+# .terraform folder includes licence.txt and necessary provider plugins
+# terraform.tfstate: JSON - keeps track of everything created
 terraform init
 
 Initializing the backend...
