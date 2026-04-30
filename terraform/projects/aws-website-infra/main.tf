@@ -28,7 +28,7 @@ resource "aws_route_table" "prod-route-table" {
 
   route {
     ipv6_cidr_block        = "::/0" # default gateway route
-    egress_only_gateway_id = aws_internet_gateway.gw.id
+    gateway_id = aws_internet_gateway.gw.id
   }
 
   tags = {
