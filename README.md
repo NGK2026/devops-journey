@@ -60,7 +60,7 @@ Documentation of my devops path
 ## Step-5 AWS Hands On (Core Services)
 #### youtube: AWS Tutorial for Beginners – Kevin Stratvert
 - https://www.youtube.com/watch?v=Nzv-tzU-UAw
-##### TODO:
+##### Done:
 - Launch an EC2 instance, SSH into it from terminal
 - Create an S3 bucket, upload a file via CLI (not console)
 - Create an IAM user with limited permissions
@@ -92,7 +92,7 @@ Documentation of my devops path
   * 8- Assign an elastic IP to the network interface created in step 7
   * 9- Create Amazon Linux server and install/enable apache2
 7. (2:03:46) Terraform Variables
-##### TODO:
+##### Done:
 - Create /terraform folder in repo with:
   * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
   * /setup.md — steps to install Terraform, configure AWS provider
@@ -103,7 +103,7 @@ Documentation of my devops path
 ## Step-7 Docker
 #### youtube: Docker Tutorial for Beginners [FULL COURSE in 3 Hours] - TechWorld with Nana
 - https://www.youtube.com/watch?v=3c-iBn73dDE
-##### TODO:
+##### Done:
 * 1- Tutorial
 * 2- Project
   
