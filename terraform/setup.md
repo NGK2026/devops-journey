@@ -281,7 +281,7 @@ resource "aws_subnet" "subnet-2" {
   cidr_block = var.subnet_prefix[1] # <--- second object in list
   availability_zone = "eu-north-1a"
   tags = {
-    Name = "prod-subnet"
+    Name = "dev-subnet"
   }
 }
 
