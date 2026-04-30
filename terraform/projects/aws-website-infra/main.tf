@@ -110,4 +110,10 @@ resource "aws_network_interface" "web-server-nic" {
 }
 
 # 8- Assign an elastic IP to the network interface created in step 7
+resource "aws_eip" "one" {
+  domain                    = "vpc"
+  network_interface         = aws_network_interface.multi-ip.id
+  associate_with_private_ip = "10.0.0.10"
+}
+
 # 9- Create Amazon Linux server and install/enable apache2
