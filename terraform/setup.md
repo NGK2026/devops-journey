@@ -230,10 +230,19 @@ subnet_prefix = "10.0.200.0/24"
 ```sh
 terraform apply -var-file example.tfvars
 ```
-###### or define default, if user doesn't enter value, terraform will use default
+##### or define default, if user doesn't enter value, terraform will use default
 ```tf
 variable "subnet_prefix" {
   description = "cidr block for the subnet
   default = "10.0.66.0/24"
+}
+```
+##### Using type constraint
+###### constraints user to use specified type, eg: string, number, bool, lists, etc
+- https://developer.hashicorp.com/terraform/language/expressions/types
+```tf
+variable "subnet_prefix" {
+  description = "cidr block for the subnet
+  type = string
 }
 ```
