@@ -116,7 +116,7 @@ resource "aws_eip" "one" {
   associate_with_private_ip = "10.0.1.50"
   /*Note: EIP may require IGW to exist prior to association. 
   Use depends_on to set an explicit dependency on the IGW. */
-  depends_on = [aws_internet_gateway.gw]
+  depends_on = [aws_internet_gateway.gw] # must pass as list
 }
 
 # 9- Create Amazon Linux server and install/enable apache2
@@ -130,7 +130,7 @@ resource "aws_instance" "web-server-instance" {
   primary_network_interface {
     network_interface_id = aws_network_interface-web-server-nic.id
   }
-  # run this bash after instance created
+  # run this script after instance launched
   # the echo is optional, it should appear when index is accessed
   user_data = <<-EOF
                 #!/bin/bash
