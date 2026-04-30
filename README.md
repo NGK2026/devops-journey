@@ -88,3 +88,13 @@ Documentation of my devops path
   * /commands.md — every CLI command used, with a one line explanation
   * /setup.md — steps to install Terraform, configure AWS provider, init/plan/apply/destroy
   * /main.tf - Terraform file that provisions EC2 and S3
+- Practice Project
+  * 1- Create VPC
+  * 2- Create Internet Gateway
+  * 3- Create Custom Route Table
+  * 4- Create Subnet
+  * 5- Associate subnet with Route Table
+  * 6- Create Security Group to allow port 22, 80, 443
+  * 7- Create a network interface with an ip in the subnet that was created in step 4
+  * 8- Assign an elastic IP to the network interface created in step 7
+  * 9- Create Amazon Linux server and install/enable apache2
