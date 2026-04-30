@@ -1,3 +1,9 @@
+## Create EC2 Key pairs
+1. AWS *Dashboard*
+2. View all services
+3. **EC2** > **Network & Security** > **Key Pairs**
+4. **Create key pair** > Give *Name* > *ED25519* > *.pem*
+
 1. provider, resource added to main.tf
 ```sh
 # initialize terraform main.tf
