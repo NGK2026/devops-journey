@@ -55,27 +55,46 @@ resource "aws_route_table_association" "rt-association" {
 # 6- Create Security Group to allow port 22, 80, 443
 resource "aws_security_group" "allow_web" {
   name        = "allow_web_traffic"
-  description = "Allow TLS inbound traffic and all outbound traffic"
-  vpc_id      = aws_vpc.main.id
+  description = "Allow web traffic"
+  vpc_id      = aws_vpc.prod-vpc.id
 
   ingress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "HTTP"
+    from_port        = 80
+    to_port          = 80
+    protocol         = "6" # meaning TCP , 1 is ICMP, 17 UDP, -1 ALL
+    cidr_blocks      = ["0.0.0.0/0"] # any ip can access
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+    ingress {
+    description = "HTTPS"
+    from_port        = 443
+    to_port          = 443
+    protocol         = "6" # meaning TCP , 1 is ICMP, 17 UDP, -1 ALL
+    cidr_blocks      = ["0.0.0.0/0"] # any ip can access
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+    ingress {
+    description = "SSH"
+    from_port        = 22
+    to_port          = 22
+    protocol         = "6" # meaning TCP , 1 is ICMP, 17 UDP, -1 ALL
+    cidr_blocks      = ["0.0.0.0/0"] # any ip can access
     ipv6_cidr_blocks = ["::/0"]
   }
 
   egress {
     from_port        = 0
     to_port          = 0
-    protocol         = "-1"
+    protocol         = "-1" # Allow all protocols
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
 
   tags = {
-    Name = "allow_tls"
+    Name = "allow_web"
   }
 }
 
