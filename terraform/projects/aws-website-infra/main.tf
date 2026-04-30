@@ -53,6 +53,32 @@ resource "aws_route_table_association" "rt-association" {
 }
 
 # 6- Create Security Group to allow port 22, 80, 443
+resource "aws_security_group" "allow_web" {
+  name        = "allow_web_traffic"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
 # 7- Create a network interface with an ip in the subnet that was created in step 4
 # 8- Assign an elastic IP to the network interface created in step 7
 # 9- Create Amazon Linux server and install/enable apache2
