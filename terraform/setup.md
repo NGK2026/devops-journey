@@ -186,3 +186,23 @@ aws_instance.my-server: Destruction complete after 30s
 Destroy complete! Resources: 1 destroyed.
 ```
 ##### NB: If an instance is up, but has been removed from the main.tf, executing 'terraform apply' would destroy that omitted resource from main.tf
+7. Add VPC and Subnet
+```sh
+terraform apply                  
+
+--snip--
+
+Terraform will perform the following actions:
+
+  # aws_subnet.subnet-1 will be created
+  # aws_vpc.my-vpc will be created
+--snip--
+Plan: 2 to add, 0 to change, 0 to destroy.
+--snip--
+aws_vpc.my-vpc: Creating...
+aws_vpc.my-vpc: Creation complete after 2s [id=vpc-063936681f47c2224]
+aws_subnet.subnet-1: Creating...
+aws_subnet.subnet-1: Creation complete after 1s [id=subnet-0c31b72d21c7a330c]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+```
