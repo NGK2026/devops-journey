@@ -90,3 +90,12 @@
 11. Use *Bucket website endpoint*
 12. http://onyx-core-system.s3-website-us-east-1.amazonaws.com/
 
+## Create EC2 Key pairs
+##### Youtube:  Terraform Course - Automate your AWS cloud infrastructure - freeCodeCamp.org
+- https://www.youtube.com/watch?v=SLB_c_ayRMo
+1. AWS *Dashboard*
+2. View all services
+3. **EC2** > **Network & Security** > **Key Pairs**
+4. **Create key pair** > Give *Name* > *ED25519* > *.pem*
+
+
