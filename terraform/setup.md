@@ -284,5 +284,36 @@ resource "aws_subnet" "subnet-2" {
     Name = "dev-subnet"
   }
 }
+```
+##### dictionary objects in list of variable
+###### terraform.tfvars
+```tf
+subnet_prefix = [
+  {cidr_block = "10.0.1.0/24", name = "prod_subnet"},
+  {cidr_block = "10.0.2.0/24", name = "dev_subnet"}
+]
+```
+###### main.tf
+```tf
+variable "subnet_prefix" {
+  description = "cidr block for the subnet"
+}
 
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = var.subnet_prefix[0].cidr_block # <--- first str in first obj
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = var.subnet_prefix[0].name # <--- second str in first obj
+  }
+}
+
+resource "aws_subnet" "subnet-2" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = var.subnet_prefix[1].cidr_block # <--- first str in second obj
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = var.subnet_prefix[1].name # <--- second str in second obj
+  }
+}
 ```
