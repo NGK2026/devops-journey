@@ -175,3 +175,12 @@ resource "aws_network_interface" "test" {
   }
 }
 ```
+## Create Elastic IP 'EIP'
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
+```tf
+resource "aws_eip" "one" {
+  domain                    = "vpc"
+  network_interface         = aws_network_interface.multi-ip.id
+  associate_with_private_ip = "10.0.0.10"
+}
+```
