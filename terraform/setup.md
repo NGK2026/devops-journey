@@ -269,7 +269,7 @@ variable "subnet_prefix" {
 
 resource "aws_subnet" "subnet-1" {
   vpc_id     = aws_vpc.prod-vpc.id
-  cidr_block = var.subnet_prefix[0] # <--- first object in list
+  cidr_block = var.subnet_prefix[0] # <--- first str in list
   availability_zone = "eu-north-1a"
   tags = {
     Name = "prod-subnet"
@@ -278,7 +278,7 @@ resource "aws_subnet" "subnet-1" {
 
 resource "aws_subnet" "subnet-2" {
   vpc_id     = aws_vpc.prod-vpc.id
-  cidr_block = var.subnet_prefix[1] # <--- second object in list
+  cidr_block = var.subnet_prefix[1] # <--- second str in list
   availability_zone = "eu-north-1a"
   tags = {
     Name = "dev-subnet"
