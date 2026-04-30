@@ -97,3 +97,5 @@ Documentation of my devops path
   * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
   * /setup.md — steps to install Terraform, configure AWS provider
   * /main.tf - Terraform file that provisions EC2 and S3
+##### Created Apache Server Address:
+- http://13.61.210.62/
