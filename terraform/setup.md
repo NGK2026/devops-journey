@@ -212,7 +212,7 @@ resource "aws_eip" "one" {
 ```
 # Terraform Variables
 - https://developer.hashicorp.com/terraform/language/values/variables
-## Create Variable
+##### Create Variable
 ```tf
 variable "subnet_prefix" {
   description = "cidr block for the subnet
