@@ -91,7 +91,7 @@ resource "aws_internet_gateway" "gw" {
   }
 }
 ```
-## Create Route table
+## Create Route Table
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 ```tf
 resource "aws_route_table" "example" {
@@ -123,7 +123,7 @@ Zone 1 - eu-north-1a
 Zone 2 - eu-north-1b
 Zone 3 - eu-north-1c
 ```
-## Create Route table association
+## Create Route Table Association
 - https://registry.terraform.io/providers/-/aws/latest/docs/resources/route_table_association
 ```tf
 # to connect route table with subnet
@@ -131,4 +131,34 @@ resource "aws_route_table_association" "example" {
   subnet_id      = aws_subnet.example.id
   route_table_id = aws_route_table.example.id
 }
+```
+## Create Security Group
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+```tf
+resource "aws_security_group" "allow_tls" {
+  name        = "allow_tls"
+  description = "Allow TLS inbound traffic and all outbound traffic"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = {
+    Name = "allow_tls"
+  }
+}
+
 ```
