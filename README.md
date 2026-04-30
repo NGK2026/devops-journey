@@ -93,9 +93,17 @@ Documentation of my devops path
   * 9- Create Amazon Linux server and install/enable apache2
 7. (2:03:46) Terraform Variables
 ##### TODO:
-- Create a /terraform folder in repo with:
+- Create /terraform folder in repo with:
   * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
   * /setup.md — steps to install Terraform, configure AWS provider
   * /main.tf - Terraform file that provisions EC2 and S3
 ##### Created Apache Server Address:
 - http://13.61.210.62/
+
+## Step-7 Docker
+#### youtube: Docker Tutorial for Beginners [FULL COURSE in 3 Hours] - TechWorld with Nana
+- https://www.youtube.com/watch?v=3c-iBn73dDE
+##### TODO:
+* 1- Tutorial
+* 2- Project
+  
