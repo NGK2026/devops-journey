@@ -67,7 +67,7 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 ```
-## Create subnet: 
+## Create Subnet: 
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 ```tf
 # 'vpc_id\ is the reference of the created vpc .id
@@ -80,7 +80,7 @@ resource "aws_subnet" "main" {
   }
 }
 ```
-## Create internet gateway
+## Create Internet gateway
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway.html
 ```tf
 resource "aws_internet_gateway" "gw" {
@@ -88,6 +88,27 @@ resource "aws_internet_gateway" "gw" {
 
   tags = {
     Name = "main"
+  }
+}
+```
+## Create Route table
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
+```tf
+resource "aws_route_table" "example" {
+  vpc_id = aws_vpc.example.id
+
+  route {
+    cidr_block = "10.0.1.0/24"
+    gateway_id = aws_internet_gateway.example.id
+  }
+
+  route {
+    ipv6_cidr_block        = "::/0"
+    egress_only_gateway_id = aws_egress_only_internet_gateway.example.id
+  }
+
+  tags = {
+    Name = "example"
   }
 }
 ```
