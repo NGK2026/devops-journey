@@ -66,7 +66,8 @@ resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 ```
-## Create subnet: - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
+## Create subnet: 
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 ```tf
 # 'vpc_id\ is the reference of the created vpc .id
 resource "aws_subnet" "main" {
