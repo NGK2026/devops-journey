@@ -101,7 +101,7 @@ resource "aws_security_group" "allow_web" {
 # 7- Create a network interface with an ip in the subnet that was created in step 4
 resource "aws_network_interface" "web-server-nic" {
   subnet_id       = aws_subnet.subnet-1.id
-  private_ips     = ["10.0.1.50"]
+  private_ips     = ["10.0.1.50"] # can assign more than 1 ip
   /* In a production environment, engineers often group IPs. For example:
   .10 through .20 for Load Balancers.
   .50 through .100 for Web Servers.
@@ -112,8 +112,8 @@ resource "aws_network_interface" "web-server-nic" {
 # 8- Assign an elastic IP to the network interface created in step 7
 resource "aws_eip" "one" {
   domain                    = "vpc"
-  network_interface         = aws_network_interface.multi-ip.id
-  associate_with_private_ip = "10.0.0.10"
+  network_interface         = aws_network_interface.web-server-nic.id
+  associate_with_private_ip = "10.0.1.50"
 }
 
 # 9- Create Amazon Linux server and install/enable apache2
