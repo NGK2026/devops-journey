@@ -103,7 +103,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 4. Tags were added to the resource, and used -out to save plan
 ```sh
 # plan again after adding tag to resource
-# and save plan to a file -out=myserver.tfplan
+# and save plan to file 'myserver.tfplan'
 terraform plan -out=myserver.tfplan
 
 aws_instance.my-server: Refreshing state... [id=i-0e5bde8f0645ec361]
