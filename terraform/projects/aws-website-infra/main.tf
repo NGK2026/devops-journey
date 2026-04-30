@@ -45,7 +45,13 @@ resource "aws_subnet" "subnet-1" {
     Name = "prod-subnet"
   }
 }
+
 # 5- Associate subnet with Route Table
+resource "aws_route_table_association" "rt-association" {
+  subnet_id      = aws_subnet.subnet-1.id
+  route_table_id = aws_route_table.prod-route-table.id
+}
+
 # 6- Create Security Group to allow port 22, 80, 443
 # 7- Create a network interface with an ip in the subnet that was created in step 4
 # 8- Assign an elastic IP to the network interface created in step 7
