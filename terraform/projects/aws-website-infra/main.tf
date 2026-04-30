@@ -99,15 +99,14 @@ resource "aws_security_group" "allow_web" {
 }
 
 # 7- Create a network interface with an ip in the subnet that was created in step 4
-resource "aws_network_interface" "test" {
-  subnet_id       = aws_subnet.public_a.id
-  private_ips     = ["10.0.0.50"]
-  security_groups = [aws_security_group.web.id]
-
-  attachment {
-    instance     = aws_instance.test.id
-    device_index = 1
-  }
+resource "aws_network_interface" "web-server-nic" {
+  subnet_id       = aws_subnet.subnet-1.id
+  private_ips     = ["10.0.1.50"]
+  /* In a production environment, engineers often group IPs. For example:
+  .10 through .20 for Load Balancers.
+  .50 through .100 for Web Servers.
+  .200+ for Databases.*/
+  security_groups = [aws_security_group.allow_web.id]
 }
 
 # 8- Assign an elastic IP to the network interface created in step 7
