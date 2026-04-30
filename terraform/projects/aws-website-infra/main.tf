@@ -114,6 +114,9 @@ resource "aws_eip" "one" {
   domain                    = "vpc"
   network_interface         = aws_network_interface.web-server-nic.id
   associate_with_private_ip = "10.0.1.50"
+  /*Note: EIP may require IGW to exist prior to association. 
+  Use depends_on to set an explicit dependency on the IGW. */
+  depends_on = [aws_internet_gateway.gw]
 }
 
 # 9- Create Amazon Linux server and install/enable apache2
