@@ -1,52 +1,188 @@
-1. 
+1. provider, resource added to main.tf
 ```sh
-sudo pacman -S terraform
+# initialize terraform main.tf
+terraform init
+
+Initializing the backend...
+Initializing provider plugins...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v6.42.0...
+- Installed hashicorp/aws v6.42.0 (signed by HashiCorp)
+
+--snip--
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+--snip--
 ```
-2. Open VScode > install extension **HashiCorp Terraform**
-3. Create **main.tf**
-4. To use AWS on terraform, get provider code from: https://registry.terraform.io/providers/hashicorp/aws/latest
-```tf
-provider "aws" {
-  # Configuration options
-}
+
+2. 
+```sh
+# check the execution plan for main.tf
+terraform plan
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be created
+  + resource "aws_instance" "my-server" {
+      + ami                                  = "ami-0a0823e4ea064404d"
+      + arn                                  = (known after apply)
+      --snip--
+      + instance_type                        = "t3.micro"
+      --snip--
+      + public_ip                            = (known after apply)
+      + region                               = "eu-north-1"
+      + secondary_private_ips                = (known after apply)
+      --snip--
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+      --snip--
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions
+if you run "terraform apply" now.
+
 ```
-5. Add region:
-```tf
-provider "aws" {
-  region = "eu-north-1"
-}
+
+3. 
+```sh
+# apply the plan proposed for main.tf
+terraform apply
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be created
+  + resource "aws_instance" "my-server" {
+      + ami                                  = "ami-0a0823e4ea064404d"
+     --snip--
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+      --snip--
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_instance.my-server: Creating...
+aws_instance.my-server: Still creating... [00m10s elapsed]
+aws_instance.my-server: Creation complete after 14s [id=i-0e5bde8f0645ec361]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
 ```
-6. Check Authentication and Configuration "AWS" : https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration
-```tf
-provider "aws" {
-  region = "eu-north-1"
-  access_key = "--snip--" # not recommended !
-  secret_key = "--snip--" # this is not safe !
-}
+4. Tags were added to the resource, and used -out to save plan
+```sh
+# plan again after adding tag to resource
+# and save plan to a file -out=myserver.tfplan
+terraform plan -out=myserver.tfplan
+
+aws_instance.my-server: Refreshing state... [id=i-0e5bde8f0645ec361]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be updated in-place
+  ~ resource "aws_instance" "my-server" {
+        id                                   = "i-0e5bde8f0645ec361"
+      ~ tags                                 = {
+          + "Name" = "HelloWorld"
+        }
+      ~ tags_all                             = {
+          + "Name" = "HelloWorld"
+        }
+        # (39 unchanged attributes hidden)
+
+        # (9 unchanged blocks hidden)
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: myserver.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "myserver.tfplan"
 ```
-7. Basic syntax to create resource for provider eg:
-```tf
-resource "<provider>_<resource_type>" "name" {
-  config options...connection 
-  key = "value"
-  key2 = "another value"
-}
+5. Apply tags from saved file
+```sh
+terraform apply "myserver.tfplan"
+
+aws_instance.my-server: Modifying... [id=i-0e5bde8f0645ec361]
+aws_instance.my-server: Modifications complete after 2s [id=i-0e5bde8f0645ec361]
+
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 ```
-8. Create EC2 instance:
-- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
-```tf
-resource "aws_instance" "my-server" {
-  ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
-  instance_type = "t3.micro"
-}
+6. Destroy myserver instance
+```sh
+terraform destroy
+
+aws_instance.my-server: Refreshing state... [id=i-0e5bde8f0645ec361]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with
+the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.my-server will be destroyed
+  - resource "aws_instance" "my-server" {
+      - ami                                  = "ami-0a0823e4ea064404d" -> null
+      - arn                                  = "arn:aws:ec2:eu-north-1:825386256642:instance/i-0e5bde8f0645ec361" -> null
+      --snip--
+      - cpu_options {
+          - core_count            = 1 -> null
+          - threads_per_core      = 2 -> null
+            # (2 unchanged attributes hidden)
+        }
+      --snip--
+        }
+    }
+
+Plan: 0 to add, 0 to change, 1 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+aws_instance.my-server: Destroying... [id=i-0e5bde8f0645ec361]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m10s elapsed]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m20s elapsed]
+aws_instance.my-server: Still destroying... [id=i-0e5bde8f0645ec361, 00m30s elapsed]
+aws_instance.my-server: Destruction complete after 30s
+
+Destroy complete! Resources: 1 destroyed.
 ```
-9. Add Tags!
-```tf
-resource "aws_instance" "my-server" {
-  ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
-  instance_type = "t3.micro"
-  tags = {
-    Name = "HelloWorld"
-  }
-}
-```
+##### NB: If an instance is up, but has been removed from the main.tf, executing 'terraform apply' would destroy that omitted resource from main.tf
