@@ -1,5 +1,5 @@
 ## After provider, resource were added to main.tf
-### init
+### Init
 ```sh
 # initialize terraform main.tf
 # creates:
