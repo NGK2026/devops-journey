@@ -36,7 +36,15 @@ resource "aws_route_table" "prod-route-table" {
   }
 }
 
-# 4- Create Subnet
+# 4- Create Subnet # add availability zone too
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = "Main"
+  }
+}
 # 5- Associate subnet with Route Table
 # 6- Create Security Group to allow port 22, 80, 443
 # 7- Create a network interface with an ip in the subnet that was created in step 4

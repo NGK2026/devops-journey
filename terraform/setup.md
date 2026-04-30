@@ -112,3 +112,14 @@ resource "aws_route_table" "example" {
   }
 }
 ```
+## Availability Zones
+- https://aws.amazon.com/about-aws/global-infrastructure/regions_az/
+```txt
+Europe (Stockholm 'eu-north-1') - availability zones: 3
+
+Meaning:
+
+Zone 1 - eu-north-1a
+Zone 2 - eu-north-1b
+Zone 3 - eu-north-1c
+```
