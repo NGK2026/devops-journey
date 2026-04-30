@@ -229,3 +229,7 @@ and assign the value to the variable
 ```tf
 subnet_prefix = "10.0.200.0/24"
 ```
+```sh
+# if using non default file name
+terraform apply -var-file example.tfvars
+```
