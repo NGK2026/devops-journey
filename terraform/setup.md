@@ -216,20 +216,24 @@ resource "aws_eip" "one" {
 variable "subnet_prefix" {
   description = "cidr block for the subnet
 }
-# if used terraform apply, terraform will prompt for value
 ```
+##### if used terraform apply with the above, terraform will prompt for value
+##### or can define variable value directly in CLI as below
 ```sh
-# or can define variable value directly in CLI
 terraform apply -var "subnet_prefix=10.0.100/24"
 ```
-```txt
-or create file 'terraform.tfvars'
-and assign the value to the variable 
-```
+###### or create file 'terraform.tfvars' and assign the value to the variable 
 ```tf
 subnet_prefix = "10.0.200.0/24"
 ```
+##### if using non default file name
 ```sh
-# if using non default file name
 terraform apply -var-file example.tfvars
+```
+###### or define default, if user doesn't enter value, terraform will use default
+```tf
+variable "subnet_prefix" {
+  description = "cidr block for the subnet
+  default = "10.0.66.0/24"
+}
 ```
