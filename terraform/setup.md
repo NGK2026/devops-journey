@@ -217,6 +217,15 @@ resource "aws_eip" "one" {
 variable "subnet_prefix" {
   description = "cidr block for the subnet
 }
+
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = var.subnet_prefix    # <--- link it!
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = "prod-subnet"
+  }
+}
 ```
 ##### if used terraform apply with the above, terraform will prompt for value
 ##### or can define variable value directly in CLI as below
@@ -246,4 +255,34 @@ variable "subnet_prefix" {
   description = "cidr block for the subnet
   type = string
 }
+```
+##### Using type lists
+###### terraform.tfvars
+```tf
+subnet_prefix = ["10.0.1.0/24", "10.0.2.0/24"]
+```
+###### main.tf
+```tf
+variable "subnet_prefix" {
+  description = "cidr block for the subnet"
+}
+
+resource "aws_subnet" "subnet-1" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = var.subnet_prefix[0] # <--- first object in list
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = "prod-subnet"
+  }
+}
+
+resource "aws_subnet" "subnet-2" {
+  vpc_id     = aws_vpc.prod-vpc.id
+  cidr_block = var.subnet_prefix[1] # <--- second object in list
+  availability_zone = "eu-north-1a"
+  tags = {
+    Name = "prod-subnet"
+  }
+}
+
 ```
