@@ -43,6 +43,7 @@ resource "<provider>_<resource_type>" "name" {
 }
 ```
 ## Create EC2 instance:
+###### Provides the virtualized CPU, RAM, and storage needed to run the operating system
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
 ##### Basic
 ```tf
@@ -78,6 +79,7 @@ resource "aws_instance" "example" {
 }
 ```
 ## Create VPC (Isolated cloud resource):
+###### Provides a private, isolated logical network on the AWS cloud to house all resources
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#example-usage
 ```tf
 resource "aws_vpc" "main" {
@@ -85,6 +87,7 @@ resource "aws_vpc" "main" {
 }
 ```
 ## Create Subnet: 
+###### Isolate a range of IP addresses within the VPC to organize and secure specific resource groups
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 ```tf
 # 'vpc_id\ is the reference of the created vpc .id
@@ -98,6 +101,7 @@ resource "aws_subnet" "main" {
 }
 ```
 ## Create Internet gateway
+###### Acts as a bridge between the VPC and the public internet to allow traffic flow
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway.html
 ```tf
 resource "aws_internet_gateway" "gw" {
@@ -109,6 +113,7 @@ resource "aws_internet_gateway" "gw" {
 }
 ```
 ## Create Route Table
+###### Contains a set of routes that determine where network traffic from the subnet is directed
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
 ```tf
 resource "aws_route_table" "example" {
@@ -141,6 +146,7 @@ Zone 2 - eu-north-1b
 Zone 3 - eu-north-1c
 ```
 ## Create Route Table Association
+###### Explicitly links the subnet to the route table so the subnet knows to send traffic through the Internet Gateway
 - https://registry.terraform.io/providers/-/aws/latest/docs/resources/route_table_association
 ```tf
 # to connect route table with subnet
@@ -150,6 +156,7 @@ resource "aws_route_table_association" "example" {
 }
 ```
 ## Create Security Group
+###### Functions as a virtual firewall to control inbound and outbound traffic at the instance level
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 ```tf
 resource "aws_security_group" "allow_tls" {
@@ -179,6 +186,7 @@ resource "aws_security_group" "allow_tls" {
 }
 ```
 ## Create Network Interface
+###### Provides a logical networking component that represents a primary connection point for the server
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface
 ```tf
 resource "aws_network_interface" "test" {
@@ -193,6 +201,7 @@ resource "aws_network_interface" "test" {
 }
 ```
 ## Create Elastic IP 'EIP'
+###### Grants a static, public IPv4 address that remains constant even if the instance is stopped or restarted
 - https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
 ```tf
 resource "aws_eip" "one" {
