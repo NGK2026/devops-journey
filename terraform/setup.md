@@ -210,3 +210,22 @@ resource "aws_eip" "one" {
   associate_with_private_ip = "10.0.0.10"
 }
 ```
+# Terraform Variables
+## Create Variable
+```tf
+variable "subnet_prefix" {
+  description = "cidr block for the subnet
+}
+# if used terraform apply, terraform will prompt for value
+```
+```sh
+# or can define variable value directly in CLI
+terraform apply -var "subnet_prefix=10.0.100/24"
+```
+```txt
+or create file 'terraform.tfvars'
+and assign the value to the variable 
+```
+```tf
+subnet_prefix = "10.0.200.0/24"
+```
