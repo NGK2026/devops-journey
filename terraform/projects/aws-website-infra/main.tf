@@ -128,7 +128,7 @@ resource "aws_instance" "web-server-instance" {
   # network interface inside instance is depreciated 
   # reference with primary_netowrk_interface instead
   primary_network_interface {
-    network_interface_id = aws_network_interface-web-server-nic.id
+    network_interface_id = aws_network_interface.web-server-nic.id
   }
   # run this script after instance launched
   # install apache2 (httpd) and git
