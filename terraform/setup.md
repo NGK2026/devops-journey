@@ -185,7 +185,7 @@ aws_instance.my-server: Destruction complete after 30s
 
 Destroy complete! Resources: 1 destroyed.
 ```
-##### NB: If an instance is up, but has been removed from the main.tf, executing 'terraform apply' would destroy that omitted resource from main.tf
+### NB: If an instance is up, but has been removed from the main.tf, executing 'terraform apply' would destroy that omitted resource from main.tf
 7. Create VPC and Subnet
 ```sh
 terraform apply                  
