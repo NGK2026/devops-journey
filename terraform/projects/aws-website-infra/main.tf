@@ -131,16 +131,23 @@ resource "aws_instance" "web-server-instance" {
     network_interface_id = aws_network_interface-web-server-nic.id
   }
   # run this script after instance launched
-  # the echo is optional, it should appear when index is accessed
+  # install apache2 (httpd) and git
+  # start and enable apache2 server
+  # clone git repo of static website's .html files in /tmp
+  # clean apache's html folder and copy there the files from /tmp
+  # adjust ownership of files inside /http to root:apache and set them to 640
   user_data = <<-EOF
                 #!/bin/bash
                 sudo dnf update -y
-                sudo dnf install httpd -y
+                sudo dnf install httpd git -y
                 sudo systemctl start httpd
-                sudo dnf install git
+                sudo systemctl enable httpd
+                cd /tmp
                 git clone https://github.com/NGK2026/onyxcore-website.git
-                cp onyxcore-website/*.html /var/www/html/
-                sudo bash -c 'echo your webserver > /var/www/html/index.html'
+                sudo rm -rf /var/www/html/*.html
+                sudo cp /tmp/onyxcore-website/*.html /var/www/html/
+                sudo chown root:apache /var/www/html/*
+                sudo chmod 640 /var/www/html/*.html
                 EOF
   tags = {
     Name = "web-server"
