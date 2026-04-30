@@ -7,13 +7,13 @@ provider "aws" {
 # create instance called my-server with 
 # specific AMI ID of Amazon Linux kernel 6.1 
 # instance type t3.micro
-# resource "aws_instance" "my-server" {
-#   ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
-#   instance_type = "t3.micro"
-#   tags = {
-#     Name = "HelloWorld"
-#   }
-# }
+resource "aws_instance" "my-server" {
+  ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
+  instance_type = "t3.micro"
+  tags = {
+    Name = "HelloWorld"
+  }
+}
 
 # Create VPC, and add Tags 
 resource "aws_vpc" "my-vpc" {
