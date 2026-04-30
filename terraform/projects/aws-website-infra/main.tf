@@ -5,6 +5,10 @@ provider "aws" {
 }
 
 # 1- Create VPC
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+
 # 2- Create Internet Gateway
 # 3- Create Custom Route Table
 # 4- Create Subnet
