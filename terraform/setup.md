@@ -52,7 +52,7 @@ resource "aws_instance" "my-server" {
 }
 ```
 ##### Less Basic
-- Availability Zone, Key Name, Primary Network Interface, User Data
+- Check Docs: Availability Zone, Key Name, Primary Network Interface, User Data
 ```tf
 resource "aws_instance" "example" {
   ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
