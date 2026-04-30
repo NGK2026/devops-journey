@@ -9,13 +9,6 @@
 4. (0:54:55) Referencing Resources
 5. (1:04:47) Terraform Files
 6. (1:09:45) Practice Project
-7. (2:03:46) Terraform Variables
-##### TODO:
-- Create a /terraform folder in repo with:
-  * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
-  * /setup.md — steps to install Terraform, configure AWS provider
-  * /main.tf - Terraform file that provisions EC2 and S3
-- Practice Project
   * 1- Create VPC
   * 2- Create Internet Gateway
   * 3- Create Custom Route Table
@@ -25,3 +18,9 @@
   * 7- Create a network interface with an ip in the subnet that was created in step 4
   * 8- Assign an elastic IP to the network interface created in step 7
   * 9- Create Amazon Linux server and install/enable apache2
+7. (2:03:46) Terraform Variables
+##### TODO:
+- Create a /terraform folder in repo with:
+  * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
+  * /setup.md — steps to install Terraform, configure AWS provider
+  * /main.tf - Terraform file that provisions EC2 and S3
