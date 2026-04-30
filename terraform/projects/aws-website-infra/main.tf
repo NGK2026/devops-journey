@@ -5,17 +5,16 @@ provider "aws" {
 }
 
 # 1- Create VPC
-resource "aws_vpc" "main" {
+resource "aws_vpc" "prod-vpc" {
   cidr_block = "10.0.0.0/16"
+  tags = {
+    Name = "production"
+  }
 }
 
 # 2- Create Internet Gateway
 resource "aws_internet_gateway" "gw" {
-  vpc_id = aws_vpc.main.id
-
-  tags = {
-    Name = "main"
-  }
+  vpc_id = aws_vpc.prod-vpc.id
 }
 
 # 3- Create Custom Route Table
