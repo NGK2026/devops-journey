@@ -80,3 +80,14 @@ resource "aws_subnet" "main" {
   }
 }
 ```
+## Create internet gateway
+- https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway.html
+```tf
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "main"
+  }
+}
+```
