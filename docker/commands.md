@@ -296,6 +296,41 @@ CMD ["node", "server.js"]
 #### 2- docker build 
 ###### -t (tag) name:version locationOfDockerFile
 ```sh
-docker build -t my-app:1.0 .
+╰─❯ docker build -t my-app:1.0 .
+
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  12.45MB
+Step 1/5 : FROM node:22-slim
+22-slim: Pulling from library/node
+--snip--
+Status: Downloaded newer image for node:22-slim
+ ---> d415caac2f1f
+Step 2/5 : ENV MONGO_DB_USERNAME=admin     MONGO_DB_PASSWORD=password
+--snip--
+Step 3/5 : WORKDIR /home/app
+--snip--
+Step 4/5 : COPY ./app /home/app
+ ---> 6ba9cde12c5b
+Step 5/5 : CMD ["node", "server.js"]
+--snip--
+Successfully built 289dd397c7e1
+Successfully tagged my-app:1.0
+```
+#### build with buildkit
+```text
+**BuildKit** is the backend engine that replaced the old way Docker used to build images.
+    **Speed**: It can run independent build steps in parallel.
+    **Caching**: It has much smarter caching layers (great for your trade intelligence scripts).
+    **Secrets**: It allows you to use secrets (like API keys) during build time 
+    without leaving them in the final image layers.
+```
+```sh
+╰─❯ sudo pacman -Syu docker-buildx
+╰─❯ export DOCKER_BUILDKIT=1
+╰─❯ source ~/.zshrc
+╰─❯ docker build -t my-app:1.0 .
 ```
 
