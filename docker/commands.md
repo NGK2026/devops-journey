@@ -337,4 +337,9 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ╰─❯ source ~/.zshrc
 ╰─❯ docker build -t my-app:1.0 .
 ```
+#### delete docker image
+###### -rm (remove) -i (image)
+```sh
+╰─❯ docker rmi imageID # or name
+```
 
