@@ -24,6 +24,7 @@ docker run -it archlinux
 [root@38ff111ce364 /]# 
 ```
 #### view docker running process
+###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
 ```sh
 docker ps
 
@@ -32,7 +33,6 @@ CONTAINER ID   IMAGE       COMMAND           CREATED              STATUS        
 
 ```
 #### view docker processes including those that have exited -a (all)
-###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
 ```sh
 docker ps -a
 
