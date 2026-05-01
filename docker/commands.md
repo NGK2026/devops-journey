@@ -254,9 +254,9 @@ immediate 139 segmentation fault.
 # creates network automatically
 ╰─❯ docker-compose -f mongo.yaml up -d
 [+] up 3/3
- ✔ Network app_default           Created                                                                                                           0.0s
- ✔ Container app-mongo-1         Created                                                                                                           0.1s
- ✔ Container app-mongo-express-1 Created                                                                                                           0.0s
+ ✔ Network app_default           Created                                                                                                           
+ ✔ Container app-mongo-1         Created                                                                                                           
+ ✔ Container app-mongo-express-1 Created                                                                                                           
 Attaching to mongo-1, mongo-express-1
 --snip--
 # mongo-1 -snip- "NETWORK",-snip- "ctx":"listener","msg":"Connection accepted"-snip-
@@ -273,5 +273,9 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS  
 ```sh
 # also removes the created network
 ╰─❯ docker-compose -f mongo.yaml down
+[+] down 3/3
+ ✔ Container app-mongo-express-1 Removed                                                                                                           
+ ✔ Container app-mongo-1         Removed                                                                                                           
+ ✔ Network app_default           Removed     
 ```
 
