@@ -9,7 +9,7 @@
 #### pull and run in 1 command
 ###### version is optional like previous commands
 ```sh
-docker run nameOfNewImage:version
+╰─❯ docker run nameOfNewImage:version
 ```
 #### view current images on disk
 ```sh
@@ -73,4 +73,23 @@ cbe9bb0b4ab0
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
 cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   6 minutes ago    Up 2 seconds    6379/tcp   hardcore_chandrasekhar
 38ff111ce364   archlinux   "/usr/bin/bash"          16 minutes ago   Up 16 minutes              flamboyant_mcnulty
+```
+#### bind different host port to container port
+###### if running multiple containers with same port
+```sh
+╰─❯ docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS      NAMES
+aa0be3d8cf9d   redis:8.4.2   "docker-entrypoint.s…"   4 seconds ago    Up 3 seconds    6379/tcp   silly_wescoff
+cbe9bb0b4ab0   redis         "docker-entrypoint.s…"   14 minutes ago   Up 7 minutes    6379/tcp   hardcore_chandrasekhar
+
+╰─❯ docker stop aa0be3d8cf9d
+aa0be3d8cf9d
+
+# -p'hostport':'container default port' 
+# can add -d to run detached
+╰─❯ docker run -d -p6000:6379 redis:8.4.2
+
+╰─❯ docker ps
+1a482cbac104   redis:8.4.2   "docker-entrypoint.s…"   2 seconds ago    Up 2 seconds    0.0.0.0:6000->6379/tcp, [::]:6000->6379/tcp   jolly_bose
+cbe9bb0b4ab0   redis         "docker-entrypoint.s…"   22 minutes ago   Up 16 minutes   6379/tcp                                      hardcore_chandrasekhar
 ```
