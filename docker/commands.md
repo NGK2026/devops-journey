@@ -1,12 +1,12 @@
-### pull image from hub.docker.com (pulls latest version)
+#### pull image from hub.docker.com (pulls latest version)
 ```sh 
 docker pull redis
 ```
-##### pull specific image version
+#### pull specific image version
 ```sh
 docker pull redis:8.6.2
 ```
-##### view current images on disk
+#### view current images on disk
 ```sh
 docker images
 ```
