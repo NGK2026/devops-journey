@@ -117,9 +117,16 @@ cbe9bb0b4ab0
 ╰─❯ docker logs containerName
 ```
 #### get terminal of detached container
+###### -i (interactive) -t (terminal)
 ```sh
 ╰─❯ docker ps                                 
 CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                                         NAMES
 7cfdb17fc5bd   archlinux     "/usr/bin/bash"          43 seconds ago   Up 42 seconds                                                 arch-late
 
+# use container ID
+╰─❯ docker exec -it 7cfdb17fc5bd /bin/bash
+[root@7cfdb17fc5bd /]# 
+
+# or use name
+╰─❯ docker exec -it arch-late /bin/bash
 ```
