@@ -4,7 +4,7 @@ docker pull redis
 ```
 #### pull specific image version
 ```sh
-docker pull redis:8.6.2
+docker pull redis:8.4.2
 ```
 #### view current images on disk
 ```sh
