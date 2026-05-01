@@ -8,4 +8,4 @@ WORKDIR /home/app
 
 COPY ./app /home/app
 
-CMD ["node", "server.js"]
+CMD ["node", "/home/app/server.js"]
