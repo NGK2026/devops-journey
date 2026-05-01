@@ -1,2 +1,9 @@
-# Ignore specific test file
+# Dependencies
+node_modules/
+
+# Local configuration/sensitive files
 main1.tf
+.env
+
+# Logs
+npm-debug.log*
