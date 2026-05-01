@@ -351,6 +351,12 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 # my-app:1.0 alias is now username/repo:1.0
 ╰─❯ docker push username/repo:1.0
 ```
-
+###### push to aws, signup, navigate ECR service, create repo, then
+###### select repo and click 'View push commands'
+```sh
+# authenticate with AWS CLI then tag:
+docker tag my-app:1.0 825386256642.dkr.ecr.eu-north-1.amazonaws.com/my-app:1.0
+# 825386256642.dkr.ecr.eu-north-1.amazonaws.com is repo address, path given
+# found in 'view push commands'
 ```
 
