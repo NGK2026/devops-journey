@@ -318,6 +318,11 @@ Step 5/5 : CMD ["node", "server.js"]
 --snip--
 Successfully built 289dd397c7e1 # image ID
 Successfully tagged my-app:1.0
+
+╰─❯ docker images               
+
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+my-app:1.0             289dd397c7e1        349MB         87.2MB        
 ```
 #### build with buildkit
 ```text
