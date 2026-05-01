@@ -251,6 +251,7 @@ immediate 139 segmentation fault.
 ```
 #### Use docker-compose to run a .yaml file
 ```sh
+# creates network automatically
 ╰─❯ docker-compose -f mongo.yaml up -d
 [+] up 3/3
  ✔ Network app_default           Created                                                                                                           0.0s
@@ -270,6 +271,7 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS  
 ```
 #### use docker-compose to stop containers
 ```sh
+# also removes the created network
 ╰─❯ docker-compose -f mongo.yaml down
 ```
 
