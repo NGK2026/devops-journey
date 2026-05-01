@@ -130,3 +130,5 @@ CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS   
 # or use name
 ╰─❯ docker exec -it arch-late /bin/bash
 ```
+# Docker run vs Docker start
+## run (images) / start (container)
