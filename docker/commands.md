@@ -361,4 +361,7 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ╰─❯ docker push 825386256642.dkr.ecr.eu-north-1.amazonaws.com/my-app:1.0
 # can push many versions eg: 1.1, 1.2 to same repo
 ```
-
+#### remove all stopped containers
+```sh
+╰─❯ docker container prune
+```
