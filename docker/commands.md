@@ -152,7 +152,7 @@ NETWORK ID     NAME            DRIVER    SCOPE
 cef5fce4aecb   mongo-network   bridge    local
 074ccbc89ac8   none            null      local
 ```
-### find out exposed port of image
+#### find out exposed port of image
 ###### grep -A 5 (-A contect after the match) (5 number of trailing lines to show)
 ```sh
 ╰─❯ docker inspect mongo | grep -A 2 "ExposedPorts"
@@ -162,5 +162,13 @@ cef5fce4aecb   mongo-network   bridge    local
             "ExposedPorts": {
                 "8081/tcp": {}
 ```
-
+#### 3- run mongo image with init user and pass over ride, network, name, detached
+- https://hub.docker.com/_/mongo#mongo_initdb_root_username-mongo_initdb_root_password
+```sh
+╰─❯ docker run -d --network mongo-network --name mongodb \
+	-e MONGO_INITDB_ROOT_USERNAME=admin \
+	-e MONGO_INITDB_ROOT_PASSWORD=password \
+	mongo
+8977d31ce8b0db530167d1f08b8cc43cc8232d9a3ddb08df8bc86183934dff7a
+```
 
