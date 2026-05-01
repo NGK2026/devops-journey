@@ -226,7 +226,7 @@ recent kernel and libraries, it doesn't "mask" these hardware-software
 mismatches like some older LTS kernels do, leading to that 
 immediate 139 segmentation fault.
 ```
-#### use mongo:4.4 and reuse mongo-express
+#### 5- use mongo:4.4 and reuse mongo-express
 ```sh
 ╰─❯ docker run -d --network mongo-network --name mongo \
     -e MONGO_INITDB_ROOT_USERNAME=admin \
