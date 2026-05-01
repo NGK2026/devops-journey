@@ -278,7 +278,7 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS  
  ✔ Container app-mongo-1         Removed      
  ✔ Network app_default           Removed     
 ```
-# tutorial build docker file
+# tutorial build docker file (DEMO)
 #### 1- Dockerfile
 ```dockerfile
 FROM node:22-slim
