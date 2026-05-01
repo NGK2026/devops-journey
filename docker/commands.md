@@ -204,13 +204,21 @@ vm.overcommit_memory = 1
 ```
 ###### explanation
 ```txt
-The Problem: Databases often "reserve" large blocks of memory. Without overcommit, the kernel panics and kills the process (OOM/Segfault) to prevent the whole system from freezing.
+The Problem: Databases often "reserve" large blocks of memory. 
+Without overcommit, the kernel panics and kills the 
+process (OOM/Segfault) to prevent the whole system from freezing.
 
-The Fix: Setting this to 1 tells the kernel: "Trust the applications; let them allocate what they ask for, and only intervene if we actually run out of physical space."
+The Fix: Setting this to 1 tells the kernel: "Trust the applications; 
+let them allocate what they ask for, and only intervene if we 
+actually run out of physical space."
 ```
 ###### not fixed, mongo shuts down after a few seconds
 ```txt
-issue was indeed the AVX/Microarchitecture requirements introduced in MongoDB 5.0+. Since Arch Linux uses a very recent kernel and libraries, it doesn't "mask" these hardware-software mismatches like some older LTS kernels do, leading to that immediate 139 segmentation fault.
+issue was indeed the AVX/Microarchitecture requirements 
+introduced in MongoDB 5.0+. Since Arch Linux uses a very 
+recent kernel and libraries, it doesn't "mask" these hardware-software 
+mismatches like some older LTS kernels do, leading to that 
+immediate 139 segmentation fault.
 ```
 #### use mongo:4.4 and reuse mongo-express
 ```sh
