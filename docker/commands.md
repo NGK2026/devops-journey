@@ -87,6 +87,9 @@ aa0be3d8cf9d
 
 # -p'hostport':'container default port' 
 # can add -d to run detached
+# enables both ipv4 and ipv6
+# allow ipv4 & external network use: 0.0.0.0:6000:6379
+# allow ipv4 for local access only use: 127.0.0.1:6000:6379 
 ╰─❯ docker run -d -p6000:6379 redis:8.4.2
 
 ╰─❯ docker ps
