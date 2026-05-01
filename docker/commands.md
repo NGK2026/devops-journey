@@ -52,3 +52,12 @@ cbe9bb0b4ab0   redis              "docker-entrypoint.s…"   17 seconds ago   Up
 369968f55bb4   archlinux:latest   "/usr/bin/bash"          14 minutes ago   Exited (0) 14 minutes ago              pensive_gauss
 c1fde604caca   archlinux          "/usr/bin/bash"          14 minutes ago   Exited (0) 14 minutes ago              upbeat_babbage
 ```
+#### restart container - use container ID
+```sh
+docker stop cbe9bb0b4ab0
+cbe9bb0b4ab0
+
+docker ps
+CONTAINER ID   IMAGE       COMMAND           CREATED          STATUS          PORTS     NAMES
+38ff111ce364   archlinux   "/usr/bin/bash"   14 minutes ago   Up 14 minutes             flamboyant_mcnulty
+```
