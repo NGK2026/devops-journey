@@ -278,4 +278,24 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS  
  ✔ Container app-mongo-1         Removed      
  ✔ Network app_default           Removed     
 ```
+# tutorial build docker file
+#### 1- Dockerfile
+```dockerfile
+FROM node:22-slim
+
+ENV MONGO_DB_USERNAME=admin \
+    MONGO_DB_PASSWORD=password
+
+# RUN mkdir -p /home/app.. setting WORKDIR automatically creates it
+WORKDIR /home/app
+
+COPY ./app /home/app
+
+CMD ["node", "server.js"]
+```
+#### 2- docker build 
+###### -t (tag) name:version locationOfDockerFile
+```sh
+docker build -t my-app:1.0 .
+```
 
