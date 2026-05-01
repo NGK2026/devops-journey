@@ -54,17 +54,17 @@ c1fde604caca   archlinux          "/usr/bin/bash"          14 minutes ago   Exit
 ```
 #### restart container - use container ID (stop / start)
 ```sh
-docker stop cbe9bb0b4ab0
+╰─❯ docker stop cbe9bb0b4ab0
 cbe9bb0b4ab0
 
-docker ps
+╰─❯ docker ps
 CONTAINER ID   IMAGE       COMMAND           CREATED          STATUS          PORTS     NAMES
 38ff111ce364   archlinux   "/usr/bin/bash"   14 minutes ago   Up 14 minutes             flamboyant_mcnulty
 
-docker start cbe9bb0b4ab0
+╰─❯ docker start cbe9bb0b4ab0
 cbe9bb0b4ab0
 
-docker ps
+╰─❯ docker ps
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
 cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   6 minutes ago    Up 2 seconds    6379/tcp   hardcore_chandrasekhar
 38ff111ce364   archlinux   "/usr/bin/bash"          16 minutes ago   Up 16 minutes              flamboyant_mcnulty
