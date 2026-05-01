@@ -316,7 +316,7 @@ Step 4/5 : COPY ./app /home/app
  ---> 6ba9cde12c5b
 Step 5/5 : CMD ["node", "server.js"]
 --snip--
-Successfully built 289dd397c7e1
+Successfully built 289dd397c7e1 # image ID
 Successfully tagged my-app:1.0
 ```
 #### build with buildkit
