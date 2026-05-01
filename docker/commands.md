@@ -23,25 +23,30 @@ docker run -it archlinux
 
 [root@38ff111ce364 /]# 
 ```
-#### view docker running process
+#### run image in -d (detached) mode
+###### runs in the background, outputs only id of container
+```sh
+docker run -d redis
+
+cbe9bb0b4ab08ef8c07c45efbde881625ef46cca108db3e0948c9de5f16cb489
+```
+#### view docker running process (notice id of -d container)
 ###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
 ```sh
 docker ps
 
-CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
-042344813f99   redis       "docker-entrypoint.s…"   48 seconds ago   Up 48 seconds   6379/tcp   relaxed_pike
-38ff111ce364   archlinux   "/usr/bin/bash"          6 minutes ago    Up 6 minutes               flamboyant_mcnulty
-
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS         PORTS      NAMES
+cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   10 seconds ago   Up 9 seconds   6379/tcp   hardcore_chandrasekhar
+38ff111ce364   archlinux   "/usr/bin/bash"          9 minutes ago    Up 9 minutes              flamboyant_mcnulty
 ```
 #### view docker processes including those that have exited -a (all)
 ```sh
 docker ps -a
 
 CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS                      PORTS      NAMES
-042344813f99   redis              "docker-entrypoint.s…"   9 seconds ago    Up 9 seconds                6379/tcp   relaxed_pike
-38ff111ce364   archlinux          "/usr/bin/bash"          5 minutes ago    Up 5 minutes                           flamboyant_mcnulty
-369968f55bb4   archlinux:latest   "/usr/bin/bash"          10 minutes ago   Exited (0) 10 minutes ago              pensive_gauss
-c1fde604caca   archlinux          "/usr/bin/bash"          10 minutes ago   Exited (0) 10 minutes ago              upbeat_babbage
-
-
+cbe9bb0b4ab0   redis              "docker-entrypoint.s…"   17 seconds ago   Up 16 seconds               6379/tcp   hardcore_chandrasekhar
+042344813f99   redis              "docker-entrypoint.s…"   4 minutes ago    Exited (0) 2 minutes ago               relaxed_pike
+38ff111ce364   archlinux          "/usr/bin/bash"          9 minutes ago    Up 9 minutes                           flamboyant_mcnulty
+369968f55bb4   archlinux:latest   "/usr/bin/bash"          14 minutes ago   Exited (0) 14 minutes ago              pensive_gauss
+c1fde604caca   archlinux          "/usr/bin/bash"          14 minutes ago   Exited (0) 14 minutes ago              upbeat_babbage
 ```
