@@ -249,7 +249,7 @@ immediate 139 segmentation fault.
 
 # navigate to http://localhost:8081/ (username=admin password=password)
 ```
-#### -6 Use docker-compose to run a .yaml file
+#### 6- Use docker-compose to run a .yaml file
 ```sh
 # creates network automatically
 ╰─❯ docker-compose -f mongo.yaml up -d
@@ -269,7 +269,7 @@ CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS  
 1cb0c8b4074b   mongo:4.4       "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp   app-mongo-1
 6cf569d4a890   mongo-express   "/sbin/tini -- /dock…"   3 minutes ago   Up 3 minutes   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp       app-mongo-express-1
 ```
-#### -7 use docker-compose to stop containers
+#### 7- use docker-compose to stop containers
 ```sh
 # also removes the created network
 ╰─❯ docker-compose -f mongo.yaml down
