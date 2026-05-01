@@ -6,6 +6,11 @@
 ```sh
 ╰─❯ docker pull redis:8.4.2
 ```
+#### pull and run in 1 command
+###### version is optional like previous commands
+```sh
+docker run nameOfNewImage:version
+```
 #### view current images on disk
 ```sh
 ╰─❯ docker images
