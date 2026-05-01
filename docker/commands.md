@@ -249,6 +249,24 @@ immediate 139 segmentation fault.
 
 # navigate to http://localhost:8081/ (username=admin password=password)
 ```
+#### Use docker compose to run a .yaml file
+```sh
+╰─❯ docker-compose -f mongo.yaml up 
+[+] up 3/3
+ ✔ Network app_default           Created                                                                                                           0.0s
+ ✔ Container app-mongo-1         Created                                                                                                           0.1s
+ ✔ Container app-mongo-express-1 Created                                                                                                           0.0s
+Attaching to mongo-1, mongo-express-1
+--snip--
+# mongo-1 -snip- "NETWORK",-snip- "ctx":"listener","msg":"Connection accepted"-snip-
+--snip--
+mongo-express-1  | Mongo Express server listening at http://0.0.0.0:8081
+mongo-express-1  | Server is open to allow connections from anyone (0.0.0.0)
 
+╰─❯ docker ps           
+CONTAINER ID   IMAGE           COMMAND                  CREATED         STATUS         PORTS                                             NAMES
+1cb0c8b4074b   mongo:4.4       "docker-entrypoint.s…"   3 minutes ago   Up 3 minutes   0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp   app-mongo-1
+6cf569d4a890   mongo-express   "/sbin/tini -- /dock…"   3 minutes ago   Up 3 minutes   0.0.0.0:8081->8081/tcp, [::]:8081->8081/tcp       app-mongo-express-1
+```
 
 
