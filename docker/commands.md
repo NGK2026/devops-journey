@@ -28,8 +28,9 @@ docker run -it archlinux
 ```sh
 docker ps
 
-CONTAINER ID   IMAGE       COMMAND           CREATED              STATUS              PORTS     NAMES
-38ff111ce364   archlinux   "/usr/bin/bash"   About a minute ago   Up About a minute             flamboyant_mcnulty
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
+042344813f99   redis       "docker-entrypoint.s…"   48 seconds ago   Up 48 seconds   6379/tcp   relaxed_pike
+38ff111ce364   archlinux   "/usr/bin/bash"          6 minutes ago    Up 6 minutes               flamboyant_mcnulty
 
 ```
 #### view docker processes including those that have exited -a (all)
