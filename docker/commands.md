@@ -17,15 +17,28 @@ redis:8.6.2        832d7785830f        204MB         55.3MB
 redis:latest       832d7785830f        204MB         55.3MB        
 
 ```
+#### run image -i (interactive) -t (terminal)
+```sh
+docker run -it archlinux
+
+[root@38ff111ce364 /]# 
+```
 #### view docker running process
 ```sh
 docker ps
+
+CONTAINER ID   IMAGE       COMMAND           CREATED              STATUS              PORTS     NAMES
+38ff111ce364   archlinux   "/usr/bin/bash"   About a minute ago   Up About a minute             flamboyant_mcnulty
+
 ```
-#### view docker processes including those that have exited
+#### view docker processes including those that have exited -a (all)
+###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
 ```sh
 docker ps -a
 
-CONTAINER ID   IMAGE              COMMAND           CREATED              STATUS                          PORTS     NAMES
-369968f55bb4   archlinux:latest   "/usr/bin/bash"   About a minute ago   Exited (0) About a minute ago             pensive_gauss
-c1fde604caca   archlinux          "/usr/bin/bash"   2 minutes ago        Exited (0) 2 minutes ago                  upbeat_babbage
+CONTAINER ID   IMAGE              COMMAND           CREATED              STATUS                     PORTS     NAMES
+38ff111ce364   archlinux          "/usr/bin/bash"   About a minute ago   Up About a minute                    flamboyant_mcnulty
+369968f55bb4   archlinux:latest   "/usr/bin/bash"   6 minutes ago        Exited (0) 6 minutes ago             pensive_gauss
+c1fde604caca   archlinux          "/usr/bin/bash"   6 minutes ago        Exited (0) 6 minutes ago             upbeat_babbage
+
 ```
