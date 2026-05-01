@@ -26,9 +26,11 @@ docker run -it archlinux
 #### run image in -d (detached) mode
 ###### runs in the background, outputs only id of container
 ```sh
-docker run -d redis
-
+╰─❯ docker run -d redis     
 cbe9bb0b4ab08ef8c07c45efbde881625ef46cca108db3e0948c9de5f16cb489
+                                           
+╰─❯ 
+
 ```
 #### view docker running process (notice id of -d container)
 ###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
