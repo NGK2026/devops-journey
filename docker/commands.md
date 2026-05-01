@@ -140,7 +140,17 @@ NETWORK ID     NAME      DRIVER    SCOPE
 4b315e8a77f9   host      host      local
 074ccbc89ac8   none      null      local
 ```
-
+#### create docker network
+```sh
+╰─❯ docker network create mongo-network
+cef5fce4aecb8e50e9ec0b67c85adfa3760c713494fe8bcf396f98f576c11a90
+╰─❯ docker network ls
+NETWORK ID     NAME            DRIVER    SCOPE
+09c6d3a5fd8a   bridge          bridge    local
+4b315e8a77f9   host            host      local
+cef5fce4aecb   mongo-network   bridge    local
+074ccbc89ac8   none            null      local
+```
 
 
 
