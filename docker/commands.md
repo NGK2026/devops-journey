@@ -41,8 +41,8 @@ cbe9bb0b4ab08ef8c07c45efbde881625ef46cca108db3e0948c9de5f16cb489
 ╰─❯ docker run -d --name arch-latest archlinux
 
 ╰─❯ docker ps
-CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                                         NAMES
-d57ab89b5816   archlinux     "/usr/bin/bash"          9 seconds ago   Up 8 seconds                                                 arch-latest
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS            NAMES
+d57ab89b5816   archlinux     "/usr/bin/bash"          9 seconds ago   Up 8 seconds                    arch-latest
 
 ```
 #### view docker running process (notice id of -d container)
