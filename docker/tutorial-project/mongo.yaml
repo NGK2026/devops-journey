@@ -1,6 +1,6 @@
 services:
   my-app:
-    image: my-app:1.0
+    image: my-app:1.1
     ports:
     - 3000:3000
   mongo:
