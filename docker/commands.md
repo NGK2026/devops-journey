@@ -94,3 +94,11 @@ aa0be3d8cf9d
 1a482cbac104   redis:8.4.2   "docker-entrypoint.s…"   2 seconds ago    Up 2 seconds    0.0.0.0:6000->6379/tcp, [::]:6000->6379/tcp   jolly_bose
 cbe9bb0b4ab0   redis         "docker-entrypoint.s…"   22 minutes ago   Up 16 minutes   6379/tcp                                      hardcore_chandrasekhar
 ```
+#### stop all containers
+##### ps -q returns numeric IDs. $(...) passes output to initial command
+```sh
+╰─❯ docker stop $(docker ps -q)
+1a482cbac104
+cbe9bb0b4ab0
+╰─❯ 
+```
