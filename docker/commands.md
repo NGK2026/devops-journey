@@ -342,4 +342,15 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ```sh
 ╰─❯ docker rmi imageID # or name
 ```
+#### 3- push image to docker hub
+###### sign up at hub.docker, then
+```sh
+╰─❯ docker login # enter user and pass or access token
+# rename image (tag creates alias)
+╰─❯ docker tag my-app:1.0 username/repo:1.0 
+# my-app:1.0 alias is now username/repo:1.0
+╰─❯ docker push username/repo:1.0
+```
+
+```
 
