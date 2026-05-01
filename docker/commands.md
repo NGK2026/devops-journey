@@ -36,9 +36,11 @@ CONTAINER ID   IMAGE       COMMAND           CREATED              STATUS        
 ```sh
 docker ps -a
 
-CONTAINER ID   IMAGE              COMMAND           CREATED              STATUS                     PORTS     NAMES
-38ff111ce364   archlinux          "/usr/bin/bash"   About a minute ago   Up About a minute                    flamboyant_mcnulty
-369968f55bb4   archlinux:latest   "/usr/bin/bash"   6 minutes ago        Exited (0) 6 minutes ago             pensive_gauss
-c1fde604caca   archlinux          "/usr/bin/bash"   6 minutes ago        Exited (0) 6 minutes ago             upbeat_babbage
+CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS                      PORTS      NAMES
+042344813f99   redis              "docker-entrypoint.s…"   9 seconds ago    Up 9 seconds                6379/tcp   relaxed_pike
+38ff111ce364   archlinux          "/usr/bin/bash"          5 minutes ago    Up 5 minutes                           flamboyant_mcnulty
+369968f55bb4   archlinux:latest   "/usr/bin/bash"          10 minutes ago   Exited (0) 10 minutes ago              pensive_gauss
+c1fde604caca   archlinux          "/usr/bin/bash"          10 minutes ago   Exited (0) 10 minutes ago              upbeat_babbage
+
 
 ```
