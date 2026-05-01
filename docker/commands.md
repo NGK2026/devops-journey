@@ -320,7 +320,6 @@ Successfully built 289dd397c7e1 # image ID
 Successfully tagged my-app:1.0
 
 ╰─❯ docker images               
-
 IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
 my-app:1.0             289dd397c7e1        349MB         87.2MB        
 ```
