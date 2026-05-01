@@ -109,7 +109,7 @@ cbe9bb0b4ab0   redis         "docker-entrypoint.s…"   22 minutes ago   Up 16 m
 1a482cbac104
 cbe9bb0b4ab0
 ```
-# Troubleshooting
+## Troubleshooting
 #### check logs
 ```sh
 ╰─❯ docker logs containerID
@@ -130,5 +130,17 @@ CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS   
 # or use name
 ╰─❯ docker exec -it arch-late /bin/bash
 ```
-## Docker run vs Docker start
-#### run (images) / start (container)
+#### Docker run vs Docker start
+###### run (images) / start (container)
+#### check docker network
+```sh
+╰─❯ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+09c6d3a5fd8a   bridge    bridge    local
+4b315e8a77f9   host      host      local
+074ccbc89ac8   none      null      local
+```
+
+
+
+
