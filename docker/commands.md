@@ -115,6 +115,9 @@ cbe9bb0b4ab0
 ╰─❯ docker logs containerID
 # or
 ╰─❯ docker logs containerName
+# steam logs (live update, can insert chars or draw lines) or check --tail 5 (last 5 lines)
+╰─❯ docker logs containerName -f
+╰─❯ docker logs containerName --tail 5
 ```
 #### get terminal of detached container
 ###### -i (interactive) -t (terminal)
