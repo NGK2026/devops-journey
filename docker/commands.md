@@ -1,14 +1,14 @@
 #### pull image from hub.docker.com (pulls latest version)
 ```sh 
-docker pull redis
+╰─❯ docker pull redis
 ```
 #### pull specific image version
 ```sh
-docker pull redis:8.4.2
+╰─❯ docker pull redis:8.4.2
 ```
 #### view current images on disk
 ```sh
-docker images
+╰─❯ docker images
 
 IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
 archlinux:latest   5ba8bb318666        560MB          138MB        
@@ -19,7 +19,7 @@ redis:latest       832d7785830f        204MB         55.3MB
 ```
 #### run image -i (interactive) -t (terminal)
 ```sh
-docker run -it archlinux
+╰─❯ docker run -it archlinux
 
 [root@38ff111ce364 /]# 
 ```
@@ -35,7 +35,7 @@ cbe9bb0b4ab08ef8c07c45efbde881625ef46cca108db3e0948c9de5f16cb489
 #### view docker running process (notice id of -d container)
 ###### if not specify a name using the --name flag when starting a container, Docker automatically generates one.
 ```sh
-docker ps
+╰─❯ docker ps
 
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS         PORTS      NAMES
 cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   10 seconds ago   Up 9 seconds   6379/tcp   hardcore_chandrasekhar
@@ -43,7 +43,7 @@ cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   10 seconds ago   Up 9 seco
 ```
 #### view docker processes including those that have exited -a (all)
 ```sh
-docker ps -a
+╰─❯ docker ps -a
 
 CONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS                      PORTS      NAMES
 cbe9bb0b4ab0   redis              "docker-entrypoint.s…"   17 seconds ago   Up 16 seconds               6379/tcp   hardcore_chandrasekhar
@@ -68,5 +68,4 @@ cbe9bb0b4ab0
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS      NAMES
 cbe9bb0b4ab0   redis       "docker-entrypoint.s…"   6 minutes ago    Up 2 seconds    6379/tcp   hardcore_chandrasekhar
 38ff111ce364   archlinux   "/usr/bin/bash"          16 minutes ago   Up 16 minutes              flamboyant_mcnulty
-
 ```
