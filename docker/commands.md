@@ -1,4 +1,4 @@
-#### pull image from hub.docker.com (pulls latest version)
+### pull image from hub.docker.com (pulls latest version)
 ```sh 
 docker pull redis
 ```
