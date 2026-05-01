@@ -165,23 +165,21 @@ cef5fce4aecb   mongo-network   bridge    local
 #### 3- run mongo image with init user and pass over ride, network, name, detached
 - https://hub.docker.com/_/mongo#mongo_initdb_root_username-mongo_initdb_root_password
 ```sh
-╰─❯ docker run -d --network mongo-network --name mongodb \
-	-e MONGO_INITDB_ROOT_USERNAME=admin \
-	-e MONGO_INITDB_ROOT_PASSWORD=password \
-	mongo
-8977d31ce8b0db530167d1f08b8cc43cc8232d9a3ddb08df8bc86183934dff7a
+╰─❯ docker run -d --network mongo-network --name mongo \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=password \
+    -p 27017:27017 \
+    mongo
 ```
 #### 4- run mongo express with admin user, admin pass, network, name, server name
 - https://hub.docker.com/_/mongo-express#configuration
 ```sh
-╰─❯ docker run -d \                                                             
-   -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
-   -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
-   --network mongo-network \
-   --name mongo-express \
-   -e ME_CONFIG_MONGODB_SERVER=mongodb \
-   mongo-express
-bfaf7dba765276f40e843849fbe9b44816380c7f46bdf254a2782d673abe5420
+╰─❯ docker run -d --network mongo-network --name mongo-express \
+    -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+    -e ME_CONFIG_MONGODB_ADMINPASSWORD=password \
+    -e ME_CONFIG_MONGODB_SERVER=mongo \
+    -p 8081:8081 \
+    mongo-express
 ```
 #### remove docker containers
 ```sh
@@ -189,4 +187,26 @@ bfaf7dba765276f40e843849fbe9b44816380c7f46bdf254a2782d673abe5420
 mongodb
 mongo-express
 ```
+#### WARNING Memory overcommit must be enabled!
+```sh
+╰─❯ docker logs 413c4c551036         
+Starting Redis Server
+1:C 01 May 2026 14:21:53.023  WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+```
+###### the fix
+```sh
+╰─❯ sudo sysctl vm.overcommit_memory=1
+vm.overcommit_memory = 1
+
+# prevent setting to revert after reboot
+╰─❯ echo "vm.overcommit_memory = 1" | sudo tee /etc/sysctl.d/99-docker-mem.conf
+vm.overcommit_memory = 1
+```
+###### explanation
+```txt
+The Problem: Databases often "reserve" large blocks of memory. Without overcommit, the kernel panics and kills the process (OOM/Segfault) to prevent the whole system from freezing.
+
+The Fix: Setting this to 1 tells the kernel: "Trust the applications; let them allocate what they ask for, and only intervene if we actually run out of physical space."
+```
+
 
