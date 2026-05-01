@@ -35,6 +35,14 @@ redis:latest       832d7785830f        204MB         55.3MB
 cbe9bb0b4ab08ef8c07c45efbde881625ef46cca108db3e0948c9de5f16cb489
                                            
 ╰─❯ 
+```
+#### run image with specified name
+```sh
+╰─❯ docker run -d --name arch-latest archlinux
+
+╰─❯ docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                                         NAMES
+d57ab89b5816   archlinux     "/usr/bin/bash"          9 seconds ago   Up 8 seconds                                                 arch-latest
 
 ```
 #### view docker running process (notice id of -d container)
@@ -100,5 +108,18 @@ cbe9bb0b4ab0   redis         "docker-entrypoint.s…"   22 minutes ago   Up 16 m
 ╰─❯ docker stop $(docker ps -q)
 1a482cbac104
 cbe9bb0b4ab0
-╰─❯ 
+```
+# Troubleshooting
+#### check logs
+```sh
+╰─❯ docker logs containerID
+# or
+╰─❯ docker logs containerName
+```
+#### get terminal of detached container
+```sh
+╰─❯ docker ps                                 
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                                         NAMES
+7cfdb17fc5bd   archlinux     "/usr/bin/bash"          43 seconds ago   Up 42 seconds                                                 arch-late
+
 ```
