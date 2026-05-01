@@ -355,8 +355,9 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ###### select repo and click 'View push commands'
 ```sh
 # authenticate with AWS CLI then tag:
-docker tag my-app:1.0 825386256642.dkr.ecr.eu-north-1.amazonaws.com/my-app:1.0
+╰─❯ docker tag my-app:1.0 825386256642.dkr.ecr.eu-north-1.amazonaws.com/my-app:1.0
 # 825386256642.dkr.ecr.eu-north-1.amazonaws.com is repo address, path given
 # found in 'view push commands'
+╰─❯ docker push 825386256642.dkr.ecr.eu-north-1.amazonaws.com/my-app:1.0
 ```
 
