@@ -132,7 +132,8 @@ CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS   
 ```
 #### Docker run vs Docker start
 ###### run (images) / start (container)
-#### check docker network
+# tutorial project steps
+#### 1- check docker network
 ```sh
 ╰─❯ docker network ls
 NETWORK ID     NAME      DRIVER    SCOPE
@@ -140,7 +141,7 @@ NETWORK ID     NAME      DRIVER    SCOPE
 4b315e8a77f9   host      host      local
 074ccbc89ac8   none      null      local
 ```
-#### create docker network
+#### 2- create docker network
 ```sh
 ╰─❯ docker network create mongo-network
 cef5fce4aecb8e50e9ec0b67c85adfa3760c713494fe8bcf396f98f576c11a90
@@ -151,6 +152,15 @@ NETWORK ID     NAME            DRIVER    SCOPE
 cef5fce4aecb   mongo-network   bridge    local
 074ccbc89ac8   none            null      local
 ```
-
+### find out exposed port of image
+###### grep -A 5 (-A contect after the match) (5 number of trailing lines to show)
+```sh
+╰─❯ docker inspect mongo | grep -A 2 "ExposedPorts"
+            "ExposedPorts": {
+                "27017/tcp": {}
+╰─❯ docker inspect mongo-express | grep -A 2 "ExposedPorts"
+            "ExposedPorts": {
+                "8081/tcp": {}
+```
 
 
