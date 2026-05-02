@@ -26,9 +26,6 @@ let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 // use when starting application as docker container
 let mongoUrlDocker = "mongodb://admin:password@mongo:27017";
 
-// Determine which one to use based on an environment variable
-// (If NO env variable is found, it defaults to Local for your Arch setup)
-let mongoUrl = process.env.DOCKER_RUN ? mongoUrlDocker : mongoUrlLocal;
 
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
