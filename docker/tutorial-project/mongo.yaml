@@ -3,8 +3,6 @@ services:
     image: my-app:1.0
     ports:
     - 3000:3000
-    environment:
-    - DOCKER_RUN=true
   mongo:
     image: mongo:4.4
     ports:
