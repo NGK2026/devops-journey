@@ -11,7 +11,7 @@ services:
     - MONGO_INITDB_ROOT_USERNAME=admin
     - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-    - mongo-data:/data/db
+    - mongo-data:/data/db # /data/db default path for mongodb
   mongo-express:
     image: mongo-express
     ports:
