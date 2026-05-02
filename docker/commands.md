@@ -377,3 +377,16 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
  ✔ Container tutorial-project-mongo-express-1 Removed    
  ✔ Network tutorial-project_default           Removed   
 ```
+#### make docker use /home to store all data
+```sh
+sudo mkdir -p /home/docker-data
+
+sudo vim /etc/docker/daemon.json
+
+# add json parameter:
+#{
+#     "data-root": "/home/docker-data"
+#}
+
+sudo systemctl restart docker
+```
