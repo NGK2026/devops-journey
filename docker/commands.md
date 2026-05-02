@@ -379,14 +379,18 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ```
 #### make docker use /home to store all data
 ```sh
-sudo mkdir -p /home/docker-data
+╰─❯ sudo mkdir -p /home/docker-data
 
-sudo vim /etc/docker/daemon.json
+╰─❯ sudo mkdir -p /etc/docker
+
+╰─❯ sudo vim /etc/docker/daemon.json
 
 # add json parameter:
 #{
 #     "data-root": "/home/docker-data"
 #}
 
-sudo systemctl restart docker
+╰─❯ sudo systemctl restart docker
+╰─❯ docker info | grep "Docker Root Dir"
+# Docker Root Dir: /home/docker-data
 ```
