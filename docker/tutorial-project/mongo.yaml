@@ -1,9 +1,9 @@
 services:
   my-app:
-    image: my-app:1.1
+    image: my-app:1.0
     ports:
     - 3000:3000
-  mongo:
+  mongodb:
     image: mongo:4.4
     ports:
     - 27017:27017
