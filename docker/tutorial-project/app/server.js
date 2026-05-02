@@ -24,7 +24,7 @@ app.get('/profile-picture', function (req, res) {
 let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 
 // use when starting application as docker container
-let mongoUrlDocker = "mongodb://admin:password@mongodb:27017";
+let mongoUrlDocker = "mongodb://admin:password@mongo:27017";
 
 // Determine which one to use based on an environment variable
 // (If NO env variable is found, it defaults to Local for your Arch setup)
