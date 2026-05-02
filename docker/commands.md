@@ -365,3 +365,15 @@ my-app:1.0             289dd397c7e1        349MB         87.2MB
 ```sh
 ╰─❯ docker container prune
 ```
+#### docker-compose.yml
+###### no need for -t filename
+```sh
+╰─❯ docker-compose up
+
+╰─❯ docker-compose down
+[+] down 4/4
+ ✔ Container tutorial-project-mongo-1         Removed    
+ ✔ Container tutorial-project-my-app-1        Removed    
+ ✔ Container tutorial-project-mongo-express-1 Removed    
+ ✔ Network tutorial-project_default           Removed   
+```
