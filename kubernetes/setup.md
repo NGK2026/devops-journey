@@ -1,9 +1,9 @@
 # Content
-1- Layers of abstraction
-2- Configuration files (deployment/service)
-3- Mongodb & Mongo Express cluster
-4- Namespace
-5- Ingress
+1. Layers of abstraction
+2. Configuration files (deployment/service)
+3. Mongodb & Mongo Express cluster
+4. Namespace
+5. Ingress
 
 ## Layers of abstraction
 ```txt
