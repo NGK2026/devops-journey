@@ -93,3 +93,8 @@ mongo-depl-68c7f5ccc5-zmhpv   1/1     Running   0          3m42s
 ╰─❯ kubectl exec -it mongo-depl-68c7f5ccc5-zmhpv -- bin/bash               
 root@mongo-depl-68c7f5ccc5-zmhpv:/# 
 ```
+#### delete deployment/pod
+```sh
+╰─❯ kubectl delete deployment mongo-depl           
+deployment.apps "mongo-depl" deleted from default namespace
+```
