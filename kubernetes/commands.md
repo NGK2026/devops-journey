@@ -28,3 +28,9 @@ nginx-depl   1/1     1            1           73s
 NAME                          READY   STATUS    RESTARTS   AGE
 nginx-depl-569bd7dcf9-ldnl4   1/1     Running   0          94s
 ```
+#### get replicaset
+```sh
+╰─❯ kubectl get replicaset
+NAME                    DESIRED   CURRENT   READY   AGE
+nginx-depl-569bd7dcf9   1         1         1       13h
+```
