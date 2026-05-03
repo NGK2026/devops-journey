@@ -27,6 +27,7 @@ nginx-depl   1/1     1            1           73s
 ╰─❯ kubectl get pod       
 NAME                          READY   STATUS    RESTARTS   AGE
 nginx-depl-569bd7dcf9-ldnl4   1/1     Running   0          94s
+# prefix of deployment 'nginx-depl' - replica set id '569bd7dcf9' - pod id 'ldnl4'
 ```
 #### get replicaset
 ```sh
