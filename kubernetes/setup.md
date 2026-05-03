@@ -410,3 +410,70 @@ mongo-deployment-576f9d7d46-prptb   1/1     Running   1 (103m ago)   113m   10.2
 
 # Endpoints and IP match!
 ```
+#### 8- mongo express deploy, update secrets, config map
+###### mongo-express.yaml key differences
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+--snip--
+        env:
+        - name: ME_CONFIG_MONGODB_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-configmap
+              key: database_url
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-root-username 
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-root-password
+        - name: ME_CONFIG_BASICAUTH_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user-username
+        - name: ME_CONFIG_BASICAUTH_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user-password
+```
+###### mongo-secret.yaml updated block
+```yaml
+type: Opaque # default type (key-value)
+data: # encode it in base64
+  mongo-root-username: YWRtaW4=
+  mongo-root-password: cGFzc3dvcmQ=
+  mongo-user-username: YWRtaW4=
+  mongo-user-password: cGFzc3dvcmQ=
+```
+###### mongo-configmap.yaml
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+data:
+  database_url: mongo-service
+```
+#### 9- apply
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-secret.yaml 
+secret/mongo-secret configured
+
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-configmap.yaml 
+configmap/mongo-configmap created
+
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-express.yaml  
+deployment.apps/mongo-express created
+
+╰─❯ kubectl get pod
+NAME                                READY   STATUS    RESTARTS       AGE
+mongo-deployment-576f9d7d46-prptb   1/1     Running   1 (122m ago)   132m
+mongo-express-79787d5b46-vsljx      1/1     Running   0              40s
+```
