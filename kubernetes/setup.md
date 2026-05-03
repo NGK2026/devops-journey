@@ -587,4 +587,22 @@ You can view the list of minikube maintainers at: https://github.com/kubernetes/
     ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.7
 🔎  Verifying ingress addon...
 🌟  The 'ingress' addon is enabled
+
+╰─❯ kubectl get namespace         
+NAME              STATUS   AGE
+default           Active   17h
+ingress-nginx     Active   5m16s
+kube-node-lease   Active   17h
+kube-public       Active   17h
+kube-system       Active   17h
+
+
+╰─❯ kubens ingress-nginx
+✔ Active namespace is "ingress-nginx".
+
+╰─❯ kubectl get pod
+NAME                                        READY   STATUS      RESTARTS   AGE
+ingress-nginx-admission-create-r4jcw        0/1     Completed   0          4m10s
+ingress-nginx-admission-patch-rr5kb         0/1     Completed   1          4m10s
+ingress-nginx-controller-596f8778bc-lzp49   1/1     Running     0          4m10s
 ```
