@@ -815,7 +815,7 @@ spec:
             port: 
               number: 8080
 ```
-###### tls secret yaml
+###### tls secret yaml - must be on same namespace of ingress
 ```yaml
 apiVersion: v1
 kind: Secret
