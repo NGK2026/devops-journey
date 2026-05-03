@@ -136,5 +136,14 @@ root@mongo-depl-68c7f5ccc5-zmhpv:/#
 #### 4- kubectl apply
 ###### instead of 'kubectl create deployment name image option1 option2'
 ```sh
-╰─❯ kubectl apply -f config-file.yaml
+# example
+# kubectl apply -f config-file.yaml
+
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/nginx-deployment.yaml
+deployment.apps/nginx-deployment created
+
+╰─❯ kubectl get pod                                                                             
+NAME                                READY   STATUS              RESTARTS   AGE
+nginx-depl-569bd7dcf9-q6dpv         1/1     Running             0          17m
+nginx-deployment-78948d57cd-hkvg7   0/1     ContainerCreating   0          10s
 ```
