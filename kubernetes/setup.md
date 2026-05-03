@@ -827,3 +827,10 @@ data:
   tls.key: base64 encoded key
 type: kubernetes.io/tls
 ```
+###### creating crt and key, -w 0 (wrap, to be on 1 continuous line)
+```sh
+╰─❯ echo server.crt | base64 -w 0
+c2VydmVyLmNydAo=%                                                                                                                             
+╰─❯ echo server.key | base64 -w 0                        
+c2VydmVyLmtleQo=%                   
+```
