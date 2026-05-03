@@ -104,3 +104,19 @@ deployment.apps "mongo-depl" deleted from default namespace
 ```sh
 ╰─❯ kubectl apply -f config-file.yaml
 ```
+#### get pod wide view
+###### -o (option) wide (view)
+```sh
+╰─❯ kubectl get pod -o wide 
+NAME                                READY   STATUS    RESTARTS   AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+nginx-deployment-76cb45c5b6-5hntt   1/1     Running   0          5m25s   10.244.0.13   minikube   <none>           <none>
+nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.0.12   minikube   <none>           <none>
+```
+#### create deployment status .yaml and save output to file
+###### can be used to automate creating deployments, after cleaning
+```sh
+╰─❯ kubectl get deployment nginx-deployment -o yaml > nginx-deployment-result.yaml
+
+# easy find
+╰─❯ find / -name "nginx-deployment-result.yaml" 2>/dev/null
+```
