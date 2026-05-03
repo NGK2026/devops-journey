@@ -58,4 +58,4 @@ spec:
     - protocol: TCP
       port: 8081
       targetPort: 8081
-      nodePort: 3000   # open port for external ip
+      nodePort: 30000   # open port for external ip
