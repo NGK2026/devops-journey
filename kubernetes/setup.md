@@ -255,5 +255,5 @@ nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.
 
 ╰─❯ find / -name "nginx-deployment-result.yaml" 2>/dev/null
 /home/student/nginx-deployment-result.yaml
-# moved to repo kubernetes folder.
+# moved to repo kubernetes folder. /kubernetes/nginx-deployment-result.yaml
 ```
