@@ -645,6 +645,8 @@ deployment.apps/kubernetes-dashboard        1/1     1            1           74s
 NAME                                                   DESIRED   CURRENT   READY   AGE
 replicaset.apps/dashboard-metrics-scraper-5565989548   1         1         1       74s
 replicaset.apps/kubernetes-dashboard-b84665fb8         1         1         1       74s
+
+# kubernetes-dashboard is internal (because Type is ClusterIP)
 ```
 ###### create rule
 ```yaml
