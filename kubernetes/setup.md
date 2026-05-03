@@ -674,5 +674,6 @@ spec:
 ```
 ###### apply
 ```sh
-kubectl apply -f 
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/dashboard-ingress.yaml
+ingress.networking.k8s.io/dashboard-ingress created
 ```
