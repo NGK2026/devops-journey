@@ -207,29 +207,13 @@ csistoragecapacities                     storage.k8s.io/v1              true    
 ```sh
 ╰─❯ kubectl apply -f mysql.configmap.yaml --namespace=my-namespace
 ```
-#### or Assign in configmap.yaml instead of useing flag
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mongo-configmap
-  namespace: my-namespace
-data:
-  database_url: mongo-service
-```
 ###### to view it, must specify namespace in kubectl get configmap -n
 ```sh
 ╰─❯ kubectl get configmap -n my-namespace
 ```
-#### change active namespace
-###### to remove need to specify namespace each time (change from default to specific)
-###### use kubens
+#### change active namespace (kubens)
 ```sh
-# install, fzf (fuzzy finder) is optional
-╰─❯ sudo pacman -Sy kubens fzf
-
+# install kubens then:
 ╰─❯ kubens my-namespace
 ✔ Active namespace is "my-namespace".
-
-# now can execute commands without specifying 'my-namespace' 
 ```
