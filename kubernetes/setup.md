@@ -140,10 +140,25 @@ root@mongo-depl-68c7f5ccc5-zmhpv:/#
 # kubectl apply -f config-file.yaml
 
 ╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/nginx-deployment.yaml
-deployment.apps/nginx-deployment created
+deployment.apps/nginx-deployment created # notice 'created'
 
 ╰─❯ kubectl get pod                                                                             
 NAME                                READY   STATUS              RESTARTS   AGE
 nginx-depl-569bd7dcf9-q6dpv         1/1     Running             0          17m
 nginx-deployment-78948d57cd-hkvg7   0/1     ContainerCreating   0          10s
+
+# edit nginx-deployment.yaml 'replicas: 2' , then:
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/nginx-deployment.yaml 
+deployment.apps/nginx-deployment configured # notice 'configured'
+
+╰─❯ kubectl get pod # 2 pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-depl-569bd7dcf9-q6dpv         1/1     Running   0          20m
+nginx-deployment-78948d57cd-cf2qj   1/1     Running   0          3s
+nginx-deployment-78948d57cd-hkvg7   1/1     Running   0          3m16s
+
+╰─❯ kubectl get deployment # '2/2'
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-depl         1/1     1            1           20m
+nginx-deployment   2/2     2            2           3m25s
 ```
