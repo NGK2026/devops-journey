@@ -260,7 +260,7 @@ nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.
 # moved to repo kubernetes folder. /kubernetes/nginx-deployment-result.yaml
 ```
 ## Mongodb & Mongo Express
-#### 1- Create mongo deployment
+#### 1- Create mongo deployment *File was renamed finally to mongo.yaml*
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
