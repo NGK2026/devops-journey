@@ -561,7 +561,7 @@ data:
 #### ingress.yaml
 ###### http, not https
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: myapp-ingress
@@ -650,7 +650,7 @@ replicaset.apps/kubernetes-dashboard-b84665fb8         1         1         1    
 ```
 ###### create rule
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: dashboard-ingress
