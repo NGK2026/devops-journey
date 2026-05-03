@@ -522,5 +522,8 @@ mongo-service           ClusterIP      10.109.141.119   <none>        27017/TCP 
 └───────────┴───────────────────────┴─────────────┴───────────────────────────┘
 🎉  Opening service default/mongo-express-service in default browser...
 # browser opens with mongo express
+
+# workflow:
+# express external service > express pod > mongo internal service > mongo pod
 ```
 
