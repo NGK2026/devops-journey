@@ -121,7 +121,7 @@ nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.
 ╰─❯ find / -name "nginx-deployment-result.yaml" 2>/dev/null
 ```
 #### Show Namespaces
-###### get namespace = get namespaces
+###### get namespace = get namespaces = get ns
 ```sh
 ╰─❯ kubectl get namespace 
 NAME              STATUS   AGE
