@@ -164,6 +164,7 @@ nginx-deployment   2/2     2            2           3m25s
 ```
 ## configuration files (deployment/service)
 #### 1- nginx-deployment.yaml
+###### can use yaml indentation validator eg: https://www.yamllint.com/
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -188,6 +189,7 @@ spec: # of deployment / specs contain selectors
         - containerPort: 8080 # should match service target port
 ```
 #### 2- nginx-service.yaml
+###### can use yaml indentation validator eg: https://www.yamllint.com/
 ```yaml
 apiVersion: v1
 kind: Service
