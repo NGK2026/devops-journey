@@ -45,3 +45,17 @@ spec:
             secretKeyRef:
               name: mongo-secret
               key: mongo-user-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer   # enable external service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 3000   # open port for external ip
