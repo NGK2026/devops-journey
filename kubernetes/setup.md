@@ -570,9 +570,12 @@ spec:
   - host: myapp.com
     http:
       paths:
-      - backend:
-        serviceName: myapp-internal-service # another internal service
-        servicePort: 8080
+      - path: /
+        backend:
+          service:
+            name: myapp-internal-service # another internal service
+            port:
+              number: 8080
 ```
 ###### Workflow: ingress controller pod > my-app ingress > my-app service > my-app pod
 #### 1- install ingress controller in minikube
@@ -657,12 +660,16 @@ metadata:
   namespace: kubernetes-dashboard
 spec:
   rules:
-  - hostname: dashboard.com
+  - host: dashboard.com
     http:
-      path:
-      - backend:
-          serviceName: kubernetes-dashboard
-          servicePort: 80
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubernetes-dashboard
+            port: 
+              number: 80
 # forwards all requests directed to dashboard.com to kubernetes-dashboard service
 ```
 ###### apply
