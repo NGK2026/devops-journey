@@ -147,3 +147,27 @@ Events:
 "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections"
 --snip--
 ```
+#### connect to container's terminal bin/bash
+###### -i (interactive) -t (terminal)
+```sh
+╰─❯ kubectl exec -it mongo-depl-6c557896c-n9zxt -- bin/bash
+error: Internal error occurred: unable to upgrade connection: container not found ("mongo")
+
+╰─❯ kubectl get pod                                
+NAME                         READY   STATUS             RESTARTS        AGE
+mongo-depl-6c557896c-n9zxt   0/1     CrashLoopBackOff   6 (4m44s ago)   15m
+
+# mongodb 5.0+ unstable with many CPUs, try 4.4
+kubectl edit deployment mongo-depl
+# editor will open, navigate 'spec' > containers > images: mongo
+# edit to mongo:4.4, save, close
+
+╰─❯ kubectl get pod                   
+NAME                          READY   STATUS    RESTARTS   AGE
+mongo-depl-68c7f5ccc5-zmhpv   1/1     Running   0          3m42s
+
+╰─❯ kubectl exec -it mongo-depl-68c7f5ccc5-zmhpv -- bin/bash               
+root@mongo-depl-68c7f5ccc5-zmhpv:/# 
+
+
+```
