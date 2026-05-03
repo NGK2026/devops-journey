@@ -331,3 +331,47 @@ env:
       name: mongo-secret
       key: mongo-root-password
 ```
+#### 5- apply and check
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-deployment.yaml
+deployment.apps/mongo-deployment created
+
+╰─❯ kubectl get all                                                                            
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/mongo-deployment-576f9d7d46-prptb   1/1     Running   0          7s
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   13h
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/mongo-deployment   1/1     1            1           7s
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/mongo-deployment-576f9d7d46   1         1         1       7s
+```
+#### 6- create service
+###### add the '---' in .yaml to indicate document separation
+###### allowing both deployment and service in 1 same file
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongo-deployment
+  labels:
+    app: mongo
+spec: 
+ --snip--
+              key: mongo-root-password
+---  # syntax for document separation in yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+```
