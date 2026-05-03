@@ -694,5 +694,67 @@ sudo vim /etc/hosts
 echo "192.168.49.2 dashboard.com" | sudo tee -a /etc/hosts
 ```
 ###### navigate to dashboard.com  ! kubernetes dashboard visible  !
-#### 3- default backend
+#### 3- default backend - check 'Default backend:  <default>'
+```sh
+╰─❯ kubectl describe ingress dashboard-ingress -n kubernetes-dashboard
+Name:             dashboard-ingress
+Labels:           <none>
+Namespace:        kubernetes-dashboard
+Address:          192.168.49.2
+Ingress Class:    nginx
+Default backend:  <default>
+Rules:
+  Host           Path  Backends
+  ----           ----  --------
+  dashboard.com  
+                 /   kubernetes-dashboard:80 (10.244.0.25:9090)
+Annotations:     <none>
+Events:
+  Type    Reason  Age                From                      Message
+  ----    ------  ----               ----                      -------
+  Normal  Sync    10m (x2 over 11m)  nginx-ingress-controller  Scheduled for sync
+```
+###### create internal service instead of <default>
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: default-http-backend
+spec:
+  selector:
+    app: default-response-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+```
+#### example of using multiple paths
+```yaml
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard
+            port: 
+              number: 80
+      - path: /analytics
+        pathType: Prefix
+        backend:
+          service:
+            name: analytics-service
+            port: 
+              number: 3000
+      - path: /shopping
+        pathType: Prefix
+        backend:
+          service:
+            name: shopping-service
+            port: 
+              number: 8080
+```
 
