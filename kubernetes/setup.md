@@ -681,4 +681,15 @@ ingress.networking.k8s.io/dashboard-ingress created
 NAME                CLASS   HOSTS           ADDRESS        PORTS   AGE
 dashboard-ingress   nginx   dashboard.com   192.168.49.2   80      68s
 
+# Addr 192.168.49.2
+```
+###### to access external ip locally, must add ext ip to /etc/hosts
+```sh
+minikube ip 
+192.168.49.2 # same as above
+
+# add 192.168.49.2 dashboard.com to /etc/hosts
+sudo vim /etc/hosts
+# or
+echo "192.168.49.2 dashboard.com" | sudo tee -a /etc/hosts
 ```
