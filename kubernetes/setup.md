@@ -693,3 +693,6 @@ sudo vim /etc/hosts
 # or
 echo "192.168.49.2 dashboard.com" | sudo tee -a /etc/hosts
 ```
+###### navigate to dashboard.com  ! kubernetes dashboard visible  !
+#### 3- default backend
+
