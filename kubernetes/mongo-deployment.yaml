@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongodb-deployment
+  labels:
+    app: mongo
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: monogo:4.4 # works with my cpu
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: 
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: 
