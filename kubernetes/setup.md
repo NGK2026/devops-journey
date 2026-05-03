@@ -375,3 +375,38 @@ spec:
       port: 27017
       targetPort: 27017
 ```
+#### 7- apply service and confirm functionality
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-D_S.yaml       
+deployment.apps/mongo-deployment unchanged
+service/mongo-service created
+
+╰─❯ kubectl get service                                                                 
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)     AGE
+kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP     15h
+mongo-service   ClusterIP   10.109.141.119   <none>        27017/TCP   31s
+
+╰─❯ kubectl describe service mongo-service                 
+Name:                     mongo-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=mongo
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.109.141.119
+IPs:                      10.109.141.119
+Port:                     <unset>  27017/TCP
+TargetPort:               27017/TCP
+Endpoints:                10.244.0.20:27017
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+
+╰─❯ kubectl get pod -o wide               
+NAME                                READY   STATUS    RESTARTS       AGE    IP            NODE       NOMINATED NODE   READINESS GATES
+mongo-deployment-576f9d7d46-prptb   1/1     Running   1 (103m ago)   113m   10.244.0.20   minikube   <none>           <none>
+
+# Endpoints and IP match!
+```
