@@ -99,6 +99,7 @@ root@mongo-depl-68c7f5ccc5-zmhpv:/#
 deployment.apps "mongo-depl" deleted from default namespace
 ```
 #### kubectl apply
+###### instead of 'kubectl create deployment name image option1 option2'
 ```sh
 ╰─❯ kubectl apply -f config-file.yaml
 ```
