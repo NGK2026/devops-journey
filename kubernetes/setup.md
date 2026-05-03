@@ -526,3 +526,34 @@ mongo-service           ClusterIP      10.109.141.119   <none>        27017/TCP 
 # workflow:
 # express external service > express pod > mongo internal service > mongo pod
 ```
+## Namespace
+#### Create eg: configMap in non-default Namespace
+```sh
+╰─❯ kubectl apply -f mysql.configmap.yaml --namespace=my-namespace
+```
+#### or Assign in configmap.yaml instead of useing flag
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+  namespace: my-namespace
+data:
+  database_url: mongo-service
+```
+###### to view it, must specify namespace in kubectl get configmap -n
+```sh
+╰─❯ kubectl get configmap -n my-namespace
+```
+#### change active namespace
+###### to remove need to specify namespace each time (change from default to specific)
+###### use kubens
+```sh
+# install, fzf (fuzzy finder) is optional
+╰─❯ sudo pacman -Sy kubens fzf
+
+╰─❯ kubens my-namespace
+✔ Active namespace is "my-namespace".
+
+# now can execute commands without specifying 'my-namespace' 
+```
