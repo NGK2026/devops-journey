@@ -477,3 +477,50 @@ NAME                                READY   STATUS    RESTARTS       AGE
 mongo-deployment-576f9d7d46-prptb   1/1     Running   1 (122m ago)   132m
 mongo-express-79787d5b46-vsljx      1/1     Running   0              40s
 ```
+#### 10- create express service, assign external ip with minikube
+###### mongo-express.yaml
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongo-express
+--snip--
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer   # enable external service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 30000   # open port for external ip
+```
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-express.yaml
+deployment.apps/mongo-express unchanged
+service/mongo-express-service created
+
+╰─❯ kubectl get service                                                                     
+NAME                    TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes              ClusterIP      10.96.0.1        <none>        443/TCP          16h
+mongo-express-service   LoadBalancer   10.109.153.154   <pending>     8081:30000/TCP   13s
+mongo-service           ClusterIP      10.109.141.119   <none>        27017/TCP        30m
+
+# External IP pending, get minikube to assign one
+
+╰─❯ minikube service mongo-express-service                                             
+┌───────────┬───────────────────────┬─────────────┬───────────────────────────┐
+│ NAMESPACE │         NAME          │ TARGET PORT │            URL            │
+├───────────┼───────────────────────┼─────────────┼───────────────────────────┤
+│ default   │ mongo-express-service │ 8081        │ http://192.168.49.2:30000 │
+└───────────┴───────────────────────┴─────────────┴───────────────────────────┘
+🎉  Opening service default/mongo-express-service in default browser...
+# browser opens with mongo express
+```
+
