@@ -30,6 +30,7 @@ nginx-depl-569bd7dcf9-ldnl4   1/1     Running   0          94s
 # prefix of deployment 'nginx-depl' - replica set id '569bd7dcf9' - pod id 'ldnl4'
 ```
 #### get replicaset
+###### manages replicas of a pod
 ```sh
 ╰─❯ kubectl get replicaset
 NAME                    DESIRED   CURRENT   READY   AGE
