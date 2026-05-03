@@ -36,3 +36,15 @@ nginx-depl-569bd7dcf9-ldnl4   1/1     Running   0          94s
 NAME                    DESIRED   CURRENT   READY   AGE
 nginx-depl-569bd7dcf9   1         1         1       13h
 ```
+#### edit deployment
+```sh
+╰─❯ kubectl edit deployment nginx-depl
+# editor will open, navigate 'spec' > containers > images: nginx:1
+# edit to nginx:1.16, save, close
+╰─❯ kubectl get pod
+NAME                          READY   STATUS    RESTARTS   AGE
+nginx-depl-74499d8d69-6jpwz   1/1     Running   0          37s
+# old pod was terminated '569bd7dcf9-ldnl4'
+# new pod created containing 'nginx:1.16'
+```
+
