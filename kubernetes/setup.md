@@ -571,6 +571,18 @@ spec:
     http:
       paths:
       - backend:
-        serviceName: myapp-internal-service # another created service
+        serviceName: myapp-internal-service # another internal service
         servicePort: 8080
+```
+###### Workflow: ingress controller pod > my-app ingress > my-app service > my-app pod
+#### 1- install ingress controller in minikube
+```sh
+╰─❯ minikube addons enable ingress        
+💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.14.3
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.7
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v1.6.7
+🔎  Verifying ingress addon...
+🌟  The 'ingress' addon is enabled
 ```
