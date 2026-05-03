@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mongo
-        image: monogo:4.4 # works with my cpu
+        image: mongo:4.4
         ports:
         - containerPort: 27017
         env:
