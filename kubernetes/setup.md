@@ -559,6 +559,7 @@ data:
 ```
 ## Ingress
 #### ingress.yaml
+###### http, not https
 ```yaml
 apiVersion: netowrking.k8s.io/v1beta1
 kind: Ingress
