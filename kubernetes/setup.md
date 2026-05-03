@@ -676,4 +676,9 @@ spec:
 ```sh
 ╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/dashboard-ingress.yaml
 ingress.networking.k8s.io/dashboard-ingress created
+
+╰─❯ kubectl get ingress -n kubernetes-dashboard                                                 
+NAME                CLASS   HOSTS           ADDRESS        PORTS   AGE
+dashboard-ingress   nginx   dashboard.com   192.168.49.2   80      68s
+
 ```
