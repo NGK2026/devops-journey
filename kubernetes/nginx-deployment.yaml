@@ -8,11 +8,11 @@ spec: # of deployment
   replicas: 1
   selector:
     matchLabels:
-    app: nginx
+      app: nginx
   template:
     metadata:
-    labels:
-      app: nginx
+      labels:
+        app: nginx
     spec: # of pod
       containers:
       - name: nginx
