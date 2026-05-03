@@ -46,5 +46,12 @@ NAME                          READY   STATUS    RESTARTS   AGE
 nginx-depl-74499d8d69-6jpwz   1/1     Running   0          37s
 # old pod was terminated '569bd7dcf9-ldnl4'
 # new pod created containing 'nginx:1.16'
+
+# old replicaset has no pods, new one has.
+kubectl get replicaset
+NAME                    DESIRED   CURRENT   READY   AGE
+nginx-depl-569bd7dcf9   0         0         0       13h
+nginx-depl-74499d8d69   1         1         1       4m8s
+
 ```
 
