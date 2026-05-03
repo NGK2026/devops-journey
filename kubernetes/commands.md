@@ -85,8 +85,13 @@ Events:
 minikube ssh "ping -c 3 google.com"
 ping: google.com: Temporary failure in name resolution
 ssh: Process exited with status 2
+
+╰─❯ minikube ssh "sudo systemctl restart systemd-resolved"
+Failed to restart systemd-resolved.service: Unit systemd-resolved.service not found.
+ssh: Process exited with status 5
 # DNS not inherited correctly
 
+# stop, delete
 ╰─❯ minikube stop
 ✋  Stopping node "minikube"  ...
 🛑  Powering off "minikube" via SSH ...
@@ -98,6 +103,7 @@ ssh: Process exited with status 2
 🔥  Removing /home/student/.minikube/machines/minikube ...
 💀  Removed all traces of the "minikube" cluster.
 
+# recreate with explicit DNS flags
 ╰─❯ minikube start --dns-proxy=true --extra-config=kubelet.resolv-conf=/etc/resolv.conf
 😄  minikube v1.38.1 on Arch 
 --snip--
@@ -113,11 +119,11 @@ PING google.com (142.250.181.110) 56(84) bytes of data.
 64 bytes from fjr04s08-in-f14.1e100.net (142.250.181.110): icmp_seq=2 ttl=115 time=40.0 ms
 64 bytes from ncmrsa-ao-in-f14.1e100.net (142.250.181.110): icmp_seq=3 ttl=115 time=40.4 ms
 
-# retry
+# retry deployment
 ╰─❯ kubectl create deployment mongo-depl --image=mongo
 deployment.apps/mongo-depl created
 
-╰─❯ kubectl get pod  # container creating                                 
+╰─❯ kubectl get pod  # notice status                                 
 NAME                         READY   STATUS              RESTARTS   AGE
 mongo-depl-6c557896c-n9zxt   0/1     ContainerCreating   0          5s
 
