@@ -111,7 +111,7 @@ Events:
 "c":"NETWORK",  "id":23016,   "ctx":"listener","msg":"Waiting for connections"
 --snip--
 ```
-#### connect to container's terminal bin/bash
+#### connect to container's terminal, pod crash
 ###### -i (interactive) -t (terminal)
 ```sh
 ╰─❯ kubectl exec -it mongo-depl-6c557896c-n9zxt -- bin/bash
