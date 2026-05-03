@@ -606,3 +606,60 @@ ingress-nginx-admission-create-r4jcw        0/1     Completed   0          4m10s
 ingress-nginx-admission-patch-rr5kb         0/1     Completed   1          4m10s
 ingress-nginx-controller-596f8778bc-lzp49   1/1     Running     0          4m10s
 ```
+#### 2- create ingress rule
+###### first must activate 'kubernetes dashboard' through minikube
+```sh
+╰─❯ minikube addons enable dashboard
+💡  dashboard is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image docker.io/kubernetesui/metrics-scraper:v1.0.8
+    ▪ Using image docker.io/kubernetesui/dashboard:v2.7.0
+💡  Some dashboard features require the metrics-server addon. To enable all features please run:
+
+	minikube addons enable metrics-server
+
+🌟  The 'dashboard' addon is enabled
+
+╰─❯ kubectl get ns
+NAME                   STATUS   AGE
+default                Active   17h
+ingress-nginx          Active   13m
+kube-node-lease        Active   17h
+kube-public            Active   17h
+kube-system            Active   17h
+kubernetes-dashboard   Active   33s
+
+╰─❯ kubectl get all -n kubernetes-dashboard
+NAME                                             READY   STATUS    RESTARTS   AGE
+pod/dashboard-metrics-scraper-5565989548-ksn9l   1/1     Running   0          74s
+pod/kubernetes-dashboard-b84665fb8-xvg9t         1/1     Running   0          74s
+
+NAME                                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+service/dashboard-metrics-scraper   ClusterIP   10.105.219.113   <none>        8000/TCP   74s
+service/kubernetes-dashboard        ClusterIP   10.104.70.7      <none>        80/TCP     74s
+
+NAME                                        READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/dashboard-metrics-scraper   1/1     1            1           74s
+deployment.apps/kubernetes-dashboard        1/1     1            1           74s
+
+NAME                                                   DESIRED   CURRENT   READY   AGE
+replicaset.apps/dashboard-metrics-scraper-5565989548   1         1         1       74s
+replicaset.apps/kubernetes-dashboard-b84665fb8         1         1         1       74s
+```
+###### create rule
+```yaml
+apiVersion: netowrking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: dashboard-ingress
+  namespace: kubernetes-dashboard
+spec:
+  rules:
+  - hostname: dashboard.com
+    http:
+      path:
+      - backend:
+          serviceName: kubernetes-dashboard
+          servicePort: 80
+# forwards all requests directed to dashboard.com to kubernetes-dashboard service
+```
