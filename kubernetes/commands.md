@@ -120,6 +120,16 @@ nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.
 # easy find
 ╰─❯ find / -name "nginx-deployment-result.yaml" 2>/dev/null
 ```
+#### Show Namespaces
+###### get namespace = get namespaces
+```sh
+╰─❯ kubectl get namespace 
+NAME              STATUS   AGE
+default           Active   16h
+kube-node-lease   Active   16h
+kube-public       Active   16h
+kube-system       Active   16h
+```
 #### resources bound to Namespace true vs. false
 ```sh
 ╰─❯ kubectl api-resources --namespaced=false                                                
@@ -192,4 +202,8 @@ roles                                    rbac.authorization.k8s.io/v1   true    
 resourceclaims                           resource.k8s.io/v1             true         ResourceClaim
 resourceclaimtemplates                   resource.k8s.io/v1             true         ResourceClaimTemplate
 csistoragecapacities                     storage.k8s.io/v1              true         CSIStorageCapacity
+```
+#### Create eg: configMap in non-default Namespace
+```sh
+╰─❯ kubectl apply -f mysql.configmap.yaml --namespace=my-namespace
 ```
