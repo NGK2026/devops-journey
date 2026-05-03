@@ -221,3 +221,13 @@ data:
 ```sh
 ╰─❯ kubectl get configmap -n my-namespace
 ```
+#### change active namespace
+###### to remove need to specify namespace each time (change from default to specific)
+###### use kubens
+```sh
+# install, fzf (fuzzy finder) is optional
+╰─❯ sudo pacman -Sy kubens fzf
+
+╰─❯ kubens my-namespace
+✔ Active namespace is "my-namespace".
+```
