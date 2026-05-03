@@ -230,4 +230,6 @@ data:
 
 ╰─❯ kubens my-namespace
 ✔ Active namespace is "my-namespace".
+
+# now can execute commands without specifying 'my-namespace'
 ```
