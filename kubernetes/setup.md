@@ -557,3 +557,19 @@ data:
 
 # now can execute commands without specifying 'my-namespace' 
 ```
+## Ingress
+#### ingress.yaml
+```yaml
+apiVersion: netowrking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: myapp-ingress
+spec:
+  rules:
+  - host: myapp.com
+    http:
+      paths:
+      - backend:
+        serviceName: myapp-internal-service
+        servicePort: 8080
+```
