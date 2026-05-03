@@ -526,4 +526,3 @@ mongo-service           ClusterIP      10.109.141.119   <none>        27017/TCP 
 # workflow:
 # express external service > express pod > mongo internal service > mongo pod
 ```
-
