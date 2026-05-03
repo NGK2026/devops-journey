@@ -259,3 +259,75 @@ nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.
 /home/student/nginx-deployment-result.yaml
 # moved to repo kubernetes folder. /kubernetes/nginx-deployment-result.yaml
 ```
+## Mongodb & Mongo Express
+#### 1- Create mongo deployment
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: mongodb-deployment
+  labels:
+    app: mongo
+spec: 
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongo
+        image: monogo:4.4 # works with my cpu
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: 
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: 
+```
+#### 2- create secret.yaml
+###### will reference this file's values in deployment yaml later
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-secret
+type: Opaque # default type (key-value)
+data: # encode it in base64
+  mongo-root-username: YWRtaW4= # see below how
+  mongo-root-password: cGFzc3dvcmQ= # see below how
+```
+###### encode to base64
+```sh
+╰─❯ echo -n 'admin' | base64                                                    
+YWRtaW4=
+╰─❯ echo -n 'password' | base64
+cGFzc3dvcmQ=
+```
+#### 3- apply the secret to kubectl
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/mongo-secret.yaml  
+secret/mongo-secret created
+
+╰─❯ kubectl get secret                                                                     
+NAME           TYPE     DATA   AGE
+mongo-secret   Opaque   2      11s
+```
+#### 4- update mongo deployment yaml env block with
+```yaml
+env:
+- name: MONGO_INITDB_ROOT_USERNAME
+  valueFrom:
+    secretKeyRef:
+      name: mongo-secret
+      key: mongo-root-username 
+- name: MONGO_INITDB_ROOT_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: mongo-secret
+      key: mongo-root-password
+```
