@@ -792,3 +792,26 @@ spec:
             port: 
               number: 8080
 ```
+#### example of using HTTPS
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tls-example-ingress
+spec:
+  tls:
+  - hosts: 
+    - example.com
+    secretName: example-secret-tls # ref of secret created in cluster that has cert.
+  rules:
+  -host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: example-internal-service
+            port: 
+              number: 8080
+```
