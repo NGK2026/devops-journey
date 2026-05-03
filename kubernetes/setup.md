@@ -162,3 +162,98 @@ NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-depl         1/1     1            1           20m
 nginx-deployment   2/2     2            2           3m25s
 ```
+## configuration files (deployment/service)
+#### 1- nginx-deployment.yaml
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata: # metadata contains labels
+  name: nginx-deployment
+  labels:
+    app: nginx # deployment lable
+spec: # of deployment / specs contain selectors
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template: # of pods
+    metadata:
+      labels:
+        app: nginx # connect this pod to same deployment lable
+    spec: # blue print of pod
+      containers:
+      - name: nginx
+        image: nginx:1.16
+        ports:
+        - containerPort: 8080 # should match service target port
+```
+#### 2- nginx-service.yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+```
+#### 3- apply
+```sh
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/nginx-deployment.yaml 
+deployment.apps/nginx-deployment created
+
+╰─❯ kubectl apply -f /home/student/projects/git/devops-journey/kubernetes/nginx-service.yaml
+service/nginx-service created
+```
+#### 4- verify
+```sh
+╰─❯ kubectl get pod                                                                         
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-76cb45c5b6-5hntt   1/1     Running   0          2m54s
+nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          2m54s
+
+╰─❯ kubectl get service 
+NAME            TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes      ClusterIP   10.96.0.1        <none>        443/TCP   12h
+nginx-service   ClusterIP   10.102.164.244   <none>        80/TCP    70s
+```
+#### 5- check connection success
+```sh
+╰─❯ kubectl describe service nginx-service         
+Name:                     nginx-service
+Namespace:                default
+Labels:                   <none>
+Annotations:              <none>
+Selector:                 app=nginx
+Type:                     ClusterIP
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.102.164.244
+IPs:                      10.102.164.244
+Port:                     <unset>  80/TCP
+TargetPort:               8080/TCP
+Endpoints:                10.244.0.12:8080,10.244.0.13:8080 # note 
+Session Affinity:         None
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+# note Endpoint IPs 10.244.0.13, 10.244.0.12
+
+
+╰─❯ kubectl get pod -o wide  # option wide to show extra info             
+NAME                                READY   STATUS    RESTARTS   AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+nginx-deployment-76cb45c5b6-5hntt   1/1     Running   0          5m25s   10.244.0.13   minikube   <none>           <none>
+nginx-deployment-76cb45c5b6-ksrt7   1/1     Running   0          5m25s   10.244.0.12   minikube   <none>           <none>
+# note IPs 10.244.0.13, 10.244.0.12
+```
+#### 6- create deployment status .yaml and save output to file
+```sh
+╰─❯ kubectl get deployment nginx-deployment -o yaml > nginx-deployment-result.yaml
+
+╰─❯ find / -name "nginx-deployment-result.yaml" 2>/dev/null
+/home/student/nginx-deployment-result.yaml
+# moved to repo kubernetes folder.
+```
