@@ -1,3 +1,8 @@
+##### start minikube
+```sh
+╰─❯ minikube start
+``` 
+
 #### status of nodes
 ```sh
 ╰─❯ kubectl get nodes
