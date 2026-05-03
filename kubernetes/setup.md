@@ -1,22 +1,16 @@
 # Content
-1. Layers of abstraction
+1. Setup
 2. Configuration files (deployment/service)
 3. Mongodb & Mongo Express cluster
 4. Namespace
 5. Ingress
 
-## Layers of abstraction
-```txt
-Deployment manages a ..
-ReplicaSet manages a ..
-Pod is an abstraction of ..
-Container
-```
-##### 1- install minikube / kubectl
+## setup
+#### 1- install minikube / kubectl
 ```sh
 sudo pacman -S minikube kubectl
 ```
-##### 2- start minikube
+#### 2- start minikube
 ```sh
 minikube start
 ``` 
