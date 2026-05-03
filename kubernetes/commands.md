@@ -9,7 +9,8 @@
 NAME       STATUS   ROLES           AGE    VERSION
 minikube   Ready    control-plane   6m9s   v1.35.1
 ```
-#### get services
+#### get services 
+###### both kubectl get service or get services work
 ```sh
 ╰─❯ kubectl get services
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
