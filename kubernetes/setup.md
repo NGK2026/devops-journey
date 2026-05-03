@@ -570,6 +570,6 @@ spec:
     http:
       paths:
       - backend:
-        serviceName: myapp-internal-service
+        serviceName: myapp-internal-service # another created service
         servicePort: 8080
 ```
