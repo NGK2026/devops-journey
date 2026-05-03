@@ -757,4 +757,38 @@ spec:
             port: 
               number: 8080
 ```
-
+#### example of using sub-domains
+```yaml
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dashboard
+            port: 
+              number: 80
+  - host: analytics.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: analytics-service
+            port: 
+              number: 3000
+  - host: shopping.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: shopping.service
+            port: 
+              number: 8080
+```
