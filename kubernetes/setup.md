@@ -576,6 +576,8 @@ spec:
 ```
 ###### Workflow: ingress controller pod > my-app ingress > my-app service > my-app pod
 #### 1- install ingress controller in minikube
+###### uses Nginx implementation, list of different implementations:
+- https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 ```sh
 ╰─❯ minikube addons enable ingress        
 💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
