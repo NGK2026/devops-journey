@@ -133,3 +133,8 @@ mongo-depl-68c7f5ccc5-zmhpv   1/1     Running   0          3m42s
 ╰─❯ kubectl exec -it mongo-depl-68c7f5ccc5-zmhpv -- bin/bash               
 root@mongo-depl-68c7f5ccc5-zmhpv:/# 
 ```
+#### 4- kubectl apply
+###### instead of 'kubectl create deployment name image option1 option2'
+```sh
+╰─❯ kubectl apply -f config-file.yaml
+```
