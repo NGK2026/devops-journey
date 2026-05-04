@@ -16,9 +16,9 @@
 1. Leftside pannel > Repositories > Create a Repository
 2. Fill *Repository Name* , Visibility: *Public* > **Create**
 #### 4- GitHub - Actions
-1. *Create* at root: */.github/workflows/pipeline.yml*
-2. Open repo **Actions** found at top *repo row*
-3. Open **New workflow**
-4. Search for **Publish Docker Container** - *By GitHub Actions*
+1. Open repo **Actions** found at top *repo row*
+2. Open **New workflow**
+3. Search for **Publish Docker Container** - *By GitHub Actions*
+4. **Save** it. It will be */.github/workflows/docker-publish.yml*
 
 
