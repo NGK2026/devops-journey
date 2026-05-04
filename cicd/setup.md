@@ -12,9 +12,13 @@
 3. New repository secret, and create:
 4. Name: DOCKER_USERNAME , Secret: enter docker hub username , click **Add secret**
 5. Name: DOCKER_PASSWORD , Secret: enter access token , click **Add secret**
-#### 3- GitHub - Actions
+#### 3- DockerHub - repository
+1. Leftside pannel > Repositories > Create a Repository
+2. Fill *Repository Name* , Visibility: *Public* > **Create**
+#### 4- GitHub - Actions
 1. *Create* at root: */.github/workflows/pipeline.yml*
 2. Open repo **Actions** found at top *repo row*
 3. Open **New workflow**
 4. Search for **Publish Docker Container** - *By GitHub Actions*
+
 
