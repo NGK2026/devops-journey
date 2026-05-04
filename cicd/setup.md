@@ -7,12 +7,11 @@
 4. Fill requirements, Access permission: *Read & Write*
 5. Copy/Save token.
 #### 2- GitHub - secrets
-1. Create at root: ./github/workflows/pipeline.yml
-2. Open repo **Settings**
-3. Left settings column > **Secrets and variables** > **Actions**
-4. New repository secret, and create:
-5. Name: DOCKER_USERNAME , Secret: enter docker hub username , click **Add secret**
-6. Name: DOCKER_PASSWORD , Secret: enter access token , click **Add secret**
+1. Open repo **Settings**
+2. Left settings column > **Secrets and variables** > **Actions**
+3. New repository secret, and create:
+4. Name: DOCKER_USERNAME , Secret: enter docker hub username , click **Add secret**
+5. Name: DOCKER_PASSWORD , Secret: enter access token , click **Add secret**
 #### 3- GitHub - Actions
 1. *Create* at root: */.github/workflows/pipeline.yml*
 2. Open repo **Actions** found at top *repo row*
