@@ -18,7 +18,8 @@
 #### 4- GitHub - Actions
 1. Open repo **Actions** found at top *repo row*
 2. Open **New workflow**
-3. Search for **Publish Docker Container** - *By GitHub Actions*
-4. **Save** it. It will be */.github/workflows/docker-publish.yml*
+3. Search for **[Publish Docker Container](https://github.com/docker/build-push-action)** - *By Docker*
+4. **Save** it. It will be */.github/workflows/pipeline.yml*
+5. Modify it > Push
 
 
