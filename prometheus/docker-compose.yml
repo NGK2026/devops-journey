@@ -10,7 +10,7 @@ services:
         ports:
             - "9090:9090"
         volumes:
-            - /etc/prometheus:/config
+            - ./:/config
             - prometheus-data:/prometheus
         restart: unless-stopped
         command:
