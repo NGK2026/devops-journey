@@ -11,7 +11,7 @@
 sudo pacman -S minikube kubectl
 ```
 #### 2- start minikube
-```sh
+```shell
 minikube start
 ``` 
 #### 3- create deployment
