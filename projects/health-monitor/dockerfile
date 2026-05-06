@@ -7,4 +7,6 @@ COPY ./app /home/app
 RUN apt-get update; \
     apt-get install -y flast psutil
 
+EXPOSE 5000
+
 CMD ["python3", "app.py"]
