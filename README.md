@@ -122,3 +122,12 @@ Documentation of my devops path
 - https://www.youtube.com/watch?v=h4Sl21AKiDg
 #### youtube: Server Monitoring // Prometheus and Grafana - Christian Lempa
 - https://www.youtube.com/watch?v=9TJx7QTrTyo
+
+## Step-10 Project Health-Monitor
+#### Steps
+1. Flask app
+2. Docker
+3. Terraform EC2
+4. GitHub Actions
+5. Prometheus + Grafana
+6. Bash health script
