@@ -5,12 +5,12 @@ import psutil as ps
 
 ## CPU
 cpuCount = ps.cpu_count()
-nonLogicalCpu = ps.cpu_count(logical=False)
+cpuNonLogical = ps.cpu_count(logical=False)
 cpuPercent = ps.cpu_percent(interval=1)
 
 print(
     f"\n===== ***** CPU ***** =====\n"
-    f"CPU actual physical cores: {nonLogicalCpu} cores\n"
+    f"CPU actual physical cores: {cpuNonLogical} cores\n"
     f"CPU logical cores: {cpuCount} threads\n"
     f"CPU currently at: {cpuPercent} now"
 )
