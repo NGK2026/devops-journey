@@ -7,7 +7,7 @@
 
 ## setup
 #### 1- install minikube / kubectl
-```sh
+```bash
 sudo pacman -S minikube kubectl
 ```
 #### 2- start minikube
