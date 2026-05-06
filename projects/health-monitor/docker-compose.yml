@@ -1,5 +1,9 @@
+# Create service,
 services:
+  # named health-monitor
   health-monitor:
+    # built from Dockerfile in current directory
     build: .
+    # with port 5000 open
     ports:
     - 5000:5000
