@@ -1,0 +1,10 @@
+FROM python:3.13-slim
+
+WORKDIR /home/app
+
+COPY ./app /home/app
+
+RUN apt-get update; \
+    apt-get install -y flast psutil
+
+CMD ["python3", "app.py"]
