@@ -12,7 +12,7 @@ print(
     f"\n===== ***** CPU ***** =====\n"
     f"CPU actual physical cores: {cpuNonLogical} cores\n"
     f"CPU logical cores: {cpuCount} threads\n"
-    f"CPU currently at: {cpuPercent} now"
+    f"CPU currently at: {cpuPercent}% now"
 )
 
 # get cpu usage percent
@@ -25,6 +25,7 @@ memCurr = ps.virtual_memory().percent
 memUsed = ps.virtual_memory().used
 memFree = ps.virtual_memory().free
 memTotal = ps.virtual_memory().total
+# in GB
 memGbTot = memTotal / (1024**3)
 memGbUsed = memUsed / (1024**3)
 memGbFree = memFree / (1024**3)
@@ -37,8 +38,42 @@ print(
     f"RAM: {memGbUsed:.2f} GB / {memGbTot:.2f} GB ({memCurr}%)\n"
 )
 
-## DISK
+## DISK ROOT
 diskTotal = ps.disk_usage('/').total
 diskUsed = ps.disk_usage('/').used
 diskFree = ps.disk_usage('/').free
-diskCurr = 
+diskCurr = ps.disk_usage('/').percent
+# in GB
+diskGbTotal = diskTotal / (1024**3)
+diskGbUsed = diskUsed / (1024**3)
+diskGbFree = diskFree / (1024**3)
+
+print(
+    f"\n===== ***** DISK ***** =====\n"
+    f"** Root /:\n"
+    f"Disk total: {diskGbTotal:.2f} GB\n"
+    f"Disk used: {diskGbUsed:.2f} GB\n"
+    f"Disk free: {diskGbFree:.2f} GB\n"
+    f"Disk usage currently at: {diskCurr}%\n"
+    f"Disk: {diskGbUsed:.2f} GB / {diskGbTotal:.2f} GB ({diskCurr}%)\n"
+)
+
+# DISK HOME
+diskTotal = ps.disk_usage('/home').total
+diskUsed = ps.disk_usage('/home').used
+diskFree = ps.disk_usage('/home').free
+diskCurr = ps.disk_usage('/home').percent
+# in GB
+diskGbTotal = diskTotal / (1024**3)
+diskGbUsed = diskUsed / (1024**3)
+diskGbFree = diskFree / (1024**3)
+
+print(
+    f"\n"
+    f"** HOME /home:\n"
+    f"Disk total: {diskGbTotal:.2f} GB\n"
+    f"Disk used: {diskGbUsed:.2f} GB\n"
+    f"Disk free: {diskGbFree:.2f} GB\n"
+    f"Disk usage currently at: {diskCurr}%\n"
+    f"Disk: {diskGbUsed:.2f} GB / {diskGbTotal:.2f} GB ({diskCurr}%)\n"
+)
