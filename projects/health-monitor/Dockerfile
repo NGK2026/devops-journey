@@ -1,4 +1,4 @@
-# import from docker hub and use image:
+# specify base image:
 FROM python:3.13-slim
 
 # set work directory to:
@@ -9,7 +9,7 @@ COPY ./app /home/app
 
 # update container's system package manager
 # install with python's package manager (pip) libraries needed for app.
-RUN apt-get update; \
+RUN apt-get update \
     pip install flask psutil
 
 # open container port:
