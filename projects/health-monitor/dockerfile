@@ -5,6 +5,7 @@ WORKDIR /home/app
 COPY ./app /home/app
 
 RUN apt-get update; \
+    pip install --upgrade pip \
     pip install flask psutil
 
 EXPOSE 5000
