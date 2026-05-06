@@ -21,20 +21,24 @@ print(
 
 
 ## MEMORY
-currentMem = ps.virtual_memory().percent
-usedMem = ps.virtual_memory().used
-freeMem = ps.virtual_memory().free
-totalMem = ps.virtual_memory().total
-totalGB = totalMem / (1024**3)
-usedGB = usedMem / (1024**3)
-freeGB = freeMem / (1024**3)
+memCurr = ps.virtual_memory().percent
+memUsed = ps.virtual_memory().used
+memFree = ps.virtual_memory().free
+memTotal = ps.virtual_memory().total
+memGbTot = memTotal / (1024**3)
+memGbUsed = memUsed / (1024**3)
+memGbFree = memFree / (1024**3)
 print(
     f"\n===== ***** MEMORY ***** =====\n"
-    f"RAM total: {totalGB:.2f} GB\n"
-    f"RAM used: {usedGB:.2f} GB\n"
-    f"RAM free: {freeGB:.2f} GB\n"
-    f"RAM usage currently at: {currentMem}%\n"
-    f"RAM: {usedGB:.2f} GB / {totalGB:.2f} GB ({currentMem}%)\n"
+    f"RAM total: {memGbTot:.2f} GB\n"
+    f"RAM used: {memGbUsed:.2f} GB\n"
+    f"RAM free: {memGbFree:.2f} GB\n"
+    f"RAM usage currently at: {memCurr}%\n"
+    f"RAM: {memGbUsed:.2f} GB / {memGbTot:.2f} GB ({memCurr}%)\n"
 )
 
 ## DISK
+diskTotal = ps.disk_usage('/').total
+diskUsed = ps.disk_usage('/').used
+diskFree = ps.disk_usage('/').free
+diskCurr = 
