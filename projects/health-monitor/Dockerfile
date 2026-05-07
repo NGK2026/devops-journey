@@ -4,7 +4,7 @@ FROM python:3.13-slim
 # set work directory to:
 WORKDIR /home/app
 
-# copy contents from local dir ./app to container's dir /home/app
+# copy contents from local dir ./app to container's dir /home/app.
 COPY ./app /home/app
 
 # update container's system package manager
