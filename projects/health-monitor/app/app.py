@@ -5,6 +5,12 @@ import prometheus_client as pc
 
 app = Flask(__name__)
 
+# define gauge
+cpu_gauge = pc.Gauge('cpu_percent', 'Current CPU percent')
+mem_gauge = pc.Gauge('mem_percent', 'Current RAM percent')
+root_gauge = pc.Gauge('root_percent', 'Current Root percent')
+home_gauge = pc.Gauge('home_percent', 'Current Home percent')
+
 @app.route('/metrics')
 def metrics():
     # variables storing metrics:
@@ -14,12 +20,6 @@ def metrics():
     # rootDiskCurr = ps.disk_usage('/').percent
     # homeDiskCurr = ps.disk_usage('/home').percent
     
-    # define gauge
-    cpu_gauge = pc.Gauge('cpu_percent', 'Current CPU percent')
-    mem_gauge = pc.Gauge('mem_percent', 'Current RAM percent')
-    root_gauge = pc.Gauge('root_percent', 'Current Root percent')
-    home_gauge = pc.Gauge('home_percent', 'Current Home percent')
-
     # set gauge
     cpu_gauge.set(ps.cpu_percent(interval=1))
     mem_gauge.set(ps.virtual_memory().percent)

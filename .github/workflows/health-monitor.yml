@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - 'projects/health-monitor/Dockerfile'
+      - 'projects/health-monitor/app/app.py'
       - '.github/workflows/health-monitor.yml'
       - '!projects/health-monitor/README.md' # ignore #
 
