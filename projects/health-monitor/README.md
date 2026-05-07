@@ -18,7 +18,7 @@
 8. Write Terraform to provision AWS EC2 instance and security groups
 9. Apply it, verify instance is running
 
-### Phase 4 — CI/CD
+### Phase 4 — CI/CD  -- Done
 10. Write GitHub Actions pipeline — on push, build Docker image, push to Docker Hub
 
 ### Phase 5 — Monitoring
