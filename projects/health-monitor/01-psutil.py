@@ -1,7 +1,11 @@
 # practice and explore file
 # for cpu, memory and disk
 
+# add prometheus client library
+
 import psutil as ps
+import prometheus_client as pc
+
 
 ## CPU
 cpuCount = ps.cpu_count()
@@ -77,3 +81,8 @@ print(
     f"Disk usage currently at: {diskCurr}%\n"
     f"Disk: {diskGbUsed:.2f} GB / {diskGbTotal:.2f} GB ({diskCurr}%)\n"
 )
+
+# Prometheus
+
+cpu_gauge = pc.Gauge('cpu_usage_percent', 'Current CPU usage in percent')
+cpu_gauge.set(ps.cpu_percent(interval=1))
