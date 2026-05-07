@@ -9,7 +9,7 @@ COPY ./app /home/app
 
 # update container's system package manager
 # install with python's package manager (pip) libraries needed for app.
-RUN apt-get update && pip install flask psutil
+RUN apt-get update && pip install flask psutil prometheus-client
 
 # open container port:
 EXPOSE 5000
