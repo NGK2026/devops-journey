@@ -123,18 +123,14 @@ resource "aws_instance" "web-server-instance" {
   
   user_data = <<-EOF
                 #!/bin/bash
-                sudo dnf update -y
-                sudo dnf install git docker -y
-                sudo service enable docker
-                sudo service start docker
-                sudo usermod -a -G docker ec2-user
-                cd /tmp
-                git clone https://github.com/NGK2026/devops-journey.git
-                cd devops-journey
-                mkdir ~/health-monitor
-                cp -r /tmp/devops-journey/projects/health-monitor/* ~/health-monitor
-                cd ~/health-monitor
-                docker-compose up
+                dnf update -y
+                dnf install -y git docker
+                systemctl enable docker
+                systemctl start docker
+                usermod -a -G docker ec2-user
+                git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
+                cd /home/ec2-user/devops-journey/projects/health-monitor
+                docker compose up -d
                 EOF
   tags = {
     Name = "health-app"
