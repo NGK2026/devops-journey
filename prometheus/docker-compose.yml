@@ -38,16 +38,16 @@ services:
             - '/:/host:ro,rslave'
 
     cadvisor:
-        image: google/cadvisor:latest
+        image: gcr.io/cadvisor/cadvisor:latest
         container_name: cadvisor
         restart: unless-stopped
         privileged: true
         devices:
             - /dev/kmsg
         volumes:
-            - volume=/:/rootfs:ro 
-            - volume=/var/run:/var/run:ro
-            - volume=/sys:/sys:ro
-            - volume=/var/lib/docker/:/var/lib/docker:ro
-            - volume=/dev/disk/:/dev/disk:ro
+            - /:/rootfs:ro 
+            - /var/run:/var/run:ro
+            - /sys:/sys:ro
+            - /var/lib/docker/:/var/lib/docker:ro
+            - /dev/disk/:/dev/disk:ro
         
