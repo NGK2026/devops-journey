@@ -2,7 +2,7 @@
 . Monitor's the system's CPU, Memory & Disk usage % using a Python app.
 . The App is located inside a Docker container, deploying a Python Flask server.
 
-### Phase 1 — The App -- Done
+#### Phase 1 — The App -- Done
 1. Create /projects/health-monitor/app/app.py
 2. Use psutil to collect CPU, memory, disk usage
 3. Use Flask to expose it at http://localhost:5000/metrics
