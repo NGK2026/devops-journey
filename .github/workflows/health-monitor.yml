@@ -4,9 +4,9 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'projects/health-monitor/**'
+      - 'projects/health-monitor/Dockerfile'
       - '.github/workflows/health-monitor.yml'
-      - '!projects/health-monitor/README.md' # ignore
+      # - '!projects/health-monitor/README.md' # ignore
 
 jobs:
   build:
