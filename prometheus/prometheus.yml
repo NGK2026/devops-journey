@@ -10,7 +10,9 @@ scrape_configs:
 # exmaple job for node_exporter
   - job_name: 'node_exporter'
     static_configs:
-      - targets: ['node_exporter:9100']
+    #  - targets: ['node_exporter:9100']
+    # Use the host's IP address because node_exporter is in 'host' mode
+    - targets: ['host.docker.internal:9100']
 
 # example job for cadvisor
   - job_name: 'cadvisor'
