@@ -33,8 +33,8 @@ def metrics():
     #     'Root': rootDiskCurr,
     #     'Home': homeDiskCurr
     # }
-    # return latest gauge           # return data as JSON
-    return pc.generate_latest()     # jsonify(data)
+    # return latest gauge          
+    return pc.generate_latest(), 200, {'Content-Type': pc.CONTENT_TYPE_LATEST} 
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
