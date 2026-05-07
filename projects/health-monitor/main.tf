@@ -83,6 +83,24 @@ resource "aws_security_group" "allow_web" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
+  ingress {
+    description = "prometheus"
+    from_port        = 9090
+    to_port          = 9090
+    protocol         = "6" # meaning TCP , 1 is ICMP, 17 UDP, -1 ALL
+    cidr_blocks      = ["0.0.0.0/0"] # any ip can access
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  ingress {
+    description = "grafana"
+    from_port        = 3000
+    to_port          = 3000
+    protocol         = "6" # meaning TCP , 1 is ICMP, 17 UDP, -1 ALL
+    cidr_blocks      = ["0.0.0.0/0"] # any ip can access
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
 egress {
     from_port        = 0
     to_port          = 0
