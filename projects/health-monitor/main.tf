@@ -113,7 +113,7 @@ resource "aws_eip" "one" {
 
 # 9- Create Amazon Linux server and install/enable apache2
 resource "aws_instance" "web-server-instance" {
-  ami           = "ami-0a0823e4ea064404d" # name of instance (AMI ID)
+  ami           = "ami-059f32cf6eecf0ef9" # change ami
   instance_type = "t3.micro"
   availability_zone = "eu-north-1a"
   key_name = "main-key"
@@ -130,7 +130,8 @@ resource "aws_instance" "web-server-instance" {
                 usermod -a -G docker ec2-user
                 git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
                 cd /home/ec2-user/devops-journey/projects/health-monitor
-                docker compose up -d
+                docker build -t health-monitor .
+                docker run -d -p 5000:5000 health-monitor
                 EOF
   tags = {
     Name = "health-app"
