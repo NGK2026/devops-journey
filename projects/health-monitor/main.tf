@@ -136,3 +136,7 @@ resource "aws_instance" "web-server-instance" {
     Name = "health-app"
   }
 }
+
+output "public_ip" {
+  value = aws_eip.one.public_ip
+}
