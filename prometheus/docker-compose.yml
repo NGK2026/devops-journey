@@ -1,3 +1,5 @@
+version: '3.8'
+
 volumes:
     prometheus-data:
         driver: local
@@ -24,17 +26,30 @@ services:
         volumes:
             - grafana-data:/var/lib/grafana
         restart: unless-stopped
----
-version: '3.8'
 
-services:
-  node_exporter:
-    image: quay.io/prometheus/node-exporter:latest
-    container_name: node_exporter
-    command:
-      - '--path.rootfs=/host'
-    network_mode: host
-    pid: host
-    restart: unless-stopped
-    volumes:
-      - '/:/host:ro,rslave'
+
+    node_exporter:
+        image: quay.io/prometheus/node-exporter:latest
+        container_name: node_exporter
+        command:
+            - '--path.rootfs=/host'
+        network_mode: host
+        pid: host
+        restart: unless-stopped
+        volumes:
+            - '/:/host:ro,rslave'
+
+    cadvisor:
+        image: google/cadvisor:latest
+        container_name: cadvisor
+        restart: unless-stopped
+        privileged: true
+        devices:
+            - /dev/kmsg
+        volumes:
+            - volume=/:/rootfs:ro 
+            - volume=/var/run:/var/run:ro
+            - volume=/sys:/sys:ro
+            - volume=/var/lib/docker/:/var/lib/docker:ro
+            - volume=/dev/disk/:/dev/disk:ro
+        
