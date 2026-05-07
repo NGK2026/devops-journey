@@ -131,10 +131,10 @@ resource "aws_instance" "web-server-instance" {
                 cd /tmp
                 git clone https://github.com/NGK2026/devops-journey.git
                 cd devops-journey
-		mkdir ~/health-monitor
-		cp -r /tmp/devops-journey/projects/health-monitor/* ~/health-monitor
-		cd ~/health-monitor
-		docker-compose up
+                mkdir ~/health-monitor
+                cp -r /tmp/devops-journey/projects/health-monitor/* ~/health-monitor
+                cd ~/health-monitor
+                docker-compose up
                 EOF
   tags = {
     Name = "health-app"
