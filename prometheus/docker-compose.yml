@@ -36,8 +36,8 @@ services:
         restart: unless-stopped
         volumes:
             - '/:/host:ro,rslave'
-        extra_hosts:
-            - 'host.docker.internal:host-gateway'
+        # extra_hosts:
+        #     - 'host.docker.internal:host-gateway'
 
     cadvisor:
         image: gcr.io/cadvisor/cadvisor:latest
