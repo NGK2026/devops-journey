@@ -1,12 +1,14 @@
+# github actions pipeline example
 name: CI Pipeline
 
 on:
   push:
     branches: ["main"]
     paths:
-      - 'projects/health-monitor/**'
+      - 'projects/health-monitor/Dockerfile'
+      - 'projects/health-monitor/app/app.py'
       - '.github/workflows/health-monitor.yml'
-      - '!projects/health-monitor/README.md' # ignore
+      - '!projects/health-monitor/README.md' # ignore #
 
 jobs:
   build:
@@ -31,6 +33,7 @@ jobs:
         context: ./projects/health-monitor
         push: true
         tags: ngk2026/health-monitor:latest
+        no-cache: true # # #
     
     - name: ssh and deploy
       env:
@@ -44,6 +47,7 @@ jobs:
 
             cd /home/ec2-user/devops-journey/projects/health-monitor
             docker stop $(docker ps -q)
+            docker pull ngk2026/health-monitor:latest
             docker run -d -p 5000:5000 ngk2026/health-monitor:latest
+            docker start prometheus grafana
             '
- 
