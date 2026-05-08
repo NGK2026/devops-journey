@@ -21,7 +21,7 @@
 ### Phase 4 — CI/CD  -- Done
 10. Write GitHub Actions pipeline — on push, build Docker image, push to Docker Hub
 
-### Phase 5 — Monitoring
+### Phase 5 — Monitoring -- Done
 13. Add Prometheus scrape config to target your app
 14. Open Grafana, build one simple dashboard showing CPU and memory
 
