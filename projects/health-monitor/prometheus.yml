@@ -8,4 +8,5 @@ scrape_configs:
   
   - job_name: 'health-monitor'
     static_configs:
+      # different container requires host ip
       - targets: ['10.0.1.50:5000']
