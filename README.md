@@ -125,9 +125,9 @@ Documentation of my devops path
 
 ## Step-11 Project Health-Monitor
 #### Steps
-1. Flask app --Done
-2. Docker --Done
-3. Terraform EC2 --Done
-4. GitHub Actions --Done
-5. Prometheus + Grafana
+1. Flask app -- Done
+2. Docker -- Done
+3. Terraform EC2 -- Done
+4. GitHub Actions -- Done
+5. Prometheus + Grafana -- Done
 6. Bash health script
