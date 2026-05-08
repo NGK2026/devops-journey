@@ -1,3 +1,6 @@
+# EC2 Amazon Linux v2023 docker does not support docker compose
+# Compose approach neglected for this project.
+
 # Create service,
 services:
   # named health-monitor
