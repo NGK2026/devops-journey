@@ -33,7 +33,7 @@ for NAME in ${RUN[@]}; do
             --name prometheus \
             --network monitor-net \
             -p 9090:9090 \
-            # -v /home/ec2-user/devops-journey/projects/health-monitor/prometheus.yml:/etc/prometheus/prometheus.yml \
+            -v /home/ec2-user/devops-journey/projects/health-monitor/prometheus.yml:/etc/prometheus/prometheus.yml \
             prom/prometheus
     fi
     if [ "$NAME" = "grafana" ]; then
