@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# variables
-# IS_RUNNING="docker ps --filter name=romantic_lovelace --format "{{.Names}}""
 # arrays
 NAMES=("health-monitor" "prometheus" "grafana")
 CHECK=()
