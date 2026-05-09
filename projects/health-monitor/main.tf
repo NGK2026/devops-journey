@@ -148,6 +148,7 @@ resource "aws_instance" "web-server-instance" {
                 usermod -a -G docker ec2-user
                 git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
                 cd /home/ec2-user/devops-journey/projects/health-monitor
+                docker network create monitor-net
                 docker build -t health-monitor .
                 docker run -d -p 5000:5000 health-monitor
                 EOF
