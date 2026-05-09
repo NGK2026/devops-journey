@@ -130,4 +130,4 @@ Documentation of my devops path
 3. Terraform EC2 -- Done
 4. GitHub Actions -- Done
 5. Prometheus + Grafana -- Done
-6. Bash health script
+6. Bash health script -- Done

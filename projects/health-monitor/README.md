@@ -25,7 +25,7 @@
 13. Add Prometheus scrape config to target your app
 14. Open Grafana, build one simple dashboard showing CPU and memory
 
-### Phase 6 — Bash
+### Phase 6 — Bash -- Done
 15. Write a bash script that checks if the app is running and restarts it if not
 
 #### How to use
