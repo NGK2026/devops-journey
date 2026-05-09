@@ -146,11 +146,10 @@ resource "aws_instance" "web-server-instance" {
                 systemctl enable docker
                 systemctl start docker
                 usermod -a -G docker ec2-user
-                git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
+                sudo -u ec2-user git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
+                sudo -u ec2-user git config --global --add safe.directory /home/ec2-user/devops-journey
                 cd /home/ec2-user/devops-journey/projects/health-monitor
                 docker network create monitor-net
-                docker build -t health-monitor .
-                docker run -d --name health-monitor --network monitor-net -p 5000:5000 ngk2026/health-monitor:latest
                 EOF
   tags = {
     Name = "health-app"
