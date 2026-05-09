@@ -131,3 +131,7 @@ Documentation of my devops path
 4. GitHub Actions -- Done
 5. Prometheus + Grafana -- Done
 6. Bash health script -- Done
+
+## Step-12 Ansible
+#### youtube: Getting started with Ansible (18 Videos) - Learn Linux TV
+- Playlist: https://www.youtube.com/playlist?list=PLT98CRl2KxKEUHie1m24-wkyHpEsa4Y70
