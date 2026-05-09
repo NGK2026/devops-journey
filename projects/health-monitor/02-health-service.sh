@@ -16,11 +16,11 @@ done
 # not exist at all
 # TODO: if exists: start
 for NAME in ${CHECK[@]}; do
-    COMMAND='docker ps -a --filter name=$NAME --format "{{.Names}}"'
+    COMMAND=$(docker ps -a --filter name=$NAME --format "{{.Names}}")
     if [ "$COMMAND" = "$NAME" ]; then
         docker start $NAME
     else
-        RUN+=($"NAME")
+        RUN+=("$NAME")
     fi
 done
 # TODO: if not exist: run
