@@ -142,9 +142,11 @@ resource "aws_instance" "web-server-instance" {
   user_data = <<-EOF
                 #!/bin/bash
                 dnf update -y
-                dnf install -y git docker
+                dnf install -y git docker cronie
                 systemctl enable docker
                 systemctl start docker
+                systemctl enable crond
+                systemctl start crond
                 usermod -a -G docker ec2-user
                 sudo -u ec2-user git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
                 sudo -u ec2-user git config --global --add safe.directory /home/ec2-user/devops-journey
