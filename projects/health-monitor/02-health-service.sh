@@ -1,7 +1,7 @@
-!#/bin/bash
+#!/bin/bash
 
 # variables
-IS_RUNNING="docker ps --filter name=romantic_lovelace --format "{{.Names}}""
+# IS_RUNNING="docker ps --filter name=romantic_lovelace --format "{{.Names}}""
 # arrays
 NAMES=("health-monitor" "prometheus" "grafana")
 CHECK=()
@@ -9,22 +9,22 @@ RUN=()
 
 # TODO: check if container is running by filter
 for NAME in ${NAMES[@]}; do
-    COMMAND='docker ps --filter name=$NAME --format "{{.Names}}"'
-    if [ ! "$COMMAND" = "$NAME"]; then
+    COMMAND=$(docker ps --filter name=$NAME --format "{{.Names}}")
+    if [ ! "$COMMAND" = "$NAME" ]; then
         CHECK+=("$NAME")
     fi
-
+done
 # TODO: if not running check if exists but stopped or
 # not exist at all
 # TODO: if exists: start
 for NAME in ${CHECK[@]}; do
     COMMAND='docker ps -a --filter name=$NAME --format "{{.Names}}"'
-    if [ "$COMMAND" = "$NAME"]; then
+    if [ "$COMMAND" = "$NAME" ]; then
         docker start $NAME
     else
         RUN+=($"NAME")
     fi
-
+done
 # TODO: if not exist: run
 for NAME in ${RUN[@]}; do
     if [ "$NAME" = "health-monitor" ]; then
@@ -45,3 +45,4 @@ for NAME in ${RUN[@]}; do
             -p 3000:3000 \
             grafana/grafana
     fi
+done
