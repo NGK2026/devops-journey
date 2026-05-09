@@ -150,7 +150,7 @@ resource "aws_instance" "web-server-instance" {
                 cd /home/ec2-user/devops-journey/projects/health-monitor
                 docker network create monitor-net
                 docker build -t health-monitor .
-                docker run -d -p 5000:5000 health-monitor
+                docker run -d --name health-monitor --network monitor-net -p 5000:5000 ngk2026/health-monitor:latest
                 EOF
   tags = {
     Name = "health-app"
