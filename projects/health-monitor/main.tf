@@ -149,8 +149,8 @@ resource "aws_instance" "web-server-instance" {
                 systemctl start crond
                 echo "* * * * * /home/ec2-user/devops-journey/projects/health-monitor/02-health-service.sh" | sudo -u ec2-user crontab -
                 usermod -a -G docker ec2-user
-                sudo -u ec2-user git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
-                sudo -u ec2-user git config --global --add safe.directory /home/ec2-user/devops-journey
+                git clone https://github.com/NGK2026/devops-journey.git /home/ec2-user/devops-journey
+                chown -R ec2-user:ec2-user /home/ec2-user/devops-journey
                 cd /home/ec2-user/devops-journey/projects/health-monitor
                 docker network create monitor-net
                 EOF
