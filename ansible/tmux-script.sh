@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SESSION="work"
+SESSION="devops"
 
 # Start a new session, name the first window 'workstation', and detach
-tmux new-session -d -s $SESSION -n 'workstation'
+tmux new-session -d -s $SESSION -n 'main'
 
 # Create the server windows
 tmux new-window -t $SESSION:1 -n 'srv1'
