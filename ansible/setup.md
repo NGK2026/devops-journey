@@ -179,3 +179,7 @@ sudo visudo
 # add at bottom
 student ALL=(ALL) NOPASSWD: ALL
 ```
+```sh
+# upgrade dist!
+╰─❯ ansible all -m apt -a upgrade=dist --become -ask-become-pass
+```
