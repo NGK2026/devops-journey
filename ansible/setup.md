@@ -260,3 +260,17 @@ PLAY RECAP ***********************************************************
 [student@centos ~]$ sudo firewall-cmd --permanent --add-service=http
 [student@centos ~]$ sudo firewall-cmd --reload
 ```
+#### 17. trim install_apache_v3.yml into v4, use variables to reduce to 1 play
+```yml
+  - name: update index and install apache and php
+    apt:
+      name:
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
+      state: latest
+      update_cache: true
+```
+- inventory: declare variables for each host ip
+```txt
+
+```
