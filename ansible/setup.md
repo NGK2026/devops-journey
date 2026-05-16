@@ -263,7 +263,7 @@ PLAY RECAP ***********************************************************
 #### 17. trim install_apache_v3.yml into v4, use variables to reduce to 1 play
 ```yml
   - name: update index and install apache and php
-    apt:
+    package:
       name:
         - "{{ apache_package }}"
         - "{{ php_package }}"
@@ -272,5 +272,9 @@ PLAY RECAP ***********************************************************
 ```
 - inventory: declare variables for each host ip
 ```txt
-
+192.168.0.124 apache_package=apache2 php_package=libapache2-mod-php
+192.168.0.139 apache_package=apache2 php_package=libapache2-mod-php
+192.168.0.3 apache_package=apache2 php_package=libapache2-mod-php
+192.168.0.66 apache_package=apache2 php_package=libapache2-mod-php
+192.168.0.171 apache_package=httpd php_package=php
 ```
