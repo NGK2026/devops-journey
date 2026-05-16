@@ -58,5 +58,11 @@ student@ubuntu2604:~$ apt search vim-nox
 ```
 #### upgrade a specific upgradable package (ex: snapd)
 ```sh
-ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+╰─❯ ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+```
+#### upgrade all (upgrade dist)
+```sh
+╰─❯ ansible all -m apt -a update_cache=true --become --ask-become-pass
+
+╰─❯ ansible all -m apt -a upgrade=dist --become -ask-become-pass
 ```
