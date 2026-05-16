@@ -56,3 +56,7 @@ student@ubuntu2204:~$ apt search vim-nox
 student@ubuntu2604:~$ apt search vim-nox
 # vim-nox/resolute-updates,resolute-security,now 2:9.1.2141-1ubuntu4.1 amd64 [installed]
 ```
+#### upgrade a specific upgradable package (ex: snapd)
+```sh
+ansible all -m apt -a "name=snapd state=latest" --become --ask-become-pass
+```
