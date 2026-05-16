@@ -253,3 +253,10 @@ PLAY RECAP ***********************************************************
 192.168.0.3                : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 192.168.0.66               : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
 ```
+- ssh into centos, allow service and allow firewall
+```sh
+[student@localhost ~]$ sudo systemctl start httpd
+[student@localhost ~]$ sudo systemctl enable httpd
+[student@localhost ~]$ sudo firewall-cmd --permanent --add-service=http
+[student@localhost ~]$ sudo firewall-cmd --reload
+```
