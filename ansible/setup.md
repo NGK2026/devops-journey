@@ -99,4 +99,5 @@ ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 [defaults]
 inventory = inventory
 private_key_file = ~/.ssh/ansible
+interpreter_python = /usr/bin/python3
 ```
