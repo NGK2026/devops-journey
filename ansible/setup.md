@@ -71,3 +71,12 @@ student@ubuntu2604:~$
 Enter passphrase for /home/student/.ssh/VMs: 
 Identity added: /home/student/.ssh/VMs (VMs)
 ```
+- or use alias
+```sh
+╰─❯ alias ssha='eval $(ssh-agent) && ssh-add ~/.ssh/VMs'
+
+╰─❯ ssha
+# Agent pid 35824
+Enter passphrase for /home/student/.ssh/VMs: 
+Identity added: /home/student/.ssh/VMs (VMs)
+```
