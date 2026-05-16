@@ -87,3 +87,8 @@ Enter passphrase for /home/student/.ssh/VMs:
 192.168.0.3
 192.168.0.66
 ```
+#### 9. ping hosts
+```sh
+# -m (module)
+ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+```
