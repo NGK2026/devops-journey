@@ -186,3 +186,28 @@ student ALL=(ALL) NOPASSWD: ALL
 # upgrade dist!
 ╰─❯ ansible all -m apt -a upgrade=dist --become -ask-become-pass
 ```
+#### 13. run first playbook (install apache2)
+- check file install_apache.yml
+```sh
+╰─❯ ansible-playbook --ask-become-pass install_apache.yml
+
+╰─❯ ansible-playbook --ask-become-pass install_apache.yml                                                                                                               
+BECOME password:                                                                                                                                                             
+PLAY [all] *******************************************************************************
+                                                       
+TASK [Gathering Facts] *******************************************************************************
+ok: [192.168.0.124]                                                                                                                                                     
+ok: [192.168.0.139]                                                                                                                                                     
+ok: [192.168.0.66]                                                                                                                                                      
+ok: [192.168.0.3]                                                                                                                                                                  
+TASK [install apache2 package] *******************************************************************************
+changed: [192.168.0.3]                                                                                                                                                  
+changed: [192.168.0.66]                                                                                                                                                 
+changed: [192.168.0.139]                                                                                                                                                
+changed: [192.168.0.124]                                                                                                                                                                                          
+PLAY RECAP *****************************************************************************************************
+192.168.0.124              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                                                      
+192.168.0.139              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                                                      
+192.168.0.3                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                                                      
+192.168.0.66               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0           
+```
