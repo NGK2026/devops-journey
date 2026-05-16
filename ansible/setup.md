@@ -112,3 +112,23 @@ inventory = inventory
 private_key_file = ~/.ssh/ansible
 interpreter_python = /usr/bin/python3 # to silence python interpreter warning above
 ```
+#### 11. retry ping after defining ansible.cfg
+```sh
+╰─❯ ansible all -m ping
+192.168.0.139 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.124 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.66 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
