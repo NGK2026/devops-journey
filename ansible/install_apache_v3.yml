@@ -8,45 +8,46 @@
     apt:
       update_cache: true
     when: # run only on ubuntu 22 and 26 # check gather_facts for variables/facts
-      - ansible_distribution == "Ubuntu"
-      - ansible_distribution_major_version in ["22", "26"] 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]  
 
   - name: install apache2 package
     apt:
       name: apache2
       state: latest
     when: # run only on ubuntu 22 and 26
-      - ansible_distribution == "Ubuntu"
-      - ansible_distribution_major_version in ["22", "26"] 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"] 
 
   - name: add php support for apache
     apt:
       name: libapache2-mod-php
       state: latest
     when: # run only on ubuntu 22 and 26
-      - ansible_distribution == "Ubuntu"
-      - ansible_distribution_major_version in ["22", "26"] 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"] 
 
 ## CENTOS
   - name: update repository index
     dnf:
       update_cache: true
     when: # run only on centos 10
-      - ansible_distribution == "CentOS"
-      - ansible_distribution_major_version == "10"
+      - ansible_facts['distribution'] == "CentOS"
+      - ansible_facts['distribution_major_version'] == "10"
+
 
   - name: install apache2 package
     dnf:
       name: httpd
       state: latest
     when: # run only on centos 10
-      - ansible_distribution == "CentOS"
-      - ansible_distribution_major_version == "10"
+      - ansible_facts['distribution'] == "CentOS"
+      - ansible_facts['distribution_major_version'] == "10"
 
   - name: add php support for apache
     dnf:
       name: php
       state: latest
     when: # run only on centos 10
-      - ansible_distribution == "CentOS"
-      - ansible_distribution_major_version == "10"
+      - ansible_facts['distribution'] == "CentOS"
+      - ansible_facts['distribution_major_version'] == "10"
