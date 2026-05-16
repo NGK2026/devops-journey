@@ -92,3 +92,9 @@ Enter passphrase for /home/student/.ssh/VMs:
 # -m (module)
 ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 ```
+#### 10. create ansible config
+```sh
+[defaults]
+inventory = inventory
+private_key_file = ~/.ssh/ansible
+```
