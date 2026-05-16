@@ -80,3 +80,10 @@ Enter passphrase for /home/student/.ssh/VMs:
 Enter passphrase for /home/student/.ssh/VMs: 
 # Identity added: /home/student/.ssh/VMs (VMs)
 ```
+#### 8. create inventory file (list of ips to work on)
+```txt
+192.168.0.124
+192.168.0.139
+192.168.0.3
+192.168.0.66
+```
