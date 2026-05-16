@@ -7,24 +7,10 @@
   - name: update index and install apache2 and php package for ubuntu
     apt:
       name:
-        - apache2
-        - libapache2-mod-php
+        - "{{ apache_package }}"
+        - "{{ php_package }}"
       state: latest
       update_cache: true
-    when: # run only on ubuntu 22 and 26
-      - ansible_facts['distribution'] == "Ubuntu"
-      - ansible_facts['distribution_major_version'] in ["22", "26"] 
 
 
-## CENTOS
-  - name: update index and install apache2 and php package for centos
-    dnf:
-      name:
-        - httpd
-        - php
-      state: latest
-      update_cache: true
-    when: # run only on centos 10
-      - ansible_facts['distribution'] == "CentOS"
-      - ansible_facts['distribution_major_version'] == "10"
 
