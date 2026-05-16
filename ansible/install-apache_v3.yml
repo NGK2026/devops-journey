@@ -7,7 +7,7 @@
   - name: update repository index
     apt:
       update_cache: true
-    when: # run only on ubuntu 22 and 2
+    when: # run only on ubuntu 22 and 26
       - ansible_distribution == "Ubuntu"
       - ansible_distribution_major_version in ["22", "26"] 
 
@@ -15,7 +15,7 @@
     apt:
       name: apache2
       state: latest
-    when: # run only on ubuntu 22 and 2
+    when: # run only on ubuntu 22 and 26
       - ansible_distribution == "Ubuntu"
       - ansible_distribution_major_version in ["22", "26"] 
 
@@ -23,6 +23,6 @@
     apt:
       name: libapache2-mod-php
       state: latest
-    when: # run only on ubuntu 22 and 2
+    when: # run only on ubuntu 22 and 26
       - ansible_distribution == "Ubuntu"
       - ansible_distribution_major_version in ["22", "26"] 
