@@ -11,7 +11,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]  
 
-  - name: install apache2 package
+  - name: install apache2 and php package for ubuntu
     apt:
       name:
         - apache2
@@ -31,7 +31,7 @@
       - ansible_facts['distribution_major_version'] == "10"
 
 
-  - name: install apache2 package
+  - name: install apache2 and php package for centos
     dnf:
       name:
         - httpd
