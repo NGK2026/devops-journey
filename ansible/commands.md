@@ -16,4 +16,30 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub 172.16.250.133
 ```sh
 # -m (module)
 ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+192.168.0.139 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.124 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+192.168.0.66 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+```
+#### list hosts
+```sh
+ansible all --list-hosts
+  hosts (4):
+    192.168.0.124
+    192.168.0.139
+    192.168.0.3
+    192.168.0.66
+
 ```
