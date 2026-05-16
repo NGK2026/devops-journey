@@ -93,7 +93,9 @@ Enter passphrase for /home/student/.ssh/VMs:
 ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 ```
 #### 10. create ansible config
+- default is at /etc/ansible/ansible.cfg
 ```sh
+# create local ansible.cfg 
 [defaults]
 inventory = inventory
 private_key_file = ~/.ssh/ansible
