@@ -90,7 +90,18 @@ Enter passphrase for /home/student/.ssh/VMs:
 #### 9. ping hosts
 ```sh
 # -m (module)
-ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+╰─❯ ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+
+# [WARNING]: Host '192.168.0.139' is using the discovered Python interpreter at '/usr/bin/python3.10', but future installation of another Pyth
+# on interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.20/reference_appendices/int
+# erpreter_discovery.html for more information.
+192.168.0.139 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.10"
+    },
+    "changed": false,
+    "ping": "pong"
+}
 ```
 #### 10. create ansible config
 - default is at /etc/ansible/ansible.cfg
@@ -99,5 +110,5 @@ ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 [defaults]
 inventory = inventory
 private_key_file = ~/.ssh/ansible
-interpreter_python = /usr/bin/python3
+interpreter_python = /usr/bin/python3 # to silence python interpreter warning above
 ```
