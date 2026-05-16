@@ -54,8 +54,9 @@ student@ubuntu2204:~$ cat .ssh/authorized_keys
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0r8bfS9QwfphWKX8BSzPDaAWlLapnnYrde4wLfRc2D VMs
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible
 ```
-#### 6. specify which key to use for ssh
+#### 6. ssh with specific key
 ```sh
+# -i (input file)
 ╰─❯ ssh -i ~/.ssh/ansible 192.168.0.3
 student@ubuntu2604:~$
 ```
