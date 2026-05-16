@@ -66,3 +66,7 @@ student@ubuntu2604:~$ apt search vim-nox
 
 ╰─❯ ansible all -m apt -a upgrade=dist --become -ask-become-pass
 ```
+#### run playbook
+```sh
+╰─❯ ansible-playbook --ask-become-pass install_apache.yml
+```
