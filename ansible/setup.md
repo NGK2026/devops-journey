@@ -238,3 +238,7 @@ PLAY RECAP *******************************************************************
 192.168.0.124              : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 --snip
 ```
+#### 15. remove (absent) apache & php (remove_apache.yml)
+```sh
+╰─❯ ansible-playbook --ask-become-pass remove_apache.yml
+```
