@@ -37,6 +37,15 @@ student@ubuntu2204:~$ cat .ssh/authorized_keys
 ╰─❯ ssh 192.168.0.3
 student@ubuntu2604:~$ cat .ssh/authorized_keys 
 # ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0r8bfS9QwfphWKX8BSzPDaAWlLapnnYrde4wLfRc2D VMs
+```
+#### 5. create ansible key and transfer to vms
+```sh
+╰─❯ ssh-keygen -t ed25519 -C "ansible"
+Enter file in which to save the key (/home/student/.ssh/id_ed25519): /home/student/.ssh/ansible
+# no passphrase
 
-
+╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.124  
+╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.139
+╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.3  
+╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.66  
 ```
