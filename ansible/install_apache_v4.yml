@@ -5,7 +5,7 @@
   tasks:
 
   - name: update index and install apache and php
-    apt:
+    package:
       name:
         - "{{ apache_package }}"
         - "{{ php_package }}"
