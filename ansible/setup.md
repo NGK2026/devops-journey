@@ -69,7 +69,7 @@ student@ubuntu2604:~$
 # specify whick key if not default
 ╰─❯ ssh-add ~/.ssh/VMs        
 Enter passphrase for /home/student/.ssh/VMs: 
-Identity added: /home/student/.ssh/VMs (VMs)
+# Identity added: /home/student/.ssh/VMs (VMs)
 ```
 - or use alias
 ```sh
@@ -78,5 +78,5 @@ Identity added: /home/student/.ssh/VMs (VMs)
 ╰─❯ ssha
 # Agent pid 35824
 Enter passphrase for /home/student/.ssh/VMs: 
-Identity added: /home/student/.ssh/VMs (VMs)
+# Identity added: /home/student/.ssh/VMs (VMs)
 ```
