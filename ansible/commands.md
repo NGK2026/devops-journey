@@ -1,12 +1,12 @@
 #### Generate SSH key /w comment and passphrase
 ```sh
-ssh-keygen -t ed25519 -C "default"
+╰─❯ ssh-keygen -t ed25519 -C "default"
 # Enter passphrase: ******
 ```
 #### copy key to server
 ```sh
 # -i (input file), to example IP
-ssh-copy-id -i ~/.ssh/id_ed25519.pub 172.16.250.133
+╰─❯ ssh-copy-id -i ~/.ssh/id_ed25519.pub 172.16.250.133
 ```
 #### Create Ansible key
 1. ssh-keygen with different comment
@@ -15,7 +15,7 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub 172.16.250.133
 #### ping hosts
 ```sh
 # -m (module)
-ansible all --key-file ~/.ssh/ansible -i inventory -m ping
+╰─❯ ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 192.168.0.139 | SUCCESS => {
     "changed": false,
     "ping": "pong"
@@ -35,11 +35,14 @@ ansible all --key-file ~/.ssh/ansible -i inventory -m ping
 ```
 #### list hosts
 ```sh
-ansible all --list-hosts
+╰─❯ ansible all --list-hosts
   hosts (4):
     192.168.0.124
     192.168.0.139
     192.168.0.3
     192.168.0.66
-
+```
+#### gather_facts (can limit to any number of hosts)
+```sh
+╰─❯ ansible all -m gather_facts --limit 192.168.0.124
 ```
