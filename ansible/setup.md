@@ -132,3 +132,48 @@ interpreter_python = /usr/bin/python3 # to silence python interpreter warning ab
     "ping": "pong"
 }
 ```
+#### 12. update systems with apt
+```sh
+# -a (argument)
+╰─❯ ansible all -m apt -a update_cache=true --become --ask-become-pass
+BECOME password: # enter password 
+
+192.168.0.124 | CHANGED => {
+    "cache_update_time": 1778921452,
+    "cache_updated": true,
+    "changed": true
+}
+192.168.0.139 | CHANGED => {
+    "cache_update_time": 1778921452,
+    "cache_updated": true,
+    "changed": true
+}
+[ERROR]: Task failed: Timeout (12s) waiting for privilege escalation prompt:
+Origin: <adhoc 'apt' task>
+
+{'action': 'apt', 'args': {'update_cache': 'true'}, 'timeout': 0, 'async_val': 0, 'poll': 15}
+
+192.168.0.66 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Task failed: Timeout (12s) waiting for privilege escalation prompt:",
+    "unreachable": true
+}
+192.168.0.3 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Task failed: Timeout (12s) waiting for privilege escalation prompt:",
+    "unreachable": true
+}
+```
+- ubuntu 26.02 has different sudp password prompt than traditional.
+```sh
+student@ubuntu2604:~$ sudo apt update
+[sudo: authenticate] Password:
+# VS
+student@ubuntu2204:~$ sudo apt update
+[sudo] password for student: 
+```
+- fix by setting in .cfg 'become' to respond to any prompt containing "password", using regex
+```txt
+[privilege_escalation]
+   become_pass_regex = (?i)password
+```
