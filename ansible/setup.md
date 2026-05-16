@@ -242,3 +242,14 @@ PLAY RECAP *******************************************************************
 ```sh
 ╰─❯ ansible-playbook --ask-become-pass remove_apache.yml
 ```
+#### 16. install Centos VM, create install-apache_v3.yml to seperate ubuntu from centos
+```sh
+╰─❯ ansible-playbook --ask-become-pass remove_apache_v3.yml
+
+PLAY RECAP ***********************************************************
+192.168.0.124              : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+192.168.0.139              : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+192.168.0.171              : ok=4    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+192.168.0.3                : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+192.168.0.66               : ok=4    changed=1    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+```
