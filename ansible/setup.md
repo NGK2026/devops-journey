@@ -48,4 +48,9 @@ Enter file in which to save the key (/home/student/.ssh/id_ed25519): /home/stude
 ╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.139
 ╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.3  
 ╰─❯ ssh-copy-id -i ~/.ssh/ansible.pub 192.168.0.66  
+
+# check VM
+student@ubuntu2204:~$ cat .ssh/authorized_keys 
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0r8bfS9QwfphWKX8BSzPDaAWlLapnnYrde4wLfRc2D VMs
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible
 ```
