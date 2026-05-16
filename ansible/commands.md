@@ -46,3 +46,13 @@
 ```sh
 ╰─❯ ansible all -m gather_facts --limit 192.168.0.124
 ```
+#### install apt pkg vim-nox
+```sh
+╰─❯ ansible all -m apt -a name=vim-nox --become --ask-become-pass
+
+student@ubuntu2204:~$ apt search vim-nox
+# vim-nox/jammy-updates,jammy-security,now 2:8.2.3995-1ubuntu2.29 amd64 [installed]
+
+student@ubuntu2604:~$ apt search vim-nox
+# vim-nox/resolute-updates,resolute-security,now 2:9.1.2141-1ubuntu4.1 amd64 [installed]
+```
