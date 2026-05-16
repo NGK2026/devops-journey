@@ -17,7 +17,7 @@ tmux send-keys -t $SESSION:1 'ssh 192.168.0.124' C-m
 tmux send-keys -t $SESSION:2 'ssh 192.168.0.139' C-m 
 tmux send-keys -t $SESSION:3 'ssh 192.168.0.3' C-m
 tmux send-keys -t $SESSION:4 'ssh 192.168.0.66' C-m
-tmux send-keys -t $SESSION:4 'ssh 192.168.0.171' C-m
+tmux send-keys -t $SESSION:5 'ssh 192.168.0.171' C-m
 
 # Select the first window and attach
 tmux select-window -t $SESSION:0
