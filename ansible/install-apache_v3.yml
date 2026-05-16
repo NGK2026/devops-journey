@@ -7,7 +7,7 @@
   - name: update repository index
     apt:
       update_cache: true
-    when: # run only on ubuntu 22 and 26
+    when: # run only on ubuntu 22 and 26 # check gather_facts for variables/facts
       - ansible_distribution == "Ubuntu"
       - ansible_distribution_major_version in ["22", "26"] 
 
