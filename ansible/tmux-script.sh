@@ -10,7 +10,7 @@ tmux new-window -t $SESSION:1 -n 'srv1'
 tmux new-window -t $SESSION:2 -n 'srv2'
 tmux new-window -t $SESSION:3 -n 'srv3'
 tmux new-window -t $SESSION:4 -n 'srv4'
-tmux new-window -t $SESSION:4 -n 'srv5'
+tmux new-window -t $SESSION:5 -n 'srv5'
 
 # Optional: Send SSH commands to the server windows (ctrl + m) = 'Enter'
 tmux send-keys -t $SESSION:1 'ssh 192.168.0.124' C-m 
