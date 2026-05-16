@@ -28,4 +28,15 @@ ssh-keygen -t ed22519 -C "VMs"
 ╰─❯ ssh-copy-id -i ~/.ssh/VMs.pub 192.168.0.139  
 ╰─❯ ssh-copy-id -i ~/.ssh/VMs.pub 192.168.0.3
 ╰─❯ ssh-copy-id -i ~/.ssh/VMs.pub 192.168.0.66
+
+# test ssh
+╰─❯ ssh 192.168.0.124
+student@ubuntu2204:~$ cat .ssh/authorized_keys 
+# ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0r8bfS9QwfphWKX8BSzPDaAWlLapnnYrde4wLfRc2D VMs
+
+╰─❯ ssh 192.168.0.3
+student@ubuntu2604:~$ cat .ssh/authorized_keys 
+# ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM0r8bfS9QwfphWKX8BSzPDaAWlLapnnYrde4wLfRc2D VMs
+
+
 ```
