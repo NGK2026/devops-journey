@@ -4,39 +4,26 @@
   become: true
   tasks:
 
-  - name: update repository index
-    apt:
-      update_cache: true
-    when: # run only on ubuntu 22 and 26 # check gather_facts for variables/facts
-      - ansible_facts['distribution'] == "Ubuntu"
-      - ansible_facts['distribution_major_version'] in ["22", "26"]  
-
-  - name: install apache2 and php package for ubuntu
+  - name: update index and install apache2 and php package for ubuntu
     apt:
       name:
         - apache2
         - libapache2-mod-php
       state: latest
+      update_cache: true
     when: # run only on ubuntu 22 and 26
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"] 
 
 
 ## CENTOS
-  - name: update repository index
-    dnf:
-      update_cache: true
-    when: # run only on centos 10
-      - ansible_facts['distribution'] == "CentOS"
-      - ansible_facts['distribution_major_version'] == "10"
-
-
-  - name: install apache2 and php package for centos
+  - name: update index and install apache2 and php package for centos
     dnf:
       name:
         - httpd
         - php
       state: latest
+      update_cache: true
     when: # run only on centos 10
       - ansible_facts['distribution'] == "CentOS"
       - ansible_facts['distribution_major_version'] == "10"
