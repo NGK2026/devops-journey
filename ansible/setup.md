@@ -164,7 +164,7 @@ Origin: <adhoc 'apt' task>
     "unreachable": true
 }
 ```
-- ubuntu 26.02 has different sudp password prompt than traditional.
+- ubuntu 26.04 has different sudo password prompt than traditional. 
 ```sh
 student@ubuntu2604:~$ sudo apt update
 [sudo: authenticate] Password:
@@ -172,8 +172,10 @@ student@ubuntu2604:~$ sudo apt update
 student@ubuntu2204:~$ sudo apt update
 [sudo] password for student: 
 ```
-- fix by setting in .cfg 'become' to respond to any prompt containing "password", using regex
-```txt
-[privilege_escalation]
-   become_pass_regex = (?i)password
+- fix by adding student to NOPASSWD on both 26.04 vms
+```sh
+sudo visudo
+
+# add at bottom
+student ALL=(ALL) NOPASSWD: ALL
 ```
