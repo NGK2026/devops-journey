@@ -190,8 +190,7 @@ student ALL=(ALL) NOPASSWD: ALL
 - check file install_apache.yml
 ```sh
 ╰─❯ ansible-playbook --ask-become-pass install_apache.yml
-
-╰─❯ ansible-playbook --ask-become-pass install_apache.yml                                                                                                               
+                                                                                                            
 BECOME password:                                                                                                                                                             
 PLAY [all] ********************************************************************
                                                        
