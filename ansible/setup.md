@@ -132,9 +132,9 @@ interpreter_python = /usr/bin/python3 # to silence python interpreter warning ab
     "ping": "pong"
 }
 ```
-#### 12. update systems with apt
+#### 12. update systems cache with apt
 ```sh
-# -a (argument)
+# -a (argument) --become (sudo) --ask-become-pass (ask for pass...)
 ╰─❯ ansible all -m apt -a update_cache=true --become --ask-become-pass
 BECOME password: # enter password 
 
