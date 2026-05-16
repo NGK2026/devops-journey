@@ -210,3 +210,31 @@ PLAY RECAP ********************************************************************
 192.168.0.3                : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0                                                      
 192.168.0.66               : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0           
 ```
+#### 14. upgrade apt index, add/update {apache, php} (install_apache_v2.yml)
+```sh
+╰─❯ ansible-playbook --ask-become-pass install_apache_v2.yml
+
+BECOME password: 
+
+PLAY [all] ******************************************************************
+
+TASK [Gathering Facts] ******************************************************
+ok: [192.168.0.124]
+--snip
+
+TASK [update repository index] ***********************************************
+changed: [192.168.0.3]
+--snip
+
+TASK [install apache2 package] ***********************************************
+ok: [192.168.0.66]
+--snip
+
+TASK [add php support for apache] ********************************************
+changed: [192.168.0.139]
+--snip
+
+PLAY RECAP *******************************************************************
+192.168.0.124              : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+--snip
+```
