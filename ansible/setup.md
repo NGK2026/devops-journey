@@ -180,6 +180,9 @@ sudo visudo
 student ALL=(ALL) NOPASSWD: ALL
 ```
 ```sh
+# update cache
+╰─❯ ansible all -m apt -a update_cache=true --become --ask-become-pass
+
 # upgrade dist!
 ╰─❯ ansible all -m apt -a upgrade=dist --become -ask-become-pass
 ```
