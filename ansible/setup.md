@@ -255,8 +255,8 @@ PLAY RECAP ***********************************************************
 ```
 - ssh into centos, allow service and allow firewall
 ```sh
-[student@localhost ~]$ sudo systemctl start httpd
-[student@localhost ~]$ sudo systemctl enable httpd
-[student@localhost ~]$ sudo firewall-cmd --permanent --add-service=http
-[student@localhost ~]$ sudo firewall-cmd --reload
+[student@centos ~]$ sudo systemctl start httpd
+[student@centos ~]$ sudo systemctl enable httpd
+[student@centos ~]$ sudo firewall-cmd --permanent --add-service=http
+[student@centos ~]$ sudo firewall-cmd --reload
 ```
