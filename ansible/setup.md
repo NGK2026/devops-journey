@@ -60,3 +60,14 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx
 ╰─❯ ssh -i ~/.ssh/ansible 192.168.0.3
 student@ubuntu2604:~$
 ```
+#### 7. enable ssh-agent for less passphrase prompting
+```sh
+# eval (ties env variables to the following command)
+╰─❯ eval $(ssh-agent)
+# Agent pid 35824
+
+# specify whick key if not default
+╰─❯ ssh-add ~/.ssh/VMs        
+Enter passphrase for /home/student/.ssh/VMs: 
+Identity added: /home/student/.ssh/VMs (VMs)
+```
