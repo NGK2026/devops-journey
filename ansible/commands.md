@@ -70,3 +70,14 @@ student@ubuntu2604:~$ apt search vim-nox
 ```sh
 ╰─❯ ansible-playbook --ask-become-pass install_apache.yml
 ```
+#### Ansible common facts targetting
+```sh
+╰─❯ ansible all -m gather_facts --limit 192.168.0.3 | grep ansible_distribution
+        "ansible_distribution": "Ubuntu",
+        "ansible_distribution_file_parsed": true,
+        "ansible_distribution_file_path": "/etc/os-release",
+        "ansible_distribution_file_variety": "Debian",
+        "ansible_distribution_major_version": "26",
+        "ansible_distribution_release": "resolute",
+        "ansible_distribution_version": "26.04",
+```
