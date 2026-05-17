@@ -31,7 +31,7 @@
   tasks:
 
   - name: install apache and php package (ubuntu)
-    tags: apache,apache2,ubuntu
+    tags: apache,apache2,ubuntu,php
     apt:
       name: 
         - apache2
@@ -41,7 +41,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
 
   - name: install apache and php package (centos)
-    tags: apache,httpd,centos
+    tags: apache,httpd,centos,php
     dnf:
       name: 
         - httpd
@@ -51,7 +51,7 @@
       - ansible_facts['distribution'] == "CentOS"
 
   - name: install apache and php package (archlinux)
-    tags: apache,httpd,archlinux
+    tags: apache,httpd,archlinux,php
     pacman:
       name: 
         - apache
