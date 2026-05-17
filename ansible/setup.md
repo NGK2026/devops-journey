@@ -294,3 +294,12 @@ PLAY RECAP ***********************************************************
 192.168.0.38 # archlinux
 ```
 - using playbook site_v1.yml, the playbook will only modify according to host availability in the inventory groups
+#### 19. using tags
+- add tags: always below name in .yml
+```yaml
+# ex:
+  - name: install update (centos)
+    tags: always
+    dnf:
+      --snip
+```
