@@ -31,7 +31,7 @@
   tasks:
 
   - name: install apache and php package (ubuntu)
-    tags: always
+    tags: apache,apache2,ubuntu
     apt:
       name: 
         - apache2
@@ -41,7 +41,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
 
   - name: install apache and php package (centos)
-    tags: always
+    tags: apache,httpd,centos
     dnf:
       name: 
         - httpd
@@ -51,7 +51,7 @@
       - ansible_facts['distribution'] == "CentOS"
 
   - name: install apache and php package (archlinux)
-    tags: always
+    tags: apache,httpd,archlinux
     pacman:
       name: 
         - apache
@@ -66,14 +66,14 @@
   tasks:
 
   - name: install mariadb package (ubuntu)
-    tags: always
+    tags: mariadb,ubuntu,db
     apt:
       name: mariadb-server
       state: latest
     when: ansible_facts['distribution'] == "Ubuntu"
 
   - name: install mariadb package (centos) # will not run
-    tags: always
+    tags: mariadb,db,centos
     dnf:
       name: mariadb-server
       state: latest
@@ -86,7 +86,7 @@
   
   # generic
   - name: install samba package
-    tags: always
+    tags: samba
     package:
       name: samba
       state: latest
