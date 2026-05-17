@@ -99,3 +99,7 @@ playbook: site_v2.yml
   play #4 (file_servers): file_servers  TAGS: []
       TASK TAGS: [samba]
 ```
+#### run archlinux tagged, specific tag
+```sh
+╰─❯ ansible-playbook --tags archlinux --ask-become-pass site_v2.yml
+```
