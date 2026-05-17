@@ -4,6 +4,25 @@
   become: true
   tasks:
 
+  - name: install updates (centos)
+    dnf:
+      update_only: true
+      update_cache: true
+    when: ansible_facts['distribution'] == "CentOS"
+
+  - name: install updates (ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: true
+    when: ansible_facts['distribution'] == "Ubuntu"
+
+  - name: install updates (archlinux)
+    pacman:
+      upgrade: true
+      update_cache: true
+    when: ansible_facts['distribution'] == "Archlinux"
+
+
 ## UBUNTU
   - name: install apache and php package
     apt:
