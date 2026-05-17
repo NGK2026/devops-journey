@@ -410,3 +410,30 @@ site_v3.yml
       state: restarted
     when: httpd.changed # remember, did it change?
 ```
+#### 24. create user, add ssh key, give sudo priv
+site_v4.yml
+```yml
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create void user
+    tags: always
+    user:
+      name: void
+      groups: root
+  
+  - name: add ssh key for void
+    tags: always
+    authorized_key:
+    user: void
+    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible"
+
+  - name: add sudoers file for void
+    tags: always
+    copy:
+      src: sudoer_void
+      dest: /etc/sudoers.d/void
+      owner: root
+      group: root
+```
