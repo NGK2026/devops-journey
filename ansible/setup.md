@@ -391,3 +391,14 @@ site_v3.yml
       immediate: true
     when: ansible_facts['distribution'] == "CentOS"
 ```
+#### 23. edit/change a line in a file
+site_v3.yml
+```yml
+  - name: edit line in file (change email addr for admin)
+    tags: apache,centos,httpd
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin someone@somewhere.net
+    when: ansible_facts['distribution'] == "CentOS"
+```

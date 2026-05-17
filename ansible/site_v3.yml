@@ -85,6 +85,14 @@
       immediate: true
     when: ansible_facts['distribution'] == "CentOS"
 
+  - name: edit line in file (change email addr for admin)
+    tags: apache,centos,httpd
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin someone@somewhere.net
+    when: ansible_facts['distribution'] == "CentOS"
+
   - name: install apache and php package (archlinux)
     tags: apache,httpd,archlinux,php
     pacman:
