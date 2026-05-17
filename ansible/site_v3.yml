@@ -92,6 +92,14 @@
       regexp: '^ServerAdmin'
       line: ServerAdmin someone@somewhere.net
     when: ansible_facts['distribution'] == "CentOS"
+    register: httpd # remember
+  
+  - name: restart httpd (centos)
+    tags: apache,centos,httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd.changed # remember, did it change?
 
   - name: install apache and php package (archlinux)
     tags: apache,httpd,archlinux,php
