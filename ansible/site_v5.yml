@@ -21,8 +21,8 @@
   - name: install updates (archlinux)
     tags: always
     pacman:
-      upgrade: true
       update_cache: true
+    changed_when: false
     when: ansible_facts['distribution'] == "Archlinux"
 
 ## USERS
