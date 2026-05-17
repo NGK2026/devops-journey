@@ -279,3 +279,18 @@ PLAY RECAP ***********************************************************
 192.168.0.171 apache_package=httpd php_package=php
 192.168.0.38 apache_package=apache php_package=php
 ```
+#### 18. set groups in the inventory
+```txt
+[web_servers]
+192.168.0.124 # ubuntu 22 v1
+192.168.0.139 # ubuntu 22 v2
+192.168.0.171 # centos
+
+[db_servers]
+192.168.0.3 # ubuntu 26 v1
+192.168.0.66 # ubuntu 26 v2
+
+[file_servers]
+192.168.0.38 # archlinux
+```
+- using playbook site_v1.yml, the playbook will only modify according to host availability in the inventory groups
