@@ -26,8 +26,7 @@
   become: true
   tasks:
 
-## UBUNTU
-  - name: install apache and php package
+  - name: install apache and php package (ubuntu)
     apt:
       name: 
         - apache2
@@ -36,8 +35,7 @@
     when: 
       - ansible_facts['distribution'] == "Ubuntu"
 
-## CENTOS
-  - name: install apache and php package
+  - name: install apache and php package (centos)
     dnf:
       name: 
         - httpd
@@ -46,8 +44,7 @@
     when: 
       - ansible_facts['distribution'] == "CentOS"
 
-## ARCH
-  - name: install apache and php package
+  - name: install apache and php package (archlinux)
     pacman:
       name: 
         - apache
