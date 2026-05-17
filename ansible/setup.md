@@ -380,4 +380,14 @@ site_v3.yml
       state: started
       enabled: true
     when: ansible_facts['distribution'] == "CentOS"
+
+# also firewalld
+  - name: enable firewalld service httpd
+    tags: apache,centos,httpd
+    ansible.posix.firewalld:
+      service: http
+      state: enabled
+      permanent: true
+      immediate: true
+    when: ansible_facts['distribution'] == "CentOS"
 ```
