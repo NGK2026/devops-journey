@@ -31,7 +31,7 @@
   tasks:
 
   - name: install apache and php package (ubuntu)
-    tags: apache,apache2,ubuntu,php
+    tags: apache,apache2,ubuntu,php,v22
     apt:
       name: 
         - apache2
@@ -66,7 +66,7 @@
   tasks:
 
   - name: install mariadb package (ubuntu)
-    tags: mariadb,ubuntu,db
+    tags: mariadb,ubuntu,db,v26
     apt:
       name: mariadb-server
       state: latest
