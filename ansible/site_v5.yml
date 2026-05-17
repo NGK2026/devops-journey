@@ -7,15 +7,15 @@
   - name: install updates (centos)
     tags: always # always run reguardless
     dnf:
-      update_only: true
       update_cache: true
+    changed_when: false
     when: ansible_facts['distribution'] == "CentOS"
 
   - name: install updates (ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: true
+    changed_when: false
     when: ansible_facts['distribution'] == "Ubuntu"
 
   - name: install updates (archlinux)
