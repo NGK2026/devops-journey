@@ -28,6 +28,7 @@
 ## USERS
 - hosts: all
   become: true
+  gather_facts: false
   tasks:
 
   - name: create void user
@@ -50,11 +51,10 @@
       owner: root
       group: root
       
-
-
 ## WORKSTATIONS
 - hosts: workstations
   become: true
+  gather_facts: false
   tasks:
 
   - name: install unzip
@@ -169,6 +169,7 @@
 ## FILE_SERVERS
 - hosts: file_servers
   become: true
+  gather_facts: false
   tasks:
   
   # generic
