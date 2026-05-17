@@ -1,5 +1,5 @@
 ---
-
+## ALL
 - hosts: all
   become: true
   pre_tasks: # pre_task = run first
@@ -22,6 +22,7 @@
       update_cache: true
     when: ansible_facts['distribution'] == "Archlinux"
 
+## WEB_SERVERS
 - hosts: web_servers
   become: true
   tasks:
@@ -53,6 +54,7 @@
     when: 
       - ansible_facts['distribution'] == "Archlinux"
 
+## DB_SERVERS
 - hosts: db_servers
   become: true
   tasks:
@@ -69,10 +71,12 @@
       state: latest
     when: ansible_facts['distribution'] == "CentOS"
 
+## FILE_SERVERS
 - hosts: file_servers
   become: true
   tasks:
-
+  
+  # generic
   - name: install samba package
     package:
       name: samba
