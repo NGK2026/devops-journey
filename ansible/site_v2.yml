@@ -5,18 +5,21 @@
   pre_tasks: # pre_task = run first
 
   - name: install updates (centos)
+    tags: always
     dnf:
       update_only: true
       update_cache: true
     when: ansible_facts['distribution'] == "CentOS"
 
   - name: install updates (ubuntu)
+    tags: always
     apt:
       upgrade: dist
       update_cache: true
     when: ansible_facts['distribution'] == "Ubuntu"
 
   - name: install updates (archlinux)
+    tags: always
     pacman:
       upgrade: true
       update_cache: true
@@ -28,6 +31,7 @@
   tasks:
 
   - name: install apache and php package (ubuntu)
+    tags: always
     apt:
       name: 
         - apache2
@@ -37,6 +41,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
 
   - name: install apache and php package (centos)
+    tags: always
     dnf:
       name: 
         - httpd
@@ -46,6 +51,7 @@
       - ansible_facts['distribution'] == "CentOS"
 
   - name: install apache and php package (archlinux)
+    tags: always
     pacman:
       name: 
         - apache
@@ -60,12 +66,14 @@
   tasks:
 
   - name: install mariadb package (ubuntu)
+    tags: always
     apt:
       name: mariadb-server
       state: latest
     when: ansible_facts['distribution'] == "Ubuntu"
 
   - name: install mariadb package (centos) # will not run
+    tags: always
     dnf:
       name: mariadb-server
       state: latest
@@ -78,6 +86,7 @@
   
   # generic
   - name: install samba package
+    tags: always
     package:
       name: samba
       state: latest
