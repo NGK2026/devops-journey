@@ -1,0 +1,38 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+## UBUNTU
+  - name: install apache and php package
+    apt:
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: latest
+      update_cache: true
+    when: 
+      - ansible_facts['distribution'] == "Ubuntu"
+
+## CENTOS
+  - name: install apache and php package
+    dnf:
+      name: 
+        - httpd
+        - php
+      state: latest
+      update_cache: true
+    when: 
+      - ansible_facts['distribution'] == "CentOS"
+
+## ARCH
+  - name: install apache and php package
+    dnf:
+      name: 
+        - apache
+        - php
+      state: latest
+      update_cache: true
+    when: 
+      - ansible_facts['distribution'] == "Archlinux"
