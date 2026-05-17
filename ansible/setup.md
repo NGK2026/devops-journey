@@ -426,8 +426,8 @@ site_v4.yml
   - name: add ssh key for void
     tags: always
     authorized_key:
-    user: void
-    key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible"
+      user: void
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible"
 
   - name: add sudoers file for void
     tags: always
