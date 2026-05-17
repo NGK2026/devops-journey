@@ -1,0 +1,10 @@
+[web_servers]
+192.168.0.124 # ubuntu 22 v1
+192.168.0.171 # centos
+
+
+[db_servers]
+192.168.0.3 # ubuntu 26 v1
+
+[file_servers]
+192.168.0.38 # archlinux
