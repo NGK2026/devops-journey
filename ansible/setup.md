@@ -331,3 +331,19 @@ playbook: site_v2.yml
 # Multiple tags
 ╰─❯ ansible-playbook --tags "apache,db" --ask-become-pass site_v2.yml
 ```
+#### 20. copy files
+- add copy in site_v2.yml
+```yaml
+    # self explanatory
+  - name: copy default html file for site
+    tags: apache,apache2,httpd
+    copy:
+      src: default_site.html
+      dest: /var/www/html/index.html
+      owner: root
+      group: root
+      mode: 0644
+```
+```sh
+╰─❯ ansible-playbook --ask-become-pass site_v2.yml
+```
