@@ -52,3 +52,19 @@
       state: latest
     when: 
       - ansible_facts['distribution'] == "Archlinux"
+
+- hosts: db_servers
+  become: true
+  tasks:
+
+  - name: install mariadb package (ubuntu)
+    apt:
+      name: mariadb-server
+      state: latest
+    when: ansible_facts['distribution'] == "Ubuntu"
+
+  - name: install mariadb package (centos) # will not run
+    dnf:
+      name: mariadb-server
+      state: latest
+    when: ansible_facts['distribution'] == "CentOS"
