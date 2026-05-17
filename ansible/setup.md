@@ -298,6 +298,10 @@ PLAY RECAP ***********************************************************
 - add tags: always below name in .yml
 ```yaml
 # ex:
+  - name: install updates (centos)
+    tags: always # always run reguardless
+    dnf:
+--snip--
   - name: install apache (centos)
     tags: apache,httpd,centos
     dnf:
