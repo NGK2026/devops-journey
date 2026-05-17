@@ -295,7 +295,7 @@ PLAY RECAP ***********************************************************
 ```
 - using playbook site_v1.yml, the playbook will only modify according to host availability in the inventory groups
 #### 19. using tags
-- add tags: always below name in site_v2.yml
+site_v2.yml
 ```yaml
 # ex:
   - name: install updates (centos)
@@ -332,7 +332,7 @@ playbook: site_v2.yml
 ╰─❯ ansible-playbook --tags "apache,db" --ask-become-pass site_v2.yml
 ```
 #### 20. copy files
-- add copy in site_v2.yml
+site_v2.yml
 ```yaml
     # self explanatory
   - name: copy default html file for site
@@ -348,7 +348,7 @@ playbook: site_v2.yml
 ╰─❯ ansible-playbook --ask-become-pass site_v2.yml
 ```
 #### 21. setup workstation (will use vm instead) /w terraform
-- update site_v2.yml
+site_v2.yml
 ```yml
 - hosts: workstations
   become: true
@@ -369,4 +369,15 @@ playbook: site_v2.yml
 ```
 ```sh
 ╰─❯ ansible-playbook --ask-become-pass site_v2.yml
+```
+#### 22. enable/start services
+site_v3.yml
+```yml
+  - name: start httpd (centos)
+    tags: apache,centos,httpd
+    service:
+      name: httpd
+      state: started
+      enabled: true
+    when: ansible_facts['distribution'] == "CentOS"
 ```
