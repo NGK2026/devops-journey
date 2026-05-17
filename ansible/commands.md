@@ -102,4 +102,6 @@ playbook: site_v2.yml
 #### run archlinux tagged, specific tag
 ```sh
 ╰─❯ ansible-playbook --tags archlinux --ask-become-pass site_v2.yml
+# Multiple tags
+╰─❯ ansible-playbook --tags "apache,db" --ask-become-pass site_v2.yml
 ```
