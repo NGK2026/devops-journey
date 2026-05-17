@@ -2,7 +2,7 @@
 
 - hosts: all
   become: true
-  tasks:
+  pre_tasks: # pre_task = run first
 
   - name: install updates (centos)
     dnf:
