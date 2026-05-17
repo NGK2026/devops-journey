@@ -298,8 +298,8 @@ PLAY RECAP ***********************************************************
 - add tags: always below name in .yml
 ```yaml
 # ex:
-  - name: install update (centos)
-    tags: always
+  - name: install apache (centos)
+    tags: apache,httpd,centos
     dnf:
       --snip
 ```
