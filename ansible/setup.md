@@ -436,4 +436,5 @@ site_v4.yml
       dest: /etc/sudoers.d/void
       owner: root
       group: root
+      mode: 0440
 ```
