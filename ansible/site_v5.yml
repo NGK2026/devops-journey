@@ -4,21 +4,21 @@
   become: true
   pre_tasks: # pre_task = run first
 
-  - name: install updates (centos)
+  - name: update cache (centos)
     tags: always # always run reguardless
     dnf:
       update_cache: true
     changed_when: false
     when: ansible_facts['distribution'] == "CentOS"
 
-  - name: install updates (ubuntu)
+  - name: update cache (ubuntu)
     tags: always
     apt:
       update_cache: true
     changed_when: false
     when: ansible_facts['distribution'] == "Ubuntu"
 
-  - name: install updates (archlinux)
+  - name: update cache (archlinux)
     tags: always
     pacman:
       update_cache: true
