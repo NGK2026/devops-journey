@@ -81,3 +81,21 @@ student@ubuntu2604:~$ apt search vim-nox
         "ansible_distribution_release": "resolute",
         "ansible_distribution_version": "26.04",
 ```
+#### check available tags with ansible-playbook
+```sh
+╰─❯ ansible-playbook --list-tags site_v2.yml
+
+playbook: site_v2.yml
+
+  play #1 (all): all    TAGS: []
+      TASK TAGS: [always]
+
+  play #2 (web_servers): web_servers    TAGS: []
+      TASK TAGS: [apache, apache2, archlinux, centos, httpd, php, ubuntu]
+
+  play #3 (db_servers): db_servers      TAGS: []
+      TASK TAGS: [centos, db, mariadb, ubuntu]
+
+  play #4 (file_servers): file_servers  TAGS: []
+      TASK TAGS: [samba]
+```

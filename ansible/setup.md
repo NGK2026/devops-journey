@@ -295,7 +295,7 @@ PLAY RECAP ***********************************************************
 ```
 - using playbook site_v1.yml, the playbook will only modify according to host availability in the inventory groups
 #### 19. using tags
-- add tags: always below name in .yml
+- add tags: always below name in site_v2.yml
 ```yaml
 # ex:
   - name: install updates (centos)
@@ -306,4 +306,22 @@ PLAY RECAP ***********************************************************
     tags: apache,httpd,centos
     dnf:
       --snip
+```
+- check available tags with ansible-playbook
+```sh
+╰─❯ ansible-playbook --list-tags site_v2.yml
+
+playbook: site_v2.yml
+
+  play #1 (all): all    TAGS: []
+      TASK TAGS: [always]
+
+  play #2 (web_servers): web_servers    TAGS: []
+      TASK TAGS: [apache, apache2, archlinux, centos, httpd, php, ubuntu]
+
+  play #3 (db_servers): db_servers      TAGS: []
+      TASK TAGS: [centos, db, mariadb, ubuntu]
+
+  play #4 (file_servers): file_servers  TAGS: []
+      TASK TAGS: [samba]
 ```
