@@ -5,7 +5,7 @@
   pre_tasks: # pre_task = run first
 
   - name: install updates (centos)
-    tags: always
+    tags: always # always run reguardless
     dnf:
       update_only: true
       update_cache: true
