@@ -347,3 +347,26 @@ playbook: site_v2.yml
 ```sh
 ╰─❯ ansible-playbook --ask-become-pass site_v2.yml
 ```
+#### 21. setup workstation (will use vm instead) /w terraform
+- update site_v2.yml
+```yml
+- hosts: workstations
+  become: true
+  tasks:
+
+  - name: install unzip
+    package:
+      name: unzip
+
+  - name: install terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/1.15.3/terraform_1.15.3_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+      owner: root
+      group: root
+```
+```sh
+╰─❯ ansible-playbook --ask-become-pass site_v2.yml
+```
