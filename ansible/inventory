@@ -3,3 +3,4 @@
 192.168.0.3 apache_package=apache2 php_package=libapache2-mod-php
 192.168.0.66 apache_package=apache2 php_package=libapache2-mod-php
 192.168.0.171 apache_package=httpd php_package=php
+192.168.0.38 apache_package=apache php_package=php
