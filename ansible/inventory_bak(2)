@@ -1,7 +1,7 @@
 [web_servers]
 192.168.0.124 # ubuntu 22 v1
 192.168.0.171 # centos
-92.168.0.139 # ubuntu 22 v2
+192.168.0.139 # ubuntu 22 v2
 
 
 [db_servers]
