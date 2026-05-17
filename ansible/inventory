@@ -8,3 +8,8 @@
 
 [file_servers]
 192.168.0.38 # archlinux
+
+[workstations]
+192.168.0.139 # ubuntu 22 v2
+
+
