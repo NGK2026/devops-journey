@@ -548,4 +548,12 @@ ssh_template_file: sshd_config_ubuntu.j2 # change according to os
 - play!
 ```sh
 ╰─❯ ansible-playbook site_v6.yml
+
+PLAY RECAP *****************************************************************************
+192.168.0.124              : ok=10   changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+192.168.0.139              : ok=9    changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+192.168.0.171              : ok=12   changed=2    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
+192.168.0.3                : ok=8    changed=2    unreachable=0    failed=0    skipped=3    rescued=0    ignored=0   
+192.168.0.38               : ok=7    changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0   
+
 ```
