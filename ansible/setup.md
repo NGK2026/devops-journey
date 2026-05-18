@@ -523,3 +523,15 @@ AllowUsers {{ ssh_users }}
 ssh_users: "student void"
 ssh_template_file: sshd_config_ubuntu.j2 # change according to os
 ```
+- edit roles/base/tasks/main.yml
+```sh
+- name: generate sshd_config file from template
+  tags: ssh 
+  template:
+    src: "{{ ssh_template_file }}"
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart_sshd
+```
