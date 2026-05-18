@@ -473,3 +473,7 @@ site_v4.yml
 
 ╰─❯ touch {base,db_servers,file_servers,web_servers,workstations}/tasks/main.yml
 ```
+- paste each playbook task in its main.yml location respectively
+```txt
+ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
+```
