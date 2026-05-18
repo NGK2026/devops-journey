@@ -477,3 +477,9 @@ site_v4.yml
 ```txt
 ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
 ```
+- create roles/web_servers/files , and cp default_site.html into it
+```sh
+╰─❯ cd roles/web_servers
+╰─❯ mkdir files && cd files
+╰─❯ cp ../../../files/default_site.html .
+```
