@@ -1,30 +1,17 @@
-- name: install apache and php package (ubuntu)
+- name: install apache and php package
   tags: apache,apache2,ubuntu,php,v22
   apt:
     name: 
-      - apache2
-      - libapache2-mod-php
+      - "{{ apache_package_name }}"
+      - "{{ php_package_name }}"
     state: latest
-  when: 
-    - ansible_facts['distribution'] == "Ubuntu"
-
-- name: install apache and php package (centos)
-  tags: apache,httpd,centos,php
-  dnf:
-    name: 
-      - httpd
-      - php
-    state: latest
-  when: 
-    - ansible_facts['distribution'] == "CentOS"
-
-- name: start httpd (centos)
+  
+- name: start httpd (apache service)
   tags: apache,centos,httpd
   service:
-    name: httpd
+    name: "{{ apache_service }}"
     state: started
     enabled: true
-  when: ansible_facts['distribution'] == "CentOS"
 
 - name: enable firewalld service httpd
   tags: apache,centos,httpd
@@ -33,7 +20,7 @@
     state: enabled
     permanent: true
     immediate: true
-  when: ansible_facts['distribution'] == "CentOS"
+  when: ansible_facts['distribution'] in ["CentOS", "Archlinux"]
 
 - name: edit line in file (change email addr for admin)
   tags: apache,centos,httpd
@@ -47,19 +34,9 @@
 - name: restart httpd (centos)
   tags: apache,centos,httpd
   service:
-    name: httpd
+    name: "{{ apache_service }}"
     state: restarted
   when: httpd.changed # remember, did it change?
-
-- name: install apache and php package (archlinux)
-  tags: apache,httpd,archlinux,php
-  pacman:
-    name: 
-      - apache
-      - php
-    state: latest
-  when: 
-    - ansible_facts['distribution'] == "Archlinux"
 
 - name: copy default html file for site
   tags: apache,apache2,httpd
