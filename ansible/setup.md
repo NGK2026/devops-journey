@@ -487,3 +487,16 @@ ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
 ```sh
 ╰─❯ ansible-playbook site_v6.yml 
 ```
+#### 26. create host_vars
+```txt
+- specify variables (package names) for each machine listed in the inventory
+- create files in host_vars folder, with ips of machines ending with .yml
+```
+#### 27. create handlers
+```txt
+- instead of using remember to keep track of if a play task run to base another on its action:
+- create a notify instead, stating a name of a task to be run
+- create in the same role category 'handlers' folder
+- create main.yml in handlers/
+- add name of the task mentioned in the notify along with the commands
+```
