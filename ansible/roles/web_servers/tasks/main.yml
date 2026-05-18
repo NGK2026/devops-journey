@@ -29,14 +29,7 @@
     regexp: '^ServerAdmin'
     line: ServerAdmin someone@somewhere.net
   when: ansible_facts['distribution'] == "CentOS"
-  register: httpd # remember
-
-- name: restart httpd (centos)
-  tags: apache,centos,httpd
-  service:
-    name: "{{ apache_service }}"
-    state: restarted
-  when: httpd.changed # remember, did it change?
+  notify: restart_httpd
 
 - name: copy default html file for site
   tags: apache,apache2,httpd
