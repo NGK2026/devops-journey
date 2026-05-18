@@ -438,3 +438,36 @@ site_v4.yml
       group: root
       mode: 0440
 ```
+#### 25. create roles
+- create their places in the playbook site_v6.yml
+```yml
+- hosts: all
+  become: true
+  roles:
+    - base
+
+- hosts: workstations
+  become: true
+  roles:
+    - workstations
+
+- hosts: web_servers
+  become: true
+  roles:
+    - web_servers
+
+- hosts: db_servers
+  become: true
+  roles:
+    - db_servers
+
+- hosts: file_servers
+  become: true
+  roles:
+    - db_servers
+```
+- create dirs roles/ { ... } /tasts
+```sh
+╭─ ~/projects/git/devops-journey/ansible/roles/
+╰─❯ mkdir -p {base,db_servers,file_servers,web_servers,workstations}/tasks 
+```
