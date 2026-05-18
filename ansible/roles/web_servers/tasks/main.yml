@@ -1,6 +1,6 @@
 - name: install apache and php package
   tags: apache,apache2,ubuntu,php,v22
-  apt:
+  package:
     name: 
       - "{{ apache_package_name }}"
       - "{{ php_package_name }}"
