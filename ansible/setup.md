@@ -483,3 +483,7 @@ ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
 ╰─❯ mkdir files && cd files
 ╰─❯ cp ../../../files/default_site.html .
 ```
+- playbook!
+```sh
+╰─❯ ansible-playbook site_v6.yml 
+```
