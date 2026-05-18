@@ -1,0 +1,71 @@
+- name: install apache and php package (ubuntu)
+  tags: apache,apache2,ubuntu,php,v22
+  apt:
+    name: 
+      - apache2
+      - libapache2-mod-php
+    state: latest
+  when: 
+    - ansible_facts['distribution'] == "Ubuntu"
+
+- name: install apache and php package (centos)
+  tags: apache,httpd,centos,php
+  dnf:
+    name: 
+      - httpd
+      - php
+    state: latest
+  when: 
+    - ansible_facts['distribution'] == "CentOS"
+
+- name: start httpd (centos)
+  tags: apache,centos,httpd
+  service:
+    name: httpd
+    state: started
+    enabled: true
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: enable firewalld service httpd
+  tags: apache,centos,httpd
+  ansible.posix.firewalld:
+    service: http
+    state: enabled
+    permanent: true
+    immediate: true
+  when: ansible_facts['distribution'] == "CentOS"
+
+- name: edit line in file (change email addr for admin)
+  tags: apache,centos,httpd
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    regexp: '^ServerAdmin'
+    line: ServerAdmin someone@somewhere.net
+  when: ansible_facts['distribution'] == "CentOS"
+  register: httpd # remember
+
+- name: restart httpd (centos)
+  tags: apache,centos,httpd
+  service:
+    name: httpd
+    state: restarted
+  when: httpd.changed # remember, did it change?
+
+- name: install apache and php package (archlinux)
+  tags: apache,httpd,archlinux,php
+  pacman:
+    name: 
+      - apache
+      - php
+    state: latest
+  when: 
+    - ansible_facts['distribution'] == "Archlinux"
+
+- name: copy default html file for site
+  tags: apache,apache2,httpd
+  copy:
+    src: default_site.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644
