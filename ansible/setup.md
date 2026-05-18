@@ -535,3 +535,17 @@ ssh_template_file: sshd_config_ubuntu.j2 # change according to os
     mode: 0644
   notify: restart_sshd
 ```
+- create handler
+```sh
+╭─ ~/projects/git/devops-journey/ansible/roles/base/handlers
+╰─❯ vim main.yml
+
+- name: restart_sshd
+  service:
+    name: sshd
+    state: restarted
+```
+- play!
+```sh
+╰─❯ ansible-playbook site_v6.yml
+```
