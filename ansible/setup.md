@@ -466,8 +466,10 @@ site_v4.yml
   roles:
     - db_servers
 ```
-- create dirs roles/ { ... } /tasts
+- create dirs roles/ { ... } /tasts, then create main.yml in each
 ```sh
 ╭─ ~/projects/git/devops-journey/ansible/roles/
 ╰─❯ mkdir -p {base,db_servers,file_servers,web_servers,workstations}/tasks 
+
+╰─❯ touch {base,db_servers,file_servers,web_servers,workstations}/tasks/main.yml
 ```
