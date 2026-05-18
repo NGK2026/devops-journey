@@ -1,0 +1,5 @@
+- name: restart_httpd
+  tags: apache,centos,httpd
+  service:
+    name: "{{ apache_service }}"
+    state: restarted
