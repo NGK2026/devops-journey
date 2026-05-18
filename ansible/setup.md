@@ -518,3 +518,8 @@ ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
 ```txt
 AllowUsers {{ ssh_users }}
 ```
+- go to host_vars and edit each, add these two lines, set 2nd according to file
+```sh
+ssh_users: "student void"
+ssh_template_file: sshd_config_ubuntu.j2 # change according to os
+```
