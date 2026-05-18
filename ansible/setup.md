@@ -500,3 +500,21 @@ ex: block of web_servers tasks > roles/web_servers/tasks/main.yml
 - create main.yml in handlers/
 - add name of the task mentioned in the notify along with the commands
 ```
+#### 28. create template for shh
+- grab from ubuntu the /etc/ssh/sshd_config onto my host using scp
+```sh
+# ( j2 is jinja2 =] )
+╭─ ~/projects/git/devops-journey/ansible/roles/base/templates main
+╰─❯ scp void@192.168.0.124:/etc/ssh/sshd_config sshd_config_ubuntu.j2 
+╰─❯ scp void@192.168.0.171:/etc/ssh/sshd_config sshd_config_centos.j2
+╰─❯ p /etc/ssh/sshd_config sshd_config_arch.j2
+
+╰─❯ ll
+-rw-r--r-- 1 student student 3.3K May 18 20:53 sshd_config_arch.j2
+-rw-r--r-- 1 student student 3.6K May 18 20:52 sshd_config_centos.j2
+-rw-r--r-- 1 student student 3.2K May 18 20:45 sshd_config_ubuntu.j2
+```
+- add AllowUsers variable using text editor in each
+```txt
+AllowUsers {{ ssh_users }}
+```
