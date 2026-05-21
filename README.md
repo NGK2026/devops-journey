@@ -135,3 +135,7 @@ Documentation of my devops path
 ## Step-12 Ansible
 #### youtube: Getting started with Ansible (18 Videos) - Learn Linux TV
 - Playlist: https://www.youtube.com/playlist?list=PLT98CRl2KxKEUHie1m24-wkyHpEsa4Y70
+
+## Step-13 Helm
+#### youtube: Learn Helm "Mini Course" - Richard Chesterwood
+- Playlist: https://www.youtube.com/playlist?list=PLSwo-wAGP1b8svO5fbAr7ko2Buz6GuH1g
