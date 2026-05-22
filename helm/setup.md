@@ -69,4 +69,9 @@ prometheus-stack-prometheus-node-exporter   ClusterIP      10.110.6.102     <non
 ╰─❯ kubectl get svc                          
 NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
 prometheus-stack-grafana                    NodePort       10.97.149.190    <none>        80:30001/TCP                 19m
+
+╰─❯ minikube ip     
+192.168.49.2
+
+# visit 192.168.49.2:30001
 ```
