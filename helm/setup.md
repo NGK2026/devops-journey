@@ -8,7 +8,7 @@
 
 ╰─❯ helm repo add bitnami https://charts.bitnami.com/bitnami
 
-╰─❯ helm install my-release bitnami/nginx
+╰─❯ helm install nginx-bitnami bitnami/nginx
 
 ╰─❯ kubectl get po            
 NAME                             READY   STATUS    RESTARTS   AGE
