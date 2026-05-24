@@ -134,3 +134,7 @@ prometheus-stack-grafana                    ClusterIP      10.100.59.230    <non
     type: NodePort
     nodePort: 30001
 ```
+- then apply with
+```sh
+╰─❯ helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack --values=values.yaml     
+```
