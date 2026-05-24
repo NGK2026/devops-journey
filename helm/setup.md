@@ -151,7 +151,19 @@ prometheus-stack-grafana                    NodePort       10.102.145.164   <non
 ```sh
 ╰─❯ mkdir my-cluster-config && cd my-cluster-config
 
+# pull
 ╰─❯ helm pull prometheus-community/kube-prometheus-stack --untar=true
+╰─❯ helm pull stable/mysql --untar=true
 
+# install
+╭─ ~/projects/git/devops-journey/helm/my-cluster-config                                           󱃾 minikube
+╰─❯ helm install prometheus-stack ./kube-prometheus-stack       
+╰─❯ helm install mysql ./mysql 
+
+# list
+╰─❯ helm list                   
+NAME            	NAMESPACE	REVISION	UPDATED                                 	STATUS  	CHART                       	APP VERSION
+mysql           	default  	1       	2026-05-24 15:27:26.472445765 +0300 EEST	deployed	mysql-1.6.9                 	5.7.30     
+prometheus-stack	default  	1       	2026-05-24 15:26:21.446303164 +0300 EEST	deployed	kube-prometheus-stack-85.2.2	v0.90.1    
 
 ```
