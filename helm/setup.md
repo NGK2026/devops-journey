@@ -112,3 +112,25 @@ prometheus-stack-grafana                    NodePort       10.109.154.126   <non
 NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
 prometheus-stack-grafana                    ClusterIP      10.100.59.230    <none>        80/TCP                       8s
 ```
+- edit service.yaml we created with parameters and values we want
+```yaml
+  adminUser: admin
+  # adminPassword: strongpassword
+#  -- snip
+  service:
+    portName: http-web
+    ipFamilies: []
+    ipFamilyPolicy: ""
+```
+- to 
+```yaml
+  adminUser: admin
+  adminPassword: admin
+# snip--
+  service:
+    portName: http-web
+    ipFamilies: []
+    ipFamilyPolicy: ""
+    type: NodePort
+    nodePort: 30001
+```
