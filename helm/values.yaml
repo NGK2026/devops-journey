@@ -1386,7 +1386,7 @@ grafana:
 
   # Administrator credentials when not using an existing secret (see below)
   adminUser: admin
-  # adminPassword: strongpassword
+  adminPassword: admin
 
   # Use an existing secret for the admin user.
   admin:
@@ -1573,6 +1573,8 @@ grafana:
     portName: http-web
     ipFamilies: []
     ipFamilyPolicy: ""
+    type: NodePort
+    nodePort: 30001
 
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
