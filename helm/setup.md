@@ -159,10 +159,17 @@ prometheus-stack-grafana                    NodePort       10.102.145.164   <non
 # password = admin
 # type: nodeport, nodeport 30001
 
-# install
+# install with myvalues.yaml from local folder
 ╭─ ~/projects/git/devops-journey/helm/my-cluster-config                                           󱃾 minikube
-╰─❯ helm install prometheus-stack ./kube-prometheus-stack       
+╰─❯ helm install prometheus-stack ./kube-prometheus-stack --values=./kube-prometheus-stack/myvalues.yaml
+
 ╰─❯ helm install mysql ./mysql 
+
+# or install first then upgrade after
+╰─❯ helm install prometheus-stack ./kube-prometheus-stack
+╰─❯ cd kube-prometheus-stack
+# . for here
+╰─❯ helm upgrade prometheus-stack --values=myvalues.yaml .
 
 # list
 ╰─❯ helm list                   
