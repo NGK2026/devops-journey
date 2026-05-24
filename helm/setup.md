@@ -137,6 +137,11 @@ prometheus-stack-grafana                    ClusterIP      10.100.59.230    <non
 - then apply with
 ```sh
 ╰─❯ helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack --values=values.yaml     
+# OR #
+╰─❯ helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack \                                 
+--set grafana.adminPassword=admin \
+--set grafana.service.type=NodePort \ 
+--set grafana.service.nodePort=30001
 
 ╰─❯ kubectl get svc                                                                              
 NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
