@@ -147,3 +147,11 @@ prometheus-stack-grafana                    ClusterIP      10.100.59.230    <non
 NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
 prometheus-stack-grafana                    NodePort       10.102.145.164   <none>        80:30001/TCP                 9s
 ```
+#### configure own cluster
+```sh
+╰─❯ mkdir my-cluster-config && cd my-cluster-config
+
+╰─❯ helm pull prometheus-community/kube-prometheus-stack --untar=true
+
+
+```
