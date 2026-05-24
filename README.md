@@ -139,3 +139,7 @@ Documentation of my devops path
 ## Step-13 Helm
 #### youtube: Learn Helm "Mini Course" - Richard Chesterwood
 - Playlist: https://www.youtube.com/playlist?list=PLSwo-wAGP1b8svO5fbAr7ko2Buz6GuH1g
+
+## Step-14 Jenkins
+#### youtube: Jenkins Tutorial for Beginners - TechWorld with Nana
+- Playlist: https://www.youtube.com/playlist?list=PLy7NrYWoggjw_LIiDK1LXdNN82uYuuuiC
