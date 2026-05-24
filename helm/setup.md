@@ -182,4 +182,31 @@ prometheus-stack	default  	1       	2026-05-24 15:26:21.446303164 +0300 EEST	dep
 ```sh
 ╰─❯ helm template prometheus-stack ./kube-prometheus-stack/ \
   --values=./kube-prometheus-stack/myvalues.yaml > prometheus-stack.yaml
+
+╰─❯ kubectl apply -f prometheus-stack.yaml 
+
+╭─ ~/projects/git/devops-journey/helm/my-cluster-config
+╰─❯ kubectl get po                        
+NAME                                                     READY   STATUS      RESTARTS   AGE
+alertmanager-prometheus-stack-kube-prom-alertmanager-0   2/2     Running     0          36s
+prometheus-prometheus-stack-kube-prom-prometheus-0       2/2     Running     0          36s
+prometheus-stack-grafana-5998fbdc85-qx2kl                3/3     Running     0          37s
+prometheus-stack-kube-prom-admission-create-lljmr        0/1     Completed   0          26s
+prometheus-stack-kube-prom-admission-patch-x4tpj         0/1     Completed   0          26s
+prometheus-stack-kube-prom-operator-787b669484-rmdgc     1/1     Running     0          37s
+prometheus-stack-kube-state-metrics-7b9d949668-vpt7c     1/1     Running     0          37s
+prometheus-stack-prometheus-node-exporter-wmr7k          1/1     Running     0          37s
+
+╭─ ~/projects/git/devops-journey/helm/my-cluster-config 
+╰─❯ kubectl get svc    
+NAME                                        TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+alertmanager-operated                       ClusterIP   None             <none>        9093/TCP,9094/TCP,9094/UDP   55s
+kubernetes                                  ClusterIP   10.96.0.1        <none>        443/TCP                      2d15h
+prometheus-operated                         ClusterIP   None             <none>        9090/TCP                     55s
+prometheus-stack-grafana                    NodePort    10.102.34.112    <none>        80:30001/TCP                 56s
+prometheus-stack-kube-prom-alertmanager     ClusterIP   10.105.147.239   <none>        9093/TCP,8080/TCP            56s
+prometheus-stack-kube-prom-operator         ClusterIP   10.100.176.141   <none>        443/TCP                      56s
+prometheus-stack-kube-prom-prometheus       ClusterIP   10.98.237.40     <none>        9090/TCP,8080/TCP            56s
+prometheus-stack-kube-state-metrics         ClusterIP   10.107.127.66    <none>        8080/TCP                     56s
+prometheus-stack-prometheus-node-exporter   ClusterIP   10.111.56.152    <none>        9100/TCP                     56s
 ```
