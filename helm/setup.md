@@ -155,6 +155,10 @@ prometheus-stack-grafana                    NodePort       10.102.145.164   <non
 ╰─❯ helm pull prometheus-community/kube-prometheus-stack --untar=true
 ╰─❯ helm pull stable/mysql --untar=true
 
+# create myvalues.yaml in ./kube-prometheus-stack/
+# password = admin
+# type: nodeport, nodeport 30001
+
 # install
 ╭─ ~/projects/git/devops-journey/helm/my-cluster-config                                           󱃾 minikube
 ╰─❯ helm install prometheus-stack ./kube-prometheus-stack       
