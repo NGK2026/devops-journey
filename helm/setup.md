@@ -86,7 +86,8 @@ prometheus-stack-grafana                    NodePort       10.97.149.190    <non
 
 ╰─❯ helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack --set grafana.adminPassword=admin
 level=WARN msg="upgrade failed" name=prometheus-stack error="conflict occurred while applying object default/prometheus-stack-grafana /v1, Kind=Service: Apply failed with 1 conflict: conflict with \"kubectl-edit\" using v1: .spec.type"
-Error: UPGRADE FAILED: conflict occurred while applying object default/prometheus-stack-grafana /v1, Kind=Service: Apply failed with 1 conflict: conflict with "kubectl-edit" using v1: .spec.type
+Error: UPGRADE FAILED: conflict occurred while applying object default/prometheus-stack-grafana /v1,
+Kind=Service: Apply failed with 1 conflict: conflict with "kubectl-edit" using v1: .spec.type
 
 # .spec.type is the service we edited
 ╰─❯ kubectl delete svc prometheus-stack-grafana
