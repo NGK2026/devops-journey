@@ -96,4 +96,19 @@ Kind=Service: Apply failed with 1 conflict: conflict with "kubectl-edit" using v
 
 # re-edit service port type and number as above
 kubectl edit svc prometheus-stack-grafana
+
+╰─❯ kubectl get svc
+NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+prometheus-stack-grafana                    NodePort       10.109.154.126   <none>        80:30001/TCP                 3m48s
+```
+#### set up the service values automatically
+```sh
+# first delete the configured service and regenerate with desired password
+╰─❯ kubectl delete svc prometheus-stack-grafana
+
+╰─❯ helm upgrade prometheus-stack prometheus-community/kube-prometheus-stack --set grafana.adminPassword=admin
+
+╰─❯ kubectl get svc # back to cluster ip and port not 30001
+NAME                                        TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+prometheus-stack-grafana                    ClusterIP      10.100.59.230    <none>        80/TCP                       8s
 ```
