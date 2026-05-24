@@ -75,3 +75,8 @@ prometheus-stack-grafana                    NodePort       10.97.149.190    <non
 
 # visit 192.168.49.2:30001
 ```
+#### change graphana user/pass
+- check values
+```sh
+╰─❯ helm show values prometheus-community/kube-prometheus-stack > values.yaml
+```
