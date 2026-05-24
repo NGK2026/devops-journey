@@ -180,5 +180,6 @@ prometheus-stack	default  	1       	2026-05-24 15:26:21.446303164 +0300 EEST	dep
 #### generate yaml then add to cluster
 - helm template
 ```sh
-╰─❯ helm template prometheus-stack ./kube-prometheus-stack/ --values=./kube-prometheus-stack/myvalues.yaml > prometheus-stack.yaml
+╰─❯ helm template prometheus-stack ./kube-prometheus-stack/ \
+  --values=./kube-prometheus-stack/myvalues.yaml > prometheus-stack.yaml
 ```
