@@ -73,7 +73,7 @@ health-monitor-p2   NodePort    10.107.29.84   <none>        5000:31649/TCP   4m
 #### 10. Create Jenkins Pipeline
 1. New Item > Item name: health-monitor-p2 > OK
 2. Display Name: health-monitor-p2
-3. Branch Sources > GitHub > Credentials: Select repo credentials
+3. Branch Sources > Git > Credentials: Select repo credentials
 4. Repository HTTPS URL: enter repo url
 5. Behaviors > Add: Filter by name (with regular expression) 
 6. Regular expression: ^main$
