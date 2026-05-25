@@ -49,7 +49,38 @@ Finished: SUCCESS
 #### Target devops-journey/jenkins repo
 18. Configure > Behaviors > Filter by name (with regular expressions)
 19. add Regular expression ^jenkins$ > save
+#### Create Jenkinsfile in jenkins repo
+- skelaton
+```jenkins
+pipeline {
 
+    agent any
+
+    stages {
+
+        stage("build") {
+
+            steps {
+
+            }
+        }
+
+        stage("test") {
+
+            steps {
+
+            }
+        }
+
+        stage("deploy") {
+
+            steps {
+
+            }
+        }
+    }
+}
+```
 
 
 
