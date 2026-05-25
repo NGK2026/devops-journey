@@ -333,6 +333,16 @@ health-monitor-p2-78f44b8f5d-fdmms   0/1     CrashLoopBackOff   5 (40s ago)   6m
 10.244.0.1 - - [25/May/2026 22:21:25] "GET / HTTP/1.1" 404 -
 ```
 #### 19. Flask app.py enpoint at /metrics, fix helm values.yaml
-
+- liveness/rediness probe paths
+```yaml
+livenessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+readinessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+```
 
 
