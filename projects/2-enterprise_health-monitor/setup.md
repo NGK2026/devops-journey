@@ -103,4 +103,24 @@ script returned exit code 127
 -v /var/run/docker.sock:/var/run/docker.sock \
 --name jenkins \
 jenkins/jenkins
+
+# access container interactive bash terminal
+╰─❯ docker exec -it jenkins bash            
+jenkins@63f7ff975006:/$ curl https://get.docker.com | sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 22446  100 22446    0     0   222k      0 --:--:-- --:--:-- --:--:--  223k
+# Executing docker install script, commit: 2687d91ddeb3bd6aeae37a90947761efdee87030
++ su -c apt-get -qq update >/dev/null
+Password: su: Authentication failure
+jenkins@63f7ff975006:/$ exit
+
+# access as root instead
+╰─❯ docker exec -u root -it jenkins bash
+root@63f7ff975006:/# curl https://get.docker.com | sh
+# add jenkins user to docker group
+root@63f7ff975006:/# usermod -aG docker jenkins
+root@63f7ff975006:/# exit
+╰─❯ docker restart jenkins
 ```
+
