@@ -1,5 +1,11 @@
-#### 1. Create Jenkins file
-
+#### 1. Mount Jenkins container && Create Jenkins file
+```sh
+╰─❯ docker run \     
+-p 8080:8080 -p 50000:50000 \
+-d -v jenkins_home:/var/jenkins_home \
+--name jenkins \
+jenkins/jenkins
+```
 #### 2. Register Dockerhub credentials on Jenkins
 1. Manage Jenkins > Credentials > Add Credentials > Username with password
 2. Scope: Global
@@ -78,3 +84,14 @@ health-monitor-p2   NodePort    10.107.29.84   <none>        5000:31649/TCP   4m
 5. Behaviors > Add: Filter by name (with regular expression) 
 6. Regular expression: ^main$
 7. Build Configuration > Script Path: projects/2-enterprise_health-monitor/Jenkinsfile
+8. RUN:
+```sh
++ docker build -t ngk2026/devops-journey-p2:latest .
+/var/jenkins_home/workspace/health-monitor-p2_main@tmp/durable-4b912197/script.sh.copy: 1: docker: not found
+script returned exit code 127
+```
+- error: docker: not found
+#### 11. Mount host docker into Jenkins container
+```sh
+
+```
