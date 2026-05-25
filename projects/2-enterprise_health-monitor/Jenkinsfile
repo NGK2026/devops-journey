@@ -1,0 +1,29 @@
+pipeline {
+
+    agent any
+
+    stages {
+
+        stage("Build Docker image") {
+
+            steps {
+                //
+            }
+        }
+
+        stage("Push to DockerHub") {
+
+            steps {
+                //
+            }
+        }
+
+        stage("Deploy to Kubernetes using Helm") {
+
+            steps {
+                //
+            }
+        }
+    }
+}
+
