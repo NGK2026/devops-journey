@@ -117,10 +117,10 @@ jenkins@63f7ff975006:/$ exit
 
 # access as root instead
 ╰─❯ docker exec -u root -it jenkins bash
-root@63f7ff975006:/# curl https://get.docker.com | sh
+root@63f7ff975006:/$ curl https://get.docker.com | sh
 # add jenkins user to docker group
-root@63f7ff975006:/# usermod -aG docker jenkins
-root@63f7ff975006:/# exit
+root@63f7ff975006:/$ usermod -aG docker jenkins
+root@63f7ff975006:/$ exit
 ╰─❯ docker restart jenkins
 ```
 - retry build
@@ -141,11 +141,11 @@ docker:x:947:student
 
 # set jenkins group same GID
 ╰─❯ docker exec -u root -it jenkins bash
-root@63f7ff975006:/# getent group docker
+root@63f7ff975006:/$ getent group docker
 docker:x:995:jenkins
 
-root@63f7ff975006:/# groupmod -g 947 docker
-root@63f7ff975006:/# exit
+root@63f7ff975006:/$ groupmod -g 947 docker
+root@63f7ff975006:/$ exit
 ╰─❯ docker restart jenkins
 ```
 #### 12. Retry Build
@@ -172,16 +172,16 @@ stage("Build Docker image") {
 #### 13. Install helm and kubectl on jenkins container
 ```sh
 ╰─❯ docker exec -u root -it jenkins bash
-root@63f7ff975006:/# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+root@63f7ff975006:/$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 helm installed into /usr/local/bin/helm
 
-root@63f7ff975006:/# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-root@63f7ff975006:/# ls
+root@63f7ff975006:/$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+root@63f7ff975006:/$ ls
 bin  boot  dev	etc  home  kubectl  lib  lib64	media  mnt  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
 
-root@63f7ff975006:/# chmod +x kubectl
-root@63f7ff975006:/# mv kubectl /usr/local/bin/
-root@63f7ff975006:/# exit
+root@63f7ff975006:/$ chmod +x kubectl
+root@63f7ff975006:/$ mv kubectl /usr/local/bin/
+root@63f7ff975006:/$ exit
 
 ╰─❯ docker exec -it jenkins bash -c "kubectl version --client"
 Client Version: v1.36.1
@@ -217,37 +217,37 @@ Error: Kubernetes cluster unreachable: invalid configuration: [unable to read cl
 # log into container, install docker, k8 and helm
 ╰─❯ docker exec -u root -it jenkins bash   
 # install docker
-root@8c6dc78f0a88:/# curl https://get.docker.com | sh
+root@8c6dc78f0a88:/$ curl https://get.docker.com | sh
 # add jenkins to docker group
-root@8c6dc78f0a88:/# usermod -aG docker jenkins
+root@8c6dc78f0a88:/$ usermod -aG docker jenkins
 # set GID as host's
-root@8c6dc78f0a88:/# groupmod -g 947 docker
+root@8c6dc78f0a88:/$ groupmod -g 947 docker
 # install helm
-root@8c6dc78f0a88:/# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+root@8c6dc78f0a88:/$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 # install kubernetes
-root@8c6dc78f0a88:/# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+root@8c6dc78f0a88:/$ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 # make executable
-root@8c6dc78f0a88:/# chmod +x kubectl
+root@8c6dc78f0a88:/$ chmod +x kubectl
 # move to usr bin
-root@8c6dc78f0a88:/# mv kubectl /usr/local/bin/
+root@8c6dc78f0a88:/$ mv kubectl /usr/local/bin/
 # create kube config location
-root@8c6dc78f0a88:/# mkdir -p /var/jenkins_home/.kube
+root@8c6dc78f0a88:/$ mkdir -p /var/jenkins_home/.kube
 # change perm from root to jenkins
-root@8c6dc78f0a88:/# chown -R jenkins:jenkins /var/jenkins_home/.kube
+root@8c6dc78f0a88:/$ chown -R jenkins:jenkins /var/jenkins_home/.kube
 
 # docker has copy bug from host to container...
 # cat host .kube/config, pipe it into container .kube/config
 ╰─❯ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.kube/config"
 
 # cat container .kube/config
-root@8c6dc78f0a88:/# cat /var/jenkins_home/.kube/config 
+root@8c6dc78f0a88:/$ cat /var/jenkins_home/.kube/config 
 apiVersion: v1
 clusters:
 - cluster:
     certificate-authority: /home/student/.minikube/ca.crt
 
 ---snip---
-root@8c6dc78f0a88:/# exit
+root@8c6dc78f0a88:/$ exit
 ╰─❯ docker restart jenkins
 ```
 #### 16. Rebuild jenkins pipeline
