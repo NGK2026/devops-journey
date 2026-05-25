@@ -251,4 +251,63 @@ root@8c6dc78f0a88:/# exit
 ╰─❯ docker restart jenkins
 ```
 #### 16. Rebuild jenkins pipeline
+- state 3 output:
+```sh
+# cannot reach host network
+Error: Kubernetes cluster unreachable: Get "https://192.168.49.2:8443/version": dial tcp 192.168.49.2:8443: i/o timeout
+```
+#### 17. Container network
+1. check container network
+```sh
+╰─❯ docker inspect jenkins | grep -A 20 "Networks"
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "a0a8e82454facf238a9d7302d36cc2e7ece749035bac3ec8509a5456e5f2d46c",
+                    "EndpointID": "2eadb08f758b4497b60a6a153d0455f269ac917c0fe68493c62b70a145e74922",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.2",
+                    "MacAddress": "ea:7d:87:34:30:82",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+```
+- container 172.17.0.2, host 192.168.49.2 (different networks)
+2. run container on host network
+```sh
+╰─❯ docker stop jenkins
+╰─❯ docker rm jenkins
+╰─❯ docker run -p 8080:8080 -p 50000:50000 \
+  -d \
+  --network host \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /home/student/.minikube:/home/student/.minikube \
+  --name jenkins \
+  jenkins/jenkins
+```
+3. check documention above.. reinstalling docker, k8 and helm, recopy .kube/config
+4. rebuild!
+```sh
+Error: path "./health-monitor-p2" not found
+```
+#### 18. fix Jenkinsfile helm chart path
+```yaml
+stage("Deploy to Kubernetes using Helm") {
+
+    steps {
+        sh "helm upgrade --install health-monitor-p2 ./projects/2-enterprise_health-monitor/health-monitor-p2 --set image.repository=${IMAGE_NAME} --set image.tag=${IMAGE_TAG}" 
+    }
+}
+```
+
 
