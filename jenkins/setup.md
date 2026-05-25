@@ -120,7 +120,9 @@ Finished: SUCCESS
 2. On left side pannel, select Restart from Stage 
 3. Drop down menu to select desired stage by name
 4. Run
-
-
+#### set multibranch pipeline scan trigger (when using localhost)
+1. Select my-pipeline-github, left side pannel click Configure
+2. Scroll to Scan Multibranch Pipeline Triggers and check Periodically if not otherwise run
+3. Set to desired interval
 
 
