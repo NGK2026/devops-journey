@@ -29,7 +29,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v7
       with:
-        context: ./projects/health-monitor
+        context: ./projects/1-health-monitor
         push: true
         tags: ngk2026/health-monitor:latest
         no-cache: true # # #
@@ -44,7 +44,7 @@ jobs:
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST} '
 
-            cd /home/ec2-user/devops-journey/projects/health-monitor
+            cd /home/ec2-user/devops-journey/projects/1-health-monitor
             git pull
             docker stop health-monitor || true
             docker rm health-monitor || true
