@@ -169,7 +169,7 @@ stage("Build Docker image") {
 ```sh
 /var/jenkins_home/workspace/health-monitor-p2_main@tmp/durable-61ca1327/script.sh.copy: 1: helm: not found
 ```
-#### Install helm and kubectl on jenkins container
+#### 13. Install helm and kubectl on jenkins container
 ```sh
 ╰─❯ docker exec -u root -it jenkins bash
 root@63f7ff975006:/# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
@@ -193,6 +193,62 @@ version.BuildInfo{Version:"v3.21.0", GitCommit:"e0878d41b711792be60777fd65ad23a1
 # copy kubeconfig into jenkins container, to point to host minikube
 ╰─❯ docker cp ~/.kube/config jenkins:/var/jenkins_home/.kube/config
 Successfully copied 816B (transferred 2.56kB) to jenkins:/var/jenkins_home/.kube/config
-
 ```
+- set in Jenkinsfile env_var KUBECONFIG to point helm into the right direction
+
+#### 14. Rebuild
+```sh
+Error: Kubernetes cluster unreachable: invalid configuration: [unable to read client-cert /
+```
+#### 15. Mount minikube certs into container!
+```sh
+╰─❯ docker stop jenkins
+
+╰─❯ docker rm jenkins
+
+╰─❯ docker run -p 8080:8080 -p 50000:50000 \
+  -d \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /home/student/.minikube:/home/student/.minikube \
+  --name jenkins \
+  jenkins/jenkins
+
+# log into container, install docker, k8 and helm
+╰─❯ docker exec -u root -it jenkins bash   
+# install docker
+root@8c6dc78f0a88:/# curl https://get.docker.com | sh
+# add jenkins to docker group
+root@8c6dc78f0a88:/# usermod -aG docker jenkins
+# set GID as host's
+root@8c6dc78f0a88:/# groupmod -g 947 docker
+# install helm
+root@8c6dc78f0a88:/# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+# install kubernetes
+root@8c6dc78f0a88:/# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# make executable
+root@8c6dc78f0a88:/# chmod +x kubectl
+# move to usr bin
+root@8c6dc78f0a88:/# mv kubectl /usr/local/bin/
+# create kube config location
+root@8c6dc78f0a88:/# mkdir -p /var/jenkins_home/.kube
+# change perm from root to jenkins
+root@8c6dc78f0a88:/# chown -R jenkins:jenkins /var/jenkins_home/.kube
+
+# docker has copy bug from host to container...
+# cat host .kube/config, pipe it into container .kube/config
+╰─❯ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.kube/config"
+
+# cat container .kube/config
+root@8c6dc78f0a88:/# cat /var/jenkins_home/.kube/config 
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/student/.minikube/ca.crt
+
+---snip---
+root@8c6dc78f0a88:/# exit
+╰─❯ docker restart jenkins
+```
+#### 16. Rebuild jenkins pipeline
 
