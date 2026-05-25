@@ -14,7 +14,7 @@ systemctl status ssh
 ```
 #### 3. create ssh keys
 ```sh
-ssh-keygen -t ed22519 -C "VMs"
+ssh-keygen -t ed25519 -C "VMs"
 # save as /home/student/.ssh/VMs
 # create passphrase
 ```
