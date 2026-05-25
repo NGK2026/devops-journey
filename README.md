@@ -123,7 +123,7 @@ Documentation of my devops path
 #### youtube: Server Monitoring // Prometheus and Grafana - Christian Lempa
 - https://www.youtube.com/watch?v=9TJx7QTrTyo
 
-## Step-11 Project Health-Monitor
+## Step-11 Project 1 Health-Monitor
 #### Steps
 1. Flask app -- Done
 2. Docker -- Done
@@ -143,3 +143,12 @@ Documentation of my devops path
 ## Step-14 Jenkins
 #### youtube: Jenkins Tutorial for Beginners - TechWorld with Nana
 - Playlist: https://www.youtube.com/playlist?list=PLy7NrYWoggjw_LIiDK1LXdNN82uYuuuiC
+
+## Step-15 Project 2 Enterprise Health-Monitor
+#### Steps
+1. Ansible — provision and configure VMs
+2. Docker — containerize the app
+3. Kubernetes — orchestrate containers
+4. Helm — manage Kubernetes deployment
+5. Jenkins — CI/CD pipeline
+6. Prometheus + Grafana — monitoring
