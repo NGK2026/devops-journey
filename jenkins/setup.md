@@ -114,6 +114,11 @@ Finished: SUCCESS
 5. Run > left side pannel, select new build's dropdown menu:
 6. Select Pipeline Overview > check build stage
 7. Outputs building the application... and cool
+#### restart from stage
+- to test a specific stage in the jenkinsfile
+1. Select my-pipeline-github > main > select Build #
+2. On left side pannel, select Restart from Stage 
+3. Drop down menu to select desired stage by name
 
 
 
