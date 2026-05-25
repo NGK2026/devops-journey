@@ -51,3 +51,30 @@ service:
   port: 5000
   nodePort: 30001
 ```
+#### 9. Test locally
+```sh
+╰─❯ minikube start
+
+╰─❯ helm install health-monitor-p2 ./health-monitor-p2
+NAME: health-monitor-p2
+LAST DEPLOYED: Mon May 25 23:05:23 2026
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+
+╰─❯ helm list
+NAME             	NAMESPACE	REVISION	UPDATED                                 	STATUS  	CHART                  	APP VERSION
+health-monitor-p2	default  	1       	2026-05-25 23:05:23.957495502 +0300 EEST	deployed	health-monitor-p2-0.1.0	1.16.0  
+╰─❯ kubectl get svc
+NAME                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+health-monitor-p2   NodePort    10.107.29.84   <none>        5000:31649/TCP   4m42s
+```
+#### 10. Create Jenkins Pipeline
+1. New Item > Item name: health-monitor-p2 > OK
+2. Display Name: health-monitor-p2
+3. Branch Sources > GitHub > Credentials: Select repo credentials
+4. Repository HTTPS URL: enter repo url
+5. Behaviors > Add: Filter by name (with regular expression) 
+6. Regular expression: ^main$
+7. Build Configuration > Script Path: projects/2-enterprise_health-monitor/Jenkinsfile
