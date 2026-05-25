@@ -119,6 +119,7 @@ Finished: SUCCESS
 1. Select my-pipeline-github > main > select Build #
 2. On left side pannel, select Restart from Stage 
 3. Drop down menu to select desired stage by name
+4. Run
 
 
 
