@@ -320,5 +320,19 @@ health-monitor-p2	default  	1       	2026-05-25 22:13:45.362763613 +0000 UTC	dep
 ╰─❯ kubectl get po   
 NAME                                 READY   STATUS    RESTARTS     AGE
 health-monitor-p2-78f44b8f5d-fdmms   0/1     Running   1 (4s ago)   64s
+
+╰─❯ kubectl get po                                 
+NAME                                 READY   STATUS             RESTARTS      AGE
+health-monitor-p2-78f44b8f5d-fdmms   0/1     CrashLoopBackOff   5 (40s ago)   6m40s
 ```
+- 5 restarts up till now, check logs
+```sh
+╰─❯ kubectl logs health-monitor-p2-78f44b8f5d-fdmms
+ * Serving Flask app 'app'
+--snip--
+10.244.0.1 - - [25/May/2026 22:21:25] "GET / HTTP/1.1" 404 -
+```
+#### 19. Flask app.py enpoint at /metrics, fix helm values.yaml
+
+
 
