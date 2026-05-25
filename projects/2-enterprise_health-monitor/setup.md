@@ -123,4 +123,29 @@ root@63f7ff975006:/# usermod -aG docker jenkins
 root@63f7ff975006:/# exit
 ╰─❯ docker restart jenkins
 ```
+- retry build
+```sh
+ERROR: permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+
+script returned exit code 1
+```
+```sh
+# host
+# check docker.sock permissions
+╰─❯ ls -la /var/run/docker.sock
+srw-rw---- 1 root docker 0 May 25 21:39 /var/run/docker.sock
+
+# check GID of docker group
+╰─❯ getent group docker
+docker:x:947:student
+
+# set jenkins group same GID
+╰─❯ docker exec -u root -it jenkins bash
+root@63f7ff975006:/# getent group docker
+docker:x:995:jenkins
+
+root@63f7ff975006:/# groupmod -g 947 docker
+root@63f7ff975006:/# exit
+╰─❯ docker restart jenkins
+```
 
