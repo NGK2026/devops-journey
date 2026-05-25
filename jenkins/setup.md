@@ -48,7 +48,9 @@ Finished: SUCCESS
 ```
 #### Target devops-journey/jenkins repo
 18. Configure > Behaviors > Filter by name (with regular expressions)
-19. add Regular expression ^jenkins$ > save
+19. Add Regular expression ^main$
+20. Scrll below to Build Configuration > Mode: by Jenkinsfile > Script Path:
+21. Change to jenkins/Jenkinsfile
 #### Create Jenkinsfile in jenkins repo
 - skelaton, testing:
 ```jenkins
