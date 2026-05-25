@@ -53,7 +53,7 @@ Finished: SUCCESS
 21. Change to jenkins/Jenkinsfile
 #### Create Jenkinsfile in jenkins repo
 - skelaton, testing:
-```jenkins
+```groovy
 pipeline {
 
     agent any
@@ -82,6 +82,16 @@ pipeline {
         }
     }
 }
+```
+```sh
+Checking branches...
+  Checking branch main
+      ‘jenkins/Jenkinsfile’ found
+    Met criteria
+No changes detected: main (still at ac090c9ee01d81e2591d2799f3a3b033374b8afe)
+Processed 1 branches
+[Mon May 25 09:10:48 UTC 2026] Finished branch indexing. Indexing took 1.6 sec
+Finished: SUCCESS
 ```
 
 
