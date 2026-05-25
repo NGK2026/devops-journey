@@ -46,6 +46,8 @@ Processed 1 branches
 [Mon May 25 08:43:54 UTC 2026] Finished branch indexing. Indexing took 4.9 sec
 Finished: SUCCESS
 ```
+18. Configure > Behaviors > Filter by name (with regular expressions)
+19. add Regular expression ^jenkins$ > save
 
 
 
