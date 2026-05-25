@@ -44,3 +44,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
 ```
+3. modify service type, port and add nodePort
+```yaml
+service:
+  type: NodePort
+  port: 5000
+  nodePort: 30001
+```
