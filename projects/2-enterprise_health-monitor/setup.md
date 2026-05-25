@@ -161,4 +161,38 @@ stage("Build Docker image") {
     }
 }
 ```
+- build success
+```sh
+#9 DONE 1.0s
+```
+- stage 3 Helm
+```sh
+/var/jenkins_home/workspace/health-monitor-p2_main@tmp/durable-61ca1327/script.sh.copy: 1: helm: not found
+```
+#### Install helm and kubectl on jenkins container
+```sh
+╰─❯ docker exec -u root -it jenkins bash
+root@63f7ff975006:/# curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+helm installed into /usr/local/bin/helm
+
+root@63f7ff975006:/# curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+root@63f7ff975006:/# ls
+bin  boot  dev	etc  home  kubectl  lib  lib64	media  mnt  opt  proc  root  run  sbin	srv  sys  tmp  usr  var
+
+root@63f7ff975006:/# chmod +x kubectl
+root@63f7ff975006:/# mv kubectl /usr/local/bin/
+root@63f7ff975006:/# exit
+
+╰─❯ docker exec -it jenkins bash -c "kubectl version --client"
+Client Version: v1.36.1
+Kustomize Version: v5.8.1
+
+╰─❯ docker exec -it jenkins bash -c "helm version --client"
+version.BuildInfo{Version:"v3.21.0", GitCommit:"e0878d41b711792be60777fd65ad23a101e6b85f", GitTreeState:"clean", GoVersion:"go1.25.10"}
+
+# copy kubeconfig into jenkins container, to point to host minikube
+╰─❯ docker cp ~/.kube/config jenkins:/var/jenkins_home/.kube/config
+Successfully copied 816B (transferred 2.56kB) to jenkins:/var/jenkins_home/.kube/config
+
+```
 
