@@ -1,0 +1,45 @@
+# uses HTTP to return system metrics gathered by process utility library
+# use prometheus client to format collected data as prometheus ready
+from flask import Flask, jsonify
+import psutil as ps
+import prometheus_client as pc
+
+app = Flask(__name__)
+
+# define gauge 'prometheus_client approach'
+cpu_gauge = pc.Gauge('cpu_percent', 'Current CPU percent')
+mem_gauge = pc.Gauge('mem_percent', 'Current RAM percent')
+root_gauge = pc.Gauge('root_percent', 'Current Root percent')
+home_gauge = pc.Gauge('home_percent', 'Current Home percent')
+
+@app.route('/metrics')
+def metrics():
+    ## JSON approach:
+
+    # variables storing metrics:
+    # CPU, RAM, DISK (ROOT, HOME)
+    # cpuPercent = ps.cpu_percent(interval=1)
+    # memCurr = ps.virtual_memory().percent
+    # rootDiskCurr = ps.disk_usage('/').percent
+    # homeDiskCurr = ps.disk_usage('/home').percent
+
+    # Store data in dictionary
+    # data = {
+    #     'CPU': cpuPercent,
+    #     'RAM': memCurr,
+    #     'Root': rootDiskCurr,
+    #     'Home': homeDiskCurr
+    # }
+    # return jsonify(data)    
+    
+    # set gauge 
+    cpu_gauge.set(ps.cpu_percent(interval=1))
+    mem_gauge.set(ps.virtual_memory().percent)
+    root_gauge.set(ps.disk_usage('/').percent)
+    home_gauge.set(ps.disk_usage('/home').percent)
+
+    # set correct content type
+    return pc.generate_latest(), 200, {'Content-Type': pc.CONTENT_TYPE_LATEST} 
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
