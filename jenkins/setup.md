@@ -29,13 +29,23 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS
 6. New Item > Enter: my-pipeline-github & Select: Multibranch Pipeline > configure project
 7. Branch Source: Git , Enter Project Repository (HTTPS)
 8. Behaviors Add > Filter by name (with regex)
+#### Github token
+9. Settings > Developer settings > Personal access tokens > Tokens (classic)
+10. Scope: Repo > Generate token
 #### Credentials
-9. Navigate out of configuration, into my-pipeline-github
-10. Select Credentials
-11. Under (Stores scoped to my-pipeline-github) select my-pipeline-github
-12. Select Global > Add Credentials > Username with password
-13. 
-
+11. Navigate out of configuration, into my-pipeline-github
+12. Select Credentials
+13. Under (Stores scoped to my-pipeline-github) select my-pipeline-github
+14. Select Global > Add Credentials > Username with password
+15. Add git email, paste git token as password, fill ID, create!
+#### Back to pipeline configuration
+16. Credentials > select the one we just created above
+17. Save
+```sh
+Processed 1 branches
+[Mon May 25 08:43:54 UTC 2026] Finished branch indexing. Indexing took 4.9 sec
+Finished: SUCCESS
+```
 
 
 
