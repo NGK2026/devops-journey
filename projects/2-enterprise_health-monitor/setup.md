@@ -348,13 +348,20 @@ readinessProbe:
 1. create ssh key
 ```sh
 ╰─❯ ssh-keygen -t ed25519 -C "devops-p2"
+╰─❯ ssh-keygen -t ed25519 -C "ansible-p2" 
 ```
 2. migrate public keys to each VM
 ```sh
 ╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.38  # arch
-╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.171 # centos
-╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.124 # ubuntu 22.04
-╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.3   # ubuntu 26.04
+╰─❯ ssh-copy-id -i ~/.ssh/ansible-p2.pub 192.168.0.38
 
+╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.171 # centos
+╰─❯ ssh-copy-id -i ~/.ssh/ansible-p2.pub 192.168.0.171
+
+╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.124 # ubuntu 22.04
+╰─❯ ssh-copy-id -i ~/.ssh/ansible-p2.pub 192.168.0.124
+
+╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.3   # ubuntu 26.04
+╰─❯ ssh-copy-id -i ~/.ssh/ansible-p2.pub 192.168.0.3
 ```
 
