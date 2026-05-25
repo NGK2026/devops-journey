@@ -6,7 +6,7 @@ pipeline {
         IMAGE_NAME = "ngk2026/devops-journey-p2"
         IMAGE_TAG = "latest"
         DOCKERHUB_CREDENTIALS = credentials('project2-dockerhub')
-        
+        KUBECONFIG = "/var/jenkins_home/.kube/config" // helm automatically sees this and uses as reference
     }
 
     stages {
