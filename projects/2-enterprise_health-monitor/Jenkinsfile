@@ -1,6 +1,12 @@
 pipeline {
 
     agent any
+    
+    environment {
+        IMAGE_NAME = "ngk2026/devops-journey-p2"
+        IMAGE_TAG = "latest"
+        DOCKERHUB_CREDENTIALS = credentials('project2-dockerhub')
+    }
 
     stages {
 
