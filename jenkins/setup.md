@@ -50,7 +50,7 @@ Finished: SUCCESS
 18. Configure > Behaviors > Filter by name (with regular expressions)
 19. add Regular expression ^jenkins$ > save
 #### Create Jenkinsfile in jenkins repo
-- skelaton
+- skelaton, testing:
 ```jenkins
 pipeline {
 
@@ -61,21 +61,21 @@ pipeline {
         stage("build") {
 
             steps {
-
+                echo 'building the application...'
             }
         }
 
         stage("test") {
 
             steps {
-
+                echo 'testing the application...'
             }
         }
 
         stage("deploy") {
 
             steps {
-
+                echo 'deploying the application...'
             }
         }
     }
