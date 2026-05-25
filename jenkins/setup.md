@@ -19,5 +19,10 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS
 [LF]> d4a7ac7b4ae74de5a5f206d971011379
 [LF]> 
 [LF]> This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
-
 ```
+1. Navigate to localhost:8080 and enter the above password
+2. Select install suggested plugins
+3. Enter first admin creds
+4. Instance configuration localhost as is
+5. Start using Jenkins
+6. 
