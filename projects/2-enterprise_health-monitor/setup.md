@@ -93,5 +93,14 @@ script returned exit code 127
 - error: docker: not found
 #### 11. Mount host docker into Jenkins container
 ```sh
+╰─❯ docker stop jenkins  
 
+╰─❯ docker rm jenkins  
+
+╰─❯ docker run -p 8080:8080 -p 50000:50000 \
+-d \
+-v jenkins_home:/var/jenkins_home \
+-v /var/run/docker.sock:/var/run/docker.sock \
+--name jenkins \
+jenkins/jenkins
 ```
