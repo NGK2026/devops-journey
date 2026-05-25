@@ -93,6 +93,28 @@ Processed 1 branches
 [Mon May 25 09:10:48 UTC 2026] Finished branch indexing. Indexing took 1.6 sec
 Finished: SUCCESS
 ```
+#### test/execute jenkinsfile changes without commit, using Replay
+1. Select my-pipeline-github > select main
+2. On the left side pannel, click the build you want to modify/test
+3. On the left side pannel, select Replay
+4. Test Groovy script, change this block:
+```groovy
+        stage("build") {
+
+            steps {
+                echo 'building the application...'
+                
+                script {
+                    def test = 2 + 2 > 3 ? 'cool' : 'not cool'
+                    echo test
+                }
+            }
+        }
+```
+5. Run > left side pannel, select new build's dropdown menu:
+6. Select Pipeline Overview > check build stage
+7. Outputs building the application... and cool
+
 
 
 
