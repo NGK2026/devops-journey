@@ -26,3 +26,21 @@
 #### 7. Define post action if success or fail
 1. if succeeded print success !!!
 2. if failed print Failed !!!
+
+#### 8. create Helm boilerplate chart
+1. 
+```sh
+╰─❯ helm create helm/health-monitor-p2
+
+╰─❯ ls health-monitor-p2               
+charts  Chart.yaml  templates  values.yaml
+```
+2. Modify values.yaml image from defailt nginx to:
+```yaml
+image:
+  repository: ngk2026/devops-journey-p2
+  # This sets the pull policy for images.
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+```
