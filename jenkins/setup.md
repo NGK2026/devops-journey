@@ -25,14 +25,18 @@ CONTAINER ID   IMAGE             COMMAND                  CREATED         STATUS
 3. Enter first admin creds
 4. Instance configuration localhost as is
 5. Start using Jenkins
-#### Credentials
-6. Navigate top right cog (Manage Jenkins) > Credentials
-7. Select Username with password
-8. Scope Global
-
-
-
-6. New Item > Enter: my-test-pipeline & Select: Multibranch Pipeline > configure project
+#### new pipeline
+6. New Item > Enter: my-pipeline-github & Select: Multibranch Pipeline > configure project
 7. Branch Source: Git , Enter Project Repository (HTTPS)
 8. Behaviors Add > Filter by name (with regex)
+#### Credentials
+9. Navigate out of configuration, into my-pipeline-github
+10. Select Credentials
+11. Under (Stores scoped to my-pipeline-github) select my-pipeline-github
+12. Select Global > Add Credentials > Username with password
+13. 
+
+
+
+
 
