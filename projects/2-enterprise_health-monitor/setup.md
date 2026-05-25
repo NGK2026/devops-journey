@@ -309,5 +309,16 @@ stage("Deploy to Kubernetes using Helm") {
     }
 }
 ```
+- Output: Production Success !!!
 
+#### 18. Proof!
+```sh
+╰─❯ helm list
+NAME             	NAMESPACE	REVISION	UPDATED                                	STATUS  	CHART                  	APP VERSION
+health-monitor-p2	default  	1       	2026-05-25 22:13:45.362763613 +0000 UTC	deployed	health-monitor-p2-0.1.0	1.16.0     
+
+╰─❯ kubectl get po   
+NAME                                 READY   STATUS    RESTARTS     AGE
+health-monitor-p2-78f44b8f5d-fdmms   0/1     Running   1 (4s ago)   64s
+```
 
