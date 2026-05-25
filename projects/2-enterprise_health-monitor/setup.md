@@ -148,4 +148,17 @@ root@63f7ff975006:/# groupmod -g 947 docker
 root@63f7ff975006:/# exit
 ╰─❯ docker restart jenkins
 ```
+#### 12. Retry Build
+```sh
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+```
+- Set Jenkins build dockerfile location
+```yaml
+stage("Build Docker image") {
+
+    steps {
+        sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ./projects/2-enterprise_health-monitor/"
+    }
+}
+```
 
