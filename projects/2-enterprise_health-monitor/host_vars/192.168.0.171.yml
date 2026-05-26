@@ -1,0 +1,9 @@
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+docker_service: docker
+python_requests_package: python3-requests
+ssh_users: "student void"
