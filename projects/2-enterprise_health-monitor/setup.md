@@ -502,7 +502,7 @@ fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Final
 #### 23. fix "Unknown error executing apt-key"
 - install dependancy binary tools first! then add GPG
 ```yaml
-- name: Install repository prerequisites (Ubuntu 22)
+- name: install repository prerequisites (Ubuntu 22)
     apt:
       name:
         - gnupg
