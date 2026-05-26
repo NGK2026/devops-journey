@@ -58,6 +58,21 @@
     when: 
       - ansible_facts['distribution'] == "Archlinux"
 
+  - name: add docker GPG (ubuntu)
+    ansible.builtin.get_url:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      dest: /etc/apt/keyrings/docker.asc
+      mode: '0440'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+
+  - name: add docker repo (ubuntu)
+    ansible.builtin.apt_repository:
+      repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      state: present
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+
   - name: install docker (ubuntu)
     apt:
       name:
@@ -67,8 +82,9 @@
         - docker-buildx-plugin
         - docker-compose-plugin
       state: latest
-    when: 
+    when:
       - ansible_facts['distribution'] == "Ubuntu"
+    
 
   - name: add docker repo (centos)
     ansible.builtin.get_url:
