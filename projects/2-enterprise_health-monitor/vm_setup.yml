@@ -147,3 +147,11 @@
       name: kubelet
       state: started
       enabled: true
+
+# KUBEADM INIT UBUNTU 22
+  - name: init kubeadm 
+    shell: kubeadm init --apiserver-advertise-address=192.168.0.124 --pod-network-cidr=10.244.0.0/16
+    become: true
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
