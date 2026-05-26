@@ -662,10 +662,10 @@ sudo systemctl restart kubelet
 ```
 8. success
 ```sh
-student@ubuntu2204:~$ kubectl get nodes
-NAME         STATUS   ROLES           AGE     VERSION
-archlinux    Ready    <none>          10m     v1.36.1
-centos       Ready    <none>          8m53s   v1.36.1
-ubuntu2204   Ready    control-plane   39m     v1.36.1
-ubuntu2604   Ready    <none>          36m     v1.36.1
+student@ubuntu2204:~$ kubectl get nodes -o wide
+NAME         STATUS   ROLES           AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE                      KERNEL-VERSION                   CONTAINER-RUNTIME
+archlinux    Ready    <none>          11m   v1.36.1   192.168.0.38    <none>        Arch Linux                    7.0.8-arch1-1 (amd64)            containerd://2.3.1
+centos       Ready    <none>          10m   v1.36.1   192.168.0.171   <none>        CentOS Stream 10 (Coughlan)   6.12.0-227.el10.x86_64 (amd64)   containerd://2.2.4
+ubuntu2204   Ready    control-plane   40m   v1.36.1   192.168.0.124   <none>        Ubuntu 22.04.5 LTS            5.15.0-179-generic (amd64)       containerd://2.2.1
+ubuntu2604   Ready    <none>          37m   v1.36.1   192.168.0.3     <none>        Ubuntu 26.04 LTS              7.0.0-15-generic (amd64)         containerd://2.2.2
 ```
