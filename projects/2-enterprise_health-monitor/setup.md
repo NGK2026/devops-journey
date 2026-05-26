@@ -381,6 +381,7 @@ readinessProbe:
 - centos requires add docker repo
 ```yaml
 # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
+# https://docs.docker.com/engine/install/centos/
 # CENTOS
 # ADD REPO
   - name: add docker repo (centos)
