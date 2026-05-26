@@ -412,6 +412,68 @@ readinessProbe:
       state: started
       enabled: true
 ```
+- ubuntu 22 docker service not available
+```sh
+student@ubuntu2204:~$ sudo apt install docker
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+docker is already the newest version (1.5-2).
+0 upgraded, 0 newly installed, 0 to remove and 13 not upgraded.
+```
+- must install docker engine from docker official
+https://docs.docker.com/engine/install/ubuntu/
+
+#### 22. docker official ubuntu
+```sh
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+```
+-yaml
+```yaml
+  - name: add docker GPG (ubuntu)
+    ansible.builtin.get_url:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      dest: /etc/apt/keyrings/docker.asc
+      mode: '0644'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+
+  - name: add docker repo (ubuntu)
+    ansible.builtin.apt_repository:
+      repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      state: present
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+
+  - name: install docker (ubuntu)
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+      state: latest
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+```
 
 #### . pull and run docker containers in VMS
 - https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
