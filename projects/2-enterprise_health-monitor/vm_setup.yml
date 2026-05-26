@@ -194,7 +194,7 @@
 
 # CONNECT CENTOS ARCH UBUNTU 26 TO HOST CLUSTER
   - name: connect others to host cluster
-    shell: kubeadm join 192.168.0.124:6443 --token 4yv0h1.incin17wp4s05z08 --discovery-token-ca-cert-hash sha256:a8e62cb88fd1d5c173f6d157e0f22a5f056b2a2a3bca19a76b7dc493ebe2b711 --ignore-preflight-errors=CRI,ContainerRuntimeVersion,Swap
+    shell: kubeadm join 192.168.0.124:6443 --token f1axir.ctg7hqkwo498p8kq --discovery-token-ca-cert-hash sha256:ba8f3acf40b10ca9601f873c28d1555dbb8575c0e838f5eec1a418721fbd7845 --ignore-preflight-errors=CRI,ContainerRuntimeVersion,Swap
     become: true
     args:
       creates: /etc/kubernetes/kubelet.conf

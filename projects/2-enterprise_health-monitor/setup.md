@@ -614,3 +614,17 @@ Your Kubernetes control-plane has initialized successfully!
 1. create playbook task
 2. create CNI plugin install script and deliver it with playbook
 3. after install, create a file at /etc/kubernetes/ to use as arg: creates 
+
+#### 30. connect other VMs to cluster using token
+1. send tokens to other vms
+2. success, but error:
+```sh
+student@ubuntu2204:~$ kubectl get nodes
+E0526 21:56:07.839722   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
+E0526 21:56:07.840082   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
+E0526 21:56:07.841377   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
+E0526 21:56:07.841590   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
+E0526 21:56:07.842831   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
+The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+```
