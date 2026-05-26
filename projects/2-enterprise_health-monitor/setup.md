@@ -364,4 +364,8 @@ readinessProbe:
 ╰─❯ ssh-copy-id -i ~/.ssh/devops-p2.pub 192.168.0.3   # ubuntu 26.04
 ╰─❯ ssh-copy-id -i ~/.ssh/ansible-p2.pub 192.168.0.3
 ```
+3. create inventory
+4. create ansible.cfg
+5. create playbook vm_setup.yml
+
 
