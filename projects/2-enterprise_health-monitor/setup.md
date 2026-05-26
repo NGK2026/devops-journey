@@ -367,5 +367,9 @@ readinessProbe:
 3. create inventory
 4. create ansible.cfg
 5. create playbook vm_setup.yml
+6. update packages on all vms
+7. create root user void and update ansible.cfg
+8. install docker
+
 
 
