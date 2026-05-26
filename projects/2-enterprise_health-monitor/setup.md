@@ -447,24 +447,24 @@ sudo apt update
 ```
 -yaml
 ```yaml
-  - name: add docker GPG (ubuntu)
+  - name: add docker GPG (ubuntu 22)
     ansible.builtin.get_url:
       url: https://download.docker.com/linux/ubuntu/gpg
       dest: /etc/apt/keyrings/docker.asc
-      mode: '0755'
+      mode: '0644'
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
 
-  - name: add docker repo (ubuntu)
+  - name: add docker repo (ubuntu 22)
     ansible.builtin.apt_repository:
-      repo: deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      repo: "deb [arch={{ ansible_dependency_architecture }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
       state: present
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
 
-  - name: install docker (ubuntu)
+  - name: install docker (ubuntu 22)
     apt:
       name:
         - docker-ce
