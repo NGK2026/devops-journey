@@ -567,6 +567,10 @@ fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Final
       - "8080:8080"
       - "50000:50000"
 ```
+- ERROR CENTOS:
+```sh
+fatal: [192.168.0.171]: FAILED! => {"changed": false, "msg": "Failed to import the required Python library (requests) on centos's Python /usr/bin/python3. Please read the module documentation and install it in the appropriate location. If the required library is installed, but Ansible is using the wrong Python interpreter, please consult the documentation on ansible_python_interpreter"}
+```
 
 
 
