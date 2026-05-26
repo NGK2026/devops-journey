@@ -524,6 +524,20 @@ fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Final
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
 ```
+- run ansible-playbook! = same error.
+#### 24. Use apt install docker.io instead of the current circus! of gpg, repo and bleeding edge docker!
+```yaml
+# UBUNTU 22
+  - name: install docker (ubuntu 22)
+    apt:
+      name:
+        - docker.io
+      state: latest
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
+```
+
 
 #### . pull and run docker containers in VMS
 - https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
