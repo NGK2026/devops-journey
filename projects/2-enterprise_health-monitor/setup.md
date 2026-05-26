@@ -378,6 +378,30 @@ readinessProbe:
 ╰─❯ ansible all -m gather_facts --limit 192.168.0.3 | grep ansible_distribution_major_version
         "ansible_distribution_major_version": "26",
 ```
+- centos requires add docker repo
+```yaml
+# https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
+# CENTOS
+# ADD REPO
+  - name: add docker repo (centos)
+    ansible.builtin.get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+      mode: '0440'
+    when: 
+    - ansible_facts['distribution'] == "CentOS"  
+# INSTALL DOCKER
+  - name: install docker from docker repo
+    dnf:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+    when: 
+      - ansible_facts['distribution'] == "CentOS"
+```
 
 
 

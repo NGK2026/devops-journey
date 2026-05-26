@@ -1,5 +1,6 @@
 ---
 ## ALL
+# PKG UPDATES
 - hosts: all
   become: true
   pre_tasks: # pre_task = run first
@@ -25,6 +26,7 @@
     changed_when: false
     when: ansible_facts['distribution'] == "Archlinux"
 
+# VOID USER
 - hosts: all
   become: true
   tasks:
@@ -50,6 +52,8 @@
       group: root
       mode: 0440
 
+# INSTALL DOCKER
+# ARCH
   - name: install docker (arch)
     pacman:
       name:
@@ -57,35 +61,26 @@
       state: latest
     when: 
       - ansible_facts['distribution'] == "Archlinux"
-
-  - name: add docker GPG (ubuntu)
-    ansible.builtin.get_url:
-      url: https://download.docker.com/linux/ubuntu/gpg
-      dest: /etc/apt/keyrings/docker.asc
-      mode: '0644'
-    when:
-      - ansible_facts['distribution'] == "Ubuntu"
-
-  - name: add docker repo (ubuntu)
-    ansible.builtin.apt_repository:
-      repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
-      state: present
-    when:
-      - ansible_facts['distribution'] == "Ubuntu"
-
-  - name: install docker (ubuntu)
+# UBUNTU 22
+  - name: install docker (ubuntu 22)
     apt:
       name:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-        - docker-buildx-plugin
-        - docker-compose-plugin
+        - docker
       state: latest
     when:
       - ansible_facts['distribution'] == "Ubuntu"
-    
-
+      - ansible_facts['distribution_major_version'] == "22"
+# UBUNTU 26
+  - name: install docker (ubuntu 26)
+    apt:
+      name:
+        - docker.io
+      state: latest
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "26"
+# CENTOS
+# ADD REPO
   - name: add docker repo (centos)
     ansible.builtin.get_url:
       url: https://download.docker.com/linux/centos/docker-ce.repo
@@ -93,7 +88,7 @@
       mode: '0440'
     when: 
     - ansible_facts['distribution'] == "CentOS"  
-
+# INSTALL DOCKER
   - name: install docker from docker repo
     dnf:
       name:
@@ -104,3 +99,5 @@
         - docker-compose-plugin
     when: 
       - ansible_facts['distribution'] == "CentOS"
+
+# INSTALL CONTAINER
