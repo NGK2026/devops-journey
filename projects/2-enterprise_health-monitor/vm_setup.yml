@@ -115,7 +115,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]
 # GPG
-  - name: add docker GPG (ubuntu)
+  - name: add kubernetes GPG (ubuntu)
     ansible.builtin.get_url:
       url: https://pkgs.k8s.io/core:/stable:/v1.36/deb/Release.key
       dest: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
@@ -124,7 +124,7 @@
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]
 # REPO
-  - name: add docker repo (ubuntu)
+  - name: add kubernetes repo (ubuntu)
     ansible.builtin.apt_repository:
       repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ {{ ansible_distribution_release }} stable"
       filename: docker
