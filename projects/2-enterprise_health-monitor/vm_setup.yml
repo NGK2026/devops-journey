@@ -106,7 +106,7 @@
     when: 
     - ansible_facts['distribution'] == "Ubuntu"  
 # EXECUTE BASH
-  - name: run kube install script
+  - name: run kube install script (ubuntu)
     ansible.builtin.shell: /home/student/kube-ubuntu-install.sh
     become: true
     when: 
@@ -120,7 +120,7 @@
     when: 
     - ansible_facts['distribution'] == "CentOS"  
 # EXECUTE BASH
-  - name: run kube install script
+  - name: run kube install script (centos)
     ansible.builtin.shell: /home/student/kube-centos-install.sh
     become: true
     when: 
