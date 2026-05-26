@@ -49,3 +49,42 @@
       owner: root
       group: root
       mode: 0440
+
+  - name: install docker (arch)
+    pacman:
+      name:
+        - docker
+      state: latest
+    when: 
+      - ansible_facts['distribution'] == "Archlinux"
+
+  - name: install docker (ubuntu)
+    apt:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+      state: latest
+    when: 
+      - ansible_facts['distribution'] == "Ubuntu"
+
+  - name: add docker repo (centos)
+    ansible.builtin.get_url:
+      url: https://download.docker.com/linux/centos/docker-ce.repo
+      dest: /etc/yum.repos.d/docker-ce.repo
+      mode: '0440'
+    when: 
+    - ansible_facts['distribution'] == "CentOS"  
+
+  - name: install docker from docker repo
+    dnf:
+      name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+    when: 
+      - ansible_facts['distribution'] == "CentOS"
