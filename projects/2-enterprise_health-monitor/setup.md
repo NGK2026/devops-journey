@@ -494,7 +494,35 @@ fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Final
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
+```
+- ansible-playbook
+```sh
+ W:GPG error: https://download.docker.com/linux/ubuntu jammy InRelease: Unknown error executing apt-key, E:The repository 'https://download.docker.com/linux/ubuntu jammy InRelease' is not signed."
+```
+#### 23. fix "Unknown error executing apt-key"
+- install dependancy binary tools first! then add GPG
+```yaml
+- name: Install repository prerequisites (Ubuntu 22)
+    apt:
+      name:
+        - gnupg
+        - software-properties-common
+        - ca-certificates
+        - curl
+      state: present
+      update_cache: true
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
 
+  - name: add docker GPG (ubuntu 22)
+    ansible.builtin.get_url:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      dest: /etc/apt/keyrings/docker.asc
+      mode: '0644'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
 ```
 
 #### . pull and run docker containers in VMS
