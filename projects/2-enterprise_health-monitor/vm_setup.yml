@@ -3,10 +3,10 @@
 # PKG UPDATES
 - hosts: all
   become: true
-  pre_tasks: # pre_task = run first
+  pre_tasks: 
 
   - name: update cache (centos)
-    tags: always # always run reguardless
+    tags: always
     dnf:
       update_cache: true
     changed_when: false
@@ -52,34 +52,6 @@
       group: root
       mode: 0440
 
-# INSTALL DOCKER
-# ARCH
-  - name: install docker (arch)
-    pacman:
-      name:
-        - docker
-      state: latest
-    when: 
-      - ansible_facts['distribution'] == "Archlinux"
-# UBUNTU 22
-  - name: install docker (ubuntu 22)
-    apt:
-      name:
-        - docker.io
-      state: latest
-    when:
-      - ansible_facts['distribution'] == "Ubuntu"
-      - ansible_facts['distribution_major_version'] == "22"
-
-# UBUNTU 26
-  - name: install docker (ubuntu 26)
-    apt:
-      name:
-        - docker.io
-      state: latest
-    when:
-      - ansible_facts['distribution'] == "Ubuntu"
-      - ansible_facts['distribution_major_version'] == "26"
 # CENTOS
 # ADD REPO
   - name: add docker repo (centos)
@@ -89,37 +61,26 @@
       mode: '0440'
     when: 
     - ansible_facts['distribution'] == "CentOS"  
+
 # INSTALL DOCKER
-  - name: install docker from docker repo
-    dnf:
-      name:
-        - docker-ce
-        - docker-ce-cli
-        - containerd.io
-        - docker-buildx-plugin
-        - docker-compose-plugin
-    when: 
-      - ansible_facts['distribution'] == "CentOS"
+  - name: install docker
+    package:
+      name: "{{ docker_packages }}"
+      state: latest
 
 # START DOCKER SERVICE
   - name: start docker service
     service:
-      name: docker
+      name: "{{ docker_service }}"
       state: started
       enabled: true
 
-# INSTALL PYTHON REQUEST REQ ARCH
-  - name: install python requests (arch)
-    community.general.pacman:
-      name: python-requests
+# INSTALL PYTHON REQUEST REQ 
+  - name: install python requests 
+    package:
+      name: "{{ python_requests_package }}"
       state: present
-    when: ansible_facts['distribution'] == "Archlinux"
-# INSTALL PYTHON REQUEST REQ CENTOS
-  - name: install python requests (centos)
-    ansible.builtin.dnf:
-      name: python3-requests
-      state: present
-    when: ansible_facts['distribution'] == "CentOS"
+    when: ansible_facts['distribution'] in ["Archlinux", "CentOS"]
 
 # START JENKINS CONTAINER
   - name: Start Jenkins container
