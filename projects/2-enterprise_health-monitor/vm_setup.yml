@@ -131,6 +131,8 @@
     pacman:
       name:
         - kubectl
+        - kubeadm
+        - kubelet
       state: latest
     when:
       - ansible_facts['distribution'] == "Archlinux"
