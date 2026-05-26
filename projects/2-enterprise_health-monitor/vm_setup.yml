@@ -107,7 +107,7 @@
     - ansible_facts['distribution'] == "Ubuntu"  
 # EXECUTE BASH
   - name: run kube install script
-    shell: /home/student/kube-ubuntu-install.sh
+    ansible.builtin.shell: /home/student/kube-ubuntu-install.sh
     become: true
     when: 
     - ansible_facts['distribution'] == "Ubuntu"
