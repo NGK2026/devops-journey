@@ -149,7 +149,7 @@
       enabled: true
 
 # KUBEADM INIT UBUNTU 22
-  - name: init kubeadm 
+  - name: init kubeadm (ubuntu)
     shell: kubeadm init --apiserver-advertise-address=192.168.0.124 --pod-network-cidr=10.244.0.0/16
     become: true
     args:
