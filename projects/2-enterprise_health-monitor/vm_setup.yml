@@ -125,7 +125,7 @@
 
 # EXECUTE BASH
   - name: run kube install script (centos)
-    ansible.builtin.shell: /home/student/kube-centos-install.sh
+    shell: /home/student/kube-centos-install.sh
     become: true
     when: 
     - ansible_facts['distribution'] == "CentOS"
@@ -154,6 +154,24 @@
     become: true
     args:
       creates: /etc/kubernetes/admin.conf # if present then its created
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
+
+# COPY CNI SCRIPT UBUNTU 22
+  - name: copy install cni plugin script
+    copy:
+      src: cni-plugin-ubuntu.sh 
+      dest: /home/student/cni-plugin-ubuntu.sh
+      mode: '0755'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
+
+# RUN CNI SCRIPT UBUNTU 22
+  - name: run cni plugin script
+    shell: /home/student/cni-plugin-ubuntu.sh
+    become: true
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
