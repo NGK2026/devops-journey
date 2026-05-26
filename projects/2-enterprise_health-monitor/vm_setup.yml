@@ -127,7 +127,7 @@
     when: 
     - ansible_facts['distribution'] == "CentOS"
 # INSTALL KUBE ON ARCH
-  - name: install kubernetes on arch
+  - name: install kubernetes (arch)
     pacman:
       name:
         - kubectl
@@ -136,3 +136,9 @@
       state: latest
     when:
       - ansible_facts['distribution'] == "Archlinux"
+# START kubelet SERVICE
+  - name: start kubelet service (arch)
+    service:
+      name: kubelet
+      state: started
+      enabled: true
