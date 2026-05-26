@@ -379,9 +379,9 @@ readinessProbe:
         "ansible_distribution_major_version": "26",
 ```
 - centos requires add docker repo
+- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
+- https://docs.docker.com/engine/install/centos/
 ```yaml
-# https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
-# https://docs.docker.com/engine/install/centos/
 # CENTOS
 # ADD REPO
   - name: add docker repo (centos)
@@ -402,6 +402,24 @@ readinessProbe:
         - docker-compose-plugin
     when: 
       - ansible_facts['distribution'] == "CentOS"
+```
+#### 21. pull and run docker containers in VMS
+- https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
+```yaml
+- name: Start Jenkins container
+  community.docker.docker_container:
+    name: jenkins
+    image: jenkins/jenkins
+    state: started
+    restart_policy: always
+    network_mode: host
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/student/.minikube:/home/student/.minikube
+    ports:
+      - "8080:8080"
+      - "50000:50000"
 ```
 
 
