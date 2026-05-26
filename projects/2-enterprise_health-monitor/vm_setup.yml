@@ -106,12 +106,14 @@
       mode: '0755'
     when: 
     - ansible_facts['distribution'] == "Ubuntu"  
+
 # EXECUTE BASH
   - name: run kube install script (ubuntu)
     ansible.builtin.shell: /home/student/kube-ubuntu-install.sh
     become: true
     when: 
     - ansible_facts['distribution'] == "Ubuntu"
+
 # COPY BASH SCRIPT ONTO CENTOS
   - name: copy bash script install kube on centos
     copy:
@@ -120,12 +122,14 @@
       mode: '0755'
     when: 
     - ansible_facts['distribution'] == "CentOS"  
+
 # EXECUTE BASH
   - name: run kube install script (centos)
     ansible.builtin.shell: /home/student/kube-centos-install.sh
     become: true
     when: 
     - ansible_facts['distribution'] == "CentOS"
+
 # INSTALL KUBE ON ARCH
   - name: install kubernetes (arch)
     pacman:
@@ -136,6 +140,7 @@
       state: latest
     when:
       - ansible_facts['distribution'] == "Archlinux"
+      
 # START kubelet SERVICE
   - name: start kubelet service (arch)
     service:
