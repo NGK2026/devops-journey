@@ -477,6 +477,25 @@ sudo apt update
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
 ```
+- run playbook
+```sh
+fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Finalization of task args for 'ansible.builtin.apt_repository' failed: Error while resolving value for 'repo': 'ansible_dependency_architecture' is undefined"}
+```
+- 'ansible_dependency_architecture' is undefined", meaning:
+- ansible dependency architecture = x86_64
+- Ubuntu expects amd64
+```yaml
+# use j2
+- name: add docker repo (ubuntu 22)
+    ansible.builtin.apt_repository:
+      repo: "deb [arch={{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+      filename: docker
+      state: present
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
+
+```
 
 #### . pull and run docker containers in VMS
 - https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
