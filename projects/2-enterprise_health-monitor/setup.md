@@ -737,5 +737,31 @@ sudo sysctl --system
 - then restart flannel on control plane
 ```sh
 kubectl rollout restart daemonset kube-flannel-ds -n kube-flannel
-kubectl get pods -n kube-flannel -o wide
+
+╰─❯ kubectl get pods -n kube-flannel -o wide
+NAME                    READY   STATUS    RESTARTS   AGE   IP              NODE         NOMINATED NODE   READINESS GATES
+kube-flannel-ds-5n9rd   1/1     Running   0          10m   192.168.0.171   centos       <none>           <none>
+kube-flannel-ds-kv475   1/1     Running   0          10m   192.168.0.124   ubuntu2204   <none>           <none>
+kube-flannel-ds-ndlnm   1/1     Running   0          10m   192.168.0.3     ubuntu2604   <none>           <none>
+kube-flannel-ds-vksvv   1/1     Running   0          10m   192.168.0.38    archlinux    <none>           <none>
 ```
+#### 33. troubleshoot health-monitor-p2
+```sh
+╰─❯ kubectl logs health-monitor-p2-6b5576c469-26tjh
+Error from server: Get "https://192.168.0.171:10250/containerLogs/default/health-monitor-p2-6b5576c469-26tjh/health-monitor-p2": dial tcp 192.168.0.171:10250: connect: no route to host
+```
+- firewall unblock 10250
+```
+[student@archlinux ~]$ systemctl list-unit-files --type=service | grep -E 'firewall|ufw|iptables|nftables'
+firewalld.service                            enabled         disabled
+
+[student@centos ~]$ systemctl list-unit-files --type=service | grep -E 'firewall|ufw|iptables|nftables'
+firewalld.service                            enabled         enabled
+
+student@ubuntu2204:~$ systemctl list-unit-files --type=service | grep -E 'firewall|ufw|iptables|nftables'
+ufw.service                                enabled         enabled
+
+student@ubuntu2604:~$ systemctl list-unit-files --type=service | grep -E 'firewall|ufw|iptables|nftables'
+ufw.service                                  enabled         enabled
+```
+- use firewall ./files/  scripts respectively
