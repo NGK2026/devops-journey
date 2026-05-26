@@ -370,6 +370,14 @@ readinessProbe:
 6. update packages on all vms
 7. create root user void and update ansible.cfg
 8. install docker
+- specify ubuntu versions
+```sh
+╰─❯ ansible all -m gather_facts --limit 192.168.0.124 | grep ansible_distribution_major_version
+        "ansible_distribution_major_version": "22",
+
+╰─❯ ansible all -m gather_facts --limit 192.168.0.3 | grep ansible_distribution_major_version
+        "ansible_distribution_major_version": "26",
+```
 
 
 
