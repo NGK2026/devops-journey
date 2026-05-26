@@ -97,6 +97,16 @@
   #     ports:
   #       - "8080:8080"
   #       - "50000:50000"
-
-
-  
+# COPY BASH SCRIPT ONTO UBUNTU
+  - name: copy bash script install kube on UBUNTU
+    copy:
+      src: kube-ubuntu-install.sh
+      dest: /home/student/kube-ubuntu-install.sh
+      mode: 0755
+    when: 
+    - ansible_facts['distribution'] == "Ubuntu"  
+# EXECUTE BASH
+  - name: run kube install script
+    shell: /home/student/kube-ubuntu-install.sh
+    when: 
+    - ansible_facts['distribution'] == "Ubuntu"
