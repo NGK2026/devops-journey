@@ -145,10 +145,10 @@
       - ansible_facts['distribution_major_version'] in ["22", "26"]
 # START SERVICE
   - name: start kubernetes service
-  service:
-    name: kubelet
-    state: started
-    enabled: true
+    service:
+      name: kubelet
+      state: started
+      enabled: true
     when: 
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]
