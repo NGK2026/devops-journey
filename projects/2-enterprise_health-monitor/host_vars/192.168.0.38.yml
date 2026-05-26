@@ -2,4 +2,3 @@ docker_packages:
   - docker
 docker_service: docker
 python_requests_package: python-requests
-ssh_users: "student void"

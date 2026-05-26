@@ -6,4 +6,3 @@ docker_packages:
   - docker-compose-plugin
 docker_service: docker
 python_requests_package: python3-requests
-ssh_users: "student void"
