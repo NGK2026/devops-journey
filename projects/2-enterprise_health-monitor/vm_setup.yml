@@ -70,6 +70,21 @@
   #   when:
   #     - ansible_facts['distribution'] == "Ubuntu"
   #     - ansible_facts['distribution_major_version'] == "22"
+
+# BINARY TOOLS FOR GPG (ubuntu 22)
+  - name: install repository prerequisites (Ubuntu 22)
+    apt:
+      name:
+        - gnupg
+        - software-properties-common
+        - ca-certificates
+        - curl
+      state: present
+      update_cache: true
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
+# ADD GPG (ubuntu 22)
   - name: add docker GPG (ubuntu 22)
     ansible.builtin.get_url:
       url: https://download.docker.com/linux/ubuntu/gpg
@@ -78,7 +93,7 @@
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
-
+# ADD DOCKER REPO (ubuntu 22)
   - name: add docker repo (ubuntu 22)
     ansible.builtin.apt_repository:
       repo: "deb [arch={{ 'amd64' if ansible_architecture == 'x86_64' else 'arm64' }} signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
@@ -87,7 +102,7 @@
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
-
+# INSTALL DOCKER (ubuntu 22)
   - name: install docker (ubuntu 22)
     apt:
       name:
