@@ -184,6 +184,8 @@
   - name: connect others to host cluster
     shell: kubeadm join 192.168.0.124:6443 --token 4yv0h1.incin17wp4s05z08 --discovery-token-ca-cert-hash sha256:a8e62cb88fd1d5c173f6d157e0f22a5f056b2a2a3bca19a76b7dc493ebe2b711 
     become: true
+    args:
+      creates: /etc/kubernetes/kubelet.conf
     when:
       - ansible_facts['distribution'] in ["Archlinux" , "CentOS"]
       - ansible_facts['distribution_major_version'] == "26"
