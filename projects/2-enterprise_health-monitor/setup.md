@@ -451,16 +451,18 @@ sudo apt update
     ansible.builtin.get_url:
       url: https://download.docker.com/linux/ubuntu/gpg
       dest: /etc/apt/keyrings/docker.asc
-      mode: '0644'
+      mode: '0755'
     when:
       - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
 
   - name: add docker repo (ubuntu)
     ansible.builtin.apt_repository:
-      repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+      repo: deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
       state: present
     when:
       - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
 
   - name: install docker (ubuntu)
     apt:
@@ -473,6 +475,7 @@ sudo apt update
       state: latest
     when:
       - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] == "22"
 ```
 
 #### . pull and run docker containers in VMS
