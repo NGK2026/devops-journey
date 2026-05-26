@@ -114,7 +114,7 @@
 # COPY BASH SCRIPT ONTO CENTOS
   - name: copy bash script install kube on centos
     copy:
-      src: kube-ubuntu-install.sh
+      src: kube-centos-install.sh
       dest: /home/student/kube-centos-install.sh
       mode: '0755'
     when: 
