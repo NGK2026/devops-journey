@@ -403,7 +403,17 @@ readinessProbe:
     when: 
       - ansible_facts['distribution'] == "CentOS"
 ```
-#### 21. pull and run docker containers in VMS
+#### 21. start/enable docker service
+```yaml
+  - name: start service
+    tags: 
+    service:
+      name: 
+      state: started
+      enabled: true
+```
+
+#### . pull and run docker containers in VMS
 - https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
 ```yaml
 - name: Start Jenkins container
