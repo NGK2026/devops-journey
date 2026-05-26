@@ -693,4 +693,8 @@ health-monitor-p2-6b5576c469-kn97g   1/1     Running   0          73s   10.244.2
 ╰─❯ cat health-monitor-p2/values.yaml | grep replica
 replicaCount: 1
 ```
-- edit it to 4
+- edit it to 4, then helm upgrade
+```sh
+╰─❯ helm upgrade --install health-monitor-p2 ./health-monitor-p2 --set image.repository=ngk2026/devops-journey-p2 --set image.tag=latest
+╰─❯ kubectl get pods -o wide
+```
