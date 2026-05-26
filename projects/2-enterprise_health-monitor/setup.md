@@ -599,6 +599,10 @@ touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
 ```
 - create variables
 
+#### 28. create bash script to install kubernetes on ubuntu
+- place it in ./files/
+- move it with ansible to ubuntu vms
+
 
 
 
