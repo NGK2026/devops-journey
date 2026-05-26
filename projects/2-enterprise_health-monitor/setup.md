@@ -617,14 +617,55 @@ Your Kubernetes control-plane has initialized successfully!
 
 #### 30. connect other VMs to cluster using token
 1. send tokens to other vms
-2. success, but error:
+2. success:
 ```sh
 student@ubuntu2204:~$ kubectl get nodes
-E0526 21:56:07.839722   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
-E0526 21:56:07.840082   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
-E0526 21:56:07.841377   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
-E0526 21:56:07.841590   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
-E0526 21:56:07.842831   29609 memcache.go:265] "Unhandled Error" err="couldn't get current server API group list: Get \"http://localhost:8080/api?timeout=32s\": dial tcp 127.0.0.1:8080: connect: connection refused"
-The connection to the server localhost:8080 was refused - did you specify the right host or port?
+NAME         STATUS     ROLES           AGE   VERSION
+ubuntu2204   Ready      control-plane   30m   v1.36.1
+ubuntu2604   Ready      <none>          27m   v1.36.1
+```
+3. archlinux and centos erros:
+```sh
+ "command failed" err="failed to run Kubelet: running with swap on is not s
+upported, please disable swap or set --fail-swap-on flag to false"
+```
+4. disable swap on both VMs
+```sh
+sudo systemctl stop systemd-zram-setup@zram0.service 2>/dev/null || true
+sudo systemctl disable systemd-zram-setup@zram0.service 2>/dev/null || true
+sudo systemctl mask systemd-zram-setup@zram0.service 2>/dev/null || true
+sudo swapoff -a
+```
+5. reset kubeadm and clean leftover files
+```sh
+sudo kubeadm reset -f
+sudo rm -rf /etc/kubernetes/kubelet.conf /etc/kubernetes/pki/ /var/lib/kubelet/*
+```
+6. re-run kubeadm join
+```sh
+student@ubuntu2204:~$ kubectl get nodes
+NAME         STATUS     ROLES           AGE     VERSION
+archlinux    NotReady   <none>          4m17s   v1.36.1
+centos       NotReady   <none>          3m2s    v1.36.1
+ubuntu2204   Ready      control-plane   33m     v1.36.1
+ubuntu2604   Ready      <none>          30m     v1.36.1
 
+[student@archlinux ~]$ journalctl -xeu kubelet
+": open /run/systemd/resolve/resolv.conf: no such file or directory\"
+```
+7. create missing symlink dir, for both archlinux and centos
+```sh
+sudo mkdir -p /run/systemd/resolve
+sudo ln -sf /etc/resolv.conf /run/systemd/resolve/resolv.conf
+# then restart kubelet service
+sudo systemctl restart kubelet
+```
+8. success
+```sh
+student@ubuntu2204:~$ kubectl get nodes
+NAME         STATUS   ROLES           AGE     VERSION
+archlinux    Ready    <none>          10m     v1.36.1
+centos       Ready    <none>          8m53s   v1.36.1
+ubuntu2204   Ready    control-plane   39m     v1.36.1
+ubuntu2604   Ready    <none>          36m     v1.36.1
 ```
