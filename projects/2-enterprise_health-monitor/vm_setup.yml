@@ -24,3 +24,28 @@
       update_cache: true
     changed_when: false
     when: ansible_facts['distribution'] == "Archlinux"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create void user
+    tags: always
+    user:
+      name: void
+      groups: root
+  
+  - name: add ssh key for void
+    tags: always
+    authorized_key:
+      user: void
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINZV/VjSdJNEj5jcdZFz+fq6Nmticv2of6SgNNxlr+Xx ansible"
+
+  - name: add sudoers file for void
+    tags: always
+    copy:
+      src: sudoer_void
+      dest: /etc/sudoers.d/void
+      owner: root
+      group: root
+      mode: 0440
