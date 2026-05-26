@@ -1,0 +1,26 @@
+---
+## ALL
+- hosts: all
+  become: true
+  pre_tasks: # pre_task = run first
+
+  - name: update cache (centos)
+    tags: always # always run reguardless
+    dnf:
+      update_cache: true
+    changed_when: false
+    when: ansible_facts['distribution'] == "CentOS"
+
+  - name: update cache (ubuntu)
+    tags: always
+    apt:
+      update_cache: true
+    changed_when: false
+    when: ansible_facts['distribution'] == "Ubuntu"
+
+  - name: update cache (archlinux)
+    tags: always
+    pacman:
+      update_cache: true
+    changed_when: false
+    when: ansible_facts['distribution'] == "Archlinux"
