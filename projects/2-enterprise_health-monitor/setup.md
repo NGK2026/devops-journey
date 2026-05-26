@@ -697,4 +697,45 @@ replicaCount: 1
 ```sh
 ╰─❯ helm upgrade --install health-monitor-p2 ./health-monitor-p2 --set image.repository=ngk2026/devops-journey-p2 --set image.tag=latest
 ╰─❯ kubectl get pods -o wide
+╰─❯ kubectl get pods -o wide
+NAME                                 READY   STATUS              RESTARTS        AGE     IP           NODE        NOMINATED NODE   READINESS GATES
+health-monitor-p2-6b5576c469-26tjh   0/1     ContainerCreating   0               3m11s   <none>       centos      <none>           <none>
+health-monitor-p2-6b5576c469-kn97g   1/1     Running             3 (2m42s ago)   11m     10.244.2.2   archlinux   <none>           <none>
+health-monitor-p2-6b5576c469-p5v8p   1/1     Running             1 (3m34s ago)   3m11s   10.244.2.3   archlinux   <none>           <none>
+health-monitor-p2-6b5576c469-r25qk   0/1     ContainerCreating   0               3m11s   <none>       centos      <none>           <none>
+```
+- troubleshoot
+```sh
+╰─❯ kubectl describe pod health-monitor-p2-6b5576c469-26tjh | tail -20
+  Warning  FailedCreatePodSandBox  3m22s               kubelet            Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "b69db2174e00fe82d6c94591c5976f4a623639e62f1134f29309c33caa3b7f4b": plugin type="flannel" failed (add): failed to load flannel 'subnet.env' file: open /run/flannel/subnet.env: no such file or directory. Check the flannel pod log for this node.
+
+╰─❯ kubectl logs health-monitor-p2-6b5576c469-kn97g
+Error from server: Get "https://192.168.0.38:10250/containerLogs/default/health-monitor-p2-6b5576c469-kn97g/health-monitor-p2": dial tcp 192.168.0.38:10250: connect: no route to host
+```
+- flannel...
+```sh
+╰─❯ kubectl get pods -n kube-flannel -o wide
+NAME                    READY   STATUS             RESTARTS         AGE   IP              NODE         NOMINATED NODE   READINESS GATES
+kube-flannel-ds-6zfzt   0/1     CrashLoopBackOff   28 (5m23s ago)   62m   192.168.0.3     ubuntu2604   <none>           <none>
+kube-flannel-ds-h5z6m   0/1     CrashLoopBackOff   17 (2m15s ago)   64m   192.168.0.124   ubuntu2204   <none>           <none>
+kube-flannel-ds-jqgsr   1/1     Running            0                36m   192.168.0.38    archlinux    <none>           <none>
+kube-flannel-ds-l5l9h   0/1     CrashLoopBackOff   9 (7m17s ago)    35m   192.168.0.171   centos       <none>           <none>
+```
+- master control plane flannel logs
+```sh
+student@ubuntu2204:~$ kubectl logs kube-flannel-ds-h5z6m -n kube-flannel
+E0526 23:05:37.260316       1 main.go:289] Failed to check br_netfilter: stat /proc/sys/net/bridge/bridge-nf-call-iptables: no such file or directory
+```
+#### 32. br_netfilter fix
+```sh
+sudo modprobe br_netfilter
+echo "br_netfilter" | sudo tee /etc/modules-load.d/br_netfilter.conf
+sudo sysctl -w net.bridge.bridge-nf-call-iptables=1
+echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee /etc/sysctl.d/99-kubernetes.conf
+sudo sysctl --system
+```
+- then restart flannel on control plane
+```sh
+kubectl rollout restart daemonset kube-flannel-ds -n kube-flannel
+kubectl get pods -n kube-flannel -o wide
 ```
