@@ -611,4 +611,6 @@ touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
 student@ubuntu2204:~$ sudo kubeadm init --apiserver-advertise-address=192.168.0.124 --pod-network-cidr=10.244.0.0/16
 Your Kubernetes control-plane has initialized successfully!
 ```
-- create playbook task
+1. create playbook task
+2. create CNI plugin install script and deliver it with playbook
+3. after install, create a file at /etc/kubernetes/ to use as arg: creates 
