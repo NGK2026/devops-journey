@@ -114,6 +114,15 @@
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]
+# MKDIR keyrings
+  - name: create keyrings dir
+    file:
+      path: /etc/apt/keyrings
+      state: directory
+      mode: '0755'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
 # GPG
   - name: add kubernetes GPG (ubuntu)
     ansible.builtin.get_url:
@@ -123,11 +132,19 @@
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] in ["22", "26"]
+# UPDATE CACHE
+  - name: update apt cache before adding repo
+    apt:
+      update_cache: true
+      cache_valid_until: 24h
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
 # REPO
   - name: add kubernetes repo (ubuntu)
     ansible.builtin.apt_repository:
-      repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ {{ ansible_distribution_release }} stable"
-      filename: docker
+      repo: "deb [arch=amd64 signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ {{ ansible_distribution_release }} main"
+      filename: kubernetes-1.36
       state: present
     when:
       - ansible_facts['distribution'] == "Ubuntu"
