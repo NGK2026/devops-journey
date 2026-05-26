@@ -170,8 +170,12 @@
 
 # RUN CNI SCRIPT UBUNTU 22
   - name: run cni plugin script (ubuntu 22)
-    shell: /home/student/cni-plugin-ubuntu.sh
+    shell: |
+      /home/student/cni-plugin-ubuntu.sh
+      touch /etc/kubernetes/cni_installed
     become: true
+    args:
+      creates: /etc/kubernetes/cni_installed
     when:
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
