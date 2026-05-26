@@ -62,7 +62,7 @@
     ansible.builtin.get_url:
       url: https://download.docker.com/linux/ubuntu/gpg
       dest: /etc/apt/keyrings/docker.asc
-      mode: '0440'
+      mode: '0644'
     when:
       - ansible_facts['distribution'] == "Ubuntu"
 
