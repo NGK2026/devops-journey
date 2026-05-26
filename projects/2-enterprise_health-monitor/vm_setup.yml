@@ -111,3 +111,17 @@
     become: true
     when: 
     - ansible_facts['distribution'] == "Ubuntu"
+# COPY BASH SCRIPT ONTO CENTOS
+  - name: copy bash script install kube on centos
+    copy:
+      src: kube-ubuntu-install.sh
+      dest: /home/student/kube-centos-install.sh
+      mode: '0755'
+    when: 
+    - ansible_facts['distribution'] == "CentOS"  
+# EXECUTE BASH
+  - name: run kube install script
+    ansible.builtin.shell: /home/student/kube-centos-install.sh
+    become: true
+    when: 
+    - ansible_facts['distribution'] == "CentOS"
