@@ -102,3 +102,8 @@
       - ansible_facts['distribution'] == "CentOS"
 
 # START DOCKER SERVICE
+  - name: start docker service
+    service:
+      name: docker
+      state: started
+      enabled: true

@@ -537,7 +537,17 @@ fatal: [192.168.0.124]: FAILED! => {"changed": false, "msg": "Task failed: Final
       - ansible_facts['distribution'] == "Ubuntu"
       - ansible_facts['distribution_major_version'] == "22"
 ```
+- Success :)
 
+#### 25. Back to enable/start docker service
+```yaml
+  - name: start service
+    tags: 
+    service:
+      name: 
+      state: started
+      enabled: true
+```
 
 #### . pull and run docker containers in VMS
 - https://docs.ansible.com/projects/ansible/latest/collections/community/docker/docker_container_module.html
