@@ -605,30 +605,10 @@ touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
 3. run script with ansible
 4. install kubernetes on arch vm as well
 
-#### 29. create node cluster with host arch as master.
-1. initialize host arch
+#### 29. init ubuntu 22 as kubeadm master
 ```sh
-╰─❯ sudo kubeadm init --apiserver-advertise-address=192.168.0.185 --pod-network-cidr=10.244.0.0/16
-[preflight] Pulling images required for setting up a Kubernetes cluster
---snip
-[kubelet-start] Starting the kubelet
-error: error execution phase wait-control-plane: cannot obtain client without bootstrap: could not bootstrap the admin user in file admin.conf: unable to create ClusterRoleBinding: client rate limiter Wait returned an error: context deadline exceeded
-To see the stack trace of this error execute with --v=5 or higher
-
-╰─❯ journalctl -xeu kubelet
-May 26 23:27:26 arch kubelet[39600]: E0526 23:27:26.063305   39600 run.go:72] "command failed" err="failed to run Kubelet: running with swap on is not supported, please disable swap or set --fail-swap-on flag to false"
+# test
+student@ubuntu2204:~$ sudo kubeadm init --apiserver-advertise-address=192.168.0.124 --pod-network-cidr=10.244.0.0/16
+Your Kubernetes control-plane has initialized successfully!
 ```
-2. disable swap on my arch host rig
-```sh
-╰─❯ sudo swapoff -a
-
-╰─❯ swapon --show
-# blank
-```
-3. clear failed kubeadm state and try again
-```sh
-╰─❯ sudo kubeadm reset -f
-
-╰─❯ sudo kubeadm init --apiserver-advertise-address=192.168.0.185 --pod-network-cidr=10.244.0.0/16
-```
-
+- create playbook task
