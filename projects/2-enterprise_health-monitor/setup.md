@@ -600,11 +600,35 @@ touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
 - create variables
 
 #### 28. create bash script to install kubernetes on ubuntu and centos
-- place it in ./files/
-- move it with ansible to ubuntu vms
-#### 29. install kubernetes on arch vm
-#### 30. install kubeadm on host arch and use as master, allow other 4 vms to join
+1. place it in ./files/
+2. move it with ansible to ubuntu and centos
+3. run script with ansible
+4. install kubernetes on arch vm as well
 
+#### 29. create node cluster with host arch as master.
+1. initialize host arch
+```sh
+╰─❯ sudo kubeadm init --apiserver-advertise-address=192.168.0.185 --pod-network-cidr=10.244.0.0/16
+[preflight] Pulling images required for setting up a Kubernetes cluster
+--snip
+[kubelet-start] Starting the kubelet
+error: error execution phase wait-control-plane: cannot obtain client without bootstrap: could not bootstrap the admin user in file admin.conf: unable to create ClusterRoleBinding: client rate limiter Wait returned an error: context deadline exceeded
+To see the stack trace of this error execute with --v=5 or higher
 
+╰─❯ journalctl -xeu kubelet
+May 26 23:27:26 arch kubelet[39600]: E0526 23:27:26.063305   39600 run.go:72] "command failed" err="failed to run Kubelet: running with swap on is not supported, please disable swap or set --fail-swap-on flag to false"
+```
+2. disable swap on my arch host rig
+```sh
+╰─❯ sudo swapoff -a
 
+╰─❯ swapon --show
+# blank
+```
+3. clear failed kubeadm state and try again
+```sh
+╰─❯ sudo kubeadm reset -f
+
+╰─❯ sudo kubeadm init --apiserver-advertise-address=192.168.0.185 --pod-network-cidr=10.244.0.0/16
+```
 
