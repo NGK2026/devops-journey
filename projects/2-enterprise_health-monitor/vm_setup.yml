@@ -102,7 +102,7 @@
     copy:
       src: kube-ubuntu-install.sh
       dest: /home/student/kube-ubuntu-install.sh
-      mode: 0755
+      mode: '0755'
     when: 
     - ansible_facts['distribution'] == "Ubuntu"  
 # EXECUTE BASH
