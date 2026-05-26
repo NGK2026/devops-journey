@@ -669,3 +669,28 @@ centos       Ready    <none>          10m   v1.36.1   192.168.0.171   <none>    
 ubuntu2204   Ready    control-plane   40m   v1.36.1   192.168.0.124   <none>        Ubuntu 22.04.5 LTS            5.15.0-179-generic (amd64)       containerd://2.2.1
 ubuntu2604   Ready    <none>          37m   v1.36.1   192.168.0.3     <none>        Ubuntu 26.04 LTS              7.0.0-15-generic (amd64)         containerd://2.2.2
 ```
+#### 31. accecss nodes from host archlinux
+- on ubuntu 22 /etc/kubernetes/admin.conf change perm to 644
+```sh
+╰─❯ mkdir -p ~/.kube
+╰─❯ scp student@192.168.0.124:/etc/kubernetes/admin.conf ~/.kube/config
+╰─❯ kubectl get nodes
+NAME         STATUS   ROLES           AGE   VERSION
+archlinux    Ready    <none>          20m   v1.36.1
+centos       Ready    <none>          19m   v1.36.1
+ubuntu2204   Ready    control-plane   49m   v1.36.1
+ubuntu2604   Ready    <none>          46m   v1.36.1
+```
+- deploy app to cluster
+```sh
+╰─❯ helm upgrade --install health-monitor-p2 ./health-monitor-p2 --set image.repository=ngk2026/devops-journey-p2 --set image.tag=latest
+╰─❯ kubectl get pods -o wide
+NAME                                 READY   STATUS    RESTARTS   AGE   IP           NODE        NOMINATED NODE   READINESS GATES
+health-monitor-p2-6b5576c469-kn97g   1/1     Running   0          73s   10.244.2.2   archlinux   <none>           <none>
+```
+- check values.yaml replica count
+```sh
+╰─❯ cat health-monitor-p2/values.yaml | grep replica
+replicaCount: 1
+```
+- edit it to 4
