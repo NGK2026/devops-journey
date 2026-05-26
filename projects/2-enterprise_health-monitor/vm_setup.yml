@@ -97,3 +97,59 @@
   #     ports:
   #       - "8080:8080"
   #       - "50000:50000"
+
+# INSTALL KUBERNETES 
+# UBUNTU
+# REQUIREMENTS
+  - name: install repository prerequisites (Ubuntu)
+    apt:
+      name:
+        - gnupg
+        - software-properties-common
+        - ca-certificates
+        - curl
+        - apt-transport-https
+      state: present
+      update_cache: true
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
+# GPG
+  - name: add docker GPG (ubuntu)
+    ansible.builtin.get_url:
+      url: https://pkgs.k8s.io/core:/stable:/v1.36/deb/Release.key
+      dest: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      mode: '0644'
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
+# REPO
+  - name: add docker repo (ubuntu)
+    ansible.builtin.apt_repository:
+      repo: "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.36/deb/ {{ ansible_distribution_release }} stable"
+      filename: docker
+      state: present
+    when:
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
+# INSTALL KUBERNETES
+  - name: install kubernetes
+    apt:
+      name:
+        - kubelet
+        - kubeadm
+        - kubectl
+      state: present
+    when: 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
+# START SERVICE
+  - name: start kubernetes service
+  service:
+    name: kubelet
+    state: started
+    enabled: true
+    when: 
+      - ansible_facts['distribution'] == "Ubuntu"
+      - ansible_facts['distribution_major_version'] in ["22", "26"]
+  
