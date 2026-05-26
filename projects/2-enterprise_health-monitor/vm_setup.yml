@@ -9,6 +9,7 @@
     tags: always
     dnf:
       update_cache: true
+      disablerepo: "baseos,appstream,extras"
     changed_when: false
     when: ansible_facts['distribution'] == "CentOS"
 
