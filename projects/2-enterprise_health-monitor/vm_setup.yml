@@ -187,5 +187,6 @@
     args:
       creates: /etc/kubernetes/kubelet.conf
     when:
-      - ansible_facts['distribution'] in ["Archlinux" , "CentOS"]
-      - ansible_facts['distribution_major_version'] == "26"
+      - (ansible_facts['distribution'] == "CentOS") or 
+        (ansible_facts['distribution'] == "Ubuntu" and ansible_facts['distribution_major_version'] == "22") or
+        (ansible_facts['distribution'] == "Archlinux")
