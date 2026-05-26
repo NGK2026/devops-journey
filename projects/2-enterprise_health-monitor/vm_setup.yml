@@ -108,5 +108,6 @@
 # EXECUTE BASH
   - name: run kube install script
     shell: /home/student/kube-ubuntu-install.sh
+    become: true
     when: 
     - ansible_facts['distribution'] == "Ubuntu"
