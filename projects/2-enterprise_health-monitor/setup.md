@@ -590,6 +590,15 @@ fatal: [192.168.0.171]: FAILED! => {"changed": false, "msg": "Failed to import t
       state: present
     when: ansible_facts['distribution'] == "CentOS"
 ```
+- Success!
+
+#### 27. create host_vars
+```sh
+mkdir host_vars && cd host_vars
+touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
+```
+- create variables
+
 
 
 
