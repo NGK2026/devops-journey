@@ -602,6 +602,8 @@ touch 192.168.0.3.yml 192.168.0.38.yml 192.168.0.124.yml 192.168.0.171.yml
 #### 28. create bash script to install kubernetes on ubuntu and centos
 - place it in ./files/
 - move it with ansible to ubuntu vms
+#### 29. install kubernetes on arch vm
+#### 30. install kubeadm on host arch and use as master, allow other 4 vms to join
 
 
 
