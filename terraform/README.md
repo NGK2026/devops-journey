@@ -1,28 +1,18 @@
-## Step-6 Terraform
-#### youtube: Terraform explained in 15 mins - TechWorld with Nana
-- https://www.youtube.com/watch?v=l5k1ai_GBDE
-#### youtube: Terraform Course - Automate your AWS cloud infrastructure - freeCodeCamp.org
-- https://www.youtube.com/watch?v=SLB_c_ayRMo
-1. (0:20:51) Terraform Overview
-2. (0:43:31) Modifying Resources
-3. (0:50:30) Deleting Resources
-4. (0:54:55) Referencing Resources
-5. (1:04:47) Terraform Files
-6. (1:09:45) Practice Project
-  * 1- Create VPC
-  * 2- Create Internet Gateway
-  * 3- Create Custom Route Table
-  * 4- Create Subnet
-  * 5- Associate subnet with Route Table
-  * 6- Create Security Group to allow port 22, 80, 443
-  * 7- Create a network interface with an ip in the subnet that was created in step 4
-  * 8- Assign an elastic IP to the network interface created in step 7
-  * 9- Create Amazon Linux server and install/enable apache2
-7. (2:03:46) Terraform Variables
-##### TODO:
-- Create a /terraform folder in repo with:
-  * /commands.md — every CLI command used, with a one line explanation, init/plan/apply/destroy
-  * /setup.md — steps to install Terraform, configure AWS provider
-  * /main.tf - Terraform file that provisions EC2 and S3
-##### Created Apache Server Address:
-- http://13.61.210.62/
+# Terraform AWS Infrastructure Automation
+
+Hands-on infrastructure provisioning using Terraform on AWS. Covers lifecycle workflows, provider configurations, VPC networking, security groups, subnets, and variable abstractions (lists and dictionary objects).
+
+## Contents
+- [setup.md](./setup.md) — step-by-step setup walkthrough, credential routing, deployment guides, and teardown instructions
+- [commands.md](./commands.md) — standard CLI execution workflows and state tracking logs
+
+## Projects
+| Directory | Description |
+|---|---|
+| `projects/aws-website-infra` | Production-ready infrastructure blueprint deploying isolated network topographies for secure application hosting |
+
+## Manifests & Configurations
+| File | Description |
+|---|---|
+| `main.tf` | Primary orchestration manifest defining AWS providers, state transitions, subnets, VPC parameters, and security filtering groups |
+| `terraform.tfvars` | Input variable definition file handling isolated runtime environments through lists and nested dictionary block objects |
