@@ -1,3 +1,18 @@
+## Table of Contents
+- [Generate SSH Key with Comment and Passphrase](#generate-ssh-key-w-comment-and-passphrase)
+- [Copy Key to Server](#copy-key-to-server)
+- [Create Ansible Key](#create-ansible-key)
+- [Ping Hosts](#ping-hosts)
+- [List Hosts](#list-hosts)
+- [Gather Facts with Limits](#gather_facts-can-limit-to-any-number of-hosts)
+- [Install APT Packages](#install-apt-pkg-vim-nox)
+- [Upgrade Specific Upgradable Packages](#upgrade-a-specific-upgradable-package-ex-snapd)
+- [Upgrade System Distribution Modules](#upgrade-all-upgrade-dist)
+- [Run Playbook](#run-playbook)
+- [Ansible Common Facts Targeting](#ansible-common-facts-targetting)
+- [Check Available Tags with ansible-playbook](#check-available-tags-with-ansible-playbook)
+- [Run Specific Service and Tag Filters](#run-archlinux-tagged-specific-tag)
+
 #### Generate SSH key /w comment and passphrase
 ```sh
 ╰─❯ ssh-keygen -t ed25519 -C "default"
