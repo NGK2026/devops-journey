@@ -11,7 +11,7 @@ Flask app that collects CPU, memory, and disk metrics and exposes them at `/metr
 - **Health Check:** Bash script runs via cron, restarts any stopped containers
 
 ## Structure
-```txt
+```sh
 ├── app/app.py # Flask app — collects and exposes metrics 
 ├── Dockerfile # Container definition 
 ├── docker-compose.yml # Local development 
