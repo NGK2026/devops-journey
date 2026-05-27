@@ -30,7 +30,7 @@
 18. Select *Source*: **Anywhere-IPv4**, will create *IP* **0.0.0.0/0**
 19. **Save rules**
 
-## Create S3 - (Scalable Storage in the Cloud)
+## Create S3 (Scalable Storage in the Cloud)
 1. AWS *Dashboard*
 2. View all services
 3. **S3**
