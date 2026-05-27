@@ -1,5 +1,9 @@
-## Step-10 Prometheus + Grafana
-#### youtube: How Prometheus Monitoring works - TechWorld with Nana
-- https://www.youtube.com/watch?v=h4Sl21AKiDg
-#### youtube: Server Monitoring // Prometheus and Grafana - Christian Lempa
-- https://www.youtube.com/watch?v=9TJx7QTrTyo
+# Prometheus & Grafana Monitoring Stack
+
+Hands-on deployment of an enterprise monitoring engine using Docker Compose. Covers time-series database scraping architectures, node-level hardware metrics extraction via host-network bindings, persistent runtime storage virtualization volumes, and granular container resources monitoring.
+
+## Manifests & Configurations
+| File | Description |
+|---|---|
+| `docker-compose.yml` | Declarative service blueprint managing internal routing, volume scopes, and kernel-level resource mappings |
+| `prometheus.yml` | Time-series control file defining data aggregation cadences and targeted endpoint discovery endpoints |
