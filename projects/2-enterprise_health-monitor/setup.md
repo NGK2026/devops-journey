@@ -804,5 +804,8 @@ NAME                                READY   STATUS    RESTARTS   AGE   IP       
 health-monitor-p2-9df7d9d79-chmxl   1/1     Running   0          5s    10.244.3.12   centos       <none>           <none>
 health-monitor-p2-9df7d9d79-k4c8x   1/1     Running   0          5s    10.244.1.5    ubuntu2604   <none>           <none>
 health-monitor-p2-9df7d9d79-kkpwx   1/1     Running   0          5s    10.244.2.17   archlinux    <none>           <none>
-
+```
+#### 34. point jenkins to kubeadm cluster
+```sh
+cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.kube/config"
 ```
