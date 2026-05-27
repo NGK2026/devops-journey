@@ -1,3 +1,18 @@
+## Table of Contents
+1. [Prerequisites](#1-prerequisites)
+2. [Configure AWS CLI Credentials](#2-configure-aws-cli-credentials)
+3. [Initialize Terraform Workspace](#3-initialize-terraform-workspace)
+4. [Create Network Infrastructure (VPC and Subnets)](#4-create-network-infrastructure-vpc-and-subnets)
+5. [Create Internet Gateway](#5-create-internet-gateway)
+6. [Create Custom Route Table](#6-create-custom-route-table)
+7. [Create Security Group](#7-create-security-group)
+8. [Create Network Interface](#8-create-network-interface)
+9. [Assign Elastic IP](#9-assign-elastic-ip)
+10. [Provision Ubuntu EC2 Server](#10-provision-ubuntu-ec2-server)
+11. [Automate Apache Installation via User Data](#11-automate-apache-installation-via-user-data)
+12. [Verify Deployment](#12-verify-deployment)
+13. [Clean Up and Teardown Resources](#13-clean-up-and-teardown-resources)
+
 # AWS
 ## Create EC2 Key pairs
 1. AWS *Dashboard*
