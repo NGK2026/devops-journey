@@ -1,3 +1,27 @@
+## Table of Contents
+1. [Install 4 VMs, Bridged Network](#1-install-4-vms-bridged-network)
+2. [Install SSH on Servers](#2-install-ssh-on-servers)
+3. [Create SSH Keys](#3-create-ssh-keys)
+4. [Migrate Public Keys to Servers](#4-migrate-public-keys-to-servers)
+5. [Create Ansible Key and Transfer to VMs](#5-create-ansible-key-and-transfer-to-vms)
+6. [SSH with Specific Key](#6-ssh-with-specific-key)
+7. [Enable SSH-Agent for Less Passphrase Prompting](#7-enable-ssh-agent-for-less-passphrase-prompting)
+8. [Create Inventory File (List of IPs to Work On)](#8-create-inventory-file-list-of-ips-to-work-on)
+9. [Ping Hosts](#9-ping-hosts)
+10. [Create Ansible Config](#10-create-ansible-config)
+11. [Retry Ping After Defining ansible.cfg](#11-retry-ping-after-defining-ansiblecfg)
+12. [Update Systems Cache with APT](#12-update-systems-cache-with-apt)
+13. [Run First Playbook (Install Apache2)](#13-run-first-playbook-install-apache2)
+14. [Upgrade APT Index, Add/Update {Apache, PHP}](#14-upgrade-apt-index-addupdate-apache-php-install_apache_v2yml)
+15. [Remove (Absent) Apache & PHP](#15-remove-absent-apache--php-remove_apacheyml)
+16. [Install CentOS VM & Isolate Environments](#16-install-centos-vm-create-install-apache_v3yml-to-seperate-ubuntu-from-centos)
+17. [Trim Configuration with Variables](#17-trim-install_apache_v3yml-into-v4-use-variables-to-reduce-to-1-play)
+18. [Set Groups in the Inventory](#18-set-groups-in-the-inventory)
+19. [Targeting Tasks via Tags](#19-using-tags-site_v2yml)
+20. [Copy Static Files](#20-copy-files-site_v2yml)
+21. [Setup Workstation Tools](#21-setup-workstation-will-use-vm-instead-w-terraform-site_v2yml)
+22. [Enable/Start System Services](#22-enablestart-services-site_v3yml)
+
 #### 1. install 4 VMs, bridged network
 - 2 Ubuntu 26.04 servers
 - 2 Ubuntu 22.04 servers
