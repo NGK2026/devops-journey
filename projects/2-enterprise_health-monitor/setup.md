@@ -820,3 +820,16 @@ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.ku
 ```sh
 ╰─❯ helm upgrade --install prometheus-stack prometheus-community/kube-prometheus-stack
 ```
+3. create servicemonitory.yaml to point prometheus to app
+4. apply
+```sh
+╰─❯ kubectl apply -f servicemonitor.yaml
+```
+5. forward prometheus port
+```sh
+kubectl port-forward svc/prometheus-stack-kube-prom-prometheus 9090:9090
+```
+6. unblock centos firewall
+```sh
+sudo firewall-cmd --permanent --add-port=8472/udp && sudo firewall-cmd --reload
+```
