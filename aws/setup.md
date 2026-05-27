@@ -1,3 +1,12 @@
+## Table of Contents (for setup.md)
+
+- [Create EC2 instance - (Virtual Servers in the Cloud)](#create-ec2-instance----virtual-servers-in-the-cloud)
+- [Create S3 - (Scalable Storage in the Cloud)](#create-s3----scalable-storage-in-the-cloud)
+- [Create Access Key (For instance permission to connect to bucket)](#create-access-key-for-instance-permission-to-connect-to-bucket)
+- [Connect to EC2 instance](#connect-to-ec2-instance)
+- [Static website hosting](#static-website-hosting)
+- [Create EC2 Key pairs](#create-ec2-key-pairs)
+
 ##### NB. The following steps were created with IAM User account
 
 ## Create EC2 instance - (Virtual Servers in the Cloud)
