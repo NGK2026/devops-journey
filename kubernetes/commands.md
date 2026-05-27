@@ -1,3 +1,14 @@
+## Table of Contents
+- [Start Minikube](#start-minikube)
+- [Nodes and Services](#status-of-nodes)
+- [Deployments](#create-deployment-deployment-is-abstraction-layer-over-the-pods)
+- [Logs and Describe](#checking-logsdescribe-fixing-dns-resolution-minikube-stopdelete)
+- [Exec into Container](#connect-to-containers-terminal-binbash)
+- [Delete](#delete-deploymentpod)
+- [Apply](#kubectl-apply)
+- [Wide View](#get-pod-wide-view)
+- [Namespaces](#show-namespaces)
+
 ##### start minikube
 ```sh
 ╰─❯ minikube start
