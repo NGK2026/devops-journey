@@ -1,3 +1,16 @@
+## Table of Contents (for setup.md)
+
+- [Pull / run jenkins container](#pull--run-jenkins-container)
+- [new pipeline](#new-pipeline)
+- [Github token](#github-token)
+- [Credentials](#credentials)
+- [Back to pipeline configuration](#back-to-pipeline-configuration)
+- [Target devops-journey/jenkins repo](#target-devops-journeyjenkins-repo)
+- [Create Jenkinsfile in jenkins repo](#create-jenkinsfile-in-jenkins-repo)
+- [test/execute jenkinsfile changes without commit, using Replay](#testexecute-jenkinsfile-changes-without-commit-using-replay)
+- [restart from stage](#restart-from-stage)
+- [set multibranch pipeline scan trigger (when using localhost)](#set-multibranch-pipeline-scan-trigger-when-using-localhost)
+
 #### Pull / run jenkins container
 ```sh
 ╰─❯ docker pull jenkins/jenkins
