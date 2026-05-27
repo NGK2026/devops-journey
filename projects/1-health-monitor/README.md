@@ -1,40 +1,28 @@
-## Health Monitor App
-. Monitor's the system's CPU, Memory & Disk usage % using a Python app.
-. The App is located inside a Docker container, deploying a Python Flask server.
+# Project 1 — System Health Monitor
 
-### Step 1 — The App -- Done
-1. Create /projects/health-monitor/app/app.py
-2. Use psutil to collect CPU, memory, disk usage
-3. Use Flask to expose it at http://localhost:5000/metrics
-4. Test it runs locally on your Arch machine
+Flask app that collects CPU, memory, and disk metrics and exposes them at `/metrics` in Prometheus format. Fully automated deployment to AWS.
+
+## Stack
+- **App:** Python, Flask, psutil, prometheus-client
+- **Container:** Docker
+- **Infrastructure:** Terraform (AWS EC2, VPC, Security Groups)
+- **CI/CD:** GitHub Actions — builds and pushes Docker image on every push, SSHs into EC2 and redeploys
+- **Monitoring:** Prometheus scrapes `/metrics`, Grafana displays dashboard
+- **Health Check:** Bash script runs via cron, restarts any stopped containers
+
+## Structure
+├── app/app.py # Flask app — collects and exposes metrics 
+├── Dockerfile # Container definition 
+├── docker-compose.yml # Local development 
+├── main.tf # Terraform — provisions EC2, VPC, security groups 
+├── health-monitor.yml # GitHub Actions pipeline 
+├── prometheus.yml # Prometheus scrape config 
+├── 02-health-service.sh # Bash health check and restart script 
+└── 01-psutil.py # psutil exploration (development notes)
 
 
-### Step 2 — Containerize -- Done
-5. Write Dockerfile for the app
-6. Write docker-compose.yml to run it locally
-7. Test it runs in Docker
-
-### Step 3 — Infrastructure -- Done
-8. Write Terraform to provision AWS EC2 instance and security groups
-9. Apply it, verify instance is running
-
-### Step 4 — CI/CD  -- Done
-10. Write GitHub Actions pipeline — on push, build Docker image, push to Docker Hub
-
-### Step 5 — Monitoring -- Done
-13. Add Prometheus scrape config to target your app
-14. Open Grafana, build one simple dashboard showing CPU and memory
-
-### Step 6 — Bash -- Done
-15. Write a bash script that checks if the app is running and restarts it if not
-
-#### How to use
-1. Pull the files and app folder
-2. Run 
-```sh
-╰─❯ docker-compose up
-
-╰─❯ curl http://localhost:5000/metrics
-{"CPU":1.0,"Home":45.4,"RAM":18.8,"Root":45.4}
+## How to Run Locally
+```bash
+docker-compose up
+curl http://localhost:5000/metrics
 ```
-
