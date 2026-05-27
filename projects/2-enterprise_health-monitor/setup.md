@@ -816,3 +816,7 @@ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.ku
 ╰─❯ helm pull prometheus-community/kube-prometheus-stack --untar=true
 ╰─❯ helm install prometheus-stack prometheus-community/kube-prometheus-stack
 ```
+2. edit grafana password in values.yaml
+```sh
+╰─❯ helm upgrade --install prometheus-stack prometheus-community/kube-prometheus-stack
+```
