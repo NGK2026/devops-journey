@@ -809,3 +809,10 @@ health-monitor-p2-9df7d9d79-kkpwx   1/1     Running   0          5s    10.244.2.
 ```sh
 cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.kube/config"
 ```
+#### 35. attach prometheus/grafana 
+1. add repo
+```sh
+╰─❯ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+╰─❯ helm install prometheus-stack prometheus-community/kube-prometheus-stack
+```
