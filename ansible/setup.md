@@ -17,10 +17,10 @@
 16. [Install CentOS VM & Isolate Environments](#16-install-centos-vm-create-install-apache_v3yml-to-seperate-ubuntu-from-centos)
 17. [Trim Configuration with Variables](#17-trim-install_apache_v3yml-into-v4-use-variables-to-reduce-to-1-play)
 18. [Set Groups in the Inventory](#18-set-groups-in-the-inventory)
-19. [Targeting Tasks via Tags](#19-using-tags-site_v2yml)
-20. [Copy Static Files](#20-copy-files-site_v2yml)
-21. [Setup Workstation Tools](#21-setup-workstation-will-use-vm-instead-w-terraform-site_v2yml)
-22. [Enable/Start System Services](#22-enablestart-services-site_v3yml)
+19. [Targeting Tasks via Tags](#19-using-tags)
+20. [Copy Static Files](#20-copy-files)
+21. [Setup Workstation Tools](#21-setup-workstation-will-use-vm-instead-w-terraform)
+22. [Enable/Start System Services](#22-enablestart-services)
 
 #### 1. install 4 VMs, bridged network
 - 2 Ubuntu 26.04 servers
