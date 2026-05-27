@@ -1,4 +1,4 @@
-# Python Automation & Scripting Laboratory
+# Python Automation & Scripting
 
 Hands-on automation scripts and foundational programming workflows structured around "Automate the Boring Stuff with Python". Covers core language syntax, algorithmic logic structures, native filesystem I/O operations, text manipulation engines, structured web data parsing trackers, and direct system interface interaction layers.
 
