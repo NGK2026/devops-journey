@@ -4,7 +4,7 @@
 - [install kube-prometheus-stack](#install-kube-prometheus-stack)
 - [edit grafana monitoring](#edit-grafana-monitoring)
 - [change graphana user/pass](#change-graphana-userpass)
-- [set up the service values automatically](#set-up the-service-values-automatically)
+- [set up the service values automatically](#set-up-the-service-values-automatically)
 - [configure own cluster](#configure-own-cluster)
 - [generate yaml then add to cluster](#generate-yaml-then-add-to-cluster)
 
