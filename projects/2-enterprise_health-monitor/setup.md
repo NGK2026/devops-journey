@@ -765,3 +765,44 @@ student@ubuntu2604:~$ systemctl list-unit-files --type=service | grep -E 'firewa
 ufw.service                                  enabled         enabled
 ```
 - use firewall ./files/  scripts respectively
+```sh
+╰─❯ kubectl logs health-monitor-p2-6b5576c469-26tjh
+ * Serving Flask app 'app'
+--snip
+10.244.3.1 - - [26/May/2026 23:37:06] "GET /metrics HTTP/1.1" 200 -
+10.244.3.1 - - [26/May/2026 23:37:07] "GET /metrics HTTP/1.1" 200 -
+
+╰─❯ kubectl get pods -o wide
+NAME                                 READY   STATUS    RESTARTS         AGE   IP           NODE        NOMINATED NODE   READINESS GATES
+health-monitor-p2-6b5576c469-26tjh   0/1     Running   11 (3m43s ago)   41m   10.244.3.3   centos      <none>           <none>
+health-monitor-p2-6b5576c469-kn97g   1/1     Running   14 (3m52s ago)   49m   10.244.2.2   archlinux   <none>           <none>
+health-monitor-p2-6b5576c469-p5v8p   1/1     Running   13 (6m13s ago)   41m   10.244.2.3   archlinux   <none>           <none>
+health-monitor-p2-6b5576c469-r25qk   0/1     Running   10 (9m23s ago)   41m   10.244.3.2   centos      <none>           <none>
+```
+- centos is heavy, add delay and failure threshold in values.yaml
+```yaml
+livenessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+  initialDelaySeconds: 30
+  failureThreshold: 10
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+  initialDelaySeconds: 30
+  failureThreshold: 10
+  periodSeconds: 10
+```
+- helm upgrade
+```sh
+╰─❯ helm upgrade --install health-monitor-p2 ./health-monitor-p2 --set image.repository=ngk2026/devops-journey-p2 --set image.tag=latest
+╰─❯ kubectl get pods -o wide -w
+NAME                                READY   STATUS    RESTARTS   AGE   IP            NODE         NOMINATED NODE   READINESS GATES
+health-monitor-p2-9df7d9d79-chmxl   1/1     Running   0          5s    10.244.3.12   centos       <none>           <none>
+health-monitor-p2-9df7d9d79-k4c8x   1/1     Running   0          5s    10.244.1.5    ubuntu2604   <none>           <none>
+health-monitor-p2-9df7d9d79-kkpwx   1/1     Running   0          5s    10.244.2.17   archlinux    <none>           <none>
+
+```
