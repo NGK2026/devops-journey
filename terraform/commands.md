@@ -1,3 +1,13 @@
+## Table of Contents
+- [Initialize Terraform Backend](#init)
+- [Generate and Preview Execution Plan](#plan)
+- [Apply Configuration Changes](#apply)
+- [Destroy Provisioned Infrastructure](#destroy)
+- [Targeted Infrastructure Teardown](#destroy-target)
+- [Advanced Variable Abstraction Techniques](#advanced-variable-abstraction-techniques)
+  - [List Variables Syntax](#list-variables)
+  - [Dictionary Objects within Lists](#dictionary-objects-in-list-of-variable)
+
 ## After provider, resource were added to main.tf
 ### Init
 ```sh
