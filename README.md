@@ -41,7 +41,7 @@ End-to-end automated deployment of a Flask metrics app on AWS.
 
 | # | Topic | Folder |
 |---|---|---|
-| 1 | Python | [Book-automate-boring-stuff](./Book-automate-boring-stuff/) |
+| 1 | Python | [python](./python/) |
 | 2 | Git | [git](./git/) |
 | 3 | Bash | [bash](./bash/) |
 | 4 | Cloud Concepts | [aws](./aws/) |
