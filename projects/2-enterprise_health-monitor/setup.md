@@ -813,6 +813,6 @@ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.ku
 1. add repo
 ```sh
 ╰─❯ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
+╰─❯ helm pull prometheus-community/kube-prometheus-stack --untar=true
 ╰─❯ helm install prometheus-stack prometheus-community/kube-prometheus-stack
 ```
