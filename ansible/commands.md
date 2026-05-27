@@ -4,7 +4,7 @@
 - [Create Ansible Key](#create-ansible-key)
 - [Ping Hosts](#ping-hosts)
 - [List Hosts](#list-hosts)
-- [Gather Facts with Limits](#gather_facts-can-limit-to-any-number of-hosts)
+- [Gather Facts with Limits](#gather-facts-with-limits)
 - [Install APT Packages](#install-apt-pkg-vim-nox)
 - [Upgrade Specific Upgradable Packages](#upgrade-a-specific-upgradable-package-ex-snapd)
 - [Upgrade System Distribution Modules](#upgrade-all-upgrade-dist)
@@ -57,7 +57,7 @@
     192.168.0.3
     192.168.0.66
 ```
-#### gather_facts (can limit to any number of hosts)
+#### gather facts with limits
 ```sh
 ╰─❯ ansible all -m gather_facts --limit 192.168.0.124
 ```
