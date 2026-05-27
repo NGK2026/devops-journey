@@ -86,7 +86,7 @@
 8. *Terminal* launches in new web browser tab
 
 ## Static website hosting
-> **Note:** This active web deployment has been torn down and the public access endpoint is disabled.
+> **Note:** This active web deployment has been torn down and the public access endpoint is disabled
 1. AWS *Dashboard*
 2. View all services
 3. **S3**
