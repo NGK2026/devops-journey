@@ -1,13 +1,14 @@
-## Step-5 AWS Hands On (Core Services)
-#### youtube: AWS Tutorial for Beginners – Kevin Stratvert
-- https://www.youtube.com/watch?v=Nzv-tzU-UAw
-##### TODO:
-1. Launch an EC2 instance, SSH into it from terminal
-2. Create an S3 bucket, upload a file via CLI (not console)
-3. Create an IAM user with limited permissions
-4. Create an /aws folder in repo with:
-  * /aws/commands.md — every CLI command used, with a one line explanation.
-  * /aws/setup.md — steps taken to launch EC2, create S3 bucket, set up IAM user.
+# AWS Core Infrastructure Services
 
-## Website hosted with S3
-- http://onyx-core-system.s3-website-us-east-1.amazonaws.com/
+Hands-on deployment of cloud infrastructure components using Amazon Web Services. Covers provisioning EC2 elastic compute runtimes, structuring public-facing S3 object store assets for static website distribution, establishing granular inbound network security filters, and managing programmatic identity access credentials (IAM/Access Keys).
+
+## Contents
+- [setup.md](./setup.md) — step-by-step console guide detailing virtual server configurations, object storage provisioning, bucket permissions, and secure SSH key-pair registration
+- [commands.md](./commands.md) — execution commands log tracking local package dependencies, remote git repository migration, environment initializations, and local-to-cloud asset sync engines
+
+## Web Assets & Distribution
+| File / Directory | Description |
+|---|---|
+| `website/index.html` | Core primary landing interface acting as the baseline entry routing page for the static cloud application stack |
+| `website/index-app.html` | Application-tier structural layer serving component management views and integrated workflow tools |
+| `website/index-trade.html` | Trade intelligence and commodity logistics interface variant engineered for global operational monitoring loops |
