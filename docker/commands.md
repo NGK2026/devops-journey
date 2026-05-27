@@ -14,7 +14,7 @@
   - [stop all containers](#stop-all-containers)
 - [Troubleshooting](#troubleshooting)
   - [check logs](#check-logs)
-  - [get terminal of detached container](#get-terminal of-detached-container)
+  - [get terminal of detached container](#get-terminal-of-detached-container)
   - [Docker run vs Docker start](#docker-run-vs-docker-start)
 - [tutorial project steps](#tutorial-project-steps)
   - [1- check docker network](#1--check-docker-network)
