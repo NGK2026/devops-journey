@@ -29,7 +29,7 @@ pipeline {
         stage("Deploy to Kubernetes using Helm") {
 
             steps {
-                sh "helm upgrade --install health-monitor-p2 ./projects/2-enterprise_health-monitor/health-monitor-p2 --set image.repository=${IMAGE_NAME} --set image.tag=${IMAGE_TAG}" 
+                sh "helm upgrade --install health-monitor-p2 ./projects/2-enterprise_health-monitor/health-monitor-p2 --set image.repository=${IMAGE_NAME} --set image.tag=${IMAGE_TAG} --set livenessProbe=null --set readinessProbe=null" 
             }
         }
     }
