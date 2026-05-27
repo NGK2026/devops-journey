@@ -829,7 +829,3 @@ cat ~/.kube/config | docker exec -i jenkins bash -c "cat > /var/jenkins_home/.ku
 ```sh
 kubectl port-forward svc/prometheus-stack-kube-prom-prometheus 9090:9090
 ```
-6. unblock centos firewall
-```sh
-sudo firewall-cmd --permanent --add-port=8472/udp && sudo firewall-cmd --reload
-```
