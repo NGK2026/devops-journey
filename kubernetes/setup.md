@@ -1,9 +1,9 @@
-# Content
-1. Setup
-2. Configuration files (deployment/service)
-3. Mongodb & Mongo Express cluster
-4. Namespace
-5. Ingress
+## Table of Contents
+- [Setup](#setup)
+- [Configuration Files](#configuration-files-deploymentservice)
+- [MongoDB and Mongo Express Cluster](#mongodb--mongo-express-cluster)
+- [Namespace](#namespace)
+- [Ingress](#ingress)
 
 ## setup
 #### 1- install minikube / kubectl
