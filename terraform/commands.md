@@ -1,12 +1,13 @@
 ## Table of Contents
-- [Initialize Terraform Backend](#init)
-- [Generate and Preview Execution Plan](#plan)
-- [Apply Configuration Changes](#apply)
-- [Destroy Provisioned Infrastructure](#destroy)
-- [Targeted Infrastructure Teardown](#destroy-target)
-- [Advanced Variable Abstraction Techniques](#advanced-variable-abstraction-techniques)
-  - [List Variables Syntax](#list-variables)
-  - [Dictionary Objects within Lists](#dictionary-objects-in-list-of-variable)
+- [After provider, resource were added to main.tf](#after-provider-resource-were-added-to-maintf)
+  - [Init](#init)
+  - [Plan](#plan)
+  - [Apply](#apply)
+  - [Plan with -out](#plan-with--out)
+  - [Apply tags from saved file](#apply-tags-from-saved-file)
+  - [Destroy myserver instance](#destroy-myserver-instance)
+  - [Create VPC and Subnet](#create-vpc-and-subnet)
+  - [Connect with SSH](#connect-with-ssh)
 
 ## After provider, resource were added to main.tf
 ### Init
