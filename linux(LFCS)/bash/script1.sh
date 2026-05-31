@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # takes path of dir and lists contents
 
 cat << EOF
