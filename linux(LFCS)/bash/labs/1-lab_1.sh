@@ -27,3 +27,16 @@ done < 1-ldapusers.txt
 
 # print user_output.txt
 cat 1-user_output.txt
+
+# create users found in user_output file
+while read line; do
+	echo ___---__ creating user __---___
+	echo \* \* sudo useradd -m $line \* \*
+	echo ---___------ DONE ------___---
+	echo
+done < 1-user_output.txt
+
+
+
+
+
