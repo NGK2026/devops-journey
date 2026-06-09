@@ -1,7 +1,7 @@
 #!/bin/bash
 
 COUNTER=$1
-COUNTER=$(( COUNTER * 30))
+COUNTER=$(( COUNTER * 10 ))
 
 minusone(){
 	COUNTER=$(( COUNTER - 1 ))
