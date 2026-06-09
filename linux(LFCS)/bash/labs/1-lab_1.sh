@@ -16,9 +16,13 @@ EXAMPLE=${EXAMPLE%%,*}
 
 echo ${EXAMPLE#cn=}
 
+# clean file
+> 1-user_output.txt
+
 # read file line by line with while loop
 while read line; do
-	echo "${line%%,*}" >> 1-user_output.txt
+	USER=${line%%,*}
+	echo ${USER#cn=} >> 1-user_output.txt
 done < 1-ldapusers.txt
 
 # print user_output.txt
