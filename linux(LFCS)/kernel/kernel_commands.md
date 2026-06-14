@@ -1,3 +1,11 @@
+## Table of Contents
+- [Show all modules](#Shows all modules currently loaded)
+- [Manually load kernel file](#Used to manually load a kernel file, including its dependencies)
+- [Manually unload kernel file](#Used to manually unload a kernel file)
+- [Kernel module information](#Provides information about kernel modules)
+- [Generate modules.dep dependencies file](#Generates the modules.dep kernel module dependencies file)
+- [View all processes](#View every process on the system)
+
 ##### Shows all modules currently loaded
 ```sh
 lsmod
