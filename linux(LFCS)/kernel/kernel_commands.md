@@ -5,6 +5,8 @@
 - [Kernel module information](#provides-information-about-kernel-modules)
 - [Generate modules.dep dependencies file](#generates-the-modules.dep-kernel-module-dependencies-file)
 - [View all processes](#view-every-process-on-the-system)
+- [View Memory info](#memory-info)
+- [View CPU info](#cpu-info)
 
 ##### Shows all modules currently loaded
 ```sh
@@ -29,4 +31,12 @@ depmod
 ##### View every process on the system
 ```sh
 ps aux 
+```
+##### Memory info
+```sh
+meminfo
+```
+##### CPU info
+```sh
+cpuinfo
 ```
