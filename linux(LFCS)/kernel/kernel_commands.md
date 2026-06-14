@@ -7,4 +7,4 @@ Used to manually unload a kernel file
 ##### modinfo
 Provides information about kernel modules
 ##### depmod
-generates the modules.dep kernel module dependencies file
+Generates the modules.dep kernel module dependencies file
