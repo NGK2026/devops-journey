@@ -7,6 +7,7 @@
 - [View all processes](#view-every-process-on-the-system)
 - [View Memory info](#memory-info)
 - [View CPU info](#cpu-info)
+- [Find MAN](#man-pages-find-swappiness)
 
 ##### Shows all modules currently loaded
 ```sh
@@ -39,4 +40,17 @@ meminfo
 ##### CPU info
 ```sh
 cpuinfo
+```
+##### MAN pages find swappiness
+```sh
+man -K swappiness
+
+--Man-- next: docker-container-run(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+--Man-- next: docker-create(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+--Man-- next: docker-run(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+--Man-- next: docker-service-create(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+--Man-- next: docker-service-update(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+
+--Man-- next: tmpfiles.d(5) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
+--Man-- next: proc_sys_vm(5) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
 ```
