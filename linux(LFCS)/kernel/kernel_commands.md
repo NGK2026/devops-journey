@@ -50,7 +50,6 @@ man -K swappiness
 --Man-- next: docker-run(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
 --Man-- next: docker-service-create(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
 --Man-- next: docker-service-update(1) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
-
 --Man-- next: tmpfiles.d(5) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
 --Man-- next: proc_sys_vm(5) [ view (return) | skip (Ctrl-D) | quit (Ctrl-C) ]
 ```
